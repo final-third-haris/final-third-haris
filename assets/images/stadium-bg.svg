@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" fill="none">
+  <defs>
+    <radialGradient id="floodlight" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1100 200) rotate(135) scale(800 600)">
+      <stop offset="0%" stop-color="#9EE20B" stop-opacity="0.12"/>
+      <stop offset="40%" stop-color="#9EE20B" stop-opacity="0.03"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cornerGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(100 800) rotate(-45) scale(600 400)">
+      <stop offset="0%" stop-color="#9EE20B" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="tacticalGrid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#222222" stroke-width="0.75" stroke-dasharray="2 4"/>
+      <circle cx="0" cy="0" r="1" fill="#333333"/>
+    </pattern>
+    <linearGradient id="pitchFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#080808" stop-opacity="0.2"/>
+      <stop offset="70%" stop-color="#080808" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#080808" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Pitch Tactical Markings Outline -->
+  <g opacity="0.18" stroke="#9EE20B" stroke-width="1.2">
+    <!-- Center circle and line -->
+    <line x1="720" y1="0" x2="720" y2="900" stroke-dasharray="6 8"/>
+    <circle cx="720" cy="450" r="140" fill="none"/>
+    <circle cx="720" cy="450" r="3" fill="#9EE20B"/>
+    
+    <!-- Penalty box markings (Final Third perspective) -->
+    <path d="M 1200 150 L 1440 150 M 1200 750 L 1440 750 M 1200 150 L 1200 750" fill="none"/>
+    <path d="M 1200 330 A 120 120 0 0 0 1200 570" fill="none"/>
+    <circle cx="1270" cy="450" r="3" fill="#9EE20B"/>
+
+    <!-- Subtle angle accents -->
+    <path d="M 0 300 L 250 300 L 250 600 L 0 600" fill="none" stroke="#555555" stroke-width="1"/>
+  </g>
+
+  <!-- Floodlight Gradients -->
+  <rect width="1440" height="900" fill="url(#tacticalGrid)" opacity="0.4"/>
+  <rect width="1440" height="900" fill="url(#floodlight)"/>
+  <rect width="1440" height="900" fill="url(#cornerGlow)"/>
+  <rect width="1440" height="900" fill="url(#pitchFade)"/>
+</svg>
