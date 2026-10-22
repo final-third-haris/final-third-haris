@@ -454,6 +454,24 @@ document.addEventListener('DOMContentLoaded', () => {
     formFeedback.style.display = 'block';
   }
 
+  // Track Google Form clicks into GA4 & GTM
+  ['channelGoogleFormLink', 'openGoogleFormExternalBtn'].forEach(btnId => {
+    document.getElementById(btnId)?.addEventListener('click', () => {
+      if (typeof gtag === 'function') {
+        gtag('event', 'click_google_form', {
+          event_category: 'Lead Generation',
+          event_label: 'Official Google Form External'
+        });
+      }
+      if (window.dataLayer) {
+        window.dataLayer.push({
+          event: 'click_google_form',
+          form_url: 'https://forms.gle/ysMKP3Njy3WVpz986'
+        });
+      }
+    });
+  });
+
   // Smooth scroll for Back to Top
   document.getElementById('backToTopBtn')?.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

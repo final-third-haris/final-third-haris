@@ -38,7 +38,8 @@ const FINAL_THIRD_CONFIG = {
     whatsAppLink: "https://wa.me/918129059309",
     email: "mailtofinalthird@gmail.com",
     emailMailto: "mailto:mailtofinalthird@gmail.com",
-    googleSheetEndpoint: "" // Paste your Google Apps Script Web App URL here
+    googleFormUrl: "https://forms.gle/ysMKP3Njy3WVpz986",
+    googleFormEmbedUrl: "https://docs.google.com/forms/d/e/1FAIpQLSc1gbq415RN4CnJhd_cpUq9rCRtJwgYJmzS7xO4dqMc0XmrtA/viewform?embedded=true"
   },
 
   social: [
