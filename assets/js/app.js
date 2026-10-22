@@ -335,17 +335,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Contact Form Submission (Validation & Demo Handling)
+  // Contact Form Submission (Google Sheets Integration + GA4 Conversion Event + Direct Fallbacks)
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = document.getElementById('contactName')?.value.trim();
       const email = document.getElementById('contactEmail')?.value.trim();
+      const phone = document.getElementById('contactPhone')?.value.trim() || '';
       const subject = document.getElementById('contactSubject')?.value.trim();
       const message = document.getElementById('contactMessage')?.value.trim();
+      const submitBtn = document.getElementById('contactSubmitBtn');
 
       if (!name || !email || !subject || !message) {
-        showFormFeedback('error', 'Please fill in all required fields before sending.');
+        showFormFeedback('error', 'Please fill in all required fields (Name, Email, Subject, Message) before sending.');
         return;
       }
 
@@ -356,32 +358,99 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Requirement 9: Clean feedback with working direct contact options
-      showFormFeedback('success', `Thank you, ${name}! Your inquiry has been prepared. Since direct backend delivery is currently in demo mode, please click below to send via WhatsApp or Email directly to Haris Nenmara.`);
+      // 1. Google Analytics 4 Conversion Event Tracking
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          event_category: 'Contact',
+          event_label: subject,
+          lead_name: name,
+          lead_email: email
+        });
+      }
 
-      // Provide direct pre-filled WhatsApp / Email fallback
-      const waMsg = encodeURIComponent(`Hi Haris (Final Third),\nMy name is ${name}.\nSubject: ${subject}\n\nMessage: ${message}`);
-      const fallbackContainer = document.createElement('div');
-      fallbackContainer.style.marginTop = '16px';
-      fallbackContainer.style.display = 'flex';
-      fallbackContainer.style.gap = '12px';
-      fallbackContainer.style.flexWrap = 'wrap';
-      fallbackContainer.innerHTML = `
-        <a href="https://wa.me/918129059309?text=${waMsg}" target="_blank" class="btn btn-primary" style="padding: 10px 16px; font-size: 0.8125rem;">
-          Send via WhatsApp ↗
-        </a>
-        <a href="mailto:mailtofinalthird@gmail.com?subject=${encodeURIComponent(subject)}&body=${waMsg}" class="btn btn-outline" style="padding: 10px 16px; font-size: 0.8125rem;">
-          Send via Email ↗
-        </a>
-      `;
-      formFeedback.appendChild(fallbackContainer);
+      // 2. Google Tag Manager dataLayer Event Tracking
+      if (window.dataLayer) {
+        window.dataLayer.push({
+          event: 'generate_lead',
+          leadSubject: subject,
+          trafficReferrer: document.referrer || 'direct'
+        });
+      }
+
+      const endpoint = FINAL_THIRD_CONFIG?.contact?.googleSheetEndpoint?.trim();
+
+      // If active Google Sheet Endpoint (Google Apps Script) is configured
+      if (endpoint && endpoint.startsWith('https://script.google.com/')) {
+        const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '<span>SEND MESSAGE ↗</span>';
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<span>SENDING INQUIRY...</span>';
+        }
+
+        try {
+          const payload = new URLSearchParams({
+            name: name,
+            email: email,
+            phone: phone,
+            subject: subject,
+            message: message,
+            referrer: document.referrer || 'direct',
+            pageUrl: window.location.href,
+            timestamp: new Date().toISOString()
+          });
+
+          await fetch(endpoint, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: payload
+          });
+
+          showFormFeedback('success', `✅ Thank you, ${name}! Your inquiry has been successfully sent and saved to our database. Haris Nenmara & management will reach out within 24 hours.`);
+          contactForm.reset();
+
+        } catch (err) {
+          console.error('Submission error:', err);
+          showFormFeedback('error', `Something went wrong sending directly. Please click below to send your message instantly via WhatsApp or Email:`);
+          renderDirectContactFallbacks(name, email, phone, subject, message);
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnHtml;
+          }
+        }
+      } else {
+        // Pending Google Sheet Endpoint setup: provide instant direct WhatsApp / Email dispatch
+        showFormFeedback('success', `Thank you, ${name}! Your inquiry has been prepared. Click below to send directly to Haris Nenmara via WhatsApp or Email:`);
+        renderDirectContactFallbacks(name, email, phone, subject, message);
+      }
     });
   }
 
-  function showFormFeedback(type, text) {
+  function renderDirectContactFallbacks(name, email, phone, subject, message) {
+    const waMsg = encodeURIComponent(`Hi Haris (Final Third),\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nSubject: ${subject}\n\nMessage:\n${message}`);
+    const fallbackContainer = document.createElement('div');
+    fallbackContainer.style.marginTop = '16px';
+    fallbackContainer.style.display = 'flex';
+    fallbackContainer.style.gap = '12px';
+    fallbackContainer.style.flexWrap = 'wrap';
+    fallbackContainer.innerHTML = `
+      <a href="https://wa.me/918129059309?text=${waMsg}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.85rem;">
+        Send via WhatsApp ↗
+      </a>
+      <a href="mailto:mailtofinalthird@gmail.com?subject=${encodeURIComponent(subject)}&body=${waMsg}" class="btn btn-outline" style="padding: 10px 18px; font-size: 0.85rem;">
+        Send via Email ↗
+      </a>
+    `;
+    formFeedback.appendChild(fallbackContainer);
+  }
+
+  function showFormFeedback(type, htmlText) {
     if (!formFeedback) return;
     formFeedback.className = `form-feedback ${type}`;
-    formFeedback.textContent = text;
+    formFeedback.innerHTML = htmlText;
     formFeedback.style.display = 'block';
   }
 

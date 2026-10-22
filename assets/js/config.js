@@ -37,7 +37,8 @@ const FINAL_THIRD_CONFIG = {
     whatsApp: "8129059309",
     whatsAppLink: "https://wa.me/918129059309",
     email: "mailtofinalthird@gmail.com",
-    emailMailto: "mailto:mailtofinalthird@gmail.com"
+    emailMailto: "mailto:mailtofinalthird@gmail.com",
+    googleSheetEndpoint: "" // Paste your Google Apps Script Web App URL here
   },
 
   social: [
