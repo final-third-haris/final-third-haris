@@ -1552,6 +1552,7 @@ button, input, textarea, select {
 }
 
 .form-input,
+.form-select,
 .form-textarea {
   width: 100%;
   padding: 14px 18px;
@@ -1561,13 +1562,49 @@ button, input, textarea, select {
   color: var(--off-white);
   font-size: 0.9375rem;
   outline: none;
-  transition: border-color var(--transition-fast);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  font-family: inherit;
+}
+
+.form-select option {
+  background-color: #151515;
+  color: #F5F5F0;
+  padding: 10px;
 }
 
 .form-input:focus,
+.form-select:focus,
 .form-textarea:focus {
   border-color: var(--neon-lime);
   box-shadow: 0 0 15px rgba(158, 226, 11, 0.15);
+}
+
+.google-form-dark-iframe {
+  width: 100%;
+  height: 840px;
+  border: none;
+  border-radius: 12px;
+  filter: invert(0.92) hue-rotate(180deg) contrast(0.92);
+  background: #080808;
+  display: block;
+}
+
+.contact-tab-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--charcoal-border);
+  color: var(--muted-grey);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.contact-tab-btn.active {
+  background: var(--neon-lime);
+  color: #080808;
+  border-color: var(--neon-lime);
 }
 
 .form-textarea {

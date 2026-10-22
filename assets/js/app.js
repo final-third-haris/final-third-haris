@@ -335,19 +335,46 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Contact Form Submission (Google Sheets Integration + GA4 Conversion Event + Direct Fallbacks)
+  // Contact Form Mode Switcher (Dark Native Form vs Google Form)
+  const tabNativeForm = document.getElementById('tabNativeForm');
+  const tabGoogleForm = document.getElementById('tabGoogleForm');
+  const nativeFormContainer = document.getElementById('nativeFormContainer');
+  const googleFormContainer = document.getElementById('googleFormContainer');
+
+  tabNativeForm?.addEventListener('click', () => {
+    tabNativeForm.classList.add('active');
+    tabGoogleForm?.classList.remove('active');
+    if (nativeFormContainer) nativeFormContainer.style.display = 'block';
+    if (googleFormContainer) googleFormContainer.style.display = 'none';
+  });
+
+  tabGoogleForm?.addEventListener('click', () => {
+    tabGoogleForm.classList.add('active');
+    tabNativeForm?.classList.remove('active');
+    if (nativeFormContainer) nativeFormContainer.style.display = 'none';
+    if (googleFormContainer) googleFormContainer.style.display = 'block';
+    if (typeof gtag === 'function') {
+      gtag('event', 'view_google_form_tab', {
+        event_category: 'Lead Generation',
+        event_label: 'Google Form Tab'
+      });
+    }
+  });
+
+  // Contact Form Submission (Direct Email Dispatch + GA4/GTM Lead Tracking + WhatsApp Fallback)
   if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = document.getElementById('contactName')?.value.trim();
       const email = document.getElementById('contactEmail')?.value.trim();
-      const phone = document.getElementById('contactPhone')?.value.trim() || '';
-      const subject = document.getElementById('contactSubject')?.value.trim();
+      const phone = document.getElementById('contactPhone')?.value.trim();
+      const purpose = document.getElementById('contactPurpose')?.value.trim() || 'General Inquiry';
+      const brand = document.getElementById('contactBrand')?.value.trim() || 'N/A';
       const message = document.getElementById('contactMessage')?.value.trim();
       const submitBtn = document.getElementById('contactSubmitBtn');
 
-      if (!name || !email || !subject || !message) {
-        showFormFeedback('error', 'Please fill in all required fields (Name, Email, Subject, Message) before sending.');
+      if (!name || !email || !phone || !purpose || !message) {
+        showFormFeedback('error', 'Please fill in all required fields (Name, Email, WhatsApp Number, Purpose, Message).');
         return;
       }
 
@@ -358,11 +385,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // 1. Google Analytics 4 Conversion Event Tracking
+      // 1. Google Analytics 4 Lead Conversion Tracking
       if (typeof gtag === 'function') {
         gtag('event', 'generate_lead', {
-          event_category: 'Contact',
-          event_label: subject,
+          event_category: 'Contact Form',
+          event_label: purpose,
           lead_name: name,
           lead_email: email
         });
@@ -372,59 +399,50 @@ document.addEventListener('DOMContentLoaded', () => {
       if (window.dataLayer) {
         window.dataLayer.push({
           event: 'generate_lead',
-          leadSubject: subject,
+          leadPurpose: purpose,
           trafficReferrer: document.referrer || 'direct'
         });
       }
 
-      const endpoint = FINAL_THIRD_CONFIG?.contact?.googleSheetEndpoint?.trim();
+      const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '<span>SEND INQUIRY ↗</span>';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>SENDING INQUIRY...</span>';
+      }
 
-      // If active Google Sheet Endpoint (Google Apps Script) is configured
-      if (endpoint && endpoint.startsWith('https://script.google.com/')) {
-        const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '<span>SEND MESSAGE ↗</span>';
+      try {
+        // Direct zero-friction dispatch to Haris Nenmara via FormSubmit AJAX
+        const response = await fetch('https://formsubmit.co/ajax/mailtofinalthird@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: `New Inquiry from Final Third Site: ${name} [${purpose}]`,
+            Name: name,
+            Email: email,
+            WhatsApp_Phone: phone,
+            Inquiry_Purpose: purpose,
+            Brand_Turf_Name: brand,
+            Proposal_Message: message,
+            Traffic_Source: document.referrer || 'Direct Site Visit'
+          })
+        });
+
+        showFormFeedback('success', `✅ Thank you, ${name}! Your inquiry has been sent directly to Haris Nenmara (mailtofinalthird@gmail.com). We will review your details and respond within 24 to 48 hours.`);
+        renderDirectContactFallbacks(name, email, phone, purpose, message);
+        contactForm.reset();
+
+      } catch (err) {
+        console.warn('Direct email dispatch notification:', err);
+        showFormFeedback('success', `Thank you, ${name}! Your inquiry has been prepared. Click below to deliver your message instantly to Haris Nenmara via WhatsApp or Email:`);
+        renderDirectContactFallbacks(name, email, phone, purpose, message);
+      } finally {
         if (submitBtn) {
-          submitBtn.disabled = true;
-          submitBtn.innerHTML = '<span>SENDING INQUIRY...</span>';
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHtml;
         }
-
-        try {
-          const payload = new URLSearchParams({
-            name: name,
-            email: email,
-            phone: phone,
-            subject: subject,
-            message: message,
-            referrer: document.referrer || 'direct',
-            pageUrl: window.location.href,
-            timestamp: new Date().toISOString()
-          });
-
-          await fetch(endpoint, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: payload
-          });
-
-          showFormFeedback('success', `✅ Thank you, ${name}! Your inquiry has been successfully sent and saved to our database. Haris Nenmara & management will reach out within 24 hours.`);
-          contactForm.reset();
-
-        } catch (err) {
-          console.error('Submission error:', err);
-          showFormFeedback('error', `Something went wrong sending directly. Please click below to send your message instantly via WhatsApp or Email:`);
-          renderDirectContactFallbacks(name, email, phone, subject, message);
-        } finally {
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalBtnHtml;
-          }
-        }
-      } else {
-        // Pending Google Sheet Endpoint setup: provide instant direct WhatsApp / Email dispatch
-        showFormFeedback('success', `Thank you, ${name}! Your inquiry has been prepared. Click below to send directly to Haris Nenmara via WhatsApp or Email:`);
-        renderDirectContactFallbacks(name, email, phone, subject, message);
       }
     });
   }

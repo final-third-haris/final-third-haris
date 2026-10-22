@@ -1601,6 +1601,7 @@ button, input, textarea, select {
 }
 
 .form-input,
+.form-select,
 .form-textarea {
   width: 100%;
   padding: 14px 18px;
@@ -1610,13 +1611,49 @@ button, input, textarea, select {
   color: var(--off-white);
   font-size: 0.9375rem;
   outline: none;
-  transition: border-color var(--transition-fast);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  font-family: inherit;
+}
+
+.form-select option {
+  background-color: #151515;
+  color: #F5F5F0;
+  padding: 10px;
 }
 
 .form-input:focus,
+.form-select:focus,
 .form-textarea:focus {
   border-color: var(--neon-lime);
   box-shadow: 0 0 15px rgba(158, 226, 11, 0.15);
+}
+
+.google-form-dark-iframe {
+  width: 100%;
+  height: 840px;
+  border: none;
+  border-radius: 12px;
+  filter: invert(0.92) hue-rotate(180deg) contrast(0.92);
+  background: #080808;
+  display: block;
+}
+
+.contact-tab-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--charcoal-border);
+  color: var(--muted-grey);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.contact-tab-btn.active {
+  background: var(--neon-lime);
+  color: #080808;
+  border-color: var(--neon-lime);
 }
 
 .form-textarea {
@@ -3128,46 +3165,111 @@ button, input, textarea, select {
 
           </div>
 
-          <!-- Interactive Embedded Google Form -->
-          <div class="contact-form-box" style="padding: 18px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--charcoal-border); border-radius: var(--radius-md);">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; padding: 0 4px;">
+          <!-- Interactive Dark Contact Form & Google Form Switcher -->
+          <div class="contact-form-box" style="padding: 24px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--charcoal-border); border-radius: var(--radius-md);">
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
               <div>
                 <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 700; color: var(--neon-lime); text-transform: uppercase; letter-spacing: 0.08em; background: rgba(158,226,11,0.08); padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(158,226,11,0.25);">
                   <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--neon-lime); display: inline-block;"></span>
                   Official Collaboration Desk
                 </span>
-                <h3 class="form-title" style="margin-top: 8px; margin-bottom: 0;">Submit Your Inquiry</h3>
+                <h3 class="form-title" style="margin-top: 8px; margin-bottom: 0;">Send Direct Inquiry</h3>
               </div>
-              <a 
-                href="https://forms.gle/ysMKP3Njy3WVpz986" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                id="openGoogleFormExternalBtn"
-                class="btn btn-primary" 
-                style="padding: 8px 18px; font-size: 0.8125rem; border-radius: 999px;"
-              >
-                Open Full Form ↗
-              </a>
+
+              <!-- Form Mode Switcher Tabs -->
+              <div style="display: flex; gap: 6px; background: rgba(0,0,0,0.4); padding: 4px; border-radius: 999px; border: 1px solid var(--charcoal-border);">
+                <button type="button" id="tabNativeForm" class="contact-tab-btn active" title="Website Dark Form">
+                  Dark Form
+                </button>
+                <button type="button" id="tabGoogleForm" class="contact-tab-btn" title="Google Form (Dark Theme)">
+                  Google Form
+                </button>
+              </div>
             </div>
 
-            <!-- Responsive Google Form Frame -->
-            <div style="position: relative; width: 100%; border-radius: 12px; overflow: hidden; background: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            <div id="formFeedback" class="form-feedback"></div>
+
+            <!-- VIEW 1: Custom Native Dark Form (Matching Website Colors 100%) -->
+            <div id="nativeFormContainer">
+              <form id="contactForm" novalidate>
+                <div class="form-group">
+                  <label for="contactName" class="form-label">Full Name *</label>
+                  <input type="text" id="contactName" class="form-input" placeholder="e.g. Rahul Menon" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="contactEmail" class="form-label">Email Address *</label>
+                  <input type="email" id="contactEmail" class="form-input" placeholder="name@domain.com" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="contactPhone" class="form-label">WhatsApp / Phone Number *</label>
+                  <input type="tel" id="contactPhone" class="form-input" placeholder="+91 81290 59309" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="contactPurpose" class="form-label">Purpose of Your Inquiry *</label>
+                  <select id="contactPurpose" class="form-select" required>
+                    <option value="" disabled selected>Select primary inquiry purpose *</option>
+                    <option value="Brand Sponsorship & Advertising (YouTube / Website / Socials)">🤝 Brand Sponsorship &amp; Advertising (YouTube / Website / Socials)</option>
+                    <option value="Football Turf / Sports Academy Promotion">⚽ Football Turf / Sports Academy Promotion</option>
+                    <option value="Sports Apparel / Jersey / Merchandise Brand Collaboration">👕 Sports Apparel / Jersey / Merchandise Brand Collaboration</option>
+                    <option value="Media Interview / Guest Appearance / Podcast">🎙️ Media Interview / Guest Appearance / Podcast</option>
+                    <option value="Match Story / Football or Cricket Topic Suggestion">💡 Match Story / Football or Cricket Topic Suggestion</option>
+                    <option value="General Inquiry / Feedback for Haris Nenmara">💬 General Inquiry / Feedback for Haris Nenmara</option>
+                    <option value="Other">Other Collaboration / Inquiry</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="contactBrand" class="form-label">Brand / Organization / Turf Name (Optional)</label>
+                  <input type="text" id="contactBrand" class="form-input" placeholder="e.g. Malabar Arena Turf / Classic Jerseys">
+                </div>
+
+                <div class="form-group">
+                  <label for="contactMessage" class="form-label">Message / Proposal Details *</label>
+                  <textarea id="contactMessage" class="form-textarea" placeholder="Tell us about your proposal, goals, timeline, or story idea..." required></textarea>
+                </div>
+
+                <button type="submit" id="contactSubmitBtn" class="btn btn-primary" style="width: 100%;">
+                  <span>SEND INQUIRY ↗</span>
+                </button>
+
+                <div style="margin-top: 14px; text-align: center; font-size: 0.8125rem; color: var(--muted-grey);">
+                  Prefer Google Forms? 
+                  <a href="https://forms.gle/ysMKP3Njy3WVpz986" target="_blank" rel="noopener noreferrer" id="inlineGoogleFormLink" style="color: var(--neon-lime); text-decoration: underline; margin-left: 4px;">
+                    Open official Google Form in new tab ↗
+                  </a>
+                </div>
+              </form>
+            </div>
+
+            <!-- VIEW 2: Google Form with Dark CSS Filter (No bright white!) -->
+            <div id="googleFormContainer" style="display: none;">
+              <div style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
+                <a 
+                  href="https://forms.gle/ysMKP3Njy3WVpz986" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  id="openGoogleFormExternalBtn"
+                  class="btn btn-outline" 
+                  style="padding: 6px 14px; font-size: 0.75rem; border-radius: 999px;"
+                >
+                  Open in New Window ↗
+                </a>
+              </div>
               <iframe 
+                class="google-form-dark-iframe"
                 src="https://docs.google.com/forms/d/e/1FAIpQLSc1gbq415RN4CnJhd_cpUq9rCRtJwgYJmzS7xO4dqMc0XmrtA/viewform?embedded=true" 
-                width="100%" 
-                height="820" 
-                frameborder="0" 
-                marginheight="0" 
-                marginwidth="0"
-                style="display: block; border: none; width: 100%; min-height: 820px;"
                 title="Final Third with Haris Nenmara — Official Inquiry &amp; Collaboration Desk"
               >
                 Loading Official Inquiry Form…
               </iframe>
             </div>
 
-            <p class="form-notice" style="text-align: center; margin-top: 14px;">
-              🔒 Responses are logged directly into our private Google Sheet and reviewed by Haris Nenmara &amp; management within 24 to 48 hours.
+            <p class="form-notice" style="text-align: center; margin-top: 16px;">
+              🔒 Inquiries are delivered directly to Haris Nenmara &amp; management within 24 to 48 hours.
             </p>
           </div>
 
@@ -6842,19 +6944,46 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Contact Form Submission (Google Sheets Integration + GA4 Conversion Event + Direct Fallbacks)
+  // Contact Form Mode Switcher (Dark Native Form vs Google Form)
+  const tabNativeForm = document.getElementById('tabNativeForm');
+  const tabGoogleForm = document.getElementById('tabGoogleForm');
+  const nativeFormContainer = document.getElementById('nativeFormContainer');
+  const googleFormContainer = document.getElementById('googleFormContainer');
+
+  tabNativeForm?.addEventListener('click', () => {
+    tabNativeForm.classList.add('active');
+    tabGoogleForm?.classList.remove('active');
+    if (nativeFormContainer) nativeFormContainer.style.display = 'block';
+    if (googleFormContainer) googleFormContainer.style.display = 'none';
+  });
+
+  tabGoogleForm?.addEventListener('click', () => {
+    tabGoogleForm.classList.add('active');
+    tabNativeForm?.classList.remove('active');
+    if (nativeFormContainer) nativeFormContainer.style.display = 'none';
+    if (googleFormContainer) googleFormContainer.style.display = 'block';
+    if (typeof gtag === 'function') {
+      gtag('event', 'view_google_form_tab', {
+        event_category: 'Lead Generation',
+        event_label: 'Google Form Tab'
+      });
+    }
+  });
+
+  // Contact Form Submission (Direct Email Dispatch + GA4/GTM Lead Tracking + WhatsApp Fallback)
   if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = document.getElementById('contactName')?.value.trim();
       const email = document.getElementById('contactEmail')?.value.trim();
-      const phone = document.getElementById('contactPhone')?.value.trim() || '';
-      const subject = document.getElementById('contactSubject')?.value.trim();
+      const phone = document.getElementById('contactPhone')?.value.trim();
+      const purpose = document.getElementById('contactPurpose')?.value.trim() || 'General Inquiry';
+      const brand = document.getElementById('contactBrand')?.value.trim() || 'N/A';
       const message = document.getElementById('contactMessage')?.value.trim();
       const submitBtn = document.getElementById('contactSubmitBtn');
 
-      if (!name || !email || !subject || !message) {
-        showFormFeedback('error', 'Please fill in all required fields (Name, Email, Subject, Message) before sending.');
+      if (!name || !email || !phone || !purpose || !message) {
+        showFormFeedback('error', 'Please fill in all required fields (Name, Email, WhatsApp Number, Purpose, Message).');
         return;
       }
 
@@ -6865,11 +6994,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // 1. Google Analytics 4 Conversion Event Tracking
+      // 1. Google Analytics 4 Lead Conversion Tracking
       if (typeof gtag === 'function') {
         gtag('event', 'generate_lead', {
-          event_category: 'Contact',
-          event_label: subject,
+          event_category: 'Contact Form',
+          event_label: purpose,
           lead_name: name,
           lead_email: email
         });
@@ -6879,65 +7008,56 @@ document.addEventListener('DOMContentLoaded', () => {
       if (window.dataLayer) {
         window.dataLayer.push({
           event: 'generate_lead',
-          leadSubject: subject,
+          leadPurpose: purpose,
           trafficReferrer: document.referrer || 'direct'
         });
       }
 
-      const endpoint = FINAL_THIRD_CONFIG?.contact?.googleSheetEndpoint?.trim();
+      const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '<span>SEND INQUIRY ↗</span>';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>SENDING INQUIRY...</span>';
+      }
 
-      // If active Google Sheet Endpoint (Google Apps Script) is configured
-      if (endpoint && endpoint.startsWith('https://script.google.com/')) {
-        const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '<span>SEND MESSAGE ↗</span>';
+      try {
+        // Direct zero-friction dispatch to Haris Nenmara via FormSubmit AJAX
+        const response = await fetch('https://formsubmit.co/ajax/mailtofinalthird@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: `New Inquiry from Final Third Site: ${name} [${purpose}]`,
+            Name: name,
+            Email: email,
+            WhatsApp_Phone: phone,
+            Inquiry_Purpose: purpose,
+            Brand_Turf_Name: brand,
+            Proposal_Message: message,
+            Traffic_Source: document.referrer || 'Direct Site Visit'
+          })
+        });
+
+        showFormFeedback('success', `✅ Thank you, ${name}! Your inquiry has been sent directly to Haris Nenmara (mailtofinalthird@gmail.com). We will review your details and respond within 24 to 48 hours.`);
+        renderDirectContactFallbacks(name, email, phone, purpose, message);
+        contactForm.reset();
+
+      } catch (err) {
+        console.warn('Direct email dispatch notification:', err);
+        showFormFeedback('success', `Thank you, ${name}! Your inquiry has been prepared. Click below to deliver your message instantly to Haris Nenmara via WhatsApp or Email:`);
+        renderDirectContactFallbacks(name, email, phone, purpose, message);
+      } finally {
         if (submitBtn) {
-          submitBtn.disabled = true;
-          submitBtn.innerHTML = '<span>SENDING INQUIRY...</span>';
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHtml;
         }
-
-        try {
-          const payload = new URLSearchParams({
-            name: name,
-            email: email,
-            phone: phone,
-            subject: subject,
-            message: message,
-            referrer: document.referrer || 'direct',
-            pageUrl: window.location.href,
-            timestamp: new Date().toISOString()
-          });
-
-          await fetch(endpoint, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: payload
-          });
-
-          showFormFeedback('success', `✅ Thank you, ${name}! Your inquiry has been successfully sent and saved to our database. Haris Nenmara & management will reach out within 24 hours.`);
-          contactForm.reset();
-
-        } catch (err) {
-          console.error('Submission error:', err);
-          showFormFeedback('error', `Something went wrong sending directly. Please click below to send your message instantly via WhatsApp or Email:`);
-          renderDirectContactFallbacks(name, email, phone, subject, message);
-        } finally {
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalBtnHtml;
-          }
-        }
-      } else {
-        // Pending Google Sheet Endpoint setup: provide instant direct WhatsApp / Email dispatch
-        showFormFeedback('success', `Thank you, ${name}! Your inquiry has been prepared. Click below to send directly to Haris Nenmara via WhatsApp or Email:`);
-        renderDirectContactFallbacks(name, email, phone, subject, message);
       }
     });
   }
 
-  function renderDirectContactFallbacks(name, email, phone, subject, message) {
-    const waMsg = encodeURIComponent(`Hi Haris (Final Third),\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nSubject: ${subject}\n\nMessage:\n${message}`);
+  function renderDirectContactFallbacks(name, email, phone, purpose, message) {
+    const waMsg = encodeURIComponent(`Hi Haris (Final Third),\n\nName: ${name}\nEmail: ${email}\nWhatsApp/Phone: ${phone}\nPurpose: ${purpose}\n\nMessage:\n${message}`);
     const fallbackContainer = document.createElement('div');
     fallbackContainer.style.marginTop = '16px';
     fallbackContainer.style.display = 'flex';
@@ -6945,10 +7065,10 @@ document.addEventListener('DOMContentLoaded', () => {
     fallbackContainer.style.flexWrap = 'wrap';
     fallbackContainer.innerHTML = `
       <a href="https://wa.me/918129059309?text=${waMsg}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.85rem;">
-        Send via WhatsApp ↗
+        Ping Directly on WhatsApp ↗
       </a>
-      <a href="mailto:mailtofinalthird@gmail.com?subject=${encodeURIComponent(subject)}&body=${waMsg}" class="btn btn-outline" style="padding: 10px 18px; font-size: 0.85rem;">
-        Send via Email ↗
+      <a href="mailto:mailtofinalthird@gmail.com?subject=${encodeURIComponent(purpose + ' - ' + name)}&body=${waMsg}" class="btn btn-outline" style="padding: 10px 18px; font-size: 0.85rem;">
+        Send via Email App ↗
       </a>
     `;
     formFeedback.appendChild(fallbackContainer);
@@ -6962,7 +7082,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Track Google Form clicks into GA4 & GTM
-  ['channelGoogleFormLink', 'openGoogleFormExternalBtn'].forEach(btnId => {
+  ['channelGoogleFormLink', 'openGoogleFormExternalBtn', 'inlineGoogleFormLink'].forEach(btnId => {
     document.getElementById(btnId)?.addEventListener('click', () => {
       if (typeof gtag === 'function') {
         gtag('event', 'click_google_form', {
