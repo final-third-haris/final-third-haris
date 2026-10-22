@@ -2424,46 +2424,52 @@ button, input, textarea, select {
   white-space: nowrap;
 }
 
-/* WhatsApp: Elegant Deep Emerald */
-.btn-dock-whatsapp {
-  background: #25D366;
-  color: #061e0e !important;
-  border: 1px solid #25D366;
-  box-shadow: 0 4px 18px rgba(37, 211, 102, 0.28);
-}
-.btn-dock-whatsapp:hover {
-  background: #2fe472;
-  color: #000000 !important;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 26px rgba(37, 211, 102, 0.45);
-}
-
-/* Email: Premium Neon Lime */
-.btn-dock-email {
-  background: var(--neon-lime);
+/* All Sponsor Console Buttons in Matching Signature Neon Lime */
+.btn-dock {
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  background: var(--neon-lime) !important;
   color: #080808 !important;
-  border: 1px solid var(--neon-lime);
-  box-shadow: 0 4px 18px rgba(158, 226, 11, 0.28);
-}
-.btn-dock-email:hover {
-  background: #aff218;
-  color: #000000 !important;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 26px rgba(158, 226, 11, 0.45);
+  border: 1px solid var(--neon-lime) !important;
+  box-shadow: 0 4px 18px rgba(158, 226, 11, 0.32) !important;
 }
 
-/* Call: Refined Glass Border */
-.btn-dock-call {
-  background: rgba(255, 255, 255, 0.04);
-  color: #FFFFFF !important;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(6px);
-}
-.btn-dock-call:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: var(--neon-lime);
-  color: var(--neon-lime) !important;
+.btn-dock:hover {
+  background: #aff218 !important;
+  color: #000000 !important;
   transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(158, 226, 11, 0.5) !important;
+}
+
+.btn-dock-whatsapp,
+.btn-dock-email,
+.btn-dock-call {
+  background: var(--neon-lime) !important;
+  color: #080808 !important;
+  border: 1px solid var(--neon-lime) !important;
+  box-shadow: 0 4px 18px rgba(158, 226, 11, 0.32) !important;
+}
+
+.btn-dock-whatsapp:hover,
+.btn-dock-email:hover,
+.btn-dock-call:hover {
+  background: #aff218 !important;
+  color: #000000 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(158, 226, 11, 0.5) !important;
 }
 
 .sponsor-dock-footer {
