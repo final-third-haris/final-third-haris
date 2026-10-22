@@ -370,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <a href="https://wa.me/918129059309?text=${waMsg}" target="_blank" class="btn btn-primary" style="padding: 10px 16px; font-size: 0.8125rem;">
           Send via WhatsApp ↗
         </a>
-        <a href="mailto:mailtofinalthirde@gmail.com?subject=${encodeURIComponent(subject)}&body=${waMsg}" class="btn btn-outline" style="padding: 10px 16px; font-size: 0.8125rem;">
+        <a href="mailto:mailtofinalthird@gmail.com?subject=${encodeURIComponent(subject)}&body=${waMsg}" class="btn btn-outline" style="padding: 10px 16px; font-size: 0.8125rem;">
           Send via Email ↗
         </a>
       `;
