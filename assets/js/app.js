@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     currentSport: 'all',        // 'all' | 'football' | 'cricket'
     currentPlaylist: 'all',     // 'all' | playlistId
     searchQuery: '',
-    itemsPerPage: 12,
-    visibleCount: 12,
+    itemsPerPage: 20,           // 20 videos per page (user requested)
+    visibleCount: 20,           // 20 videos on 1st page
     activeModalVideoId: null
   };
 

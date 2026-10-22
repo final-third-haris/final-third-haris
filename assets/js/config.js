@@ -3122,7 +3122,8 @@ const FINAL_THIRD_CONFIG = {
     "views": "19K views",
     "summary": "ഫൈനൽ തേർഡ്  മിഴി തുറക്കുകയാണ്  | Haris Nenmara | Final third"
   }
-]
+]
+};
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = FINAL_THIRD_CONFIG;
