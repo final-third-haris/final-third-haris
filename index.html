@@ -1503,78 +1503,32 @@ button, input, textarea, select {
 }
 
 /* --------------------------------------------------------------------------
-   Contact Section & Interactive Form
+   Contact Section & Streamlined Dark Console
    -------------------------------------------------------------------------- */
 .contact-section {
   background-color: var(--pitch-black);
   position: relative;
+  padding: 90px 0;
 }
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
-  gap: 50px;
+.contact-wrapper {
+  max-width: 760px;
+  margin: 0 auto;
 }
 
-.contact-channels {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.contact-channel-card {
-  background: var(--charcoal);
-  border: 1px solid var(--charcoal-border);
-  padding: 24px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  transition: all var(--transition-fast);
-}
-
-.contact-channel-card:hover {
-  border-color: var(--neon-lime);
-  background: #181818;
-}
-
-.contact-channel-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: var(--radius-sm);
-  background-color: var(--pitch-black);
-  border: 1px solid var(--charcoal-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--neon-lime);
-  flex-shrink: 0;
-}
-
-.contact-channel-info h4 {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--muted-grey);
-  margin-bottom: 4px;
-}
-
-.contact-channel-info a {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--off-white);
-}
-
-.contact-channel-info a:hover {
-  color: var(--neon-lime);
-}
-
-/* Contact Form */
 .contact-form-box {
-  background: var(--charcoal);
-  border: 1px solid var(--charcoal-border);
-  border-radius: var(--radius-lg);
-  padding: 40px;
+  background: linear-gradient(165deg, rgba(22, 25, 18, 0.95) 0%, rgba(12, 14, 10, 0.98) 100%);
+  border: 1px solid rgba(158, 226, 11, 0.32);
+  border-radius: 20px;
+  padding: 44px 44px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 35px rgba(158, 226, 11, 0.06);
+  backdrop-filter: blur(12px);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
 .form-title {
@@ -1628,36 +1582,8 @@ button, input, textarea, select {
   box-shadow: 0 0 15px rgba(158, 226, 11, 0.15);
 }
 
-.google-form-dark-iframe {
-  width: 100%;
-  height: 840px;
-  border: none;
-  border-radius: 12px;
-  filter: invert(0.92) hue-rotate(180deg) contrast(0.92);
-  background: #080808;
-  display: block;
-}
-
-.contact-tab-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--charcoal-border);
-  color: var(--muted-grey);
-  padding: 8px 16px;
-  border-radius: 999px;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.contact-tab-btn.active {
-  background: var(--neon-lime);
-  color: #080808;
-  border-color: var(--neon-lime);
-}
-
 .form-textarea {
-  min-height: 130px;
+  min-height: 120px;
   resize: vertical;
 }
 
@@ -1689,6 +1615,16 @@ button, input, textarea, select {
   background-color: rgba(255, 75, 75, 0.12);
   border: 1px solid #ff4b4b;
   color: #ff8585;
+}
+
+@media (max-width: 650px) {
+  .contact-form-box {
+    padding: 30px 20px;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -2590,16 +2526,13 @@ button, input, textarea, select {
         />
       </a>
 
-      <!-- Desktop Navigation Links -->
+      <!-- Desktop Navigation Links (5 Core Essentials) -->
       <nav class="main-nav" role="navigation" aria-label="Primary Navigation">
         <ul class="nav-list">
           <li><a href="#hero" class="nav-link active">Home</a></li>
-          <li><a href="#featured" class="nav-link">Featured</a></li>
           <li><a href="#videos" class="nav-link">Videos</a></li>
           <li><a href="#sponsor" class="nav-link">Sponsor</a></li>
-          <li><a href="#sports-gateways" class="nav-link">Categories</a></li>
-          <li><a href="#about" class="nav-link">Meet Haris</a></li>
-          <li><a href="#social" class="nav-link">Follow</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </nav>
@@ -2628,18 +2561,14 @@ button, input, textarea, select {
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
+  <!-- Mobile Drawer (5 Core Essentials) -->
   <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
     <ul class="mobile-nav-list">
       <li><a href="#hero" class="mobile-nav-link active">Home</a></li>
-      <li><a href="#featured" class="mobile-nav-link">Featured Match</a></li>
-      <li><a href="#videos" class="mobile-nav-link">Video Catalogue</a></li>
+      <li><a href="#videos" class="mobile-nav-link">Videos</a></li>
       <li><a href="#sponsor" class="mobile-nav-link">Sponsor &amp; Advertise</a></li>
-      <li><a href="#sports-gateways" class="mobile-nav-link">Football &amp; Cricket</a></li>
-      <li><a href="#about" class="mobile-nav-link">Meet Haris</a></li>
-      <li><a href="#social" class="mobile-nav-link">Social Channels</a></li>
+      <li><a href="#about" class="mobile-nav-link">About Haris</a></li>
       <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
-      <li><a href="#collaborate" class="mobile-nav-link">Collaborate</a></li>
     </ul>
     <div style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--charcoal-border);">
       <a href="https://www.youtube.com/@FinalThird_HarisNenmara" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%;">
@@ -3327,99 +3256,31 @@ button, input, textarea, select {
           <div class="eyebrow">Direct Line</div>
           <h2 class="section-title">GET IN <span class="highlight">TOUCH.</span></h2>
           <p class="section-subtitle">
-            Reach out directly for media inquiries, sponsorship opportunities, interviews, or matchday tips.
+            Have a sports story pitch, guest suggestion, or media inquiry? Send a message directly to Haris Nenmara.
           </p>
         </div>
 
-        <div class="contact-grid">
-          
-          <!-- Direct Channels -->
-          <div class="contact-channels">
+        <div class="contact-wrapper">
+          <div class="contact-form-box">
             
-            <!-- Official Google Form Direct Card -->
-            <div class="contact-channel-card" style="border-color: rgba(158, 226, 11, 0.4); background: rgba(158, 226, 11, 0.04);">
-              <div class="contact-channel-icon" style="background: rgba(158, 226, 11, 0.15); color: var(--neon-lime);">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-              <div class="contact-channel-info">
-                <h4>OFFICIAL GOOGLE FORM</h4>
-                <a href="https://forms.gle/ysMKP3Njy3WVpz986" target="_blank" rel="noopener noreferrer" id="channelGoogleFormLink" style="color: var(--neon-lime); font-weight: 700;">
-                  Open Form in Full Page ↗
-                </a>
-              </div>
-            </div>
-
-            <!-- WhatsApp -->
-            <div class="contact-channel-card">
-              <div class="contact-channel-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
-                </svg>
-              </div>
-              <div class="contact-channel-info">
-                <h4>WHATSAPP CHAT</h4>
-                <a href="https://wa.me/918129059309?text=Hi%20Haris,%20I%20am%20reaching%20out%20from%20the%20Final%20Third%20website." target="_blank" rel="noopener noreferrer">Chat on WhatsApp ↗</a>
-              </div>
-            </div>
-
-            <!-- Email -->
-            <div class="contact-channel-card">
-              <div class="contact-channel-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <div class="contact-channel-info">
-                <h4>EMAIL INQUIRIES</h4>
-                <a href="mailto:mailtofinalthird@gmail.com?subject=Inquiry%20from%20Final%20Third%20Website">mailtofinalthird@gmail.com</a>
-              </div>
-            </div>
-
-            <!-- Direct Phone -->
-            <div class="contact-channel-card">
-              <div class="contact-channel-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-              </div>
-              <div class="contact-channel-info">
-                <h4>DIRECT PHONE</h4>
-                <a href="tel:+918129059309">+91 8129059309</a>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Interactive Dark Contact Form & Google Form Switcher -->
-          <div class="contact-form-box" style="padding: 24px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--charcoal-border); border-radius: var(--radius-md);">
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 18px;">
               <div>
-                <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 700; color: var(--neon-lime); text-transform: uppercase; letter-spacing: 0.08em; background: rgba(158,226,11,0.08); padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(158,226,11,0.25);">
-                  <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--neon-lime); display: inline-block;"></span>
-                  Official Collaboration Desk
+                <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 800; color: var(--neon-lime); text-transform: uppercase; letter-spacing: 0.1em; background: rgba(158,226,11,0.1); padding: 5px 12px; border-radius: 999px; border: 1px solid rgba(158,226,11,0.3);">
+                  <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--neon-lime); display: inline-block; box-shadow: 0 0 8px var(--neon-lime);"></span>
+                  Official Communication Desk
                 </span>
-                <h3 class="form-title" style="margin-top: 8px; margin-bottom: 0;">Send Direct Inquiry</h3>
+                <h3 class="form-title" style="margin-top: 10px; margin-bottom: 0; font-size: 1.35rem;">Send Direct Message</h3>
               </div>
 
-              <!-- Form Mode Switcher Tabs -->
-              <div style="display: flex; gap: 6px; background: rgba(0,0,0,0.4); padding: 4px; border-radius: 999px; border: 1px solid var(--charcoal-border);">
-                <button type="button" id="tabNativeForm" class="contact-tab-btn active" title="Website Dark Form">
-                  Dark Form
-                </button>
-                <button type="button" id="tabGoogleForm" class="contact-tab-btn" title="Google Form (Dark Theme)">
-                  Google Form
-                </button>
+              <div style="font-size: 0.8125rem; color: #888888;">
+                Response within 24–48 hours
               </div>
             </div>
 
             <div id="formFeedback" class="form-feedback"></div>
 
-            <!-- VIEW 1: Custom Native Dark Form (Matching Website Colors 100%) -->
-            <div id="nativeFormContainer">
-              <form id="contactForm" novalidate>
+            <form id="contactForm" novalidate>
+              <div class="form-row">
                 <div class="form-group">
                   <label for="contactName" class="form-label">Full Name *</label>
                   <input type="text" id="contactName" class="form-input" placeholder="e.g. Rahul Menon" required>
@@ -3429,77 +3290,49 @@ button, input, textarea, select {
                   <label for="contactEmail" class="form-label">Email Address *</label>
                   <input type="email" id="contactEmail" class="form-input" placeholder="name@domain.com" required>
                 </div>
+              </div>
 
+              <div class="form-row">
                 <div class="form-group">
-                  <label for="contactPhone" class="form-label">WhatsApp / Phone Number *</label>
+                  <label for="contactPhone" class="form-label">WhatsApp / Phone *</label>
                   <input type="tel" id="contactPhone" class="form-input" placeholder="+91 81290 59309" required>
                 </div>
 
                 <div class="form-group">
-                  <label for="contactPurpose" class="form-label">Purpose of Your Inquiry *</label>
+                  <label for="contactPurpose" class="form-label">Inquiry Purpose *</label>
                   <select id="contactPurpose" class="form-select" required>
-                    <option value="" disabled selected>Select primary inquiry purpose *</option>
-                    <option value="Brand Sponsorship & Advertising (YouTube / Website / Socials)">🤝 Brand Sponsorship &amp; Advertising (YouTube / Website / Socials)</option>
-                    <option value="Football Turf / Sports Academy Promotion">⚽ Football Turf / Sports Academy Promotion</option>
-                    <option value="Sports Apparel / Jersey / Merchandise Brand Collaboration">👕 Sports Apparel / Jersey / Merchandise Brand Collaboration</option>
-                    <option value="Media Interview / Guest Appearance / Podcast">🎙️ Media Interview / Guest Appearance / Podcast</option>
-                    <option value="Match Story / Football or Cricket Topic Suggestion">💡 Match Story / Football or Cricket Topic Suggestion</option>
-                    <option value="General Inquiry / Feedback for Haris Nenmara">💬 General Inquiry / Feedback for Haris Nenmara</option>
-                    <option value="Other">Other Collaboration / Inquiry</option>
+                    <option value="" disabled selected>Select primary purpose *</option>
+                    <option value="Story Pitch / Match Discussion Topic">⚽ Story Pitch / Match Discussion Topic</option>
+                    <option value="Interview / Media / Podcast Appearance">🎙️ Interview / Media / Podcast Appearance</option>
+                    <option value="Brand Partnership & Commercial Advertising">🤝 Brand Partnership &amp; Advertising</option>
+                    <option value="Football Turf / Sports Academy Promotion">🏟️ Football Turf / Sports Academy Promotion</option>
+                    <option value="General Inquiry or Feedback for Haris">💬 General Inquiry or Feedback for Haris</option>
+                    <option value="Other">Other Collaboration</option>
                   </select>
                 </div>
+              </div>
 
-                <div class="form-group">
-                  <label for="contactBrand" class="form-label">Brand / Organization / Turf Name (Optional)</label>
-                  <input type="text" id="contactBrand" class="form-input" placeholder="e.g. Malabar Arena Turf / Classic Jerseys">
-                </div>
+              <div class="form-group">
+                <label for="contactMessage" class="form-label">Message / Story Details *</label>
+                <textarea id="contactMessage" class="form-textarea" placeholder="Tell us about your story idea, proposal, or feedback..." required style="min-height: 120px;"></textarea>
+              </div>
 
-                <div class="form-group">
-                  <label for="contactMessage" class="form-label">Message / Proposal Details *</label>
-                  <textarea id="contactMessage" class="form-textarea" placeholder="Tell us about your proposal, goals, timeline, or story idea..." required></textarea>
-                </div>
+              <button type="submit" id="contactSubmitBtn" class="btn btn-primary" style="width: 100%; height: 50px; font-weight: 800; font-size: 0.9375rem; letter-spacing: 0.06em;">
+                <span>SEND MESSAGE ↗</span>
+              </button>
 
-                <button type="submit" id="contactSubmitBtn" class="btn btn-primary" style="width: 100%;">
-                  <span>SEND INQUIRY ↗</span>
-                </button>
-
-                <div style="margin-top: 14px; text-align: center; font-size: 0.8125rem; color: var(--muted-grey);">
-                  Prefer Google Forms? 
-                  <a href="https://forms.gle/ysMKP3Njy3WVpz986" target="_blank" rel="noopener noreferrer" id="inlineGoogleFormLink" style="color: var(--neon-lime); text-decoration: underline; margin-left: 4px;">
-                    Open official Google Form in new tab ↗
-                  </a>
-                </div>
-              </form>
-            </div>
-
-            <!-- VIEW 2: Google Form with Dark CSS Filter (No bright white!) -->
-            <div id="googleFormContainer" style="display: none;">
-              <div style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
-                <a 
-                  href="https://forms.gle/ysMKP3Njy3WVpz986" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  id="openGoogleFormExternalBtn"
-                  class="btn btn-outline" 
-                  style="padding: 6px 14px; font-size: 0.75rem; border-radius: 999px;"
-                >
-                  Open in New Window ↗
+              <div style="margin-top: 18px; text-align: center; font-size: 0.8125rem; color: #888888;">
+                Prefer Google Forms? 
+                <a href="https://forms.gle/ysMKP3Njy3WVpz986" target="_blank" rel="noopener noreferrer" style="color: var(--neon-lime); text-decoration: underline; margin-left: 4px; font-weight: 700;">
+                  Open official Google Form in new tab ↗
                 </a>
               </div>
-              <iframe 
-                class="google-form-dark-iframe"
-                src="https://docs.google.com/forms/d/e/1FAIpQLSc1gbq415RN4CnJhd_cpUq9rCRtJwgYJmzS7xO4dqMc0XmrtA/viewform?embedded=true" 
-                title="Final Third with Haris Nenmara — Official Inquiry &amp; Collaboration Desk"
-              >
-                Loading Official Inquiry Form…
-              </iframe>
-            </div>
+            </form>
 
-            <p class="form-notice" style="text-align: center; margin-top: 16px;">
-              🔒 Inquiries are delivered directly to Haris Nenmara &amp; management within 24 to 48 hours.
+            <p class="form-notice" style="text-align: center; margin-top: 16px; font-size: 0.75rem; color: #666666;">
+              🔒 Messages are delivered directly to Haris Nenmara &amp; management.
             </p>
           </div>
-
         </div>
       </div>
     </section>
