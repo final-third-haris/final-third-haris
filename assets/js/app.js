@@ -155,7 +155,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Open Video Lightbox Player
   function openVideoModal(videoId) {
     if (!videoId) videoId = FINAL_THIRD_CONFIG.featuredVideoId;
-    const video = FINAL_THIRD_CONFIG.videos.find(v => v.id === videoId) || {
+    const video = (FINAL_THIRD_CONFIG.videos && FINAL_THIRD_CONFIG.videos.find(v => v.id === videoId)) ||
+      (FINAL_THIRD_CONFIG.shorts && FINAL_THIRD_CONFIG.shorts.find(s => s.id === videoId)) || {
       id: videoId,
       title: "Featured Story | Final Third",
       sport: "football",
@@ -507,6 +508,94 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Initialize
+  
+  // Shorts Shelf State & Renderer
+  const shortsState = {
+    visibleCount: 8,
+    perPage: 8
+  };
+
+  const shortsShelf = document.getElementById('shortsShelf');
+  const loadMoreShortsBtn = document.getElementById('loadMoreShortsBtn');
+
+  function renderShorts() {
+    if (!shortsShelf) return;
+    const allShorts = (typeof FINAL_THIRD_CONFIG !== 'undefined' && FINAL_THIRD_CONFIG.shorts) ? FINAL_THIRD_CONFIG.shorts : [];
+    const visibleShorts = allShorts.slice(0, shortsState.visibleCount);
+
+    if (visibleShorts.length === 0) {
+      const sec = document.getElementById('shorts');
+      if (sec) sec.style.display = 'none';
+      return;
+    }
+
+    shortsShelf.innerHTML = visibleShorts.map(short => {
+      const thumb = `https://i.ytimg.com/vi/${short.id}/hqdefault.jpg`;
+      const sportLabel = (short.sport || 'Sports').toUpperCase();
+
+      return `
+        <article class="short-card" data-short-id="${short.id}" role="button" tabindex="0" aria-label="Play Short: ${escapeHtml(short.title)}">
+          <img src="${thumb}" alt="${escapeHtml(short.title)}" class="short-thumb-img" loading="lazy">
+          <div class="short-card-scrim" aria-hidden="true"></div>
+          
+          <div class="short-badge-top">
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+              <path d="M17.77 10.32l-1.2-.5L18 8.06a3.74 3.74 0 0 0-3.5-5.46 3.7 3.7 0 0 0-2.62 1.1L6.26 9.32a3.75 3.75 0 0 0 1.2 6.84l1.2.5L7 18.4a3.74 3.74 0 0 0 3.5 5.46c1 0 1.95-.4 2.62-1.1l5.62-5.62a3.75 3.75 0 0 0-1-6.82zM10 14.5v-5l4.5 2.5-4.5 2.5z"/>
+            </svg>
+            ${sportLabel}
+          </div>
+
+          <div class="short-play-btn" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <polygon points="6 4 20 12 6 20 6 4"></polygon>
+            </svg>
+          </div>
+
+          <div class="short-info">
+            <h4 class="short-title">${escapeHtml(short.title)}</h4>
+            <div class="short-meta">
+              <span>⚡ Short</span>
+              <span>•</span>
+              <a href="https://www.youtube.com/shorts/${short.id}" target="_blank" rel="noopener noreferrer" style="color:var(--neon-lime); text-decoration:underline;" onclick="event.stopPropagation();">
+                Open ↗
+              </a>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join('');
+
+    shortsShelf.querySelectorAll('.short-card').forEach(card => {
+      const clickHandler = () => {
+        const sid = card.getAttribute('data-short-id');
+        openVideoModal(sid);
+      };
+      card.addEventListener('click', clickHandler);
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          clickHandler();
+        }
+      });
+    });
+
+    if (loadMoreShortsBtn) {
+      if (shortsState.visibleCount >= allShorts.length) {
+        loadMoreShortsBtn.style.display = 'none';
+      } else {
+        loadMoreShortsBtn.style.display = 'inline-block';
+      }
+    }
+  }
+
+  if (loadMoreShortsBtn) {
+    loadMoreShortsBtn.addEventListener('click', () => {
+      shortsState.visibleCount += shortsState.perPage;
+      renderShorts();
+    });
+  }
+
   initPlaylistSelector();
   renderVideos();
+  renderShorts();
 });
