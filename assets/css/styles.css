@@ -2878,7 +2878,7 @@ button, input, textarea, select {
    SEAMLESS HERO VISUAL (LARGE, BORDERLESS & FEATHERED STUDIO INTEGRATION)
    ========================================================================== */
 .hero-grid {
-  grid-template-columns: 1fr 1.15fr !important;
+  grid-template-columns: 1fr 1.05fr !important;
   gap: 20px !important;
   align-items: center !important;
 }
@@ -2900,7 +2900,7 @@ button, input, textarea, select {
 .portrait-editorial-frame {
   position: relative !important;
   width: 100% !important;
-  max-width: 760px !important;
+  max-width: 660px !important;
   aspect-ratio: auto !important;
   border: none !important;
   border-radius: 0 !important;
@@ -2914,27 +2914,25 @@ button, input, textarea, select {
 
 .portrait-editorial-img {
   width: 100% !important;
-  max-width: 760px !important;
+  max-width: 660px !important;
   height: auto !important;
   display: block !important;
   object-fit: contain !important;
-  transform: scale(1.15) !important;
-  transform-origin: 72% 52% !important;
+  transform: scale(1.05) !important;
+  transform-origin: center center !important;
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9)) !important;
-  -webkit-mask-image: radial-gradient(ellipse 80% 75% at 70% 50%, #000 50%, rgba(0,0,0,0.85) 65%, transparent 95%) !important;
-  mask-image: radial-gradient(ellipse 80% 75% at 70% 50%, #000 50%, rgba(0,0,0,0.85) 65%, transparent 95%) !important;
   transition: transform var(--transition-smooth) !important;
 }
 
 .portrait-editorial-frame:hover .portrait-editorial-img {
-  transform: scale(1.18) !important;
+  transform: scale(1.08) !important;
 }
 
 .portrait-floating-card {
   position: absolute !important;
-  bottom: 12px !important;
-  right: 14% !important;
-  background: rgba(15, 15, 15, 0.85) !important;
+  bottom: 20px !important;
+  right: 10% !important;
+  background: rgba(15, 15, 15, 0.88) !important;
   backdrop-filter: blur(14px) !important;
   -webkit-backdrop-filter: blur(14px) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -2949,12 +2947,11 @@ button, input, textarea, select {
     grid-template-columns: 1fr !important;
     gap: 30px !important;
   }
-  .portrait-editorial-img {
-    transform: scale(1.05) !important;
-    transform-origin: center center !important;
+  .portrait-editorial-frame {
+    max-width: 480px !important;
   }
   .portrait-floating-card {
     right: 5% !important;
-    bottom: 5px !important;
+    bottom: 10px !important;
   }
 }
