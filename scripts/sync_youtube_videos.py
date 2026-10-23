@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Final Third — Automated YouTube Video Synchronizer
+Final Third — Automated YouTube Video & Realtime Views Synchronizer
 Fetches latest public videos from YouTube channel @FinalThird_HarisNenmara
 using the official YouTube RSS feed (zero API keys required, zero rate limit).
 Automatically routes full episodes to 'videos' and 9:16 vertical reels to 'shorts'
-in both index.html and assets/js/config.js.
+and keeps live view counts synchronized in both index.html and assets/js/config.js.
 """
 
 import sys
@@ -101,6 +101,20 @@ def format_published_time(iso_str):
     except Exception:
         return "Recent"
 
+def format_views(count_val):
+    try:
+        n = int(count_val)
+        if n >= 1_000_000:
+            return f"{n / 1_000_000:.1f}M views"
+        elif n >= 10_000:
+            return f"{n // 1_000}K views"
+        elif n >= 1_000:
+            return f"{n / 1_000:.1f}K views"
+        else:
+            return f"{n} views"
+    except (ValueError, TypeError):
+        return "10K views"
+
 def fetch_latest_feed_videos():
     ctx = ssl._create_unverified_context()
     req = urllib.request.Request(FEED_URL, headers={"User-Agent": "FinalThirdSyncBot/1.0"})
@@ -131,6 +145,11 @@ def fetch_latest_feed_videos():
         published_iso = pub_elem.text.strip() if (pub_elem is not None and pub_elem.text) else ""
         desc = desc_elem.text.strip() if (desc_elem is not None and desc_elem.text) else title
 
+        # Extract real-time view count directly from media:community/media:statistics
+        stats_elem = entry.find("media:group/media:community/media:statistics", ns)
+        views_raw = stats_elem.attrib.get("views") if stats_elem is not None else None
+        views_formatted = format_views(views_raw) if views_raw else "10K views"
+
         meta = classify_sport(title, desc)
         videos.append({
             "id": vid,
@@ -139,7 +158,7 @@ def fetch_latest_feed_videos():
             "playlistId": meta["playlistId"],
             "playlistTitle": meta["playlistTitle"],
             "published": format_published_time(published_iso),
-            "views": "New",
+            "views": views_formatted,
             "summary": title
         })
 
@@ -151,6 +170,30 @@ def update_featured_id(filepath, video_id):
     content = re.sub(r'featuredVideoId:\s*"[^"]*"', f'featuredVideoId: "{video_id}"', content)
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(content)
+
+def update_existing_views(filepath, views_map):
+    if not views_map:
+        return 0
+
+    with open(filepath, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    update_count = 0
+    for vid, v_str in views_map.items():
+        pattern = rf'("id":\s*"{re.escape(vid)}"[^}}]+?"views":\s*")[^"]*(")'
+        match = re.search(pattern, content, re.DOTALL)
+        if match:
+            old_full = match.group(0)
+            new_full = re.sub(pattern, rf'\g<1>{v_str}\g<2>', old_full, flags=re.DOTALL)
+            if old_full != new_full:
+                content = content[:match.start()] + new_full + content[match.end():]
+                update_count += 1
+
+    if update_count > 0:
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(content)
+
+    return update_count
 
 def update_file(filepath, new_items, target_key="videos"):
     if not new_items:
@@ -193,29 +236,40 @@ def update_file(filepath, new_items, target_key="videos"):
 
 def main():
     print("=" * 60)
-    print("Final Third — Synchronizing YouTube Channel Videos & Shorts")
+    print("Final Third — Synchronizing YouTube Channel Videos & Realtime Views")
     print(f"Timestamp: {datetime.now(timezone.utc).isoformat()}")
     print("=" * 60)
 
     try:
         feed_videos = fetch_latest_feed_videos()
-        print(f"Fetched {len(feed_videos)} recent uploads from YouTube RSS feed.")
+        print(f"Fetched {len(feed_videos)} recent uploads with live views from YouTube RSS feed.")
     except Exception as e:
         print(f"Failed to fetch YouTube feed: {e}")
         sys.exit(1)
 
-    # Read existing video IDs from index.html
+    # 1. Update live view counts for all videos found in the feed
+    views_map = {v["id"]: v["views"] for v in feed_videos if v.get("views")}
+    updated1 = update_existing_views("index.html", views_map)
+    updated2 = update_existing_views("assets/js/config.js", views_map)
+    if updated1 or updated2:
+        print(f"★ Updated live view statistics for {max(updated1, updated2)} video(s) in repository.")
+
+    # 2. Check for brand new video uploads
     with open("index.html", "r", encoding="utf-8") as f:
         html = f.read()
 
     existing_ids = set(re.findall(r'"id":\s*"([a-zA-Z0-9_-]{11})"', html))
     print(f"Currently tracking {len(existing_ids)} unique video/short IDs in repository.")
 
-    # Find videos from the feed that are not yet in the catalogue
     new_items = [v for v in feed_videos if v["id"] not in existing_ids]
 
     if not new_items:
-        print("✓ All latest YouTube videos and shorts are already up to date! No changes needed.")
+        if updated1 or updated2:
+            print("✓ Live view counts updated for existing videos!")
+            with open("NEW_VIDEOS_FOUND.txt", "w") as f:
+                f.write(str(max(updated1, updated2)))
+        else:
+            print("✓ All latest YouTube videos, shorts, and view counts are already up to date!")
         return
 
     print(f"★ Found {len(new_items)} NEW upload(s). Classifying into Full Episodes vs Shorts...")
@@ -225,10 +279,10 @@ def main():
     for v in new_items:
         is_short = check_is_short(v["id"])
         if is_short:
-            print(f"  ⚡ [SHORT] {v['id']} — {v['title']}")
+            print(f"  ⚡ [SHORT] {v['id']} ({v['views']}) — {v['title']}")
             new_shorts.append(v)
         else:
-            print(f"  🎬 [FULL EPISODE] {v['id']} — {v['title']}")
+            print(f"  🎬 [FULL EPISODE] {v['id']} ({v['views']}) — {v['title']}")
             new_full_videos.append(v)
 
     # Update index.html and assets/js/config.js
@@ -244,7 +298,7 @@ def main():
 
         print(f"✓ Successfully routed {len(new_full_videos)} episode(s) and {len(new_shorts)} short(s) to index.html and config.js!")
         with open("NEW_VIDEOS_FOUND.txt", "w") as f:
-            f.write(str(len(new_items)))
+            f.write(str(len(new_items) + max(updated1, updated2)))
     else:
         print("Error updating files!")
         sys.exit(1)

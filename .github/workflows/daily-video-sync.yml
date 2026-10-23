@@ -31,13 +31,13 @@ jobs:
       - name: Commit and Push Updates
         run: |
           if [ -f "NEW_VIDEOS_FOUND.txt" ]; then
-            echo "New videos found! Committing to repository..."
+            echo "Updates found! Committing to repository..."
             rm -f NEW_VIDEOS_FOUND.txt
             git config --global user.name "Final Third Sync Bot"
             git config --global user.email "bot@finalthird.com"
             git add index.html assets/js/config.js
-            git commit -m "Auto-sync: Added new YouTube video release [skip ci]"
+            git commit -m "Auto-sync: Updated YouTube releases and live view counts [skip ci]"
             git push
           else
-            echo "No new videos to update. Everything is up to date!"
+            echo "No new videos or view updates. Everything is up to date!"
           fi

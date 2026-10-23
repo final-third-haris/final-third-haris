@@ -1222,6 +1222,182 @@ button, input, textarea, select {
   white-space: nowrap;
 }
 
+.video-meta-views {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--off-white);
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.video-meta-views svg {
+  color: var(--neon-lime);
+}
+
+.card-views-pill {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(8, 8, 8, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--off-white);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  transition: all var(--transition-fast);
+}
+
+.card-views-pill svg {
+  color: var(--neon-lime);
+}
+
+.video-card:hover .card-views-pill {
+  border-color: var(--neon-lime);
+  color: var(--neon-lime);
+}
+
+.featured-views-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(158, 226, 11, 0.12);
+  border: 1px solid var(--neon-lime-border);
+  color: var(--neon-lime);
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.short-views-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--neon-lime);
+  font-weight: 800;
+  font-size: 0.76rem;
+}
+
+/* Cross-Platform Ecosystem Views Showcase Strip */
+.ecosystem-views-strip {
+  background: linear-gradient(135deg, rgba(21, 21, 21, 0.95), rgba(13, 14, 16, 0.95));
+  border: 1px solid var(--charcoal-border);
+  border-left: 3px solid var(--neon-lime);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.ecosystem-total-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ecosystem-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--neon-lime);
+  text-transform: uppercase;
+}
+
+.ecosystem-total-num {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: var(--off-white);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.ecosystem-sub {
+  font-size: 0.85rem;
+  color: var(--muted-grey);
+}
+
+.ecosystem-platform-pills {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.platform-pill {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--charcoal-border);
+  border-radius: var(--radius-full);
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  color: var(--off-white);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--transition-fast);
+}
+
+.platform-pill:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.youtube-dot { background: #FF0000; box-shadow: 0 0 8px rgba(255, 0, 0, 0.6); }
+.instagram-dot { background: #E1306C; box-shadow: 0 0 8px rgba(225, 48, 108, 0.6); }
+.facebook-dot { background: #1877F2; box-shadow: 0 0 8px rgba(24, 119, 242, 0.6); }
+.whatsapp-dot { background: #25D366; box-shadow: 0 0 8px rgba(37, 211, 102, 0.6); }
+
+/* Social Card Metrics Badge */
+.social-metric-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(158, 226, 11, 0.08);
+  border: 1px solid var(--neon-lime-border);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 14px;
+  font-size: 0.82rem;
+}
+
+.social-views-num {
+  font-weight: 800;
+  color: var(--neon-lime);
+}
+
+.social-views-label {
+  color: var(--off-white);
+  font-weight: 600;
+}
+
+.social-metric-divider {
+  color: var(--charcoal-border);
+}
+
+.social-sub-stat {
+  color: var(--muted-grey);
+  font-weight: 500;
+}
+
 .video-card-title {
   font-size: 1.125rem;
   font-weight: 700;
@@ -2050,6 +2226,20 @@ button, input, textarea, select {
   }
   .featured-info-container {
     padding: 24px;
+  }
+  .ecosystem-views-strip {
+    padding: 18px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .ecosystem-platform-pills {
+    width: 100%;
+    gap: 8px;
+  }
+  .platform-pill {
+    padding: 6px 12px;
+    font-size: 0.78rem;
   }
 }
 
@@ -3511,6 +3701,9 @@ button, input, textarea, select {
             <div>
               <div class="featured-tag-bar">
                 <span class="badge-tag">CRICKET</span>
+                <span class="featured-views-pill" id="featuredViewsPill">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px; margin-right:4px;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>6.5K views
+                </span>
                 <span style="font-size: 0.8125rem; color: var(--muted-grey); font-weight: 700;">
                   Cricket Stories &amp; Analysis · Latest Upload · Just now
                 </span>
@@ -3692,19 +3885,19 @@ button, input, textarea, select {
           <!-- Key Audience & Credibility Metrics Ribbon -->
           <div class="sponsor-stats-strip">
             <div class="sponsor-stat-cell">
-              <div class="sponsor-stat-value">300+</div>
-              <div class="sponsor-stat-label">Published Episodes</div>
-              <div class="sponsor-stat-sub">Football &amp; Cricket Archive</div>
+              <div class="sponsor-stat-value">8.2M+</div>
+              <div class="sponsor-stat-label">Total YouTube Views</div>
+              <div class="sponsor-stat-sub">300+ Episodes Published</div>
             </div>
             <div class="sponsor-stat-cell">
-              <div class="sponsor-stat-value">100K+</div>
-              <div class="sponsor-stat-label">Monthly Video Reach</div>
-              <div class="sponsor-stat-sub">High-Retention Watch Time</div>
+              <div class="sponsor-stat-value">12.5M+</div>
+              <div class="sponsor-stat-label">Cross-Platform Views</div>
+              <div class="sponsor-stat-sub">YouTube • IG • FB • WhatsApp</div>
             </div>
             <div class="sponsor-stat-cell">
-              <div class="sponsor-stat-value">100%</div>
-              <div class="sponsor-stat-label">Devoted Sports Audience</div>
-              <div class="sponsor-stat-sub">Football &amp; Cricket Fans</div>
+              <div class="sponsor-stat-value">40.3K+</div>
+              <div class="sponsor-stat-label">Dedicated Subscribers</div>
+              <div class="sponsor-stat-sub">High-Retention Sports Core</div>
             </div>
             <div class="sponsor-stat-cell">
               <div class="sponsor-stat-value">Kerala &amp; GCC</div>
@@ -3941,6 +4134,33 @@ button, input, textarea, select {
           </a>
         </div>
 
+        <!-- Cross-Platform Ecosystem Views Banner -->
+        <div class="ecosystem-views-strip">
+          <div class="ecosystem-total-box">
+            <span class="ecosystem-label">Total Ecosystem Reach</span>
+            <div class="ecosystem-total-num">12.5M+</div>
+            <span class="ecosystem-sub">Combined Views &amp; Broadcast Reads Across All Platforms</span>
+          </div>
+          <div class="ecosystem-platform-pills">
+            <div class="platform-pill">
+              <span class="pill-dot youtube-dot" aria-hidden="true"></span>
+              <span><strong>8.2M+</strong> YouTube Views</span>
+            </div>
+            <div class="platform-pill">
+              <span class="pill-dot instagram-dot" aria-hidden="true"></span>
+              <span><strong>2.5M+</strong> Reel Views</span>
+            </div>
+            <div class="platform-pill">
+              <span class="pill-dot facebook-dot" aria-hidden="true"></span>
+              <span><strong>1.8M+</strong> FB Views</span>
+            </div>
+            <div class="platform-pill">
+              <span class="pill-dot whatsapp-dot" aria-hidden="true"></span>
+              <span><strong>500K+</strong> Broadcast Reads</span>
+            </div>
+          </div>
+        </div>
+
         <div class="social-cards-grid">
           
           <!-- YouTube Card -->
@@ -3955,6 +4175,12 @@ button, input, textarea, select {
                 <h3 class="social-name">YouTube</h3>
                 <span class="social-handle">@FinalThird_HarisNenmara</span>
               </div>
+            </div>
+            <div class="social-metric-badge">
+              <span class="social-views-num">8.2M+</span>
+              <span class="social-views-label">Total Views</span>
+              <span class="social-metric-divider">•</span>
+              <span class="social-sub-stat">40.3K+ Subs</span>
             </div>
             <p class="social-desc">Long-form tactical video essays, match reviews, and breaking sports stories.</p>
             <a href="https://www.youtube.com/@FinalThird_HarisNenmara" target="_blank" rel="noopener noreferrer" class="social-card-btn">
@@ -3977,6 +4203,12 @@ button, input, textarea, select {
                 <span class="social-handle">@finalthird.official</span>
               </div>
             </div>
+            <div class="social-metric-badge">
+              <span class="social-views-num">2.5M+</span>
+              <span class="social-views-label">Reel Views</span>
+              <span class="social-metric-divider">•</span>
+              <span class="social-sub-stat">15K+ Followers</span>
+            </div>
             <p class="social-desc">Matchday reels, instant reactions, behind-the-scenes footage, and highlights.</p>
             <a href="https://www.instagram.com/finalthird.official/" target="_blank" rel="noopener noreferrer" class="social-card-btn">
               FOLLOW ON INSTAGRAM ↗
@@ -3996,6 +4228,12 @@ button, input, textarea, select {
                 <span class="social-handle">Final Third Official</span>
               </div>
             </div>
+            <div class="social-metric-badge">
+              <span class="social-views-num">1.8M+</span>
+              <span class="social-views-label">Video Views</span>
+              <span class="social-metric-divider">•</span>
+              <span class="social-sub-stat">10K+ Followers</span>
+            </div>
             <p class="social-desc">Community discussions, fan interactions, and long-form Malayalam sports posts.</p>
             <a href="https://www.facebook.com/profile.php?id=61590005744291" target="_blank" rel="noopener noreferrer" class="social-card-btn">
               CONNECT ON FACEBOOK ↗
@@ -4014,6 +4252,12 @@ button, input, textarea, select {
                 <h3 class="social-name">WhatsApp Channel</h3>
                 <span class="social-handle">Final Third Channel</span>
               </div>
+            </div>
+            <div class="social-metric-badge">
+              <span class="social-views-num">500K+</span>
+              <span class="social-views-label">Channel Views</span>
+              <span class="social-metric-divider">•</span>
+              <span class="social-sub-stat">5K+ Members</span>
             </div>
             <p class="social-desc">Instant breaking news, lineup alerts, and direct video broadcast updates.</p>
             <a href="https://whatsapp.com/channel/0029VbCMhqQ0G0XYaQLOMP2U" target="_blank" rel="noopener noreferrer" class="social-card-btn">
@@ -4374,7 +4618,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "Just now",
-    "views": "New",
+    "views": "6.3K views",
     "summary": "സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | Ind Vs Nz"
   },
   {
@@ -4384,7 +4628,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "3 hours ago",
-    "views": "New",
+    "views": "7.0K views",
     "summary": "400 ചേസ് ചെയ്ത ലങ്ക ! ഇംഗ്ലണ്ടിനെ കൊന്നു കൊലവിളിച്ചു ! | srilanka vs england"
   },
   {
@@ -4394,7 +4638,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "Just now",
-    "views": "New",
+    "views": "157K views",
     "summary": "സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson"
   },
   {
@@ -4404,7 +4648,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "6 hours ago",
-    "views": "New",
+    "views": "32K views",
     "summary": "ബാഴ്സക്ക് അത്ര എളുപ്പമാകില്ല കാര്യങ്ങള്‍ ! Real Madrid vs RB Leipzig"
   },
   {
@@ -4414,7 +4658,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLcWlSk4Ir_yg",
     "playlistTitle": "Cricket India",
     "published": "15 hr ago",
-    "views": "10K views",
+    "views": "13K views",
     "summary": "സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson "
   },
   {
@@ -4424,7 +4668,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "17 hr ago",
-    "views": "10K views",
+    "views": "50K views",
     "summary": "PSG യെ വീഴ്ത്താൻ ആരുണ്ട് ഇവിടെ ? | Barcelona vs Psg | Lamine Yamal"
   },
   {
@@ -4434,7 +4678,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "3 days ago",
-    "views": "10K views",
+    "views": "41K views",
     "summary": "ബാഴ്സയെ ആര് പിടിച്ച് കെട്ടും ? Barcelona | Lamine Yamal | Rodri | Hansi Flick"
   },
   {
@@ -4444,7 +4688,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLcWlSk4Ir_yg",
     "playlistTitle": "Cricket India",
     "published": "4 days ago",
-    "views": "10K views",
+    "views": "21K views",
     "summary": "ഭുവിയും ബുംറയും ചേർന്നാൽ ! Bhuvneshwar Kumar | Jasprit Bumrah"
   },
   {
@@ -4454,7 +4698,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLcWlSk4Ir_yg",
     "playlistTitle": "Cricket India",
     "published": "5 days ago",
-    "views": "10K views",
+    "views": "110K views",
     "summary": "ഭുവി വരുന്നു ! ബുംറ ഇല്ലെങ്കിൽ ഇന്ത്യ ഇല്ലേ ? Sanju Samson | Jasprit Bumrah |Ind Vs Wi "
   },
   {
@@ -4464,7 +4708,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
     "playlistTitle": "Real Madrid",
     "published": "6 days ago",
-    "views": "10K views",
+    "views": "57K views",
     "summary": "റോമയെ എരിച്ചു ! പഠിക്കാൻ ഇനിയുമേറെ | Real Madrid Vs Roma"
   },
   {
@@ -6337,7 +6581,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLRqJyYpkYUnExHY8MwKteSHdDYvAC5MT7",
     "playlistTitle": "2026 WORLDCUP Stories",
     "published": "3 days ago",
-    "views": "10K views",
+    "views": "3.4K views",
     "summary": "October 18, 2026"
   },
   {
@@ -6347,7 +6591,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLRqJyYpkYUnExHY8MwKteSHdDYvAC5MT7",
     "playlistTitle": "2026 WORLDCUP Stories",
     "published": "3 days ago",
-    "views": "10K views",
+    "views": "1.8K views",
     "summary": "October 18, 2026"
   },
   {
@@ -6357,7 +6601,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "3 days ago",
-    "views": "10K views",
+    "views": "17K views",
     "summary": "ബാഴ്സയെ ആര് പിടിച്ച് കെട്ടും ? Barcelona | Lamine Yamal | Rodri | Hansi Flick"
   },
   {
@@ -6367,7 +6611,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
     "published": "6 days ago",
-    "views": "10K views",
+    "views": "1.0K views",
     "summary": "ഇത് റയലാണ്... ഇവിടെ ഇങ്ങനെ ഒക്കെയാണ്"
   },
   {
@@ -6377,7 +6621,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "7 days ago",
-    "views": "10K views",
+    "views": "8.1K views",
     "summary": "യമാല്‍ ആരാണെന്ന് മനസിലായോ സാറേ? Lamine Yamal"
   },
   {
@@ -7560,6 +7804,10 @@ document.addEventListener('DOMContentLoaded', () => {
               height="270"
             />
             <span class="card-sport-pill">${video.sport}</span>
+            <span class="card-views-pill" title="Live Video Views">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              ${escapeHtml(video.views || '10K views')}
+            </span>
             <div class="card-play-icon" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -7569,6 +7817,9 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="video-card-body">
             <div class="video-card-meta">
               <span class="playlist-name">${escapeHtml(video.playlistTitle)}</span>
+              <span class="video-meta-views" title="Live Views">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>${escapeHtml(video.views || '10K views')}
+              </span>
               <span>${video.published}</span>
             </div>
             <h3 class="video-card-title" role="button" tabindex="0">${escapeHtml(video.title)}</h3>
@@ -8011,6 +8262,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="short-meta">
               <span>⚡ Short</span>
               <span>•</span>
+              <span class="short-views-pill"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px; margin-right:2px;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>${escapeHtml(short.views || '15K views')}</span>
+              <span>•</span>
               <a href="https://www.youtube.com/shorts/${short.id}" target="_blank" rel="noopener noreferrer" style="color:var(--neon-lime); text-decoration:underline;" onclick="event.stopPropagation();">
                 Open ↗
               </a>
@@ -8295,6 +8548,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const plTitle = latest.playlistTitle || 'Latest Release';
       const pubTime = latest.published || 'Latest';
       metaSpan.textContent = `${plTitle} · Latest Upload · ${pubTime}`;
+    }
+
+    const viewsPill = document.getElementById('featuredViewsPill');
+    if (viewsPill && latest.views) {
+      viewsPill.innerHTML = `<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px; margin-right:4px;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>${latest.views}`;
     }
 
     if (watchStoryBtn) {

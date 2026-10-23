@@ -99,7 +99,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "Just now",
-    "views": "New",
+    "views": "6.3K views",
     "summary": "സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | Ind Vs Nz"
   },
   {
@@ -109,7 +109,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "3 hours ago",
-    "views": "New",
+    "views": "7.0K views",
     "summary": "400 ചേസ് ചെയ്ത ലങ്ക ! ഇംഗ്ലണ്ടിനെ കൊന്നു കൊലവിളിച്ചു ! | srilanka vs england"
   },
   {
@@ -119,7 +119,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "Just now",
-    "views": "New",
+    "views": "157K views",
     "summary": "സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson"
   },
   {
@@ -129,7 +129,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "6 hours ago",
-    "views": "New",
+    "views": "32K views",
     "summary": "ബാഴ്സക്ക് അത്ര എളുപ്പമാകില്ല കാര്യങ്ങള്‍ ! Real Madrid vs RB Leipzig"
   },
   {
@@ -139,7 +139,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLcWlSk4Ir_yg",
     "playlistTitle": "Cricket India",
     "published": "15 hr ago",
-    "views": "10K views",
+    "views": "13K views",
     "summary": "ഭുവി വന്നു; ഷമി വരില്ലേ ? Mohammed Shami "
   },
   {
@@ -149,7 +149,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "17 hr ago",
-    "views": "10K views",
+    "views": "50K views",
     "summary": "PSG യെ വീഴ്ത്താൻ ആരുണ്ട് ഇവിടെ ? | Barcelona vs Psg | Lamine Yamal"
   },
   {
@@ -159,7 +159,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "3 days ago",
-    "views": "10K views",
+    "views": "41K views",
     "summary": "ബാഴ്സയെ ആര് പിടിച്ച് കെട്ടും ? Barcelona | Lamine Yamal | Rodri | Hansi Flick"
   },
   {
@@ -169,7 +169,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLcWlSk4Ir_yg",
     "playlistTitle": "Cricket India",
     "published": "4 days ago",
-    "views": "10K views",
+    "views": "21K views",
     "summary": "ഭുവിയും ബുംറയും ചേർന്നാൽ ! Bhuvneshwar Kumar | Jasprit Bumrah"
   },
   {
@@ -179,7 +179,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLcWlSk4Ir_yg",
     "playlistTitle": "Cricket India",
     "published": "5 days ago",
-    "views": "10K views",
+    "views": "110K views",
     "summary": "ഭുവി വരുന്നു ! ബുംറ ഇല്ലെങ്കിൽ ഇന്ത്യ ഇല്ലേ ? Sanju Samson | Jasprit Bumrah |Ind Vs Wi "
   },
   {
@@ -189,7 +189,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
     "playlistTitle": "Real Madrid",
     "published": "6 days ago",
-    "views": "10K views",
+    "views": "57K views",
     "summary": "റോമയെ എരിച്ചു ! പഠിക്കാൻ ഇനിയുമേറെ | Real Madrid Vs Roma"
   },
   {
@@ -2062,7 +2062,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLRqJyYpkYUnExHY8MwKteSHdDYvAC5MT7",
     "playlistTitle": "2026 WORLDCUP Stories",
     "published": "3 days ago",
-    "views": "10K views",
+    "views": "3.4K views",
     "summary": "October 18, 2026"
   },
   {
@@ -2072,7 +2072,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLRqJyYpkYUnExHY8MwKteSHdDYvAC5MT7",
     "playlistTitle": "2026 WORLDCUP Stories",
     "published": "3 days ago",
-    "views": "10K views",
+    "views": "1.8K views",
     "summary": "October 18, 2026"
   },
   {
@@ -2082,7 +2082,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "3 days ago",
-    "views": "10K views",
+    "views": "17K views",
     "summary": "ബാഴ്സയെ ആര് പിടിച്ച് കെട്ടും ? Barcelona | Lamine Yamal | Rodri | Hansi Flick"
   },
   {
@@ -2092,7 +2092,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
     "published": "6 days ago",
-    "views": "10K views",
+    "views": "1.0K views",
     "summary": "ഇത് റയലാണ്... ഇവിടെ ഇങ്ങനെ ഒക്കെയാണ്"
   },
   {
@@ -2102,7 +2102,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "7 days ago",
-    "views": "10K views",
+    "views": "8.1K views",
     "summary": "യമാല്‍ ആരാണെന്ന് മനസിലായോ സാറേ? Lamine Yamal"
   },
   {
