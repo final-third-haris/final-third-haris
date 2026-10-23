@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://finalthird.media/sitemap.xml
+Sitemap: https://final-third-haris.github.io/sitemap.xml
