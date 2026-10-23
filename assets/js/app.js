@@ -598,4 +598,87 @@ document.addEventListener('DOMContentLoaded', () => {
   initPlaylistSelector();
   renderVideos();
   renderShorts();
+  initEditorialAnimations();
+
+
+  // =========================================================================
+  // EDITORIAL SCROLL REVEALS & STATS COUNTER ANIMATIONS
+  // =========================================================================
+  function initEditorialAnimations() {
+    // 1. Header scroll elevation
+    const siteHeader = document.querySelector('.site-header');
+    if (siteHeader) {
+      const handleScroll = () => {
+        if (window.scrollY > 40) {
+          siteHeader.classList.add('scrolled');
+        } else {
+          siteHeader.classList.remove('scrolled');
+        }
+      };
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+    }
+
+    // 2. Scroll Reveal Observer
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        root: null,
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      const targets = document.querySelectorAll(
+        '.section-header, .video-card, .short-card, .about-grid, .sponsor-banner-card, .contact-form-box'
+      );
+      targets.forEach(t => {
+        t.classList.add('reveal-on-scroll');
+        revealObserver.observe(t);
+      });
+    }
+
+    // 3. Animated Stats Counter
+    const statElements = document.querySelectorAll('.stat-item .stat-value, .sponsor-stat-value');
+    if (statElements.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const fullText = el.textContent.trim();
+            const match = fullText.match(/^([\d.,]+)(.*)$/);
+            if (match) {
+              const targetVal = parseFloat(match[1].replace(/,/g, ''));
+              const suffix = match[2];
+              const duration = 1200;
+              const startTime = performance.now();
+
+              const frame = (now) => {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const ease = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(targetVal * ease);
+                el.textContent = current.toLocaleString() + suffix;
+                if (progress < 1) {
+                  requestAnimationFrame(frame);
+                } else {
+                  el.textContent = fullText;
+                }
+              };
+              requestAnimationFrame(frame);
+            }
+            observer.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      statElements.forEach(el => counterObserver.observe(el));
+    }
+  }
+
 });

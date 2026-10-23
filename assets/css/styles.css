@@ -2794,3 +2794,81 @@ button, input, textarea, select {
   color: #FFFFFF !important;
   background-color: rgba(255, 255, 255, 0.05) !important;
 }
+
+
+/* ==========================================================================
+   EDITORIAL ANIMATIONS & MICRO-INTERACTIONS
+   ========================================================================== */
+
+/* 1. Fluid Scroll Reveal (60fps GPU-Accelerated) */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 2. Tactile Button Click Interaction */
+.btn:active {
+  transform: scale(0.97) !important;
+  transition: transform 0.08s ease !important;
+}
+
+/* 3. Live Broadcast Beacon Pulse */
+.live-indicator-dot {
+  position: relative;
+}
+
+.live-indicator-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--neon-lime);
+  animation: beaconPulse 2.4s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@keyframes beaconPulse {
+  0% { transform: scale(0.8); opacity: 0.9; }
+  60% { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* 4. Subtle Floating Glass Badge on Hero Visual */
+@keyframes subtleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.portrait-floating-card {
+  animation: subtleFloat 6s ease-in-out infinite;
+}
+
+/* 5. Sticky Header Frosted Elevation Transition */
+.site-header {
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.site-header.scrolled {
+  background: rgba(8, 8, 8, 0.9) !important;
+  backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .portrait-floating-card,
+  .live-indicator-dot::after {
+    animation: none !important;
+  }
+}

@@ -2843,6 +2843,84 @@ button, input, textarea, select {
   background-color: rgba(255, 255, 255, 0.05) !important;
 }
 
+  
+/* ==========================================================================
+   EDITORIAL ANIMATIONS & MICRO-INTERACTIONS
+   ========================================================================== */
+
+/* 1. Fluid Scroll Reveal (60fps GPU-Accelerated) */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 2. Tactile Button Click Interaction */
+.btn:active {
+  transform: scale(0.97) !important;
+  transition: transform 0.08s ease !important;
+}
+
+/* 3. Live Broadcast Beacon Pulse */
+.live-indicator-dot {
+  position: relative;
+}
+
+.live-indicator-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--neon-lime);
+  animation: beaconPulse 2.4s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@keyframes beaconPulse {
+  0% { transform: scale(0.8); opacity: 0.9; }
+  60% { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* 4. Subtle Floating Glass Badge on Hero Visual */
+@keyframes subtleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.portrait-floating-card {
+  animation: subtleFloat 6s ease-in-out infinite;
+}
+
+/* 5. Sticky Header Frosted Elevation Transition */
+.site-header {
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.site-header.scrolled {
+  background: rgba(8, 8, 8, 0.9) !important;
+  backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .portrait-floating-card,
+  .live-indicator-dot::after {
+    animation: none !important;
+  }
+}
+
   </style>
 
   <!-- Favicon / Logo -->
@@ -3047,13 +3125,7 @@ button, input, textarea, select {
 
       </div>
 
-      <!-- Subtle Animated Scroll Indicator -->
-      <a href="#featured" class="scroll-indicator" aria-label="Scroll down to featured match">
-        <span>Scroll to Explore</span>
-        <div class="scroll-indicator-mouse">
-          <div class="scroll-indicator-wheel"></div>
-        </div>
-      </a>
+      
     </section>
 
     <!-- =======================================================================
@@ -3696,47 +3768,7 @@ button, input, textarea, select {
       </div>
     </section>
 
-    <!-- =======================================================================
-         9. COLLABORATION SECTION (Closing Grand Call To Action)
-         ======================================================================= -->
-    <section class="collab-section" id="collaborate">
-      <div class="collab-glow-bg" aria-hidden="true"></div>
-      <div class="container">
-        
-        <div class="collab-box">
-          <div class="eyebrow" style="margin-bottom: 20px;">Partnerships &amp; Media</div>
-          
-          <h2 class="collab-headline">
-            LET'S CREATE SOMETHING THAT<br>
-            <span>MOVES THE GAME FORWARD.</span>
-          </h2>
-
-          <p class="collab-copy">
-            Have an idea, a story, a match to cover, or a creative collaboration in mind? Let's talk.
-          </p>
-
-          <!-- Collaboration Opportunities -->
-          <div class="collab-tags">
-            <span class="collab-tag-pill">⚽ Sports Content Collaborations</span>
-            <span class="collab-tag-pill">🎥 Match Coverage</span>
-            <span class="collab-tag-pill">🎬 Video Projects</span>
-            <span class="collab-tag-pill">🎙️ Player &amp; Coach Interviews</span>
-            <span class="collab-tag-pill">🤝 Brand Partnerships</span>
-            <span class="collab-tag-pill">🏏 Football &amp; Cricket Media Projects</span>
-          </div>
-
-          <div class="collab-actions">
-            <a href="https://wa.me/918129059309?text=Hi%20Haris,%20I%20am%20interested%20in%20a%20collaboration%20with%20Final%20Third" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-              LET'S COLLABORATE ↗
-            </a>
-            <a href="#contact" class="btn btn-outline">
-              CONTACT FINAL THIRD
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </section>
+    
 
   </main>
 
@@ -7650,6 +7682,89 @@ document.addEventListener('DOMContentLoaded', () => {
   initPlaylistSelector();
   renderVideos();
   renderShorts();
+  initEditorialAnimations();
+
+
+  // =========================================================================
+  // EDITORIAL SCROLL REVEALS & STATS COUNTER ANIMATIONS
+  // =========================================================================
+  function initEditorialAnimations() {
+    // 1. Header scroll elevation
+    const siteHeader = document.querySelector('.site-header');
+    if (siteHeader) {
+      const handleScroll = () => {
+        if (window.scrollY > 40) {
+          siteHeader.classList.add('scrolled');
+        } else {
+          siteHeader.classList.remove('scrolled');
+        }
+      };
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+    }
+
+    // 2. Scroll Reveal Observer
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        root: null,
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      const targets = document.querySelectorAll(
+        '.section-header, .video-card, .short-card, .about-grid, .sponsor-banner-card, .contact-form-box'
+      );
+      targets.forEach(t => {
+        t.classList.add('reveal-on-scroll');
+        revealObserver.observe(t);
+      });
+    }
+
+    // 3. Animated Stats Counter
+    const statElements = document.querySelectorAll('.stat-item .stat-value, .sponsor-stat-value');
+    if (statElements.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const fullText = el.textContent.trim();
+            const match = fullText.match(/^([\d.,]+)(.*)$/);
+            if (match) {
+              const targetVal = parseFloat(match[1].replace(/,/g, ''));
+              const suffix = match[2];
+              const duration = 1200;
+              const startTime = performance.now();
+
+              const frame = (now) => {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const ease = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(targetVal * ease);
+                el.textContent = current.toLocaleString() + suffix;
+                if (progress < 1) {
+                  requestAnimationFrame(frame);
+                } else {
+                  el.textContent = fullText;
+                }
+              };
+              requestAnimationFrame(frame);
+            }
+            observer.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      statElements.forEach(el => counterObserver.observe(el));
+    }
+  }
+
 });
 
 </script>
