@@ -3185,453 +3185,6 @@ button, input, textarea, select {
   }
 }
 
-/* ==========================================================================
-   AWARD-WINNING EDITORIAL & INTERACTIVE TACTICAL SUITE
-   ========================================================================== */
-
-/* 1. Cinematic Film Grain Overlay */
-.film-grain-layer {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 9998;
-  opacity: 0.032;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  mix-blend-mode: screen;
-}
-
-/* 2. Tactical Metadata Stamps */
-.tactical-stamp {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.6875rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--neon-lime, #9EE20B);
-  background: rgba(158, 226, 11, 0.08);
-  border: 1px solid rgba(158, 226, 11, 0.28);
-  padding: 3px 9px;
-  border-radius: 4px;
-  font-weight: 800;
-  vertical-align: middle;
-}
-
-.stamp-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--neon-lime, #9EE20B);
-  box-shadow: 0 0 6px var(--neon-lime, #9EE20B);
-  display: inline-block;
-}
-
-/* 3. Magnetic Custom Cursor with Contextual States */
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 10000;
-  transform: translate3d(-100px, -100px, 0);
-  transition: opacity 0.3s ease;
-  opacity: 0;
-}
-
-@media (pointer: fine) {
-  .custom-cursor {
-    opacity: 1;
-  }
-}
-
-@media (pointer: coarse), (prefers-reduced-motion: reduce) {
-  .custom-cursor {
-    display: none !important;
-  }
-}
-
-.cursor-dot {
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--neon-lime, #9EE20B);
-  box-shadow: 0 0 8px rgba(158, 226, 11, 0.8);
-  pointer-events: none;
-  transition: transform 0.15s ease, opacity 0.2s ease;
-}
-
-.cursor-ring {
-  position: absolute;
-  top: -18px;
-  left: -18px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid rgba(158, 226, 11, 0.45);
-  background: rgba(158, 226, 11, 0.03);
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
-              height 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
-              border-radius 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
-              background-color 0.2s ease,
-              border-color 0.2s ease,
-              box-shadow 0.2s ease,
-              transform 0.15s ease;
-}
-
-.cursor-text {
-  font-size: 0.625rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #080808;
-  opacity: 0;
-  transition: opacity 0.15s ease;
-  white-space: nowrap;
-}
-
-.custom-cursor.cursor-media .cursor-dot {
-  opacity: 0;
-}
-
-.custom-cursor.cursor-media .cursor-ring {
-  top: -22px;
-  left: -42px;
-  width: 84px;
-  height: 44px;
-  border-radius: 22px;
-  background: var(--neon-lime, #9EE20B);
-  border-color: var(--neon-lime, #9EE20B);
-  box-shadow: 0 0 25px rgba(158, 226, 11, 0.5);
-}
-
-.custom-cursor.cursor-media .cursor-text {
-  opacity: 1;
-}
-
-.custom-cursor.cursor-hover .cursor-ring {
-  top: -24px;
-  left: -24px;
-  width: 48px;
-  height: 48px;
-  border-color: var(--neon-lime, #9EE20B);
-  background: rgba(158, 226, 11, 0.12);
-  transform: scale(1.15);
-}
-
-/* 4. Kinetic Editorial Marquee / Ticker Strip */
-.editorial-ticker-wrap {
-  width: 100%;
-  overflow: hidden;
-  background: rgba(12, 13, 15, 0.85);
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-  padding: 13px 0;
-  position: relative;
-  z-index: 2;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.editorial-ticker-track {
-  display: flex;
-  width: max-content;
-  animation: tickerScroll 36s linear infinite;
-  will-change: transform;
-}
-
-.editorial-ticker-track:hover {
-  animation-play-state: paused;
-}
-
-.editorial-ticker-content {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  padding-right: 28px;
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted-grey, #A0A5B0);
-}
-
-.ticker-dot {
-  color: var(--neon-lime, #9EE20B);
-  font-size: 0.75rem;
-  text-shadow: 0 0 8px rgba(158, 226, 11, 0.6);
-}
-
-@keyframes tickerScroll {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(-50%, 0, 0); }
-}
-
-/* 5. 3D Card Tilt & Dynamic Glass Sheen */
-.video-card,
-.featured-match-card,
-.playbook-card {
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color var(--transition-fast);
-}
-
-.card-glass-sheen {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  z-index: 4;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  mix-blend-mode: overlay;
-}
-
-/* 6. Signature Interactive Tactical Playbook Section */
-.playbook-section {
-  position: relative;
-  background: #080808;
-  padding-top: 60px;
-  padding-bottom: 70px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.playbook-card {
-  background: rgba(14, 15, 18, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  margin-top: 24px;
-}
-
-.playbook-tabs {
-  display: flex;
-  background: rgba(8, 8, 8, 0.85);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.playbook-tabs::-webkit-scrollbar {
-  display: none;
-}
-
-.playbook-tab {
-  flex: 1;
-  min-width: 200px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 16px 20px;
-  background: transparent;
-  border: none;
-  border-right: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 2px solid transparent;
-  color: var(--muted-grey);
-  cursor: pointer;
-  text-align: left;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-}
-
-.playbook-tab:last-child {
-  border-right: none;
-}
-
-.playbook-tab:hover {
-  background: rgba(255, 255, 255, 0.03);
-  color: #FFFFFF;
-}
-
-.playbook-tab.active {
-  background: rgba(158, 226, 11, 0.05);
-  border-bottom-color: var(--neon-lime);
-  color: #FFFFFF;
-}
-
-.tab-code {
-  font-size: 0.6875rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  color: var(--neon-lime);
-}
-
-.tab-name {
-  font-size: 0.9375rem;
-  font-weight: 700;
-}
-
-.playbook-body {
-  display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  gap: 32px;
-  padding: 32px;
-  align-items: center;
-}
-
-.playbook-pitch-wrap {
-  position: relative;
-  background: #0A0C0E;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.pitch-watermark {
-  position: absolute;
-  bottom: 20px;
-  left: 24px;
-  font-size: 0.625rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.18);
-  pointer-events: none;
-}
-
-.tactical-pitch-svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.player-halo {
-  animation: playerPulse 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-}
-
-@keyframes playerPulse {
-  0% { transform: scale(0.85); opacity: 0.8; }
-  50% { transform: scale(1.3); opacity: 0.2; }
-  100% { transform: scale(0.85); opacity: 0.8; }
-}
-
-.anim-pass {
-  animation: passDash 1.2s linear infinite;
-}
-
-@keyframes passDash {
-  to { stroke-dashoffset: -20; }
-}
-
-.playbook-dossier {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.dossier-header {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.dossier-title {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #FFFFFF;
-  line-height: 1.2;
-}
-
-.dossier-desc {
-  font-size: 0.9375rem;
-  color: var(--muted-grey);
-  line-height: 1.6;
-}
-
-.dossier-metrics {
-  background: rgba(8, 8, 8, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 10px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.metric-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  font-size: 0.8125rem;
-}
-
-.metric-label {
-  color: var(--muted-grey);
-  font-weight: 600;
-}
-
-.metric-value {
-  color: #FFFFFF;
-  font-weight: 700;
-  text-align: right;
-}
-
-.metric-value.highlight {
-  color: var(--neon-lime);
-}
-
-.dossier-quote {
-  border-left: 3px solid var(--neon-lime);
-  padding-left: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.quote-tag {
-  font-size: 0.6875rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  color: var(--neon-lime);
-}
-
-.dossier-quote p {
-  font-size: 0.875rem;
-  font-style: italic;
-  color: var(--off-white);
-  line-height: 1.5;
-}
-
-@media (max-width: 992px) {
-  .playbook-body {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 20px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .film-grain-layer,
-  .custom-cursor {
-    display: none !important;
-  }
-  .editorial-ticker-track,
-  .player-halo,
-  .anim-pass {
-    animation: none !important;
-  }
-  .video-card,
-  .featured-match-card,
-  .playbook-card {
-    transform: none !important;
-  }
-}
-
   </style>
 
   <!-- Favicon / Logo -->
@@ -3708,7 +3261,6 @@ button, input, textarea, select {
         <ul class="nav-list">
           <li><a href="#hero" class="nav-link active">Home</a></li>
           <li><a href="#videos" class="nav-link">Videos</a></li>
-          <li><a href="#playbook" class="nav-link">Playbook</a></li>
           <li><a href="#shorts" class="nav-link">Shorts</a></li>
           <li><a href="#sponsor" class="nav-link">Sponsor</a></li>
           <li><a href="#about" class="nav-link">About</a></li>
@@ -3747,7 +3299,6 @@ button, input, textarea, select {
     <ul class="mobile-nav-list">
       <li><a href="#hero" class="mobile-nav-link active">Home</a></li>
       <li><a href="#videos" class="mobile-nav-link">Videos</a></li>
-      <li><a href="#playbook" class="mobile-nav-link">Playbook</a></li>
       <li><a href="#shorts" class="mobile-nav-link">Shorts</a></li>
       <li><a href="#sponsor" class="mobile-nav-link">Sponsor &amp; Advertise</a></li>
       <li><a href="#about" class="mobile-nav-link">About Haris</a></li>
@@ -3763,13 +3314,6 @@ button, input, textarea, select {
   <!-- Main Content Landmark -->
   <main id="main-content">
     <div class="space-motes-layer" id="spaceMotesLayer" aria-hidden="true"></div>
-    <div class="film-grain-layer" aria-hidden="true"></div>
-    <div class="custom-cursor" id="customCursor" aria-hidden="true">
-      <div class="cursor-dot"></div>
-      <div class="cursor-ring">
-        <span class="cursor-text" id="cursorText"></span>
-      </div>
-    </div>
     
     <!-- =======================================================================
          2. PREMIUM CINEMATIC HERO SECTION (85–100% initial viewport)
@@ -3783,7 +3327,6 @@ button, input, textarea, select {
           <div class="hero-badge-wrap">
             <span class="badge-tag">FINAL THIRD</span>
             <span class="badge-sub">FEATURING HARIS NENMARA</span>
-            <span class="tactical-stamp"><span class="stamp-dot">●</span> 09°49'N 76°38'E // SPORTS DESK</span>
           </div>
 
           <h1 class="hero-title">
@@ -3841,35 +3384,9 @@ button, input, textarea, select {
         </div>
 
       </div>
-    </section>
 
-    <!-- Kinetic Editorial Marquee Ticker -->
-    <div class="editorial-ticker-wrap" aria-hidden="true">
-      <div class="editorial-ticker-track">
-        <div class="editorial-ticker-content">
-          <span>TACTICAL MASTERY</span><span class="ticker-dot">✦</span>
-          <span>RAW PASSION</span><span class="ticker-dot">✦</span>
-          <span>UNFILTERED TRUTH</span><span class="ticker-dot">✦</span>
-          <span>OPPOSITION DOSSIERS</span><span class="ticker-dot">✦</span>
-          <span>HALF-SPACE DYNAMICS</span><span class="ticker-dot">✦</span>
-          <span>CRICKET &amp; FOOTBALL INSIGHTS</span><span class="ticker-dot">✦</span>
-          <span>THE FINAL THIRD</span><span class="ticker-dot">✦</span>
-          <span>PRESS RESISTANCE</span><span class="ticker-dot">✦</span>
-          <span>SET-PIECE SCHEMES</span><span class="ticker-dot">✦</span>
-        </div>
-        <div class="editorial-ticker-content" aria-hidden="true">
-          <span>TACTICAL MASTERY</span><span class="ticker-dot">✦</span>
-          <span>RAW PASSION</span><span class="ticker-dot">✦</span>
-          <span>UNFILTERED TRUTH</span><span class="ticker-dot">✦</span>
-          <span>OPPOSITION DOSSIERS</span><span class="ticker-dot">✦</span>
-          <span>HALF-SPACE DYNAMICS</span><span class="ticker-dot">✦</span>
-          <span>CRICKET &amp; FOOTBALL INSIGHTS</span><span class="ticker-dot">✦</span>
-          <span>THE FINAL THIRD</span><span class="ticker-dot">✦</span>
-          <span>PRESS RESISTANCE</span><span class="ticker-dot">✦</span>
-          <span>SET-PIECE SCHEMES</span><span class="ticker-dot">✦</span>
-        </div>
-      </div>
-    </div>
+      
+    </section>
 
     <!-- =======================================================================
          3. FEATURED MATCH / HERO VIDEO SECTION
@@ -3877,7 +3394,7 @@ button, input, textarea, select {
     <section class="section featured-match-section" id="featured">
       <div class="container">
         <div class="section-header">
-          <div class="eyebrow"><span class="tactical-stamp"><span class="stamp-dot">●</span> SPOTLIGHT DOSSIER</span> Featured Story</div>
+          <div class="eyebrow">Featured Story</div>
           <h2 class="section-title">Spotlight <span class="highlight">Analysis</span></h2>
         </div>
 
@@ -3911,7 +3428,6 @@ button, input, textarea, select {
             <div>
               <div class="featured-tag-bar">
                 <span class="badge-tag">CRICKET</span>
-                <span class="tactical-stamp"><span class="stamp-dot">●</span> EPISODE BREAKDOWN</span>
                 <span style="font-size: 0.8125rem; color: var(--muted-grey); font-weight: 700;">
                   Cricket Stories &amp; Analysis · Latest Upload · Just now
                 </span>
@@ -4025,108 +3541,7 @@ button, input, textarea, select {
       </div>
     </section>
 
-    <!-- =======================================================================
-         4B. SIGNATURE INTERACTIVE TACTICAL PLAYBOOK
-         ======================================================================= -->
-    <section class="section playbook-section" id="playbook">
-      <div class="container">
-        <div class="section-header">
-          <div class="eyebrow"><span class="tactical-stamp"><span class="stamp-dot">●</span> INTERACTIVE DOSSIER</span> Haris's Tactical Lab</div>
-          <h2 class="section-title">THE FINAL THIRD <span class="highlight">PLAYBOOK</span></h2>
-          <p class="section-subtitle">
-            Interactive tactical breakdowns from Haris's match analysis desk. Select a phase of play to explore movements, overloads, and pressing traps.
-          </p>
-        </div>
-
-        <div class="playbook-card">
-          <!-- Playbook Navigation Tabs -->
-          <div class="playbook-tabs" role="tablist" aria-label="Tactical Playbook Phases">
-            <button class="playbook-tab active" role="tab" aria-selected="true" data-tactic="overload">
-              <span class="tab-code">PHASE 01</span>
-              <span class="tab-name">Half-Space Overload</span>
-            </button>
-            <button class="playbook-tab" role="tab" aria-selected="false" data-tactic="press">
-              <span class="tab-code">PHASE 02</span>
-              <span class="tab-name">High-Press Trap</span>
-            </button>
-            <button class="playbook-tab" role="tab" aria-selected="false" data-tactic="transition">
-              <span class="tab-code">PHASE 03</span>
-              <span class="tab-name">Direct Third-Man Run</span>
-            </button>
-          </div>
-
-          <!-- Playbook Body: Interactive Board (Left) + Analytical Breakdown (Right) -->
-          <div class="playbook-body">
-            <!-- Vector Tactical Pitch Board -->
-            <div class="playbook-pitch-wrap">
-              <div class="pitch-watermark">FINAL THIRD TACTICAL LAB</div>
-              <svg class="tactical-pitch-svg" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
-                <!-- Pitch Markings -->
-                <rect x="15" y="15" width="570" height="370" rx="8" fill="#0C0E11" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
-                <!-- Halfway line -->
-                <line x1="300" y1="15" x2="300" y2="385" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
-                <!-- Center Circle -->
-                <circle cx="300" cy="200" r="55" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
-                <circle cx="300" cy="200" r="3" fill="rgba(255,255,255,0.2)"/>
-                <!-- Penalty Areas -->
-                <rect x="440" y="90" width="145" height="220" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
-                <rect x="525" y="140" width="60" height="120" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
-                <!-- Penalty Arc Right -->
-                <path d="M 440 160 A 50 50 0 0 0 440 240" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
-                <!-- Final Third Shading (Right attacking zone) -->
-                <rect x="390" y="15" width="195" height="370" fill="rgba(158, 226, 11, 0.025)" stroke="none"/>
-                <text x="480" y="40" fill="rgba(158, 226, 11, 0.35)" font-size="10" font-weight="800" letter-spacing="2">THE FINAL THIRD</text>
-
-                <!-- Dynamic Paths / Arrows (Updated via JS) -->
-                <g id="tacticalArrowsGroup"></g>
-
-                <!-- Dynamic Player Nodes (Updated via JS) -->
-                <g id="tacticalPlayersGroup"></g>
-              </svg>
-            </div>
-
-            <!-- Analytical Dossier Panel -->
-            <div class="playbook-dossier" id="playbookDossier">
-              <div class="dossier-header">
-                <span class="tactical-stamp" id="dossierBadge">[ ATTACKING PHASE // 4-3-3 ]</span>
-                <h3 class="dossier-title" id="dossierTitle">The Half-Space Overload</h3>
-                <p class="dossier-desc" id="dossierDesc">
-                  Manipulating the opponent's backline by pinning the fullback with the winger (#11) while the attacking midfielder (#8) surges into the channel.
-                </p>
-              </div>
-
-              <div class="dossier-metrics">
-                <div class="metric-row">
-                  <span class="metric-label">Key Objective</span>
-                  <span class="metric-value" id="metricObjective">Create 2v1 qualitative superiority against fullback</span>
-                </div>
-                <div class="metric-row">
-                  <span class="metric-label">Zone Exploited</span>
-                  <span class="metric-value highlight" id="metricZone">Left Half-Space (Zone 14 Edge)</span>
-                </div>
-                <div class="metric-row">
-                  <span class="metric-label">xG Outcome</span>
-                  <span class="metric-value" id="metricXg">+0.38 xG shot probability per sequence</span>
-                </div>
-              </div>
-
-              <div class="dossier-quote">
-                <div class="quote-tag">HARIS'S VERDICT</div>
-                <p id="dossierQuote">
-                  "When the fullback commits to the touchline, that pocket between center-back and fullback is undefendable if timed at top speed."
-                </p>
-              </div>
-
-              <div class="dossier-action">
-                <a href="#videos" class="btn btn-outline" style="width: 100%; justify-content: center;">
-                  EXPLORE MATCH BREAKDOWNS ↓
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    
 
     <!-- =======================================================================
          4C. FINAL THIRD SHORTS (VERTICAL REELS SHELF)
@@ -8047,7 +7462,6 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="video-card-body">
             <div class="video-card-meta">
               <span class="playlist-name">${escapeHtml(video.playlistTitle)}</span>
-              <span class="tactical-stamp"><span class="stamp-dot">●</span> ${escapeHtml(video.sport || 'SPORTS').toUpperCase()}</span>
               <span>${video.published}</span>
             </div>
             <h3 class="video-card-title" role="button" tabindex="0">${escapeHtml(video.title)}</h3>
@@ -8071,8 +7485,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window._revealObserver) {
       videoGrid.querySelectorAll('.reveal-cascade:not(.revealed)').forEach(el => window._revealObserver.observe(el));
     }
-
-    initCard3DTilt();
 
     // Update Load More button visibility
     if (loadMoreBtn) {
@@ -8540,9 +7952,6 @@ document.addEventListener('DOMContentLoaded', () => {
   renderShorts();
   initEditorialAnimations();
   renderSpotlightVideo();
-  initCard3DTilt();
-  initCustomCursor();
-  initPlaybook();
 
 
   // =========================================================================
@@ -8788,251 +8197,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (watchYtBtn) {
       watchYtBtn.href = `https://www.youtube.com/watch?v=${latest.id}`;
     }
-
-    initCard3DTilt();
-  }
-
-  // =========================================================================
-  // 3D CARD PERSPECTIVE TILT & DYNAMIC GLASS SHEEN
-  // =========================================================================
-  function initCard3DTilt() {
-    if (window.matchMedia('(pointer: coarse)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const cards = document.querySelectorAll('.video-card, .featured-match-card, .playbook-card');
-    cards.forEach(card => {
-      if (card._tiltAttached) return;
-      card._tiltAttached = true;
-
-      let sheen = card.querySelector('.card-glass-sheen');
-      if (!sheen) {
-        sheen = document.createElement('div');
-        sheen.className = 'card-glass-sheen';
-        sheen.setAttribute('aria-hidden', 'true');
-        card.appendChild(sheen);
-      }
-
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = ((y - centerY) / centerY) * -3.5;
-        const rotateY = ((x - centerX) / centerX) * 3.5;
-
-        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.01, 1.01, 1.01)`;
-        sheen.style.background = `radial-gradient(circle at ${(x / rect.width * 100).toFixed(1)}% ${(y / rect.height * 100).toFixed(1)}%, rgba(255,255,255,0.08) 0%, transparent 60%)`;
-        sheen.style.opacity = '1';
-      }, { passive: true });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-        sheen.style.opacity = '0';
-      });
-    });
-  }
-
-  // =========================================================================
-  // MAGNETIC CUSTOM CURSOR WITH CONTEXTUAL PILL STATES
-  // =========================================================================
-  function initCustomCursor() {
-    if (window.matchMedia('(pointer: coarse)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const cursor = document.getElementById('customCursor');
-    const cursorText = document.getElementById('cursorText');
-    if (!cursor) return;
-
-    let mouseX = -100, mouseY = -100;
-    let curX = -100, curY = -100;
-    let isMoving = false;
-
-    window.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      if (!isMoving) {
-        isMoving = true;
-        cursor.style.opacity = '1';
-      }
-    }, { passive: true });
-
-    window.addEventListener('mouseleave', () => {
-      cursor.style.opacity = '0';
-      isMoving = false;
-    });
-
-    function updateCursor() {
-      curX += (mouseX - curX) * 0.22;
-      curY += (mouseY - curY) * 0.22;
-      cursor.style.transform = `translate3d(${curX}px, ${curY}px, 0)`;
-      requestAnimationFrame(updateCursor);
-    }
-    requestAnimationFrame(updateCursor);
-
-    document.addEventListener('mouseover', (e) => {
-      const mediaTarget = e.target.closest('.video-card, .short-card, .featured-media-container, .playbook-pitch-wrap');
-      const buttonTarget = e.target.closest('.btn, .nav-link, .mobile-nav-link, .filter-pill, .social-card, .playbook-tab');
-
-      if (mediaTarget) {
-        cursor.classList.add('cursor-media');
-        cursor.classList.remove('cursor-hover');
-        if (cursorText) {
-          cursorText.textContent = mediaTarget.classList.contains('playbook-pitch-wrap') ? 'TACTICS' : 'WATCH';
-        }
-      } else if (buttonTarget) {
-        cursor.classList.add('cursor-hover');
-        cursor.classList.remove('cursor-media');
-      } else {
-        cursor.classList.remove('cursor-media', 'cursor-hover');
-      }
-    }, { passive: true });
-  }
-
-  // =========================================================================
-  // SIGNATURE INTERACTIVE TACTICAL PLAYBOOK LAB
-  // =========================================================================
-  function initPlaybook() {
-    const tabs = document.querySelectorAll('.playbook-tab');
-    const arrowsGroup = document.getElementById('tacticalArrowsGroup');
-    const playersGroup = document.getElementById('tacticalPlayersGroup');
-    const badgeEl = document.getElementById('dossierBadge');
-    const titleEl = document.getElementById('dossierTitle');
-    const descEl = document.getElementById('dossierDesc');
-    const objEl = document.getElementById('metricObjective');
-    const zoneEl = document.getElementById('metricZone');
-    const xgEl = document.getElementById('metricXg');
-    const quoteEl = document.getElementById('dossierQuote');
-
-    if (!tabs.length || !arrowsGroup || !playersGroup) return;
-
-    const tactics = {
-      overload: {
-        badge: '[ ATTACKING PHASE // 4-3-3 ]',
-        title: 'The Half-Space Overload',
-        desc: "Manipulating the opponent's backline by pinning the fullback with the winger (#11) while the attacking midfielder (#8) surges into the channel.",
-        obj: 'Create 2v1 qualitative superiority against fullback',
-        zone: 'Left Half-Space (Zone 14 Edge)',
-        xg: '+0.38 xG shot probability per sequence',
-        quote: '"When the fullback commits to the touchline, that pocket between center-back and fullback is undefendable if timed at top speed."',
-        players: [
-          { num: '6', x: 250, y: 200, role: 'Pivot', team: 'home' },
-          { num: '8', x: 440, y: 140, role: 'Half-Space Runner', team: 'home', highlight: true },
-          { num: '11', x: 490, y: 65, role: 'Touchline Winger', team: 'home' },
-          { num: '9', x: 480, y: 200, role: 'Target 9', team: 'home' },
-          { num: '2', x: 450, y: 80, role: 'Opponent Fullback', team: 'opp' },
-          { num: '4', x: 490, y: 160, role: 'Opponent Center-Back', team: 'opp' }
-        ],
-        arrows: [
-          '<path d="M 265 190 Q 370 120 475 75" fill="none" stroke="var(--neon-lime)" stroke-width="2.5" stroke-dasharray="6,4" class="anim-pass"/>',
-          '<path d="M 480 80 L 448 125" fill="none" stroke="var(--neon-lime)" stroke-width="2.5" stroke-dasharray="4,4" class="anim-pass"/>',
-          '<path d="M 440 140 Q 480 140 520 160" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" marker-end="url(#arrowhead)" stroke-dasharray="4,4"/>',
-          '<path d="M 520 160 L 510 195" fill="none" stroke="var(--neon-lime)" stroke-width="3" marker-end="url(#arrowhead)"/>'
-        ]
-      },
-      press: {
-        badge: '[ DEFENSIVE TRANSITION // HIGH-PRESS ]',
-        title: 'The High-Press Funnel Trap',
-        desc: 'Curving the pressing angle from the center forward to eliminate the switch of play, forcing the opponent goalkeeper or center-back into a trapped touchline duel.',
-        obj: "Force turnover within 4 seconds in opponent's defensive third",
-        zone: 'Touchline Press Trap (Attacking Right)',
-        xg: 'High-value turnover resulting in immediate +0.45 xG counter',
-        quote: '"A great press isn\'t about running tirelessly; it\'s about closing the angles so the ball carrier has only one bad pass available."',
-        players: [
-          { num: '9', x: 470, y: 220, role: 'Curving 9', team: 'home', highlight: true },
-          { num: '7', x: 440, y: 310, role: 'Trigger Winger', team: 'home', highlight: true },
-          { num: '10', x: 380, y: 190, role: 'Pivot Lock', team: 'home' },
-          { num: 'GK', x: 560, y: 200, role: 'Opponent Keeper', team: 'opp' },
-          { num: 'CB', x: 500, y: 260, role: 'Target CB', team: 'opp' },
-          { num: 'LB', x: 450, y: 340, role: 'Trapped LB', team: 'opp' }
-        ],
-        arrows: [
-          '<path d="M 545 205 L 515 250" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-dasharray="4,4"/>',
-          '<path d="M 450 170 Q 470 210 490 245" fill="none" stroke="var(--neon-lime)" stroke-width="3" marker-end="url(#arrowhead)"/>',
-          '<path d="M 410 290 L 440 325" fill="none" stroke="var(--neon-lime)" stroke-width="3" marker-end="url(#arrowhead)"/>',
-          '<circle cx="475" cy="300" r="30" fill="rgba(158,226,11,0.12)" stroke="var(--neon-lime)" stroke-width="1.5" stroke-dasharray="4,4"/>'
-        ]
-      },
-      transition: {
-        badge: '[ VERTICAL COUNTER // 3RD MAN RUN ]',
-        title: 'The Direct Third-Man Combination',
-        desc: 'Vertical punch pass into the dropping striker, drawing the center-back out of line, while the blind-side winger bursts through the vacant corridor.',
-        obj: 'Break two defensive lines with maximum 3 touches',
-        zone: 'Central Corridor to Blind-Side Box',
-        xg: '+0.52 xG breakaway chance on goal',
-        quote: '"The third man is always free because the defense is watching the passer and the receiver—never the runner arriving from deep."',
-        players: [
-          { num: '6', x: 230, y: 200, role: 'Deep Passer', team: 'home' },
-          { num: '9', x: 400, y: 200, role: 'False 9 / Wall', team: 'home' },
-          { num: '7', x: 490, y: 230, role: 'Blind-Side Sprinter', team: 'home', highlight: true },
-          { num: 'CB', x: 440, y: 190, role: 'Pulled CB', team: 'opp' },
-          { num: 'CB', x: 490, y: 160, role: 'Covering CB', team: 'opp' }
-        ],
-        arrows: [
-          '<path d="M 245 200 L 385 200" fill="none" stroke="var(--neon-lime)" stroke-width="3" stroke-dasharray="5,3"/>',
-          '<path d="M 405 205 L 435 240" fill="none" stroke="var(--neon-lime)" stroke-width="2.5" stroke-dasharray="3,3"/>',
-          '<path d="M 360 280 Q 430 260 485 235" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2.5" marker-end="url(#arrowhead)"/>',
-          '<path d="M 495 230 L 555 205" fill="none" stroke="var(--neon-lime)" stroke-width="3" marker-end="url(#arrowhead)"/>'
-        ]
-      }
-    };
-
-    function renderTactic(key) {
-      const data = tactics[key];
-      if (!data) return;
-
-      badgeEl.textContent = data.badge;
-      titleEl.textContent = data.title;
-      descEl.textContent = data.desc;
-      objEl.textContent = data.obj;
-      zoneEl.textContent = data.zone;
-      xgEl.textContent = data.xg;
-      quoteEl.textContent = data.quote;
-
-      let defs = document.getElementById('tacticalDefs');
-      if (!defs) {
-        defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-        defs.id = 'tacticalDefs';
-        defs.innerHTML = `
-          <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-            <polygon points="0 0, 8 3, 0 6" fill="#9EE20B" />
-          </marker>
-        `;
-        arrowsGroup.parentNode.insertBefore(defs, arrowsGroup);
-      }
-
-      arrowsGroup.innerHTML = data.arrows.join('');
-
-      playersGroup.innerHTML = data.players.map(p => {
-        const isHome = p.team === 'home';
-        const bgFill = isHome ? (p.highlight ? 'var(--neon-lime)' : '#1A1C20') : '#E63946';
-        const textFill = isHome ? (p.highlight ? '#080808' : '#FFFFFF') : '#FFFFFF';
-        const strokeColor = isHome ? (p.highlight ? 'none' : 'var(--neon-lime)') : '#FFFFFF';
-        const halo = p.highlight ? `<circle cx="${p.x}" cy="${p.y}" r="22" fill="rgba(158,226,11,0.22)" class="player-halo"/>` : '';
-
-        return `
-          <g class="player-node">
-            ${halo}
-            <circle cx="${p.x}" cy="${p.y}" r="14" fill="${bgFill}" stroke="${strokeColor}" stroke-width="2" class="player-circle"/>
-            <text x="${p.x}" y="${p.y + 4}" fill="${textFill}" font-size="10" font-weight="800" text-anchor="middle" font-family="sans-serif">${p.num}</text>
-          </g>
-        `;
-      }).join('');
-    }
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => {
-          t.classList.remove('active');
-          t.setAttribute('aria-selected', 'false');
-        });
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected', 'true');
-        const tacticKey = tab.getAttribute('data-tactic');
-        renderTactic(tacticKey);
-      });
-    });
-
-    renderTactic('overload');
   }
 
 });
