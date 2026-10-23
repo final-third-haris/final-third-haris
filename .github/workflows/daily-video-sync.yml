@@ -2,8 +2,8 @@ name: Daily YouTube Video Sync
 
 on:
   schedule:
-    # Runs automatically twice daily: at 04:00 UTC (9:30 AM IST) and 16:00 UTC (9:30 PM IST)
-    - cron: '0 4,16 * * *'
+    # Runs automatically twice daily at 7:00 PM IST (13:30 UTC) and 10:00 PM IST (16:30 UTC)
+    - cron: '30 13,16 * * *'
   workflow_dispatch: # Allows manual 1-click trigger from the "Actions" tab on GitHub
 
 permissions:
@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5

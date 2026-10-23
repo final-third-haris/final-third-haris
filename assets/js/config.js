@@ -88,10 +88,30 @@ const FINAL_THIRD_CONFIG = {
     ]
   },
 
-  featuredVideoId: "Xq1PtXOrVRc",
+  featuredVideoId: "I-40yws8G-E",
 
   // 300+ Authentic Videos from YouTube @FinalThird_HarisNenmara
   videos: [
+  {
+    "id": "I-40yws8G-E",
+    "title": "സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | Ind Vs Nz",
+    "sport": "cricket",
+    "playlistId": "cricket-insights",
+    "playlistTitle": "Cricket Stories & Analysis",
+    "published": "Just now",
+    "views": "New",
+    "summary": "സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | Ind Vs Nz"
+  },
+  {
+    "id": "KTyRzUt3700",
+    "title": "400 ചേസ് ചെയ്ത ലങ്ക ! ഇംഗ്ലണ്ടിനെ കൊന്നു കൊലവിളിച്ചു ! | srilanka vs england",
+    "sport": "cricket",
+    "playlistId": "cricket-insights",
+    "playlistTitle": "Cricket Stories & Analysis",
+    "published": "3 hours ago",
+    "views": "New",
+    "summary": "400 ചേസ് ചെയ്ത ലങ്ക ! ഇംഗ്ലണ്ടിനെ കൊന്നു കൊലവിളിച്ചു ! | srilanka vs england"
+  },
   {
     "id": "Xq1PtXOrVRc",
     "title": "സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson",
