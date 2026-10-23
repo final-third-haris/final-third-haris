@@ -2797,10 +2797,38 @@ button, input, textarea, select {
 
 
 /* ==========================================================================
-   EDITORIAL ANIMATIONS & MICRO-INTERACTIONS
+   EDITORIAL ANIMATIONS & CINEMATIC SCROLL SUITE (OPTION B)
    ========================================================================== */
 
-/* 1. Fluid Scroll Reveal (60fps GPU-Accelerated) */
+/* 1. Sleek Brand Scroll Progress Indicator */
+.scroll-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2.5px;
+  width: 0%;
+  background: var(--neon-lime, #9EE20B);
+  box-shadow: 0 0 10px rgba(158, 226, 11, 0.5);
+  z-index: 1002;
+  pointer-events: none;
+  transition: width 0.05s ease-out;
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-progress-bar {
+    width: 100% !important;
+    transform-origin: 0 50%;
+    animation: growScrollProgress linear;
+    animation-timeline: scroll();
+    transition: none !important;
+  }
+  @keyframes growScrollProgress {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+}
+
+/* 2. Fluid Scroll Reveal (60fps GPU-Accelerated) */
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(24px);
@@ -2813,13 +2841,122 @@ button, input, textarea, select {
   transform: translateY(0);
 }
 
-/* 2. Tactile Button Click Interaction */
+/* 3. Staggered Grid Cascade (Videos & Shorts) */
+.reveal-cascade {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--cascade-index, 0) * 65ms);
+  will-change: opacity, transform;
+}
+
+.reveal-cascade.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 4. Section Header Editorial Eyebrow Line Draw */
+.eyebrow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.eyebrow::after {
+  content: '';
+  display: inline-block;
+  height: 2px;
+  width: 0;
+  background: var(--neon-lime, #9EE20B);
+  box-shadow: 0 0 8px rgba(158, 226, 11, 0.35);
+  transition: width 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+  vertical-align: middle;
+}
+
+.section-header.revealed .eyebrow::after {
+  width: 44px;
+}
+
+/* 5. Scrollspy Active Navigation Indicator */
+.nav-link {
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  width: 5px;
+  height: 5px;
+  background: var(--neon-lime, #9EE20B);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--neon-lime, #9EE20B);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+  opacity: 0;
+}
+
+.nav-link.active {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+.nav-link.active::after {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+}
+
+/* 6. Spotlight Feature Card Cinematic Reveal */
+.featured-match-card.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color var(--transition-fast);
+  will-change: opacity, transform;
+}
+
+.featured-match-card.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.featured-media-container img {
+  transform: scale(1.05);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.featured-match-card.revealed .featured-media-container img {
+  transform: scale(1);
+}
+
+.featured-match-card.revealed:hover .featured-media-container img {
+  transform: scale(1.04) !important;
+}
+
+.play-overlay-btn {
+  transform: translate(-50%, -50%) scale(0.85);
+  opacity: 0;
+  transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s, opacity 0.5s ease 0.3s;
+}
+
+.featured-match-card.revealed .play-overlay-btn {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.featured-match-card.revealed:hover .play-overlay-btn {
+  transform: translate(-50%, -50%) scale(1.12) !important;
+}
+
+/* 7. Tactile Button Click Interaction */
 .btn:active {
   transform: scale(0.97) !important;
   transition: transform 0.08s ease !important;
 }
 
-/* 3. Live Broadcast Beacon Pulse */
+/* 8. Live Broadcast Beacon Pulse */
 .live-indicator-dot {
   position: relative;
 }
@@ -2839,17 +2976,16 @@ button, input, textarea, select {
   100% { transform: scale(2.2); opacity: 0; }
 }
 
-/* 4. Subtle Floating Glass Badge on Hero Visual */
-@keyframes subtleFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+/* 9. Hero Parallax GPU Layers & Floating Badge */
+.hero-portrait-wrapper {
+  will-change: transform;
 }
 
 .portrait-floating-card {
-  animation: subtleFloat 6s ease-in-out infinite;
+  will-change: transform;
 }
 
-/* 5. Sticky Header Frosted Elevation Transition */
+/* 10. Sticky Header Frosted Elevation Transition */
 .site-header {
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -2862,10 +2998,21 @@ button, input, textarea, select {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal-on-scroll {
+  .scroll-progress-bar,
+  .reveal-on-scroll,
+  .reveal-cascade,
+  .featured-match-card.reveal-on-scroll,
+  .featured-media-container img,
+  .play-overlay-btn,
+  .eyebrow::after,
+  .nav-link::after {
+    animation: none !important;
+    transition: none !important;
     opacity: 1 !important;
     transform: none !important;
-    transition: none !important;
+  }
+  .eyebrow::after {
+    width: 44px !important;
   }
   .portrait-floating-card,
   .live-indicator-dot::after {

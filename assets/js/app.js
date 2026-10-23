@@ -94,12 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (emptyState) emptyState.style.display = 'none';
 
-    videoGrid.innerHTML = visible.map(video => {
+    videoGrid.innerHTML = visible.map((video, idx) => {
       const thumbUrl = `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
       const ytWatchUrl = `https://www.youtube.com/watch?v=${video.id}`;
 
       return `
-        <article class="video-card" data-video-id="${video.id}">
+        <article class="video-card reveal-cascade" data-video-id="${video.id}" style="--cascade-index: ${idx % 4}">
           <div class="video-thumbnail-wrap" role="button" tabindex="0" aria-label="Play video: ${escapeHtml(video.title)}">
             <img 
               src="${thumbUrl}" 
@@ -137,6 +137,10 @@ document.addEventListener('DOMContentLoaded', () => {
         </article>
       `;
     }).join('');
+
+    if (window._revealObserver) {
+      videoGrid.querySelectorAll('.reveal-cascade:not(.revealed)').forEach(el => window._revealObserver.observe(el));
+    }
 
     // Update Load More button visibility
     if (loadMoreBtn) {
@@ -529,12 +533,12 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    shortsShelf.innerHTML = visibleShorts.map(short => {
+    shortsShelf.innerHTML = visibleShorts.map((short, idx) => {
       const thumb = `https://i.ytimg.com/vi/${short.id}/hqdefault.jpg`;
       const sportLabel = (short.sport || 'Sports').toUpperCase();
 
       return `
-        <article class="short-card" data-short-id="${short.id}" role="button" tabindex="0" aria-label="Play Short: ${escapeHtml(short.title)}">
+        <article class="short-card reveal-cascade" data-short-id="${short.id}" role="button" tabindex="0" aria-label="Play Short: ${escapeHtml(short.title)}" style="--cascade-index: ${idx % 4}">
           <img src="${thumb}" alt="${escapeHtml(short.title)}" class="short-thumb-img" loading="lazy">
           <div class="short-card-scrim" aria-hidden="true"></div>
           
@@ -564,6 +568,10 @@ document.addEventListener('DOMContentLoaded', () => {
         </article>
       `;
     }).join('');
+
+    if (window._revealObserver) {
+      shortsShelf.querySelectorAll('.reveal-cascade:not(.revealed)').forEach(el => window._revealObserver.observe(el));
+    }
 
     shortsShelf.querySelectorAll('.short-card').forEach(card => {
       const clickHandler = () => {
@@ -603,25 +611,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // =========================================================================
-  // EDITORIAL SCROLL REVEALS & STATS COUNTER ANIMATIONS
+  // EDITORIAL SCROLL REVEALS, PARALLAX & SCROLLSPY (OPTION B SUITE)
   // =========================================================================
   function initEditorialAnimations() {
-    // 1. Header scroll elevation
+    // 1. Header scroll elevation & Sleek Brand Scroll Progress Bar
     const siteHeader = document.querySelector('.site-header');
-    if (siteHeader) {
-      const handleScroll = () => {
-        if (window.scrollY > 40) {
+    const progressBar = document.getElementById('scrollProgressBar');
+
+    const updateScrollState = () => {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      if (siteHeader) {
+        if (scrollY > 40) {
           siteHeader.classList.add('scrolled');
         } else {
           siteHeader.classList.remove('scrolled');
         }
-      };
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      handleScroll();
-    }
+      }
 
-    // 2. Scroll Reveal Observer
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (progressBar && !window.CSS?.supports?.('animation-timeline', 'scroll()')) {
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+        progressBar.style.width = Math.min(100, Math.max(0, progress)) + '%';
+      }
+    };
+
+    let scrollTicking = false;
+    window.addEventListener('scroll', () => {
+      if (!scrollTicking) {
+        window.requestAnimationFrame(() => {
+          updateScrollState();
+          scrollTicking = false;
+        });
+        scrollTicking = true;
+      }
+    }, { passive: true });
+    updateScrollState();
+
+    // 2. Scroll Reveal & Staggered Cascade Observer
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
       const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -631,22 +658,93 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }, {
         root: null,
-        threshold: 0.1,
+        threshold: 0.08,
         rootMargin: '0px 0px -40px 0px'
       });
 
+      window._revealObserver = revealObserver;
+
       const targets = document.querySelectorAll(
-        '.section-header, .video-card, .short-card, .about-grid, .sponsor-banner-card, .contact-form-box'
+        '.section-header, .featured-match-card, .video-card, .short-card, .about-grid, .sponsor-banner-card, .contact-form-box'
       );
       targets.forEach(t => {
-        t.classList.add('reveal-on-scroll');
+        if (!t.classList.contains('reveal-cascade')) {
+          t.classList.add('reveal-on-scroll');
+        }
         revealObserver.observe(t);
       });
     }
 
-    // 3. Animated Stats Counter
+    // 3. Cinematic Hero Depth & Soft Parallax (Passive, GPU-accelerated)
+    const heroWrapper = document.querySelector('.hero-portrait-wrapper');
+    const heroFloatingCard = document.querySelector('.portrait-floating-card');
+    const heroSection = document.getElementById('hero');
+
+    if (heroWrapper && heroSection && window.innerWidth > 768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      let heroTicking = false;
+      const updateHeroParallax = () => {
+        const scrollY = window.scrollY || document.documentElement.scrollTop;
+        const heroHeight = heroSection.offsetHeight;
+        if (scrollY <= heroHeight) {
+          const transY = scrollY * 0.10;
+          const transCardY = scrollY * 0.16;
+          heroWrapper.style.transform = `translate3d(0, ${transY}px, 0)`;
+          if (heroFloatingCard) {
+            heroFloatingCard.style.transform = `translate3d(0, ${transCardY}px, 0)`;
+          }
+        }
+        heroTicking = false;
+      };
+
+      window.addEventListener('scroll', () => {
+        if (!heroTicking) {
+          window.requestAnimationFrame(updateHeroParallax);
+          heroTicking = true;
+        }
+      }, { passive: true });
+    }
+
+    // 4. Scrollspy Active Navigation Indicator
+    const sections = document.querySelectorAll('section[id], header#hero');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if ('IntersectionObserver' in window && sections.length) {
+      const scrollspyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            const targetHref = `#${id}`;
+
+            navLinks.forEach(link => {
+              if (link.getAttribute('href') === targetHref) {
+                link.classList.add('active');
+              } else {
+                link.classList.remove('active');
+              }
+            });
+
+            mobileNavLinks.forEach(link => {
+              if (link.getAttribute('href') === targetHref) {
+                link.classList.add('active');
+              } else {
+                link.classList.remove('active');
+              }
+            });
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: '-25% 0px -60% 0px',
+        threshold: 0
+      });
+
+      sections.forEach(sec => scrollspyObserver.observe(sec));
+    }
+
+    // 5. Animated Stats Counter
     const statElements = document.querySelectorAll('.stat-item .stat-value, .sponsor-stat-value');
-    if (statElements.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (statElements.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
       const counterObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
