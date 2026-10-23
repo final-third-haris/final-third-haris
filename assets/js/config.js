@@ -99,7 +99,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "Just now",
-    "views": "6.3K views",
+    "views": "8.0K views",
     "summary": "സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | Ind Vs Nz"
   },
   {
@@ -109,7 +109,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "3 hours ago",
-    "views": "7.0K views",
+    "views": "8.0K views",
     "summary": "400 ചേസ് ചെയ്ത ലങ്ക ! ഇംഗ്ലണ്ടിനെ കൊന്നു കൊലവിളിച്ചു ! | srilanka vs england"
   },
   {
@@ -119,7 +119,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "Just now",
-    "views": "157K views",
+    "views": "158K views",
     "summary": "സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson"
   },
   {
@@ -149,7 +149,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "17 hr ago",
-    "views": "50K views",
+    "views": "51K views",
     "summary": "PSG യെ വീഴ്ത്താൻ ആരുണ്ട് ഇവിടെ ? | Barcelona vs Psg | Lamine Yamal"
   },
   {
