@@ -614,9 +614,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // EDITORIAL SCROLL REVEALS, PARALLAX & SCROLLSPY (OPTION B SUITE)
   // =========================================================================
   function initEditorialAnimations() {
-    // 1. Header scroll elevation & Sleek Brand Scroll Progress Bar
+    // 1. Header scroll elevation, Progress Bar & Ambient Space Motes Parallax
     const siteHeader = document.querySelector('.site-header');
     const progressBar = document.getElementById('scrollProgressBar');
+    const spaceMotesLayer = document.getElementById('spaceMotesLayer');
 
     const updateScrollState = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
@@ -632,6 +633,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
         progressBar.style.width = Math.min(100, Math.max(0, progress)) + '%';
+      }
+
+      if (spaceMotesLayer && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const bgOffset = (scrollY * 0.12) % 400;
+        spaceMotesLayer.style.transform = `translate3d(0, -${bgOffset}px, 0)`;
       }
     };
 
@@ -675,9 +681,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 3. Cinematic Hero Depth & Soft Parallax (Passive, GPU-accelerated)
+    // 3. Cinematic Hero Depth, Dissolve & Multi-Plane Parallax (Passive, GPU-accelerated)
     const heroWrapper = document.querySelector('.hero-portrait-wrapper');
     const heroFloatingCard = document.querySelector('.portrait-floating-card');
+    const heroContent = document.querySelector('.hero-content');
     const heroSection = document.getElementById('hero');
 
     if (heroWrapper && heroSection && window.innerWidth > 768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -687,10 +694,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const heroHeight = heroSection.offsetHeight;
         if (scrollY <= heroHeight) {
           const transY = scrollY * 0.10;
-          const transCardY = scrollY * 0.16;
-          heroWrapper.style.transform = `translate3d(0, ${transY}px, 0)`;
+          const transCardY = scrollY * 0.22;
+          const portraitScale = Math.max(0.96, 1 - (scrollY * 0.00008));
+          heroWrapper.style.transform = `translate3d(0, ${transY}px, 0) scale(${portraitScale})`;
           if (heroFloatingCard) {
             heroFloatingCard.style.transform = `translate3d(0, ${transCardY}px, 0)`;
+          }
+          if (heroContent) {
+            const contentY = scrollY * 0.14;
+            const contentOpacity = Math.max(0.15, 1 - (scrollY / (heroHeight * 0.85)));
+            heroContent.style.transform = `translate3d(0, ${contentY}px, 0)`;
+            heroContent.style.opacity = contentOpacity;
           }
         }
         heroTicking = false;

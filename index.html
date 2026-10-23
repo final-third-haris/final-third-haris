@@ -2845,8 +2845,31 @@ button, input, textarea, select {
 
   
 /* ==========================================================================
-   EDITORIAL ANIMATIONS & CINEMATIC SCROLL SUITE (OPTION B)
+   EDITORIAL ANIMATIONS & FULL-SITE COSMIC SCROLL SUITE
    ========================================================================== */
+
+/* 0. Continuous Ambient Space Motes Layer (Full-Site Parallax) */
+.space-motes-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: 
+    radial-gradient(1px 1px at 20px 30px, rgba(158, 226, 11, 0.35), rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 140px 170px, rgba(255, 255, 255, 0.2), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 280px 90px, rgba(158, 226, 11, 0.3), rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 420px 240px, rgba(255, 255, 255, 0.18), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 580px 130px, rgba(158, 226, 11, 0.3), rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 720px 310px, rgba(255, 255, 255, 0.2), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 860px 210px, rgba(158, 226, 11, 0.25), rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 800px 400px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+  will-change: transform;
+}
 
 /* 1. Sleek Brand Scroll Progress Indicator */
 .scroll-progress-bar {
@@ -2879,28 +2902,28 @@ button, input, textarea, select {
 /* 2. Fluid Scroll Reveal (60fps GPU-Accelerated) */
 .reveal-on-scroll {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(24px) scale(0.99);
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
 .reveal-on-scroll.revealed {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
-/* 3. Staggered Grid Cascade (Videos & Shorts) */
+/* 3. Staggered Grid Cascade with Subtle Floating Scale */
 .reveal-cascade {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(28px) scale(0.98);
   transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: calc(var(--cascade-index, 0) * 65ms);
+  transition-delay: calc(var(--cascade-index, 0) * 60ms);
   will-change: opacity, transform;
 }
 
 .reveal-cascade.revealed {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 /* 4. Section Header Editorial Eyebrow Line Draw */
@@ -2960,14 +2983,14 @@ button, input, textarea, select {
 /* 6. Spotlight Feature Card Cinematic Reveal */
 .featured-match-card.reveal-on-scroll {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color var(--transition-fast);
+  transform: translateY(30px) scale(0.98);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), border-color var(--transition-fast);
   will-change: opacity, transform;
 }
 
 .featured-match-card.reveal-on-scroll.revealed {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 .featured-media-container img {
@@ -3025,6 +3048,10 @@ button, input, textarea, select {
 }
 
 /* 9. Hero Parallax GPU Layers & Floating Badge */
+.hero-content {
+  will-change: transform, opacity;
+}
+
 .hero-portrait-wrapper {
   will-change: transform;
 }
@@ -3046,6 +3073,9 @@ button, input, textarea, select {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .space-motes-layer {
+    display: none !important;
+  }
   .scroll-progress-bar,
   .reveal-on-scroll,
   .reveal-cascade,
@@ -3053,7 +3083,10 @@ button, input, textarea, select {
   .featured-media-container img,
   .play-overlay-btn,
   .eyebrow::after,
-  .nav-link::after {
+  .nav-link::after,
+  .hero-content,
+  .hero-portrait-wrapper,
+  .portrait-floating-card {
     animation: none !important;
     transition: none !important;
     opacity: 1 !important;
@@ -3280,6 +3313,7 @@ button, input, textarea, select {
 
   <!-- Main Content Landmark -->
   <main id="main-content">
+    <div class="space-motes-layer" id="spaceMotesLayer" aria-hidden="true"></div>
     
     <!-- =======================================================================
          2. PREMIUM CINEMATIC HERO SECTION (85–100% initial viewport)
@@ -7924,9 +7958,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // EDITORIAL SCROLL REVEALS, PARALLAX & SCROLLSPY (OPTION B SUITE)
   // =========================================================================
   function initEditorialAnimations() {
-    // 1. Header scroll elevation & Sleek Brand Scroll Progress Bar
+    // 1. Header scroll elevation, Progress Bar & Ambient Space Motes Parallax
     const siteHeader = document.querySelector('.site-header');
     const progressBar = document.getElementById('scrollProgressBar');
+    const spaceMotesLayer = document.getElementById('spaceMotesLayer');
 
     const updateScrollState = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
@@ -7942,6 +7977,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
         progressBar.style.width = Math.min(100, Math.max(0, progress)) + '%';
+      }
+
+      if (spaceMotesLayer && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const bgOffset = (scrollY * 0.12) % 400;
+        spaceMotesLayer.style.transform = `translate3d(0, -${bgOffset}px, 0)`;
       }
     };
 
@@ -7985,9 +8025,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 3. Cinematic Hero Depth & Soft Parallax (Passive, GPU-accelerated)
+    // 3. Cinematic Hero Depth, Dissolve & Multi-Plane Parallax (Passive, GPU-accelerated)
     const heroWrapper = document.querySelector('.hero-portrait-wrapper');
     const heroFloatingCard = document.querySelector('.portrait-floating-card');
+    const heroContent = document.querySelector('.hero-content');
     const heroSection = document.getElementById('hero');
 
     if (heroWrapper && heroSection && window.innerWidth > 768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -7997,10 +8038,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const heroHeight = heroSection.offsetHeight;
         if (scrollY <= heroHeight) {
           const transY = scrollY * 0.10;
-          const transCardY = scrollY * 0.16;
-          heroWrapper.style.transform = `translate3d(0, ${transY}px, 0)`;
+          const transCardY = scrollY * 0.22;
+          const portraitScale = Math.max(0.96, 1 - (scrollY * 0.00008));
+          heroWrapper.style.transform = `translate3d(0, ${transY}px, 0) scale(${portraitScale})`;
           if (heroFloatingCard) {
             heroFloatingCard.style.transform = `translate3d(0, ${transCardY}px, 0)`;
+          }
+          if (heroContent) {
+            const contentY = scrollY * 0.14;
+            const contentOpacity = Math.max(0.15, 1 - (scrollY / (heroHeight * 0.85)));
+            heroContent.style.transform = `translate3d(0, ${contentY}px, 0)`;
+            heroContent.style.opacity = contentOpacity;
           }
         }
         heroTicking = false;
