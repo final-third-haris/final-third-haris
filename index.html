@@ -2967,9 +2967,8 @@ button, input, textarea, select {
   display: block !important;
   object-fit: contain !important;
   image-rendering: auto !important;
-  /* Seamless edge blend: only softens the outer 12% perimeter, leaving Haris 100% sharp and untouched */
-  -webkit-mask-image: radial-gradient(ellipse 88% 85% at 50% 50%, black 72%, rgba(0,0,0,0.85) 84%, transparent 100%) !important;
-  mask-image: radial-gradient(ellipse 88% 85% at 50% 50%, black 72%, rgba(0,0,0,0.85) 84%, transparent 100%) !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9)) !important;
   transition: transform var(--transition-smooth) !important;
 }
@@ -3189,7 +3188,7 @@ button, input, textarea, select {
         <!-- Right: Cinematic Studio Visual of Haris Nenmara -->
         <div class="hero-portrait-wrapper">
           <div class="portrait-editorial-frame">
-            <img src="assets/images/haris-hero-original.jpg?v=3" alt="Haris Nenmara — Final Third Sports Host &amp; Analyst" class="portrait-editorial-img" width="1024" height="958" loading="eager" />
+            <img src="assets/images/haris-hero-portrait.png?v=5" alt="Haris Nenmara — Final Third Sports Host &amp; Analyst" class="portrait-editorial-img" width="1024" height="958" loading="eager" />
           </div>
           <!-- Floating identity card -->
           <div class="portrait-floating-card">
