@@ -118,6 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="video-card-body">
             <div class="video-card-meta">
               <span class="playlist-name">${escapeHtml(video.playlistTitle)}</span>
+              <span class="tactical-stamp"><span class="stamp-dot">●</span> ${escapeHtml(video.sport || 'SPORTS').toUpperCase()}</span>
               <span>${video.published}</span>
             </div>
             <h3 class="video-card-title" role="button" tabindex="0">${escapeHtml(video.title)}</h3>
@@ -141,6 +142,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window._revealObserver) {
       videoGrid.querySelectorAll('.reveal-cascade:not(.revealed)').forEach(el => window._revealObserver.observe(el));
     }
+
+    initCard3DTilt();
 
     // Update Load More button visibility
     if (loadMoreBtn) {
@@ -608,6 +611,9 @@ document.addEventListener('DOMContentLoaded', () => {
   renderShorts();
   initEditorialAnimations();
   renderSpotlightVideo();
+  initCard3DTilt();
+  initCustomCursor();
+  initPlaybook();
 
 
   // =========================================================================
@@ -853,6 +859,252 @@ document.addEventListener('DOMContentLoaded', () => {
     if (watchYtBtn) {
       watchYtBtn.href = `https://www.youtube.com/watch?v=${latest.id}`;
     }
+
+    initCard3DTilt();
   }
+
+  // =========================================================================
+  // 3D CARD PERSPECTIVE TILT & DYNAMIC GLASS SHEEN
+  // =========================================================================
+  function initCard3DTilt() {
+    if (window.matchMedia('(pointer: coarse)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const cards = document.querySelectorAll('.video-card, .featured-match-card, .playbook-card');
+    cards.forEach(card => {
+      if (card._tiltAttached) return;
+      card._tiltAttached = true;
+
+      let sheen = card.querySelector('.card-glass-sheen');
+      if (!sheen) {
+        sheen = document.createElement('div');
+        sheen.className = 'card-glass-sheen';
+        sheen.setAttribute('aria-hidden', 'true');
+        card.appendChild(sheen);
+      }
+
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * -3.5;
+        const rotateY = ((x - centerX) / centerX) * 3.5;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.01, 1.01, 1.01)`;
+        sheen.style.background = `radial-gradient(circle at ${(x / rect.width * 100).toFixed(1)}% ${(y / rect.height * 100).toFixed(1)}%, rgba(255,255,255,0.08) 0%, transparent 60%)`;
+        sheen.style.opacity = '1';
+      }, { passive: true });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+        sheen.style.opacity = '0';
+      });
+    });
+  }
+
+  // =========================================================================
+  // MAGNETIC CUSTOM CURSOR WITH CONTEXTUAL PILL STATES
+  // =========================================================================
+  function initCustomCursor() {
+    if (window.matchMedia('(pointer: coarse)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const cursor = document.getElementById('customCursor');
+    const cursorText = document.getElementById('cursorText');
+    if (!cursor) return;
+
+    let mouseX = -100, mouseY = -100;
+    let curX = -100, curY = -100;
+    let isMoving = false;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!isMoving) {
+        isMoving = true;
+        cursor.style.opacity = '1';
+      }
+    }, { passive: true });
+
+    window.addEventListener('mouseleave', () => {
+      cursor.style.opacity = '0';
+      isMoving = false;
+    });
+
+    function updateCursor() {
+      curX += (mouseX - curX) * 0.22;
+      curY += (mouseY - curY) * 0.22;
+      cursor.style.transform = `translate3d(${curX}px, ${curY}px, 0)`;
+      requestAnimationFrame(updateCursor);
+    }
+    requestAnimationFrame(updateCursor);
+
+    document.addEventListener('mouseover', (e) => {
+      const mediaTarget = e.target.closest('.video-card, .short-card, .featured-media-container, .playbook-pitch-wrap');
+      const buttonTarget = e.target.closest('.btn, .nav-link, .mobile-nav-link, .filter-pill, .social-card, .playbook-tab');
+
+      if (mediaTarget) {
+        cursor.classList.add('cursor-media');
+        cursor.classList.remove('cursor-hover');
+        if (cursorText) {
+          cursorText.textContent = mediaTarget.classList.contains('playbook-pitch-wrap') ? 'TACTICS' : 'WATCH';
+        }
+      } else if (buttonTarget) {
+        cursor.classList.add('cursor-hover');
+        cursor.classList.remove('cursor-media');
+      } else {
+        cursor.classList.remove('cursor-media', 'cursor-hover');
+      }
+    }, { passive: true });
+  }
+
+  // =========================================================================
+  // SIGNATURE INTERACTIVE TACTICAL PLAYBOOK LAB
+  // =========================================================================
+  function initPlaybook() {
+    const tabs = document.querySelectorAll('.playbook-tab');
+    const arrowsGroup = document.getElementById('tacticalArrowsGroup');
+    const playersGroup = document.getElementById('tacticalPlayersGroup');
+    const badgeEl = document.getElementById('dossierBadge');
+    const titleEl = document.getElementById('dossierTitle');
+    const descEl = document.getElementById('dossierDesc');
+    const objEl = document.getElementById('metricObjective');
+    const zoneEl = document.getElementById('metricZone');
+    const xgEl = document.getElementById('metricXg');
+    const quoteEl = document.getElementById('dossierQuote');
+
+    if (!tabs.length || !arrowsGroup || !playersGroup) return;
+
+    const tactics = {
+      overload: {
+        badge: '[ ATTACKING PHASE // 4-3-3 ]',
+        title: 'The Half-Space Overload',
+        desc: "Manipulating the opponent's backline by pinning the fullback with the winger (#11) while the attacking midfielder (#8) surges into the channel.",
+        obj: 'Create 2v1 qualitative superiority against fullback',
+        zone: 'Left Half-Space (Zone 14 Edge)',
+        xg: '+0.38 xG shot probability per sequence',
+        quote: '"When the fullback commits to the touchline, that pocket between center-back and fullback is undefendable if timed at top speed."',
+        players: [
+          { num: '6', x: 250, y: 200, role: 'Pivot', team: 'home' },
+          { num: '8', x: 440, y: 140, role: 'Half-Space Runner', team: 'home', highlight: true },
+          { num: '11', x: 490, y: 65, role: 'Touchline Winger', team: 'home' },
+          { num: '9', x: 480, y: 200, role: 'Target 9', team: 'home' },
+          { num: '2', x: 450, y: 80, role: 'Opponent Fullback', team: 'opp' },
+          { num: '4', x: 490, y: 160, role: 'Opponent Center-Back', team: 'opp' }
+        ],
+        arrows: [
+          '<path d="M 265 190 Q 370 120 475 75" fill="none" stroke="var(--neon-lime)" stroke-width="2.5" stroke-dasharray="6,4" class="anim-pass"/>',
+          '<path d="M 480 80 L 448 125" fill="none" stroke="var(--neon-lime)" stroke-width="2.5" stroke-dasharray="4,4" class="anim-pass"/>',
+          '<path d="M 440 140 Q 480 140 520 160" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" marker-end="url(#arrowhead)" stroke-dasharray="4,4"/>',
+          '<path d="M 520 160 L 510 195" fill="none" stroke="var(--neon-lime)" stroke-width="3" marker-end="url(#arrowhead)"/>'
+        ]
+      },
+      press: {
+        badge: '[ DEFENSIVE TRANSITION // HIGH-PRESS ]',
+        title: 'The High-Press Funnel Trap',
+        desc: 'Curving the pressing angle from the center forward to eliminate the switch of play, forcing the opponent goalkeeper or center-back into a trapped touchline duel.',
+        obj: "Force turnover within 4 seconds in opponent's defensive third",
+        zone: 'Touchline Press Trap (Attacking Right)',
+        xg: 'High-value turnover resulting in immediate +0.45 xG counter',
+        quote: '"A great press isn\'t about running tirelessly; it\'s about closing the angles so the ball carrier has only one bad pass available."',
+        players: [
+          { num: '9', x: 470, y: 220, role: 'Curving 9', team: 'home', highlight: true },
+          { num: '7', x: 440, y: 310, role: 'Trigger Winger', team: 'home', highlight: true },
+          { num: '10', x: 380, y: 190, role: 'Pivot Lock', team: 'home' },
+          { num: 'GK', x: 560, y: 200, role: 'Opponent Keeper', team: 'opp' },
+          { num: 'CB', x: 500, y: 260, role: 'Target CB', team: 'opp' },
+          { num: 'LB', x: 450, y: 340, role: 'Trapped LB', team: 'opp' }
+        ],
+        arrows: [
+          '<path d="M 545 205 L 515 250" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-dasharray="4,4"/>',
+          '<path d="M 450 170 Q 470 210 490 245" fill="none" stroke="var(--neon-lime)" stroke-width="3" marker-end="url(#arrowhead)"/>',
+          '<path d="M 410 290 L 440 325" fill="none" stroke="var(--neon-lime)" stroke-width="3" marker-end="url(#arrowhead)"/>',
+          '<circle cx="475" cy="300" r="30" fill="rgba(158,226,11,0.12)" stroke="var(--neon-lime)" stroke-width="1.5" stroke-dasharray="4,4"/>'
+        ]
+      },
+      transition: {
+        badge: '[ VERTICAL COUNTER // 3RD MAN RUN ]',
+        title: 'The Direct Third-Man Combination',
+        desc: 'Vertical punch pass into the dropping striker, drawing the center-back out of line, while the blind-side winger bursts through the vacant corridor.',
+        obj: 'Break two defensive lines with maximum 3 touches',
+        zone: 'Central Corridor to Blind-Side Box',
+        xg: '+0.52 xG breakaway chance on goal',
+        quote: '"The third man is always free because the defense is watching the passer and the receiver—never the runner arriving from deep."',
+        players: [
+          { num: '6', x: 230, y: 200, role: 'Deep Passer', team: 'home' },
+          { num: '9', x: 400, y: 200, role: 'False 9 / Wall', team: 'home' },
+          { num: '7', x: 490, y: 230, role: 'Blind-Side Sprinter', team: 'home', highlight: true },
+          { num: 'CB', x: 440, y: 190, role: 'Pulled CB', team: 'opp' },
+          { num: 'CB', x: 490, y: 160, role: 'Covering CB', team: 'opp' }
+        ],
+        arrows: [
+          '<path d="M 245 200 L 385 200" fill="none" stroke="var(--neon-lime)" stroke-width="3" stroke-dasharray="5,3"/>',
+          '<path d="M 405 205 L 435 240" fill="none" stroke="var(--neon-lime)" stroke-width="2.5" stroke-dasharray="3,3"/>',
+          '<path d="M 360 280 Q 430 260 485 235" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2.5" marker-end="url(#arrowhead)"/>',
+          '<path d="M 495 230 L 555 205" fill="none" stroke="var(--neon-lime)" stroke-width="3" marker-end="url(#arrowhead)"/>'
+        ]
+      }
+    };
+
+    function renderTactic(key) {
+      const data = tactics[key];
+      if (!data) return;
+
+      badgeEl.textContent = data.badge;
+      titleEl.textContent = data.title;
+      descEl.textContent = data.desc;
+      objEl.textContent = data.obj;
+      zoneEl.textContent = data.zone;
+      xgEl.textContent = data.xg;
+      quoteEl.textContent = data.quote;
+
+      let defs = document.getElementById('tacticalDefs');
+      if (!defs) {
+        defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+        defs.id = 'tacticalDefs';
+        defs.innerHTML = `
+          <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#9EE20B" />
+          </marker>
+        `;
+        arrowsGroup.parentNode.insertBefore(defs, arrowsGroup);
+      }
+
+      arrowsGroup.innerHTML = data.arrows.join('');
+
+      playersGroup.innerHTML = data.players.map(p => {
+        const isHome = p.team === 'home';
+        const bgFill = isHome ? (p.highlight ? 'var(--neon-lime)' : '#1A1C20') : '#E63946';
+        const textFill = isHome ? (p.highlight ? '#080808' : '#FFFFFF') : '#FFFFFF';
+        const strokeColor = isHome ? (p.highlight ? 'none' : 'var(--neon-lime)') : '#FFFFFF';
+        const halo = p.highlight ? `<circle cx="${p.x}" cy="${p.y}" r="22" fill="rgba(158,226,11,0.22)" class="player-halo"/>` : '';
+
+        return `
+          <g class="player-node">
+            ${halo}
+            <circle cx="${p.x}" cy="${p.y}" r="14" fill="${bgFill}" stroke="${strokeColor}" stroke-width="2" class="player-circle"/>
+            <text x="${p.x}" y="${p.y + 4}" fill="${textFill}" font-size="10" font-weight="800" text-anchor="middle" font-family="sans-serif">${p.num}</text>
+          </g>
+        `;
+      }).join('');
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        const tacticKey = tab.getAttribute('data-tactic');
+        renderTactic(tacticKey);
+      });
+    });
+
+    renderTactic('overload');
+  }
+
 
 });
