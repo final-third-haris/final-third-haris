@@ -3228,16 +3228,16 @@ button, input, textarea, select {
             id="featuredThumbnail" 
             role="button" 
             tabindex="0" 
-            onclick="openVideoModal('Opttw3MUj68')"
-            aria-label="Play featured story: ഭുവി വന്നു; ഷമി വരില്ലേ ? Mohammed Shami"
+            onclick="openVideoModal('Xq1PtXOrVRc')"
+            aria-label="Play featured story: സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson"
           >
             <img 
-              src="https://i.ytimg.com/vi/Opttw3MUj68/maxresdefault.jpg" 
-              alt="Featured Story Thumbnail: Mohammed Shami and Bhuvneshwar Kumar pace analysis" 
+              src="https://i.ytimg.com/vi/Xq1PtXOrVRc/maxresdefault.jpg" 
+              alt="Featured Story Thumbnail: സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson" 
               width="680" 
               height="382" 
               loading="lazy"
-              onerror="this.src='https://i.ytimg.com/vi/Opttw3MUj68/hqdefault.jpg'"
+              onerror="this.src='https://i.ytimg.com/vi/Xq1PtXOrVRc/hqdefault.jpg'"
             />
             <div class="play-overlay-btn" id="featuredPlayBtn" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -3252,28 +3252,28 @@ button, input, textarea, select {
               <div class="featured-tag-bar">
                 <span class="badge-tag">CRICKET</span>
                 <span style="font-size: 0.8125rem; color: var(--muted-grey); font-weight: 700;">
-                  Team India &amp; Pace Attack · Latest Upload · 13h ago
+                  Cricket Stories &amp; Analysis · Latest Upload · Just now
                 </span>
               </div>
 
-              <h3 class="featured-headline" lang="ml" id="featuredHeadline" style="cursor: pointer;" onclick="openVideoModal('Opttw3MUj68')">
-                ഭുവി വന്നു; ഷമി വരില്ലേ ? Mohammed Shami
+              <h3 class="featured-headline" lang="ml" id="featuredHeadline" style="cursor: pointer;" onclick="openVideoModal('Xq1PtXOrVRc')">
+                സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson
               </h3>
 
               <p class="featured-summary">
-                Tactical breakdown and pace bowling analysis on Bhuvneshwar Kumar and Mohammed Shami's potential comeback into Team India's attack.
+                സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson
               </p>
             </div>
 
             <div class="featured-actions">
-              <button class="btn btn-primary" id="featuredWatchStoryBtn" type="button" onclick="openVideoModal('Opttw3MUj68')">
+              <button class="btn btn-primary" id="featuredWatchStoryBtn" type="button" onclick="openVideoModal('Xq1PtXOrVRc')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                   <polygon points="5 3 19 12 5 21 5 3"></polygon>
                 </svg>
                 WATCH STORY
               </button>
               <a 
-                href="https://www.youtube.com/watch?v=Opttw3MUj68" 
+                href="https://www.youtube.com/watch?v=Xq1PtXOrVRc" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="btn btn-outline"
@@ -4099,7 +4099,7 @@ const FINAL_THIRD_CONFIG = {
     ]
   },
 
-  featuredVideoId: "Opttw3MUj68",
+  featuredVideoId: "Xq1PtXOrVRc",
 
   // 300+ Authentic Videos from YouTube @FinalThird_HarisNenmara
   videos: [
@@ -4125,13 +4125,13 @@ const FINAL_THIRD_CONFIG = {
   },
   {
     "id": "Opttw3MUj68",
-    "title": "ഭുവി വന്നു; ഷമി വരില്ലേ ? Mohammed Shami ",
+    "title": "സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson ",
     "sport": "cricket",
     "playlistId": "PLcWlSk4Ir_yg",
     "playlistTitle": "Cricket India",
     "published": "15 hr ago",
     "views": "10K views",
-    "summary": "ഭുവി വന്നു; ഷമി വരില്ലേ ? Mohammed Shami "
+    "summary": "സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson "
   },
   {
     "id": "4LGjduzWzFg",
@@ -7766,6 +7766,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderVideos();
   renderShorts();
   initEditorialAnimations();
+  renderSpotlightVideo();
 
 
   // =========================================================================
@@ -7845,6 +7846,67 @@ document.addEventListener('DOMContentLoaded', () => {
       }, { threshold: 0.5 });
 
       statElements.forEach(el => counterObserver.observe(el));
+    }
+  }
+
+
+
+  // =========================================================================
+  // DYNAMIC SPOTLIGHT ANALYSIS (ALWAYS AUTOMATICALLY USES LATEST VIDEO)
+  // =========================================================================
+  function renderSpotlightVideo() {
+    if (typeof FINAL_THIRD_CONFIG === 'undefined' || !FINAL_THIRD_CONFIG.videos || FINAL_THIRD_CONFIG.videos.length === 0) return;
+
+    // Always automatically pick the newest full-length episode (index 0)
+    const latest = FINAL_THIRD_CONFIG.videos[0];
+    FINAL_THIRD_CONFIG.featuredVideoId = latest.id;
+
+    const thumbContainer = document.getElementById('featuredThumbnail');
+    const headline = document.getElementById('featuredHeadline');
+    const summary = document.querySelector('.featured-summary');
+    const sportBadge = document.querySelector('.featured-tag-bar .badge-tag');
+    const metaSpan = document.querySelector('.featured-tag-bar span:last-child');
+    const watchStoryBtn = document.getElementById('featuredWatchStoryBtn');
+    const watchYtBtn = document.querySelector('.featured-actions a.btn-outline');
+
+    if (thumbContainer) {
+      thumbContainer.onclick = () => openVideoModal(latest.id);
+      thumbContainer.setAttribute('aria-label', `Play featured story: ${latest.title}`);
+      const img = thumbContainer.querySelector('img');
+      if (img) {
+        img.src = `https://i.ytimg.com/vi/${latest.id}/maxresdefault.jpg`;
+        img.alt = `Spotlight Analysis Thumbnail: ${latest.title}`;
+        img.onerror = function() {
+          this.src = `https://i.ytimg.com/vi/${latest.id}/hqdefault.jpg`;
+        };
+      }
+    }
+
+    if (headline) {
+      headline.textContent = latest.title;
+      headline.onclick = () => openVideoModal(latest.id);
+    }
+
+    if (summary) {
+      summary.textContent = latest.summary || latest.title;
+    }
+
+    if (sportBadge) {
+      sportBadge.textContent = (latest.sport || 'Sports').toUpperCase();
+    }
+
+    if (metaSpan) {
+      const plTitle = latest.playlistTitle || 'Latest Release';
+      const pubTime = latest.published || 'Latest';
+      metaSpan.textContent = `${plTitle} · Latest Upload · ${pubTime}`;
+    }
+
+    if (watchStoryBtn) {
+      watchStoryBtn.onclick = () => openVideoModal(latest.id);
+    }
+
+    if (watchYtBtn) {
+      watchYtBtn.href = `https://www.youtube.com/watch?v=${latest.id}`;
     }
   }
 

@@ -599,6 +599,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderVideos();
   renderShorts();
   initEditorialAnimations();
+  renderSpotlightVideo();
 
 
   // =========================================================================
@@ -678,6 +679,67 @@ document.addEventListener('DOMContentLoaded', () => {
       }, { threshold: 0.5 });
 
       statElements.forEach(el => counterObserver.observe(el));
+    }
+  }
+
+
+
+  // =========================================================================
+  // DYNAMIC SPOTLIGHT ANALYSIS (ALWAYS AUTOMATICALLY USES LATEST VIDEO)
+  // =========================================================================
+  function renderSpotlightVideo() {
+    if (typeof FINAL_THIRD_CONFIG === 'undefined' || !FINAL_THIRD_CONFIG.videos || FINAL_THIRD_CONFIG.videos.length === 0) return;
+
+    // Always automatically pick the newest full-length episode (index 0)
+    const latest = FINAL_THIRD_CONFIG.videos[0];
+    FINAL_THIRD_CONFIG.featuredVideoId = latest.id;
+
+    const thumbContainer = document.getElementById('featuredThumbnail');
+    const headline = document.getElementById('featuredHeadline');
+    const summary = document.querySelector('.featured-summary');
+    const sportBadge = document.querySelector('.featured-tag-bar .badge-tag');
+    const metaSpan = document.querySelector('.featured-tag-bar span:last-child');
+    const watchStoryBtn = document.getElementById('featuredWatchStoryBtn');
+    const watchYtBtn = document.querySelector('.featured-actions a.btn-outline');
+
+    if (thumbContainer) {
+      thumbContainer.onclick = () => openVideoModal(latest.id);
+      thumbContainer.setAttribute('aria-label', `Play featured story: ${latest.title}`);
+      const img = thumbContainer.querySelector('img');
+      if (img) {
+        img.src = `https://i.ytimg.com/vi/${latest.id}/maxresdefault.jpg`;
+        img.alt = `Spotlight Analysis Thumbnail: ${latest.title}`;
+        img.onerror = function() {
+          this.src = `https://i.ytimg.com/vi/${latest.id}/hqdefault.jpg`;
+        };
+      }
+    }
+
+    if (headline) {
+      headline.textContent = latest.title;
+      headline.onclick = () => openVideoModal(latest.id);
+    }
+
+    if (summary) {
+      summary.textContent = latest.summary || latest.title;
+    }
+
+    if (sportBadge) {
+      sportBadge.textContent = (latest.sport || 'Sports').toUpperCase();
+    }
+
+    if (metaSpan) {
+      const plTitle = latest.playlistTitle || 'Latest Release';
+      const pubTime = latest.published || 'Latest';
+      metaSpan.textContent = `${plTitle} · Latest Upload · ${pubTime}`;
+    }
+
+    if (watchStoryBtn) {
+      watchStoryBtn.onclick = () => openVideoModal(latest.id);
+    }
+
+    if (watchYtBtn) {
+      watchYtBtn.href = `https://www.youtube.com/watch?v=${latest.id}`;
     }
   }
 

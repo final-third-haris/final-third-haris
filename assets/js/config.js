@@ -88,7 +88,7 @@ const FINAL_THIRD_CONFIG = {
     ]
   },
 
-  featuredVideoId: "Opttw3MUj68",
+  featuredVideoId: "Xq1PtXOrVRc",
 
   // 300+ Authentic Videos from YouTube @FinalThird_HarisNenmara
   videos: [

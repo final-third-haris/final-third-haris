@@ -145,6 +145,13 @@ def fetch_latest_feed_videos():
 
     return videos
 
+def update_featured_id(filepath, video_id):
+    with open(filepath, "r", encoding="utf-8") as f:
+        content = f.read()
+    content = re.sub(r'featuredVideoId:\s*"[^"]*"', f'featuredVideoId: "{video_id}"', content)
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(content)
+
 def update_file(filepath, new_items, target_key="videos"):
     if not new_items:
         return True
@@ -229,6 +236,12 @@ def main():
     ok2 = update_file("assets/js/config.js", new_full_videos, "videos") and update_file("assets/js/config.js", new_shorts, "shorts")
 
     if ok1 and ok2:
+        if new_full_videos:
+            newest_id = new_full_videos[0]["id"]
+            update_featured_id("index.html", newest_id)
+            update_featured_id("assets/js/config.js", newest_id)
+            print(f"★ Automatically set Spotlight Analysis to latest release: [{newest_id}]")
+
         print(f"✓ Successfully routed {len(new_full_videos)} episode(s) and {len(new_shorts)} short(s) to index.html and config.js!")
         with open("NEW_VIDEOS_FOUND.txt", "w") as f:
             f.write(str(len(new_items)))
