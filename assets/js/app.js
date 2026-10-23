@@ -608,6 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderShorts();
   initEditorialAnimations();
   renderSpotlightVideo();
+  initTacticalScrolly();
 
 
   // =========================================================================
@@ -839,6 +840,151 @@ document.addEventListener('DOMContentLoaded', () => {
     if (watchYtBtn) {
       watchYtBtn.href = `https://www.youtube.com/watch?v=${latest.id}`;
     }
+  }
+
+  // =========================================================================
+  // TACTICAL FILM LAB: INTERACTIVE SCROLLYTELLING ANIMATION ENGINE
+  // =========================================================================
+  function initTacticalScrolly() {
+    const scrollySection = document.getElementById('tactics');
+    const pitchStage = document.getElementById('tacticalPitchStage');
+    const hudPhaseLabel = document.getElementById('hudPhaseLabel');
+    const hudTelemetryPill = document.getElementById('hudTelemetryPill');
+    const phaseTabs = document.querySelectorAll('.phase-tab-btn');
+    const scrollyCards = document.querySelectorAll('.scrolly-card');
+    const playToggleBtn = document.getElementById('btnTacticalPlayToggle');
+    const playToggleText = document.getElementById('tacticalPlayText');
+
+    if (!scrollySection || !pitchStage) return;
+
+    const phaseConfig = {
+      '1': {
+        label: 'PHASE 01 · PRESS BAITING',
+        telemetry: 'ZONE: MIDDLE THIRD'
+      },
+      '2': {
+        label: 'PHASE 02 · OVERLOAD CREATED',
+        telemetry: '+1 NUMERICAL ADVANTAGE'
+      },
+      '3': {
+        label: 'PHASE 03 · CUTBACK TRAJECTORY',
+        telemetry: 'TARGET: PENALTY SPOT'
+      },
+      '4': {
+        label: 'PHASE 04 · GOAL CONVERSION',
+        telemetry: '0.76 xG · GOAL ACCREDITED'
+      }
+    };
+
+    let activePhase = '1';
+    let autoSimInterval = null;
+
+    function setPhase(phase, syncScroll = false) {
+      if (!phaseConfig[phase]) return;
+      activePhase = phase;
+
+      // 1. Update pitch stage dataset attribute (animates tokens, lines, and ball)
+      pitchStage.setAttribute('data-phase', phase);
+
+      // 2. Update HUD headers
+      if (hudPhaseLabel) hudPhaseLabel.textContent = phaseConfig[phase].label;
+      if (hudTelemetryPill) hudTelemetryPill.textContent = phaseConfig[phase].telemetry;
+
+      // 3. Update tabs active state
+      phaseTabs.forEach(tab => {
+        const isCurrent = tab.getAttribute('data-phase-target') === phase;
+        tab.classList.toggle('active', isCurrent);
+        tab.setAttribute('aria-selected', isCurrent ? 'true' : 'false');
+      });
+
+      // 4. Update narrative cards active state
+      scrollyCards.forEach(card => {
+        const isCurrent = card.getAttribute('data-phase-card') === phase;
+        card.classList.toggle('is-active', isCurrent);
+      });
+
+      // 5. Optionally smooth scroll target card into view if triggered via tab click
+      if (syncScroll) {
+        const targetCard = document.querySelector(`.scrolly-card[data-phase-card="${phase}"]`);
+        if (targetCard) {
+          const yOffset = -140;
+          const y = targetCard.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }
+    }
+
+    // A. IntersectionObserver for Natural Scroll-Driven Phase Sync
+    if ('IntersectionObserver' in window) {
+      const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const phase = entry.target.getAttribute('data-phase-card');
+            if (phase && phase !== activePhase) {
+              setPhase(phase, false);
+            }
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: '-30% 0px -40% 0px',
+        threshold: 0
+      });
+
+      scrollyCards.forEach(c => cardObserver.observe(c));
+    }
+
+    // B. Interactive Tab Click Handlers
+    phaseTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetPhase = tab.getAttribute('data-phase-target');
+        if (targetPhase) {
+          stopAutoSimulation();
+          setPhase(targetPhase, true);
+        }
+      });
+    });
+
+    // C. Auto Simulation Loop (Play/Pause)
+    function startAutoSimulation() {
+      if (autoSimInterval) return;
+      if (playToggleBtn) {
+        playToggleBtn.classList.add('playing');
+        if (playToggleText) playToggleText.textContent = 'Pause Simulation';
+      }
+      autoSimInterval = setInterval(() => {
+        const nextPhase = activePhase === '4' ? '1' : String(Number(activePhase) + 1);
+        setPhase(nextPhase, false);
+      }, 2600);
+    }
+
+    function stopAutoSimulation() {
+      if (autoSimInterval) {
+        clearInterval(autoSimInterval);
+        autoSimInterval = null;
+      }
+      if (playToggleBtn) {
+        playToggleBtn.classList.remove('playing');
+        if (playToggleText) playToggleText.textContent = 'Auto Simulation';
+      }
+    }
+
+    if (playToggleBtn) {
+      playToggleBtn.addEventListener('click', () => {
+        if (autoSimInterval) {
+          stopAutoSimulation();
+        } else {
+          startAutoSimulation();
+        }
+      });
+    }
+
+    // Pause simulation if user manually scrolls the page
+    window.addEventListener('scroll', () => {
+      if (autoSimInterval) {
+        stopAutoSimulation();
+      }
+    }, { passive: true });
   }
 
 });
