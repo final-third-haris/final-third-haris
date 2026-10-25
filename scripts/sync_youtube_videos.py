@@ -19,30 +19,82 @@ from datetime import datetime, timezone
 CHANNEL_ID = "UClD0Kli5qi5JE2tI1ReHLLQ"
 FEED_URL = f"https://www.youtube.com/feeds/videos.xml?channel_id={CHANNEL_ID}"
 
-CRICKET_KEYWORDS = [
-    "cricket", "ipl", "bcci", "shami", "bumrah", "kohli", "rohit", "dhoni",
-    "sanju", "samson", "t20", "odi", "test match", "pant", "hardik", "siraj",
-    "ashwin", "kl rahul", "suryakumar", "ind vs", "india vs", "australia", "england"
-]
-
 def classify_sport(title, summary=""):
-    text = (title + " " + summary).lower()
-    for kw in CRICKET_KEYWORDS:
-        if kw in text:
-            return {
-                "sport": "cricket",
-                "playlistId": "cricket-insights",
-                "playlistTitle": "Cricket Stories & Analysis"
-            }
-    
-    # Default to football
-    if any(k in text for k in ["kbfc", "blasters", "isl", "kerala", "indian football"]):
+    # Strip channel boilerplate from summary so generic words don't contaminate
+    cleaned_summary = re.sub(
+        r"welcome to final third.*?subscribe and stay connected", 
+        "", 
+        summary or "", 
+        flags=re.IGNORECASE | re.DOTALL
+    )
+    title_lower = title.lower()
+    combined_text = (title + " " + cleaned_summary).lower()
+
+    # 1. Football Keywords (Prioritize specific football clubs, competitions & players)
+    barca_kws = [
+        "barcelona", "barca", "ബാഴ്സ", "clasico", "el clasico", "lamine", "yamal", 
+        "raphinha", "flick", "hansi flick", "lewandowski", "camp nou", "pedri", "gavi"
+    ]
+    if any(k in title_lower for k in barca_kws):
+        return {
+            "sport": "football",
+            "playlistId": "PLGWXiMbN17ik",
+            "playlistTitle": "Barcelona"
+        }
+
+    real_madrid_kws = [
+        "real madrid", "madrid", "റയൽ", "റയലിന്", "റയലേ", "mbappe", "bellingham", 
+        "vinicius", "vini", "ancelotti", "bernabeu", "modric", "valverde", "leipzig"
+    ]
+    if any(k in title_lower for k in real_madrid_kws):
+        return {
+            "sport": "football",
+            "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
+            "playlistTitle": "Real Madrid"
+        }
+
+    kbfc_kws = [
+        "kbfc", "blasters", "isl", "ബ്ലാസ്റ്റേഴ്സ്", "manjappada", "indian football", 
+        "chhetri", "stahre", "kerala blasters"
+    ]
+    if any(k in title_lower for k in kbfc_kws):
         return {
             "sport": "football",
             "playlistId": "kbfc-isl",
             "playlistTitle": "Kerala Blasters & Indian Football"
         }
-    
+
+    general_football_kws = [
+        "ucl", "champions league", "premier league", "la liga", "laliga", "serie a", 
+        "bundesliga", "arsenal", "chelsea", "liverpool", "manchester", "man city", 
+        "man utd", "bayern", "psg", "inter milan", "ac milan", "juventus", "atletico", 
+        "football", "ഫുട്ബോൾ", "messi", "മെസി", "ronaldo", "റൊണാൾഡോ", "mourinho", 
+        "മോറീന്യോ", "guardiola", "ballon d'or", "fifa", "world cup"
+    ]
+    if any(k in title_lower for k in general_football_kws):
+        return {
+            "sport": "football",
+            "playlistId": "european-football",
+            "playlistTitle": "European & World Football"
+        }
+
+    # 2. Cricket Keywords (Check title and cleaned summary)
+    cricket_kws = [
+        "cricket", "ക്രിക്കറ്റ്", "ipl", "ഐപിഎൽ", "bcci", "shami", "bumrah", "kohli", 
+        "rohit", "dhoni", "sanju", "samson", "സഞ്ജു", "t20", "odi", "test match", 
+        "pant", "hardik", "siraj", "സിറാജ്", "ashwin", "kl rahul", "suryakumar", "sky", 
+        "സ്കൈ", "ind vs", "india vs", "australia", "england", "srilanka", "lanka", 
+        "ലങ്ക", "pakistan", "babar", "gill", "jaiswal", "ജയ്സ്വാൾ", "century", 
+        "സെഞ്ചുറി", "wicket", "flintoff", "gambhir", "dravid", "tilak", "naman dhir", "namandhir"
+    ]
+    if any(k in title_lower for k in cricket_kws) or any(k in combined_text for k in cricket_kws):
+        return {
+            "sport": "cricket",
+            "playlistId": "cricket-insights",
+            "playlistTitle": "Cricket Stories & Analysis"
+        }
+
+    # Fallback to football
     return {
         "sport": "football",
         "playlistId": "european-football",

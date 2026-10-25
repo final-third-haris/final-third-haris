@@ -88,18 +88,28 @@ const FINAL_THIRD_CONFIG = {
     ]
   },
 
-  featuredVideoId: "RDpM-6xLCao",
+  featuredVideoId: "F1X3eE_CBKU",
 
   // 300+ Authentic Videos from YouTube @FinalThird_HarisNenmara
   videos: [
   {
-    "id": "RDpM-6xLCao",
-    "title": "ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico",
+    "id": "F1X3eE_CBKU",
+    "title": "ഇതൊക്കെയാണ് കം ബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | NamanDhir",
     "sport": "cricket",
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
+    "published": "Just now",
+    "views": "2.3K views",
+    "summary": "ഇതൊക്കെയാണ് കം ബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | NamanDhir"
+  },
+  {
+    "id": "RDpM-6xLCao",
+    "title": "ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico",
+    "sport": "football",
+    "playlistId": "PLGWXiMbN17ik",
+    "playlistTitle": "Barcelona",
     "published": "2 hours ago",
-    "views": "14K views",
+    "views": "45K views",
     "summary": "ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico"
   },
   {
@@ -109,7 +119,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "Just now",
-    "views": "80K views",
+    "views": "81K views",
     "summary": "സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | Ind Vs Nz"
   },
   {
@@ -119,7 +129,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "3 hours ago",
-    "views": "24K views",
+    "views": "27K views",
     "summary": "400 ചേസ് ചെയ്ത ലങ്ക ! ഇംഗ്ലണ്ടിനെ കൊന്നു കൊലവിളിച്ചു ! | srilanka vs england"
   },
   {
@@ -129,17 +139,17 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "Just now",
-    "views": "171K views",
+    "views": "172K views",
     "summary": "സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson"
   },
   {
     "id": "XMR4quSxjHw",
     "title": "ബാഴ്സക്ക് അത്ര എളുപ്പമാകില്ല കാര്യങ്ങള്‍ ! Real Madrid vs RB Leipzig",
-    "sport": "cricket",
-    "playlistId": "cricket-insights",
-    "playlistTitle": "Cricket Stories & Analysis",
+    "sport": "football",
+    "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
+    "playlistTitle": "Real Madrid",
     "published": "6 hours ago",
-    "views": "38K views",
+    "views": "40K views",
     "summary": "ബാഴ്സക്ക് അത്ര എളുപ്പമാകില്ല കാര്യങ്ങള്‍ ! Real Madrid vs RB Leipzig"
   },
   {
@@ -159,7 +169,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "17 hr ago",
-    "views": "53K views",
+    "views": "54K views",
     "summary": "PSG യെ വീഴ്ത്താൻ ആരുണ്ട് ഇവിടെ ? | Barcelona vs Psg | Lamine Yamal"
   },
   {
