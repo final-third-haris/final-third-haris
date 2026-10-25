@@ -99,7 +99,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "Just now",
-    "views": "2.3K views",
+    "views": "5.9K views",
     "summary": "ഇതൊക്കെയാണ് കം ബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | NamanDhir"
   },
   {
@@ -109,7 +109,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "2 hours ago",
-    "views": "45K views",
+    "views": "46K views",
     "summary": "ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico"
   },
   {
@@ -119,7 +119,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "Just now",
-    "views": "81K views",
+    "views": "82K views",
     "summary": "സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | Ind Vs Nz"
   },
   {
@@ -2112,7 +2112,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
     "published": "6 days ago",
-    "views": "1.0K views",
+    "views": "1.1K views",
     "summary": "ഇത് റയലാണ്... ഇവിടെ ഇങ്ങനെ ഒക്കെയാണ്"
   },
   {
