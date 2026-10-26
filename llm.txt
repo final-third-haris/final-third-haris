@@ -1,17 +1,25 @@
-
 # Final Third
 
-> Final Third is a sports analysis platform by Haris Nenmara, featuring football match analysis, tactical insights, cricket analysis, and sports commentary.
+> Final Third is an independent sports journalism and tactical analysis platform created and hosted by Haris Nenmara, providing in-depth football match analysis, tactics and formations, Kerala Blasters coverage, and cricket match analysis in Malayalam.
 
-## Main Website
+## Website & Core Sections
 
-- [Final Third Homepage](https://final-third-haris.github.io/): Main website for sports analysis and content.
+- [Final Third](https://final-third-haris.github.io/): The official website featuring latest tactical breakdowns and video releases.
+- [Football & Cricket Video Catalog](https://final-third-haris.github.io/#videos): Searchable archive of football match analysis, tactical debriefs, and cricket stories.
+- [Final Third Shorts](https://final-third-haris.github.io/#shorts): Short-form tactical highlights and sports analysis reels.
+- [About Haris Nenmara](https://final-third-haris.github.io/#about): Background, journalistic perspective, and editorial philosophy of host Haris Nenmara.
+- [Partnership & Brand Inquiries](https://final-third-haris.github.io/#sponsor): Information on media sponsorships, video shoutouts, and brand collaborations.
+- [Contact](https://final-third-haris.github.io/#contact): Direct contact channels including WhatsApp and email.
 
-## Creator
+## Official Channels
 
-- [Final Third YouTube Channel](https://www.youtube.com/@FinalThird_HarisNenmara): Football and cricket analysis videos by Haris Nenmara.
+- [Final Third YouTube Channel](https://www.youtube.com/@FinalThird_HarisNenmara): Official video analysis channel.
+- [Final Third Instagram](https://www.instagram.com/finalthird.official/): Matchday clips and analysis updates.
+- [Final Third Facebook](https://www.facebook.com/profile.php?id=61590005744291): Official community page.
+- [WhatsApp Channel](https://whatsapp.com/channel/0029VbCMhqQ0G0XYaQLOMP2U): Instant sports analysis notifications.
 
-## Topics
+## Topics Covered
 
-- Football: Match analysis, tactics, formations, and team performance.
-- Cricket: Match analysis and cricket insights.
+- **Football Analysis:** Match reviews, tactical approaches, formations, European leagues (Champions League, Premier League, La Liga), Indian football, and Kerala Blasters (ISL).
+- **Cricket Analysis:** Match breakdowns, tactical insights, player performances, Sanju Samson analysis, and international tournament coverage.
+- **Language & Region:** High-quality sports journalism primarily presented in Malayalam for sports fans in Kerala and the global Malayali diaspora.
