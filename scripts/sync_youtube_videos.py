@@ -168,51 +168,100 @@ def format_views(count_val):
         return "10K views"
 
 def fetch_latest_feed_videos():
-    ctx = ssl._create_unverified_context()
-    req = urllib.request.Request(FEED_URL, headers={"User-Agent": "FinalThirdSyncBot/1.0"})
-    with urllib.request.urlopen(req, context=ctx, timeout=15) as resp:
-        xml_data = resp.read()
+    try:
+        ctx = ssl._create_unverified_context()
+        req = urllib.request.Request(FEED_URL, headers={"User-Agent": "FinalThirdSyncBot/1.0"})
+        with urllib.request.urlopen(req, context=ctx, timeout=10) as resp:
+            xml_data = resp.read()
 
-    root = ET.fromstring(xml_data)
-    ns = {
-        "atom": "http://www.w3.org/2005/Atom",
-        "yt": "http://www.youtube.com/xml/schemas/2015",
-        "media": "http://search.yahoo.com/mrss/"
-    }
+        root = ET.fromstring(xml_data)
+        ns = {
+            "atom": "http://www.w3.org/2005/Atom",
+            "yt": "http://www.youtube.com/xml/schemas/2015",
+            "media": "http://search.yahoo.com/mrss/"
+        }
+
+        videos = []
+        for entry in root.findall("atom:entry", ns):
+            vid_elem = entry.find("yt:videoId", ns)
+            title_elem = entry.find("atom:title", ns)
+            pub_elem = entry.find("atom:published", ns)
+            desc_elem = entry.find("media:group/media:description", ns)
+
+            if vid_elem is None or vid_elem.text is None:
+                continue
+            if title_elem is None or title_elem.text is None:
+                continue
+
+            vid = vid_elem.text.strip()
+            title = title_elem.text.strip()
+            published_iso = pub_elem.text.strip() if (pub_elem is not None and pub_elem.text) else ""
+            desc = desc_elem.text.strip() if (desc_elem is not None and desc_elem.text) else title
+
+            # Extract real-time view count directly from media:community/media:statistics
+            stats_elem = entry.find("media:group/media:community/media:statistics", ns)
+            views_raw = stats_elem.attrib.get("views") if stats_elem is not None else None
+            views_formatted = format_views(views_raw) if views_raw else "10K views"
+
+            meta = classify_sport(title, desc)
+            videos.append({
+                "id": vid,
+                "title": title,
+                "sport": meta["sport"],
+                "playlistId": meta["playlistId"],
+                "playlistTitle": meta["playlistTitle"],
+                "published": format_published_time(published_iso),
+                "views": views_formatted,
+                "summary": title
+            })
+
+        if videos:
+            return videos
+    except Exception as e:
+        print(f"Notice: RSS feed retrieval returned ({e}). Switching to direct channel parser fallback...")
+
+    # Robust Fallback: Scrape public channel videos
+    channel_url = "https://www.youtube.com/@FinalThird_HarisNenmara"
+    req = urllib.request.Request(
+        channel_url, 
+        headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
+    )
+    ctx = ssl._create_unverified_context()
+    with urllib.request.urlopen(req, context=ctx, timeout=15) as resp:
+        html = resp.read().decode("utf-8", errors="ignore")
 
     videos = []
-    for entry in root.findall("atom:entry", ns):
-        vid_elem = entry.find("yt:videoId", ns)
-        title_elem = entry.find("atom:title", ns)
-        pub_elem = entry.find("atom:published", ns)
-        desc_elem = entry.find("media:group/media:description", ns)
-
-        if vid_elem is None or vid_elem.text is None:
+    seen = set()
+    for m in re.finditer(r'\"videoId\":\"([a-zA-Z0-9_-]{11})\"', html):
+        vid = m.group(1)
+        if vid in seen:
             continue
-        if title_elem is None or title_elem.text is None:
-            continue
+        seen.add(vid)
+        snippet = html[m.start():m.start()+4000]
+        t_match = re.search(r'\"lockupMetadataViewModel\":\{\"title\":\{\"content\":\"([^\"]+)\"', snippet)
+        if t_match:
+            title = t_match.group(1)
+            # Decode unicode escapes like \u200d if present
+            try:
+                title = json.loads(f'"{title}"')
+            except Exception:
+                pass
+            v_match = re.search(r'\"metadataParts\":\[\{\"text\":\{\"content\":\"([^\"]+)\"', snippet)
+            views = v_match.group(1) + " views" if v_match else "10K views"
+            p_match = re.search(r'\{\"text\":\{\"content\":\"([^\"]+ ago)\"\}', snippet)
+            published = p_match.group(1) if p_match else "Recent"
 
-        vid = vid_elem.text.strip()
-        title = title_elem.text.strip()
-        published_iso = pub_elem.text.strip() if (pub_elem is not None and pub_elem.text) else ""
-        desc = desc_elem.text.strip() if (desc_elem is not None and desc_elem.text) else title
-
-        # Extract real-time view count directly from media:community/media:statistics
-        stats_elem = entry.find("media:group/media:community/media:statistics", ns)
-        views_raw = stats_elem.attrib.get("views") if stats_elem is not None else None
-        views_formatted = format_views(views_raw) if views_raw else "10K views"
-
-        meta = classify_sport(title, desc)
-        videos.append({
-            "id": vid,
-            "title": title,
-            "sport": meta["sport"],
-            "playlistId": meta["playlistId"],
-            "playlistTitle": meta["playlistTitle"],
-            "published": format_published_time(published_iso),
-            "views": views_formatted,
-            "summary": title
-        })
+            meta = classify_sport(title)
+            videos.append({
+                "id": vid,
+                "title": title,
+                "sport": meta["sport"],
+                "playlistId": meta["playlistId"],
+                "playlistTitle": meta["playlistTitle"],
+                "published": published,
+                "views": views,
+                "summary": title
+            })
 
     return videos
 

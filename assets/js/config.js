@@ -99,7 +99,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "Just now",
-    "views": "23K views",
+    "views": "46k views",
     "summary": "ഇതൊക്കെയാണ് കം ബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | NamanDhir"
   },
   {
@@ -109,7 +109,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "2 hours ago",
-    "views": "48K views",
+    "views": "52k views",
     "summary": "ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico"
   },
   {
@@ -119,7 +119,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "Just now",
-    "views": "82K views",
+    "views": "83k views",
     "summary": "സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | Ind Vs Nz"
   },
   {
@@ -129,7 +129,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "3 hours ago",
-    "views": "28K views",
+    "views": "30k views",
     "summary": "400 ചേസ് ചെയ്ത ലങ്ക ! ഇംഗ്ലണ്ടിനെ കൊന്നു കൊലവിളിച്ചു ! | srilanka vs england"
   },
   {
@@ -139,7 +139,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "Just now",
-    "views": "173K views",
+    "views": "173k views",
     "summary": "സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson"
   },
   {
@@ -149,7 +149,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
     "playlistTitle": "Real Madrid",
     "published": "6 hours ago",
-    "views": "40K views",
+    "views": "41k views",
     "summary": "ബാഴ്സക്ക് അത്ര എളുപ്പമാകില്ല കാര്യങ്ങള്‍ ! Real Madrid vs RB Leipzig"
   },
   {
@@ -159,7 +159,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLcWlSk4Ir_yg",
     "playlistTitle": "Cricket India",
     "published": "15 hr ago",
-    "views": "13K views",
+    "views": "14k views",
     "summary": "ഭുവി വന്നു; ഷമി വരില്ലേ ? Mohammed Shami "
   },
   {
@@ -169,7 +169,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "17 hr ago",
-    "views": "54K views",
+    "views": "54k views",
     "summary": "PSG യെ വീഴ്ത്താൻ ആരുണ്ട് ഇവിടെ ? | Barcelona vs Psg | Lamine Yamal"
   },
   {
@@ -179,7 +179,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "3 days ago",
-    "views": "41K views",
+    "views": "41k views",
     "summary": "ബാഴ്സയെ ആര് പിടിച്ച് കെട്ടും ? Barcelona | Lamine Yamal | Rodri | Hansi Flick"
   },
   {
@@ -189,7 +189,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLcWlSk4Ir_yg",
     "playlistTitle": "Cricket India",
     "published": "4 days ago",
-    "views": "21K views",
+    "views": "21k views",
     "summary": "ഭുവിയും ബുംറയും ചേർന്നാൽ ! Bhuvneshwar Kumar | Jasprit Bumrah"
   },
   {
@@ -199,7 +199,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLcWlSk4Ir_yg",
     "playlistTitle": "Cricket India",
     "published": "5 days ago",
-    "views": "110K views",
+    "views": "110k views",
     "summary": "ഭുവി വരുന്നു ! ബുംറ ഇല്ലെങ്കിൽ ഇന്ത്യ ഇല്ലേ ? Sanju Samson | Jasprit Bumrah |Ind Vs Wi "
   },
   {
@@ -209,7 +209,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
     "playlistTitle": "Real Madrid",
     "published": "6 days ago",
-    "views": "57K views",
+    "views": "57k views",
     "summary": "റോമയെ എരിച്ചു ! പഠിക്കാൻ ഇനിയുമേറെ | Real Madrid Vs Roma"
   },
   {
@@ -219,7 +219,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "7 days ago",
-    "views": "10K views",
+    "views": "72k views",
     "summary": "ആളറിഞ്ഞു കളിക്കടാ ! barcelona vs galatasaray | lamine yamal | Haris Nenmara"
   },
   {
@@ -229,7 +229,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLY1FBwOFOWvQ",
     "playlistTitle": "India T20",
     "published": "8 days ago",
-    "views": "10K views",
+    "views": "24k views",
     "summary": "ഇന്ന് വൈഭവ് ഇറങ്ങുമോ ? Sanju Samson | Vaibhav Suryavanshi"
   },
   {
@@ -239,7 +239,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
     "published": "8 days ago",
-    "views": "10K views",
+    "views": "55k views",
     "summary": "'സനാന് ഫിറ്റ്നസില്ല... മോമോയുടെ  മെന്‍റാലിറ്റി'; ആഷ്‍ലിയുടെ തുറന്ന് പറച്ചിലുകള്‍ | Kerala blasters"
   },
   {
@@ -249,7 +249,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
     "published": "9 days ago",
-    "views": "10K views",
+    "views": "26k views",
     "summary": "ഡോക്കുവും ആന്‍റേഴ്സണും നിറയുന്നു; ചെര്‍ക്കിയുടെ കോള്‍ഡ് സെലിബ്രേഷന് ! |Liverpool vs Manchester City"
   },
   {
@@ -259,7 +259,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
     "published": "9 days ago",
-    "views": "10K views",
+    "views": "45k views",
     "summary": "ഇമ്മാതിരി കണ്ടമൊരുക്കിയാല്‍ എങ്ങനെ കളിക്കും ? ഒരുങ്ങാന്‍ സമയം ഇനിയും വേണം | Kerala Blasters"
   },
   {
@@ -269,7 +269,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
     "published": "11 days ago",
-    "views": "10K views",
+    "views": "35k views",
     "summary": "ഫാലു ബാക്ക് ; ബ്ലാസ്റ്റേഴ്സ് ബാക്ക് ലൈൻ സുശക്തം | Fallou ndiaye| Kerala Blasters "
   },
   {
@@ -279,7 +279,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLcWlSk4Ir_yg",
     "playlistTitle": "Cricket India",
     "published": "11 days ago",
-    "views": "10K views",
+    "views": "71k views",
     "summary": "സഞ്ജു ബാക്ക് ; ഗംഭീർ ഇപ്പോൾ പിച്ചിനെ പഴി പറയുന്നു | Gautam Gambhir | Sanju samson "
   },
   {
@@ -289,7 +289,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
     "published": "12 days ago",
-    "views": "10K views",
+    "views": "60k views",
     "summary": "അറ്റാക്കിൽ യാൻസൺ ; കോട്ട കാക്കാൻ ബോൾട്ടൻ | Kerala Blasters | Momo yansane | James Bolton "
   },
   {
@@ -299,7 +299,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
     "published": "13 days ago",
-    "views": "10K views",
+    "views": "87k views",
     "summary": "ബ്ലാസ്റ്റേഴ്സ് മധ്യനിര ഇനി കൊസോവിച്ച് ഭരിക്കും | Kerala Blasters | Nebojša Kosović"
   },
   {
@@ -309,7 +309,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLRqJyYpkYUnExHY8MwKteSHdDYvAC5MT7",
     "playlistTitle": "2026 WORLDCUP Stories",
     "published": "2 wk ago",
-    "views": "10K views",
+    "views": "65k views",
     "summary": "ഇങ്ങനെ ഒരിതിഹാസം ഇനി പിറക്കുമോ ? Lionel Messi | Haris Nenmara "
   },
   {
@@ -319,7 +319,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
     "published": "2 wk ago",
-    "views": "10K views",
+    "views": "41k views",
     "summary": "സനാന്‍ പ്രതീക്ഷയാണ്...ഖാലിദ് ജമീല്‍ പഠിച്ച പാഠങ്ങള്‍ | indian football | Muhammed Sanan"
   },
   {
@@ -329,7 +329,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
     "published": "2 wk ago",
-    "views": "10K views",
+    "views": "111k views",
     "summary": "ആസ്റ്റൺ വില്ലയിൽ നിന്ന് കളി പഠിച്ച ഗ്രീൻ;കൊമ്പന്മാരുടെ പുതിയ സൈനിംഗുകൾ| Kerala Blasters New signings"
   },
   {
@@ -339,7 +339,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
     "published": "2 wk ago",
-    "views": "10K views",
+    "views": "53k views",
     "summary": "പാകിസ്താൻ്റെ ഷോയ്ക്ക് മാത്രം ഒരു കുറവുമില്ല; വൈഭവിനെ തൊട്ടിലാട്ടിയ സായിം | India vs Pakistan "
   },
   {
@@ -349,7 +349,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
     "published": "2 wk ago",
-    "views": "10K views",
+    "views": "133k views",
     "summary": "സഹലിൻ്റെ നട്മഗ് ; വില്യംസിൻ്റെ വേഗപ്പാച്ചിലുകൾ; ഇതാ മാറ്റത്തിൻ്റെ കൊടുങ്കാറ്റ് | | India vs Brazil |"
   },
   {
@@ -359,7 +359,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "2 wk ago",
-    "views": "10K views",
+    "views": "19k views",
     "summary": "എന്താണീ നെഗ്രേറ കേസ്? റഫറിക്ക് പണം കൊടുത്തോ ബാർസ?  പുതിയ തെളിവുമായി റയല്‍| Barcelona | Negreira case"
   },
   {
@@ -369,7 +369,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
     "published": "2 wk ago",
-    "views": "10K views",
+    "views": "121k views",
     "summary": "ആരെയൊക്കെ വാങ്ങും ? പുതിയ ബ്ലാസ്റ്റേഴ്സ് നല്‍കുന്ന പ്രതീക്ഷകള്‍ | Kerala Blasters | Al fursan group"
   },
   {
@@ -379,7 +379,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLRqJyYpkYUnExHY8MwKteSHdDYvAC5MT7",
     "playlistTitle": "2026 WORLDCUP Stories",
     "published": "2 wk ago",
-    "views": "10K views",
+    "views": "108k views",
     "summary": "കോച്ചോ  റോണോയോ; ആരാണ് ശരി? | Cristiano Ronaldo | Ronaldo Walkout | CR7"
   },
   {
@@ -389,7 +389,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLcWlSk4Ir_yg",
     "playlistTitle": "Cricket India",
     "published": "2 wk ago",
-    "views": "10K views",
+    "views": "59k views",
     "summary": "ഈ കളി വിദേശ മണ്ണിലും കണ്ടാൽ മതി !| Shubman Gill |  Rohit Sharma IND VS WI |"
   },
   {
