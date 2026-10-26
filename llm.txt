@@ -1,0 +1,17 @@
+
+# Final Third
+
+> Final Third is a sports analysis platform by Haris Nenmara, featuring football match analysis, tactical insights, cricket analysis, and sports commentary.
+
+## Main Website
+
+- [Final Third Homepage](https://final-third-haris.github.io/): Main website for sports analysis and content.
+
+## Creator
+
+- [Final Third YouTube Channel](https://www.youtube.com/@FinalThird_HarisNenmara): Football and cricket analysis videos by Haris Nenmara.
+
+## Topics
+
+- Football: Match analysis, tactics, formations, and team performance.
+- Cricket: Match analysis and cricket insights.
