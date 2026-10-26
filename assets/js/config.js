@@ -99,7 +99,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "5 hours ago",
-    "views": "39K views",
+    "views": "47K views",
     "summary": "ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara"
   },
   {
