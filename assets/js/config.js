@@ -88,10 +88,20 @@ const FINAL_THIRD_CONFIG = {
     ]
   },
 
-  featuredVideoId: "F1X3eE_CBKU",
+  featuredVideoId: "MT7IaTzzwY4",
 
   // 300+ Authentic Videos from YouTube @FinalThird_HarisNenmara
   videos: [
+  {
+    "id": "MT7IaTzzwY4",
+    "title": "ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara",
+    "sport": "football",
+    "playlistId": "PLGWXiMbN17ik",
+    "playlistTitle": "Barcelona",
+    "published": "5 hours ago",
+    "views": "39K views",
+    "summary": "ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara"
+  },
   {
     "id": "F1X3eE_CBKU",
     "title": "ഇതൊക്കെയാണ് കം ബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | NamanDhir",
@@ -99,7 +109,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "Just now",
-    "views": "47k views",
+    "views": "51K views",
     "summary": "ഇതൊക്കെയാണ് കം ബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | NamanDhir"
   },
   {
@@ -109,7 +119,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "2 hours ago",
-    "views": "52k views",
+    "views": "54K views",
     "summary": "ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico"
   },
   {
@@ -119,7 +129,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "Just now",
-    "views": "83k views",
+    "views": "84K views",
     "summary": "സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | Ind Vs Nz"
   },
   {
@@ -129,7 +139,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "3 hours ago",
-    "views": "30k views",
+    "views": "31K views",
     "summary": "400 ചേസ് ചെയ്ത ലങ്ക ! ഇംഗ്ലണ്ടിനെ കൊന്നു കൊലവിളിച്ചു ! | srilanka vs england"
   },
   {
@@ -139,7 +149,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "Just now",
-    "views": "173k views",
+    "views": "174K views",
     "summary": "സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson"
   },
   {
@@ -149,7 +159,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
     "playlistTitle": "Real Madrid",
     "published": "6 hours ago",
-    "views": "41k views",
+    "views": "41K views",
     "summary": "ബാഴ്സക്ക് അത്ര എളുപ്പമാകില്ല കാര്യങ്ങള്‍ ! Real Madrid vs RB Leipzig"
   },
   {
@@ -159,7 +169,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLcWlSk4Ir_yg",
     "playlistTitle": "Cricket India",
     "published": "15 hr ago",
-    "views": "14k views",
+    "views": "14K views",
     "summary": "ഭുവി വന്നു; ഷമി വരില്ലേ ? Mohammed Shami "
   },
   {
@@ -169,7 +179,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "17 hr ago",
-    "views": "54k views",
+    "views": "54K views",
     "summary": "PSG യെ വീഴ്ത്താൻ ആരുണ്ട് ഇവിടെ ? | Barcelona vs Psg | Lamine Yamal"
   },
   {
@@ -179,7 +189,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "3 days ago",
-    "views": "41k views",
+    "views": "41K views",
     "summary": "ബാഴ്സയെ ആര് പിടിച്ച് കെട്ടും ? Barcelona | Lamine Yamal | Rodri | Hansi Flick"
   },
   {
@@ -189,7 +199,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLcWlSk4Ir_yg",
     "playlistTitle": "Cricket India",
     "published": "4 days ago",
-    "views": "21k views",
+    "views": "21K views",
     "summary": "ഭുവിയും ബുംറയും ചേർന്നാൽ ! Bhuvneshwar Kumar | Jasprit Bumrah"
   },
   {
@@ -199,7 +209,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLcWlSk4Ir_yg",
     "playlistTitle": "Cricket India",
     "published": "5 days ago",
-    "views": "110k views",
+    "views": "110K views",
     "summary": "ഭുവി വരുന്നു ! ബുംറ ഇല്ലെങ്കിൽ ഇന്ത്യ ഇല്ലേ ? Sanju Samson | Jasprit Bumrah |Ind Vs Wi "
   },
   {
