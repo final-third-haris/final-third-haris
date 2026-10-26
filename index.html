@@ -84,9 +84,21 @@
         "@type": "SportsOrganization",
         "@id": "https://final-third-haris.github.io/#organization",
         "name": "Final Third",
+        "alternateName": [
+          "Final Third with Haris Nenmara",
+          "Final Third Sports",
+          "ഫൈനൽ തേർഡ്"
+        ],
         "url": "https://final-third-haris.github.io/",
-        "logo": "https://final-third-haris.github.io/assets/images/final-third-logo.png",
-        "description": "Sports analysis platform covering football match analysis, tactical formations, and cricket match analysis by Haris Nenmara.",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://final-third-haris.github.io/#logo",
+          "url": "https://final-third-haris.github.io/assets/images/final-third-logo.png",
+          "contentUrl": "https://final-third-haris.github.io/assets/images/final-third-logo.png",
+          "caption": "Final Third Logo"
+        },
+        "image": "https://final-third-haris.github.io/assets/images/og-image.jpg",
+        "description": "Sports analysis media platform covering football match analysis, tactical formations, and cricket analysis by Haris Nenmara.",
         "sameAs": [
           "https://www.youtube.com/@FinalThird_HarisNenmara",
           "https://www.instagram.com/finalthird.official/",
@@ -100,12 +112,17 @@
         "name": "Haris Nenmara",
         "alternateName": "ഹാരിസ് നെന്മാറ",
         "jobTitle": "Sports Journalist & Analyst",
+        "description": "Sports journalist and tactical analyst behind Final Third, analyzing football tactics, formations, and cricket in Malayalam.",
+        "url": "https://final-third-haris.github.io/#about",
+        "image": {
+          "@type": "ImageObject",
+          "@id": "https://final-third-haris.github.io/#personImage",
+          "url": "https://final-third-haris.github.io/assets/images/haris-hero-portrait.png",
+          "caption": "Haris Nenmara — Final Third Host & Analyst"
+        },
         "worksFor": {
           "@id": "https://final-third-haris.github.io/#organization"
         },
-        "description": "Sports journalist and analyst behind Final Third, analyzing football tactics, formations, and cricket in Malayalam.",
-        "url": "https://final-third-haris.github.io/#about",
-        "image": "https://final-third-haris.github.io/assets/images/haris-hero-portrait.png",
         "sameAs": [
           "https://www.youtube.com/@FinalThird_HarisNenmara",
           "https://www.instagram.com/finalthird.official/",
@@ -124,7 +141,10 @@
           "ഫൈനൽ തേർഡ്"
         ],
         "description": "Kerala's premier Malayalam sports media platform for football match analysis, tactics and formations, and cricket analysis.",
-        "inLanguage": ["ml", "en"],
+        "inLanguage": [
+          "ml",
+          "en"
+        ],
         "publisher": {
           "@id": "https://final-third-haris.github.io/#organization"
         }
@@ -134,13 +154,60 @@
         "@id": "https://final-third-haris.github.io/#webpage",
         "url": "https://final-third-haris.github.io/",
         "name": "Final Third | Football & Cricket Match Analysis by Haris Nenmara",
+        "description": "Final Third by Haris Nenmara brings in-depth football match analysis, tactics and formations, Kerala Blasters stories, and cricket match analysis in Malayalam.",
         "isPartOf": {
           "@id": "https://final-third-haris.github.io/#website"
         },
         "about": {
           "@id": "https://final-third-haris.github.io/#organization"
         },
-        "primaryImageOfPage": "https://final-third-haris.github.io/assets/images/og-image.jpg"
+        "author": {
+          "@id": "https://final-third-haris.github.io/#person"
+        },
+        "primaryImageOfPage": {
+          "@id": "https://final-third-haris.github.io/#ogImage"
+        },
+        "video": {
+          "@id": "https://final-third-haris.github.io/#featured-video"
+        }
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "https://final-third-haris.github.io/#ogImage",
+        "url": "https://final-third-haris.github.io/assets/images/og-image.jpg",
+        "width": 1200,
+        "height": 630,
+        "caption": "Final Third — Football and Cricket Analysis by Haris Nenmara"
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://final-third-haris.github.io/#about",
+        "url": "https://final-third-haris.github.io/#about",
+        "name": "About Haris Nenmara | Final Third",
+        "description": "Journalistic background, sports reporting experience, and tactical philosophy of Haris Nenmara, host of Final Third.",
+        "isPartOf": {
+          "@id": "https://final-third-haris.github.io/#website"
+        },
+        "mainEntity": {
+          "@id": "https://final-third-haris.github.io/#person"
+        }
+      },
+      {
+        "@type": "VideoObject",
+        "@id": "https://final-third-haris.github.io/#featured-video",
+        "name": "ഇതൊക്കെയാണ് കം ബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | NamanDhir",
+        "description": "Final Third match coverage and cricket analysis with Haris Nenmara.",
+        "thumbnailUrl": [
+          "https://i.ytimg.com/vi/F1X3eE_CBKU/maxresdefault.jpg",
+          "https://i.ytimg.com/vi/F1X3eE_CBKU/hqdefault.jpg"
+        ],
+        "uploadDate": "2026-10-25T12:00:00+05:30",
+        "embedUrl": "https://www.youtube.com/embed/F1X3eE_CBKU",
+        "contentUrl": "https://www.youtube.com/watch?v=F1X3eE_CBKU",
+        "inLanguage": "ml",
+        "creator": {
+          "@id": "https://final-third-haris.github.io/#person"
+        }
       }
     ]
   }
