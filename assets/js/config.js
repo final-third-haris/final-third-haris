@@ -88,10 +88,20 @@ const FINAL_THIRD_CONFIG = {
     ]
   },
 
-  featuredVideoId: "FwEB_fqyE-0",
+  featuredVideoId: "qDn--g-xzQY",
 
   // 300+ Authentic Videos from YouTube @FinalThird_HarisNenmara
   videos: [
+  {
+    "id": "qDn--g-xzQY",
+    "title": "ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek Sharma | Vaibhav Suryavanshi",
+    "sport": "cricket",
+    "playlistId": "cricket-insights",
+    "playlistTitle": "Cricket Stories & Analysis",
+    "published": "2 hours ago",
+    "views": "11K views",
+    "summary": "ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek Sharma | Vaibhav Suryavanshi"
+  },
   {
     "id": "FwEB_fqyE-0",
     "title": "യമാലിനിയും കാത്തിരിക്കണം... ഹാരികെയിന്‍ അര്‍ഹിച്ച പുരസ്കാരം | ballon d'or 2026 | harry kane",
@@ -99,7 +109,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "european-football",
     "playlistTitle": "European & World Football",
     "published": "Just now",
-    "views": "8.1K views",
+    "views": "17K views",
     "summary": "യമാലിനിയും കാത്തിരിക്കണം... ഹാരികെയിന്‍ അര്‍ഹിച്ച പുരസ്കാരം | ballon d'or 2026 | harry kane"
   },
   {
@@ -109,7 +119,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "5 hours ago",
-    "views": "95K views",
+    "views": "96K views",
     "summary": "ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara"
   },
   {
@@ -119,7 +129,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "Just now",
-    "views": "55K views",
+    "views": "56K views",
     "summary": "ഇതൊക്കെയാണ് കം ബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | NamanDhir"
   },
   {
@@ -139,7 +149,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "Just now",
-    "views": "84K views",
+    "views": "85K views",
     "summary": "സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | Ind Vs Nz"
   },
   {
@@ -149,7 +159,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "3 hours ago",
-    "views": "31K views",
+    "views": "32K views",
     "summary": "400 ചേസ് ചെയ്ത ലങ്ക ! ഇംഗ്ലണ്ടിനെ കൊന്നു കൊലവിളിച്ചു ! | srilanka vs england"
   },
   {
