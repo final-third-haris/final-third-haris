@@ -99,7 +99,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "european-football",
     "playlistTitle": "European & World Football",
     "published": "Just now",
-    "views": "312 views",
+    "views": "8.1K views",
     "summary": "യമാലിനിയും കാത്തിരിക്കണം... ഹാരികെയിന്‍ അര്‍ഹിച്ച പുരസ്കാരം | ballon d'or 2026 | harry kane"
   },
   {
@@ -109,7 +109,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "5 hours ago",
-    "views": "93K views",
+    "views": "95K views",
     "summary": "ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara"
   },
   {
@@ -119,7 +119,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "Just now",
-    "views": "54K views",
+    "views": "55K views",
     "summary": "ഇതൊക്കെയാണ് കം ബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | NamanDhir"
   },
   {
