@@ -99,7 +99,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "2 hours ago",
-    "views": "175K views",
+    "views": "192K views",
     "summary": "ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek Sharma | Vaibhav Suryavanshi"
   },
   {
@@ -109,7 +109,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "european-football",
     "playlistTitle": "European & World Football",
     "published": "Just now",
-    "views": "32K views",
+    "views": "34K views",
     "summary": "യമാലിനിയും കാത്തിരിക്കണം... ഹാരികെയിന്‍ അര്‍ഹിച്ച പുരസ്കാരം | ballon d'or 2026 | harry kane"
   },
   {
@@ -119,7 +119,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "5 hours ago",
-    "views": "103K views",
+    "views": "105K views",
     "summary": "ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara"
   },
   {
