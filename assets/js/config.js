@@ -88,10 +88,20 @@ const FINAL_THIRD_CONFIG = {
     ]
   },
 
-  featuredVideoId: "l4FYlIW3rgA",
+  featuredVideoId: "iFR_UmQZPlU",
 
   // 300+ Authentic Videos from YouTube @FinalThird_HarisNenmara
   videos: [
+  {
+    "id": "iFR_UmQZPlU",
+    "title": "ഇഷാൻ കൂടെ വന്നാൽ സഞ്ജു എന്ത് ചെയ്യും ?  | Sanju Samson | Abhishek Sharma | Vaibhav Suryavanshi",
+    "sport": "cricket",
+    "playlistId": "cricket-insights",
+    "playlistTitle": "Cricket Stories & Analysis",
+    "published": "Just now",
+    "views": "2.7K views",
+    "summary": "ഇഷാൻ കൂടെ വന്നാൽ സഞ്ജു എന്ത് ചെയ്യും ?  | Sanju Samson | Abhishek Sharma | Vaibhav Suryavanshi"
+  },
   {
     "id": "l4FYlIW3rgA",
     "title": "ക്രിസ്റ്റ്യാനോ ലോക ഫുട്ബോളില്‍ അത്ഭുതങ്ങള്‍ കാണിച്ച വര്‍ഷം | Cristiano Ronaldo 2008 | ballon d or",
@@ -99,7 +109,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "european-football",
     "playlistTitle": "European & World Football",
     "published": "2 hours ago",
-    "views": "3.5K views",
+    "views": "13K views",
     "summary": "ക്രിസ്റ്റ്യാനോ ലോക ഫുട്ബോളില്‍ അത്ഭുതങ്ങള്‍ കാണിച്ച വര്‍ഷം | Cristiano Ronaldo 2008 | ballon d or"
   },
   {
@@ -109,7 +119,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
     "published": "2 hours ago",
-    "views": "276K views",
+    "views": "281K views",
     "summary": "ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek Sharma | Vaibhav Suryavanshi"
   },
   {
@@ -129,7 +139,7 @@ const FINAL_THIRD_CONFIG = {
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
     "published": "5 hours ago",
-    "views": "113K views",
+    "views": "114K views",
     "summary": "ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara"
   },
   {
