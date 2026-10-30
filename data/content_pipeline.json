@@ -33,7 +33,10 @@
     "human_approved": false,
     "notes": "Transcript status: partial.",
     "has_transcript": true,
-    "coverage": "partial"
+    "coverage": "partial",
+    "last_checked": "2026-10-30T10:27:25.521789+00:00",
+    "next_retry": "2026-11-06T10:27:25.521789+00:00",
+    "retry_count": 1
   },
   "RDpM-6xLCao": {
     "id": "RDpM-6xLCao",
@@ -69,7 +72,10 @@
     "human_approved": false,
     "notes": "Transcript status: missing.",
     "has_transcript": false,
-    "coverage": "missing"
+    "coverage": "missing",
+    "last_checked": "2026-10-30T10:27:25.521789+00:00",
+    "next_retry": "2026-11-06T10:27:25.521789+00:00",
+    "retry_count": 1
   },
   "4LGjduzWzFg": {
     "id": "4LGjduzWzFg",
@@ -104,7 +110,10 @@
     "human_approved": false,
     "notes": "Transcript status: missing.",
     "has_transcript": false,
-    "coverage": "missing"
+    "coverage": "missing",
+    "last_checked": "2026-10-30T10:27:25.521789+00:00",
+    "next_retry": "2026-11-06T10:27:25.521789+00:00",
+    "retry_count": 1
   },
   "ZoU-SU80SLM": {
     "id": "ZoU-SU80SLM",
@@ -139,7 +148,10 @@
     "human_approved": false,
     "notes": "Transcript status: missing.",
     "has_transcript": false,
-    "coverage": "missing"
+    "coverage": "missing",
+    "last_checked": "2026-10-30T10:27:25.521789+00:00",
+    "next_retry": "2026-11-06T10:27:25.521789+00:00",
+    "retry_count": 1
   },
   "XMR4quSxjHw": {
     "id": "XMR4quSxjHw",
@@ -175,7 +187,10 @@
     "human_approved": false,
     "notes": "Transcript status: missing.",
     "has_transcript": false,
-    "coverage": "missing"
+    "coverage": "missing",
+    "last_checked": "2026-10-30T10:27:25.521789+00:00",
+    "next_retry": "2026-11-06T10:27:25.521789+00:00",
+    "retry_count": 1
   },
   "9q0iwA1bpkI": {
     "id": "9q0iwA1bpkI",
@@ -210,7 +225,10 @@
     "human_approved": false,
     "notes": "Transcript status: missing.",
     "has_transcript": false,
-    "coverage": "missing"
+    "coverage": "missing",
+    "last_checked": "2026-10-30T10:27:25.521789+00:00",
+    "next_retry": "2026-11-06T10:27:25.521789+00:00",
+    "retry_count": 1
   },
   "RtpY-aKasEg": {
     "id": "RtpY-aKasEg",
@@ -245,7 +263,10 @@
     "human_approved": false,
     "notes": "Transcript status: missing.",
     "has_transcript": false,
-    "coverage": "missing"
+    "coverage": "missing",
+    "last_checked": "2026-10-30T10:27:25.521789+00:00",
+    "next_retry": "2026-11-06T10:27:25.521789+00:00",
+    "retry_count": 1
   },
   "l1q1MQZSe_0": {
     "id": "l1q1MQZSe_0",
@@ -280,7 +301,10 @@
     "human_approved": false,
     "notes": "Transcript status: missing.",
     "has_transcript": false,
-    "coverage": "missing"
+    "coverage": "missing",
+    "last_checked": "2026-10-30T10:27:25.521789+00:00",
+    "next_retry": "2026-11-06T10:27:25.521789+00:00",
+    "retry_count": 1
   },
   "ySpbZe77Jgs": {
     "id": "ySpbZe77Jgs",
@@ -315,7 +339,10 @@
     "human_approved": false,
     "notes": "Transcript status: missing.",
     "has_transcript": false,
-    "coverage": "missing"
+    "coverage": "missing",
+    "last_checked": "2026-10-30T10:27:25.521789+00:00",
+    "next_retry": "2026-11-06T10:27:25.521789+00:00",
+    "retry_count": 1
   },
   "cOYjZ39qHAU": {
     "id": "cOYjZ39qHAU",
@@ -350,7 +377,10 @@
     "human_approved": false,
     "notes": "Transcript status: missing.",
     "has_transcript": false,
-    "coverage": "missing"
+    "coverage": "missing",
+    "last_checked": "2026-10-30T10:27:25.521789+00:00",
+    "next_retry": "2026-11-06T10:27:25.521789+00:00",
+    "retry_count": 1
   },
   "Ustsj3NHM4Y": {
     "id": "Ustsj3NHM4Y",
@@ -385,7 +415,10 @@
     "human_approved": false,
     "notes": "Transcript status: missing.",
     "has_transcript": false,
-    "coverage": "missing"
+    "coverage": "missing",
+    "last_checked": "2026-10-30T10:27:25.521789+00:00",
+    "next_retry": "2026-11-06T10:27:25.521789+00:00",
+    "retry_count": 1
   },
   "ZuU9k-lVTzE": {
     "id": "ZuU9k-lVTzE",
@@ -420,7 +453,10 @@
     "human_approved": false,
     "notes": "Transcript status: missing.",
     "has_transcript": false,
-    "coverage": "missing"
+    "coverage": "missing",
+    "last_checked": "2026-10-30T10:27:25.521789+00:00",
+    "next_retry": "2026-11-06T10:27:25.521789+00:00",
+    "retry_count": 1
   },
   "rNiXi4pW9nM": {
     "id": "rNiXi4pW9nM",
@@ -455,7 +491,10 @@
     "human_approved": false,
     "notes": "Transcript status: missing.",
     "has_transcript": false,
-    "coverage": "missing"
+    "coverage": "missing",
+    "last_checked": "2026-10-30T10:27:25.521789+00:00",
+    "next_retry": "2026-11-06T10:27:25.521789+00:00",
+    "retry_count": 1
   },
   "mVR_mRYU2YE": {
     "id": "mVR_mRYU2YE",
@@ -490,7 +529,10 @@
     "human_approved": false,
     "notes": "Transcript status: missing.",
     "has_transcript": false,
-    "coverage": "missing"
+    "coverage": "missing",
+    "last_checked": "2026-10-30T10:27:25.521789+00:00",
+    "next_retry": "2026-11-06T10:27:25.521789+00:00",
+    "retry_count": 1
   },
   "qDn--g-xzQY": {
     "id": "qDn--g-xzQY",
@@ -524,7 +566,10 @@
     "human_approved": false,
     "notes": "Transcript status: missing.",
     "has_transcript": false,
-    "coverage": "missing"
+    "coverage": "missing",
+    "last_checked": "2026-10-30T10:27:25.521789+00:00",
+    "next_retry": "2026-11-06T10:27:25.521789+00:00",
+    "retry_count": 1
   },
   "Xq1PtXOrVRc": {
     "id": "Xq1PtXOrVRc",
@@ -559,7 +604,10 @@
     "human_approved": false,
     "notes": "Transcript status: partial.",
     "has_transcript": true,
-    "coverage": "partial"
+    "coverage": "partial",
+    "last_checked": "2026-10-30T10:27:25.521789+00:00",
+    "next_retry": "2026-11-06T10:27:25.521789+00:00",
+    "retry_count": 1
   },
   "I-40yws8G-E": {
     "id": "I-40yws8G-E",
@@ -594,7 +642,10 @@
     "human_approved": false,
     "notes": "Transcript status: missing.",
     "has_transcript": false,
-    "coverage": "missing"
+    "coverage": "missing",
+    "last_checked": "2026-10-30T10:27:25.521789+00:00",
+    "next_retry": "2026-11-06T10:27:25.521789+00:00",
+    "retry_count": 1
   },
   "F1X3eE_CBKU": {
     "id": "F1X3eE_CBKU",
@@ -628,7 +679,10 @@
     "human_approved": false,
     "notes": "Transcript status: missing.",
     "has_transcript": false,
-    "coverage": "missing"
+    "coverage": "missing",
+    "last_checked": "2026-10-30T10:27:25.521789+00:00",
+    "next_retry": "2026-11-06T10:27:25.521789+00:00",
+    "retry_count": 1
   },
   "3-k7z6FqTX0": {
     "id": "3-k7z6FqTX0",
@@ -664,7 +718,10 @@
     "human_approved": false,
     "notes": "Transcript status: missing.",
     "has_transcript": false,
-    "coverage": "missing"
+    "coverage": "missing",
+    "last_checked": "2026-10-30T10:27:25.521789+00:00",
+    "next_retry": "2026-11-06T10:27:25.521789+00:00",
+    "retry_count": 1
   },
   "znjseVIMsE0": {
     "id": "znjseVIMsE0",
@@ -699,6 +756,9 @@
     "human_approved": false,
     "notes": "Transcript status: missing.",
     "has_transcript": false,
-    "coverage": "missing"
+    "coverage": "missing",
+    "last_checked": "2026-10-30T10:27:25.521789+00:00",
+    "next_retry": "2026-11-06T10:27:25.521789+00:00",
+    "retry_count": 1
   }
 }

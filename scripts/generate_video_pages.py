@@ -27,6 +27,8 @@ def render_navbar(active_page=""):
     football_active = ' active' if active_page == 'football' else ''
     cricket_active = ' active' if active_page == 'cricket' else ''
     home_active = ' active' if active_page == 'home' else ''
+    fb_count = len([v for v in VIDEOS if v.get("sport") == "football"])
+    cr_count = len([v for v in VIDEOS if v.get("sport") == "cricket"])
     
     return f"""  <header class="site-header">
     <div class="nav-container">
@@ -72,8 +74,8 @@ def render_navbar(active_page=""):
     <div class="drawer-content">
       <ul class="drawer-list">
         <li><a href="/" class="drawer-link{home_active}">Home</a></li>
-        <li><a href="/football/" class="drawer-link{football_active}">⚽ Football Category Hub (14 Videos)</a></li>
-        <li><a href="/cricket/" class="drawer-link{cricket_active}">🏏 Cricket Category Hub (6 Videos)</a></li>
+        <li><a href="/football/" class="drawer-link{football_active}">⚽ Football Category Hub ({fb_count} Videos)</a></li>
+        <li><a href="/cricket/" class="drawer-link{cricket_active}">🏏 Cricket Category Hub ({cr_count} Videos)</a></li>
         <li><a href="/#videos" class="drawer-link">Full Video Catalog (300+)</a></li>
         <li><a href="/#about" class="drawer-link">About Haris Nenmara</a></li>
         <li><a href="/privacy.html" class="drawer-link">Privacy Policy</a></li>
@@ -176,20 +178,6 @@ def render_page(video):
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   }})(window,document,'script','dataLayer','GTM-KFC9JGQJ');</script>
-
-  <script>(function(w,d,s,l,i){{w[l]=w[l]||[];w[l].push({{'gtm.start':
-  new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  }})(window,document,'script','dataLayer','GTM-5N6XFRJ7');</script>
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XR8PCQNHRE"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){{dataLayer.push(arguments);}}
-    gtag('js', new Date());
-    gtag('config', 'G-XR8PCQNHRE');
-  </script>
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5399554232098923" crossorigin="anonymous"></script>
@@ -773,7 +761,6 @@ def render_page(video):
 
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KFC9JGQJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5N6XFRJ7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   {render_navbar(active_page=sport)}
 
@@ -1015,20 +1002,6 @@ def render_category_hub(sport):
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   }})(window,document,'script','dataLayer','GTM-KFC9JGQJ');</script>
-
-  <script>(function(w,d,s,l,i){{w[l]=w[l]||[];w[l].push({{'gtm.start':
-  new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  }})(window,document,'script','dataLayer','GTM-5N6XFRJ7');</script>
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XR8PCQNHRE"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){{dataLayer.push(arguments);}}
-    gtag('js', new Date());
-    gtag('config', 'G-XR8PCQNHRE');
-  </script>
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5399554232098923" crossorigin="anonymous"></script>
 
@@ -1391,7 +1364,6 @@ def render_category_hub(sport):
 
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KFC9JGQJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5N6XFRJ7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   {render_navbar(active_page=sport)}
 
@@ -1402,10 +1374,10 @@ def render_category_hub(sport):
     <div class="hub-switcher">
       <span style="font-size: 0.8125rem; color: var(--muted-grey); font-weight: 600;">Explore Categories:</span>
       <a href="/football/" class="switch-chip{' active' if sport == 'football' else ''}">
-        ⚽ Football Analysis <span class="switch-count">14</span>
+        ⚽ Football Analysis <span class="switch-count">{len([v for v in VIDEOS if v.get('sport') == 'football'])}</span>
       </a>
       <a href="/cricket/" class="switch-chip{' active' if sport == 'cricket' else ''}">
-        🏏 Cricket Analysis <span class="switch-count">6</span>
+        🏏 Cricket Analysis <span class="switch-count">{len([v for v in VIDEOS if v.get('sport') == 'cricket'])}</span>
       </a>
       <a href="/#videos" class="switch-chip">
         📺 Full 300+ Archive <span class="switch-count">All</span>
@@ -1448,10 +1420,19 @@ def render_category_hub(sport):
     return html
 
 def generate_all():
+    global VIDEOS
     base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-    
+    pipeline_file = os.path.join(base_dir, "data/content_pipeline.json")
+    if os.path.exists(pipeline_file):
+        with open(pipeline_file, "r", encoding="utf-8") as pf:
+            pipe_data = json.load(pf)
+        # Dynamically filter to include all published, excerpt, or active pipeline articles
+        # (Excludes records strictly in awaiting_captions retry queue without published content)
+        VIDEOS = [v for v in pipe_data.values() if v.get("status") in ("published", "published_partial", "excerpt", "awaiting_transcript")]
+
     print("=" * 60)
     print("Final Third — Generating Dedicated Video Pages & Hubs")
+    print(f"Total eligible dedicated SEO pages: {len(VIDEOS)}")
     print("=" * 60)
 
     # 1. Create Football & Cricket Hub Directories
@@ -1463,7 +1444,7 @@ def generate_all():
             f.write(hub_html)
         print(f"✓ Created /{sport}/ hub index.html")
 
-    # 2. Create the 20 Dedicated Video Pages
+    # 2. Create the Dedicated Video Pages
     created_pages = []
     for v in VIDEOS:
         page_dir = os.path.join(base_dir, v["sport"], v["slug"])
@@ -1535,7 +1516,7 @@ def generate_all():
 """
     with open(sitemap_path, "w", encoding="utf-8") as f:
         f.write(full_sitemap)
-    print(f"✓ Successfully generated sitemap.xml with {len(sitemap_entries)} entries (including 20 video extensions)!")
+    print(f"✓ Successfully generated sitemap.xml with {len(sitemap_entries)} entries (including {len(VIDEOS)} video extensions)!")
 
 if __name__ == "__main__":
     generate_all()

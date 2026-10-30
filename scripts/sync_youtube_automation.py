@@ -26,7 +26,7 @@ import re
 import urllib.request
 import urllib.error
 import xml.etree.ElementTree as ET
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(os.path.join(base_dir, "scripts"))
@@ -343,7 +343,11 @@ def run_sync(dry_run=False):
         return True
 
     client = YouTubeCaptionClient(base_dir=base_dir)
-    new_videos_added = []
+    now_dt = datetime.now(timezone.utc)
+    now_iso = now_dt.isoformat()
+
+    new_published_videos = []
+    new_homepage_videos = []
     new_shorts_added = []
     upgraded_videos = 0
 
@@ -386,33 +390,11 @@ def run_sync(dry_run=False):
                     new_shorts_added.append(short_record)
                     all_known_ids.add(vid)
                     existing_config_ids.add(vid)
-                else:
-                    # Existing short - skip cleanly
-                    pass
                 continue
 
-            # 2. FULL-LENGTH VIDEO: EXISTING OR TRANSCRIPT UPGRADE CHECK
+            # 2. FULL-LENGTH VIDEO: SKIP IF ALREADY KNOWN
+            # (Transcript upgrades for known videos are handled uniformly in the weekly retry queue below)
             if is_already_known:
-                # Video already exists in homepage catalogue or pipeline. Never re-add.
-                if vid in pipeline:
-                    existing = pipeline[vid]
-                    if existing.get("coverage") != "complete":
-                        t_text, t_src, cov = client.get_transcript(vid)
-                        if cov.get("coverage") == "complete":
-                            print(f"★ [TRANSCRIPT UPGRADE] Previously awaiting/partial video {vid} now has COMPLETE transcript!")
-                            grounded = client.process_video_content(existing)
-                            existing["has_transcript"] = True
-                            existing["transcript_available"] = True
-                            existing["transcript_source"] = t_src
-                            existing["coverage"] = "complete"
-                            existing["status"] = "published"
-                            existing["p1_ml"] = grounded["p1_ml"]
-                            existing["p2_en"] = grounded["p2_en"]
-                            existing["takeaways"] = grounded["takeaways"]
-                            existing["tags"] = grounded["tags"]
-                            existing["human_approved"] = True
-                            existing["notes"] = f"Automatically upgraded on {datetime.now(timezone.utc).isoformat()[:10]}."
-                            upgraded_videos += 1
                 continue
 
             # 3. BRAND NEW FULL-LENGTH VIDEO DETECTED!
@@ -449,15 +431,44 @@ def run_sync(dry_run=False):
             video_record["transcript_available"] = grounded["has_transcript"]
             video_record["transcript_source"] = grounded["transcript_source"]
             video_record["coverage"] = grounded["coverage"]
-            video_record["status"] = grounded["status"]
             video_record["p1_ml"] = grounded["p1_ml"]
             video_record["p2_en"] = grounded["p2_en"]
             video_record["takeaways"] = grounded["takeaways"]
             video_record["tags"] = grounded["tags"]
-            video_record["human_approved"] = True if grounded["coverage"] == "complete" else False
-            video_record["notes"] = f"Auto-synced ({grounded['coverage']} captions)."
+            video_record["last_checked"] = now_iso
 
-            new_videos_added.append(video_record)
+            # AUTOMATIC QUALITY GATE
+            if grounded["coverage"] == "complete":
+                # Complete captions: publish full analysis immediately
+                video_record["status"] = "published"
+                video_record["human_approved"] = True
+                video_record["retry_status"] = "completed"
+                video_record["notes"] = "Auto-synced & published (complete verified transcript)."
+                new_published_videos.append(video_record)
+                new_homepage_videos.append(video_record)
+                print(f"  ✓ Quality Gate PASSED (Complete Captions): Scheduled for dedicated SEO page publication.")
+            elif grounded["coverage"] == "partial":
+                # Partial captions: publish broadcast excerpt & queue for full transcript retry
+                video_record["status"] = "published_partial"
+                video_record["human_approved"] = False
+                video_record["next_retry"] = (now_dt + timedelta(days=7)).isoformat()
+                video_record["retry_count"] = 0
+                video_record["retry_status"] = "queued"
+                video_record["notes"] = "Auto-synced as broadcast excerpt (full transcript pending)."
+                new_published_videos.append(video_record)
+                new_homepage_videos.append(video_record)
+                print(f"  ℹ Quality Gate EXCERPT: Published as broadcast excerpt, queued for weekly retry.")
+            else:
+                # Missing captions: add to homepage modal playback only; DO NOT create thin SEO page
+                video_record["status"] = "awaiting_captions"
+                video_record["human_approved"] = False
+                video_record["next_retry"] = (now_dt + timedelta(days=7)).isoformat()
+                video_record["retry_count"] = 0
+                video_record["retry_status"] = "queued"
+                video_record["notes"] = "Awaiting captions in weekly retry queue."
+                new_homepage_videos.append(video_record)
+                print(f"  ⏳ Quality Gate HOLD: Missing captions. Added to homepage modal, enqueued in weekly retry without thin SEO page.")
+
             pipeline[vid] = video_record
             all_known_ids.add(vid)
             existing_config_ids.add(vid)
@@ -465,7 +476,77 @@ def run_sync(dry_run=False):
         except Exception as e:
             print(f"[Error processing video {item.get('id')}]: {e}. Continuing with remaining uploads.")
 
-    print(f"\nSync summary: {len(new_videos_added)} new full videos, {len(new_shorts_added)} new shorts, {upgraded_videos} transcript upgrades.")
+    # 4. WEEKLY RETRY ENGINE FOR CAPTION SYNCHRONIZATION
+    print("\nEvaluating weekly transcript retry queue...")
+    retry_candidates = [
+        (v_id, v_data) for v_id, v_data in pipeline.items()
+        if v_data.get("status") in ("awaiting_captions", "awaiting_transcript", "published_partial")
+    ]
+    print(f"Total retry queue candidates: {len(retry_candidates)}")
+    retry_state_updated = False
+
+    for vid, existing in retry_candidates:
+        next_retry_str = existing.get("next_retry")
+        is_due = False
+        if not next_retry_str:
+            is_due = True
+        else:
+            try:
+                nr_dt = datetime.fromisoformat(next_retry_str.replace("Z", "+00:00"))
+                if now_dt >= nr_dt:
+                    is_due = True
+            except Exception:
+                is_due = True
+
+        if is_due:
+            t_text, t_src, cov = client.get_transcript(vid)
+            cov_status = cov.get("coverage", "missing")
+
+            if cov_status == "complete" and existing.get("coverage") != "complete":
+                print(f"★ [TRANSCRIPT UPGRADE] Video {vid} now has COMPLETE transcript ({cov['cues']} cues, {cov['duration_seconds']}s)!")
+                existing["transcript_source"] = t_src
+                grounded = client.generate_grounded_article(existing, t_text, cov_status, cov)
+                existing["has_transcript"] = True
+                existing["transcript_available"] = True
+                existing["coverage"] = "complete"
+                existing["status"] = "published"
+                existing["p1_ml"] = grounded["p1_ml"]
+                existing["p2_en"] = grounded["p2_en"]
+                existing["takeaways"] = grounded["takeaways"]
+                existing["tags"] = grounded["tags"]
+                existing["human_approved"] = True
+                existing["notes"] = f"Automatically upgraded to complete analysis on {now_iso[:10]}."
+                existing["last_checked"] = now_iso
+                existing["retry_status"] = "completed"
+                upgraded_videos += 1
+                retry_state_updated = True
+            elif cov_status == "partial" and existing.get("status") in ("awaiting_captions", "awaiting_transcript"):
+                print(f"★ [TRANSCRIPT EXCERPT] Video {vid} now has PARTIAL transcript ({cov['cues']} cues)!")
+                existing["transcript_source"] = t_src
+                grounded = client.generate_grounded_article(existing, t_text, cov_status, cov)
+                existing["has_transcript"] = True
+                existing["transcript_available"] = True
+                existing["coverage"] = "partial"
+                existing["status"] = "published_partial"
+                existing["p1_ml"] = grounded["p1_ml"]
+                existing["p2_en"] = grounded["p2_en"]
+                existing["takeaways"] = grounded["takeaways"]
+                existing["tags"] = grounded["tags"]
+                existing["human_approved"] = False
+                existing["notes"] = f"Automatically upgraded to broadcast excerpt on {now_iso[:10]}."
+                existing["last_checked"] = now_iso
+                existing["next_retry"] = (now_dt + timedelta(days=7)).isoformat()
+                existing["retry_count"] = existing.get("retry_count", 0) + 1
+                upgraded_videos += 1
+                retry_state_updated = True
+            else:
+                # Still missing or still partial -> backoff 7 days to avoid repeated unnecessary API calls
+                existing["last_checked"] = now_iso
+                existing["next_retry"] = (now_dt + timedelta(days=7)).isoformat()
+                existing["retry_count"] = existing.get("retry_count", 0) + 1
+                retry_state_updated = True
+
+    print(f"\nSync summary: {len(new_published_videos)} new published pages, {len(new_homepage_videos)} new homepage items, {len(new_shorts_added)} new shorts, {upgraded_videos} transcript upgrades.")
 
     if not dry_run:
         changes_made = False
@@ -480,18 +561,22 @@ def run_sync(dry_run=False):
             changes_made = True
 
         # 2. Update Videos on homepage if any
-        if new_videos_added:
-            print(f"Updating homepage config with {len(new_videos_added)} new full videos...")
-            update_catalog_array(INDEX_PATH, new_videos_added, target_key="videos")
-            update_catalog_array(CONFIG_JS_PATH, new_videos_added, target_key="videos")
-            for v in new_videos_added:
+        if new_homepage_videos:
+            print(f"Updating homepage config with {len(new_homepage_videos)} new full videos...")
+            update_catalog_array(INDEX_PATH, new_homepage_videos, target_key="videos")
+            update_catalog_array(CONFIG_JS_PATH, new_homepage_videos, target_key="videos")
+            for v in new_homepage_videos:
                 prepend_static_video_card(INDEX_PATH, v)
             changes_made = True
 
-        # 3. Save pipeline & rebuild pages, hubs, sitemap if videos added or upgraded
-        if new_videos_added or upgraded_videos > 0:
+        # 3. Save pipeline if any modifications occurred
+        if new_homepage_videos or upgraded_videos > 0 or retry_state_updated:
             with open(PIPELINE_PATH, "w", encoding="utf-8") as f:
                 json.dump(pipeline, f, ensure_ascii=False, indent=2)
+            changes_made = True
+
+        # 4. Rebuild dedicated SEO pages, hubs, and sitemap if new published pages or upgrades occurred
+        if new_published_videos or upgraded_videos > 0:
             print("Rebuilding dedicated SEO pages, hubs, and sitemap...")
             generate_video_pages.generate_all()
             changes_made = True
