@@ -1,0 +1,51 @@
+name: Daily YouTube Video & Transcript Sync
+
+on:
+  schedule:
+    # Run daily at 06:00 UTC (11:30 AM IST)
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    name: Sync Channel Uploads & Transcripts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: '**/requirements.txt'
+
+      - name: Run YouTube Sync & Grounded Content Pipeline
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          python3 scripts/sync_youtube_automation.py --auto-approve
+
+      - name: Commit & Push Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action [Final Third Sync]"
+          
+          if [ -n "$(git status --porcelain)" ]; then
+            git add data/ football/ cricket/ transcripts/ sitemap.xml
+            git commit -m "chore(sync): automated daily YouTube video & transcript sync [skip ci]"
+            git push origin main
+            echo "✓ Changes committed and pushed to main. Vercel deployment triggered automatically."
+          else
+            echo "✓ Website is up-to-date. No changes to commit."
+          fi

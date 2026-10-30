@@ -14,451 +14,13 @@ import re
 
 DOMAIN = "https://www.finalthird-haris.com"
 
-VIDEOS = [
-    # ========================== FOOTBALL (14) ==========================
-    {
-        "id": "MT7IaTzzwY4",
-        "slug": "real-madrid-vs-barcelona-el-clasico-tactical-analysis",
-        "sport": "football",
-        "sport_title": "Football Analysis",
-        "playlist": "Barcelona & Real Madrid",
-        "title": "ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara",
-        "seo_title": "Real Madrid vs Barcelona El Clasico Tactical Analysis | Final Third",
-        "meta_desc": "In-depth tactical analysis of El Clasico between Real Madrid and Barcelona in Malayalam by Haris Nenmara. Dissecting match moments, tactical setups, and key plays.",
-        "published_iso": "2026-10-26T09:41:12+00:00",
-        "views": "114K views",
-        "read_time": "3 min read",
-        "p1_ml": "എൽ ക്ലാസിക്കോ പോരാട്ടത്തിൽ റയൽ മാഡ്രിഡും ബാഴ്സലോണയും നേർക്കുനേർ വന്നപ്പോൾ കളിക്കളത്തിൽ പിറന്നത് ആധുനിക ഫുട്ബോളിന്റെ ഏറ്റവും മികച്ച പോരാട്ടങ്ങളിലൊന്നാണ്. ക്യാമ്പ് നൗവിൽ നടന്ന മത്സരത്തിൽ റയൽ മാഡ്രിഡിന്റെ ഘടനയും കൗണ്ടർ-അറ്റാക്കിങ് വേഗവും ബാഴ്സയുടെ പ്രതിരോധത്തെ നിരന്തരം സമ്മർദ്ദത്തിലാക്കി. ഹോസെയുടെ തന്ത്രപരമായ നീക്കങ്ങളും ടീം ഷേപ്പും എങ്ങനെയെല്ലാമാണ് കളിയുടെ ഗതി മാറ്റിയതെന്ന് ഹാരിസ് നെന്മാറ ഈ വീഡിയോയിൽ കൃത്യമായി പരിശോധിക്കുന്നു.",
-        "p2_en": "This tactical breakdown dissects the tactical setups of both European heavyweights in El Clasico. We examine how Real Madrid exploited transition spaces, the positioning of wingers to isolate defenders, and the intense midfield battle. Haris Nenmara breaks down why structural discipline and quick direct passes made the decisive difference in this high-voltage showdown.",
-        "takeaways": [
-            "Exploitation of transition spaces during rapid counter-attacking phases",
-            "Midfield pressing triggers that disrupted opponent build-up play",
-            "Wing play and isolated one-on-one attacking matchups",
-            "Key defensive balance maintained across both halves"
-        ],
-        "tags": ["El Clasico", "Real Madrid", "Barcelona", "Football Analysis Malayalam", "Haris Nenmara", "Final Third"]
-    },
-    {
-        "id": "RDpM-6xLCao",
-        "slug": "barcelona-vs-real-madrid-hansi-flick-tactics",
-        "sport": "football",
-        "sport_title": "Football Analysis",
-        "playlist": "Barcelona",
-        "title": "ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico",
-        "seo_title": "Can Real Madrid Beat Barcelona? El Clasico Match Analysis | Final Third",
-        "meta_desc": "Can Real Madrid stop this in-form Barcelona squad? Comprehensive El Clasico tactical preview and match debrief in Malayalam by Haris Nenmara.",
-        "published_iso": "2026-10-24T11:17:04+00:00",
-        "views": "55K views",
-        "read_time": "3 min read",
-        "p1_ml": "യൂറോപ്യൻ ഫുട്ബോളിൽ പുതിയ ഊർജ്ജത്തോടെ കുതിക്കുന്ന ബാഴ്സലോണയെ തടഞ്ഞുനിർത്താൻ റയൽ മാഡ്രിഡിന് സാധിക്കുമോ? അതിവേഗത്തിലുള്ള ബോൾ റിക്കവറിയും ഒത്തിണക്കമുള്ള പ്രതിരോധവും അടിസ്ഥാനമാക്കിയുള്ള ബാഴ്സയുടെ ശൈലി ലാ ലിഗയിലെ ഏറ്റവും വലിയ ചോദ്യചിഹ്നമായി മാറിയിരിക്കുകയാണ്. എതിരാളികളുടെ പിഴവുകളെ വേഗത്തിൽ മുതലെടുക്കുന്ന നീക്കങ്ങൾ എൽ ക്ലാസിക്കോയിൽ എത്രത്തോളം നിർണ്ണായകമാകുമെന്ന് ഈ വീഡിയോ വ്യക്തമാക്കുന്നു.",
-        "p2_en": "An analytical exploration of Barcelona's high-tempo football ahead of the El Clasico clash with Real Madrid. We evaluate their synchronized defensive discipline, fluid front-line combinations, and spatial dominance in the final third. The analysis investigates whether Real Madrid can exploit transition moments or if Barcelona's structural intensity will dictate the match.",
-        "takeaways": [
-            "Synchronized defensive line coordination and compact team shape",
-            "Central counter-pressing enabling instant possession regain",
-            "Movement of attacking midfielders into half-spaces to break low blocks",
-            "Transition management against elite speed on the counter"
-        ],
-        "tags": ["Barcelona", "Real Madrid", "El Clasico", "La Liga", "Tactical Preview", "Haris Nenmara"]
-    },
-    {
-        "id": "4LGjduzWzFg",
-        "slug": "barcelona-vs-psg-lamine-yamal-ucl-tactics",
-        "sport": "football",
-        "sport_title": "Football Analysis",
-        "playlist": "Barcelona & Champions League",
-        "title": "PSG യെ വീഴ്ത്താൻ ആരുണ്ട് ഇവിടെ ? | Barcelona vs Psg | Lamine Yamal",
-        "seo_title": "Barcelona vs PSG Champions League Tactical Analysis | Lamine Yamal Focus",
-        "meta_desc": "UEFA Champions League tactical masterclass: Barcelona vs PSG. Detailed analysis of Lamine Yamal's wing play and tactical dynamics by Haris Nenmara.",
-        "published_iso": "2026-10-21T13:36:26+00:00",
-        "views": "55K views",
-        "read_time": "3 min read",
-        "p1_ml": "യുവേഫ ചാമ്പ്യൻസ് ലീഗിൽ ബാഴ്സലോണയും പാരീസ് സെന്റ് ജെർമെയ്നും (PSG) തമ്മിൽ നടന്ന തീപാറുന്ന പോരാട്ടത്തിന്റെ സമഗ്രമായ അവലോകനം. കൗമാര വിസ്മയം ലാമിൻ യമാലിന്റെ അസാധാരണമായ വിങ്-പ്ലേയും ഡ്രിബ്ലിങ് വൈദഗ്ധ്യവും പിഎസ്ജിയുടെ പ്രതിരോധ നിരയെ എങ്ങിനെ സമ്മർദ്ദത്തിലാക്കിയെന്ന് ഹാരിസ് നെന്മാറ വിശദീകരിക്കുന്നു. യൂറോപ്യൻ വമ്പന്മാരുടെ കളിക്കളത്തിലെ തന്ത്രപരമായ ഏറ്റുമുട്ടൽ ഇതിൽ കാണാം.",
-        "p2_en": "Focusing on the Champions League blockbuster between Barcelona and PSG, this video analyzes tactical dynamics in high-stakes European football. Discover how Lamine Yamal's directness on the right flank stretched PSG's defensive shape, allowing runners to penetrate dangerous attacking pockets.",
-        "takeaways": [
-            "Lamine Yamal's 1v1 dribbling and box-entry creation",
-            "Tactical overload strategies in the attacking third",
-            "Midfield possession control under high European competition tempo",
-            "Key defensive transitions in knockout European football"
-        ],
-        "tags": ["Barcelona vs PSG", "Champions League", "Lamine Yamal", "UCL Analysis", "Football Tactics", "Haris Nenmara"]
-    },
-    {
-        "id": "ZoU-SU80SLM",
-        "slug": "barcelona-lamine-yamal-rodri-hansi-flick-system",
-        "sport": "football",
-        "sport_title": "Football Analysis",
-        "playlist": "Barcelona",
-        "title": "ബാഴ്സയെ ആര് പിടിച്ച് കെട്ടും ? Barcelona | Lamine Yamal | Rodri | Hansi Flick",
-        "seo_title": "Who Can Stop Barcelona? Lamine Yamal, Rodri & Hansi Flick System Analysis",
-        "meta_desc": "Can anyone stop this Barcelona team? Tactical investigation into Hansi Flick's blueprint, Rodri comparisons, and Lamine Yamal's influence.",
-        "published_iso": "2026-10-18T09:39:08+00:00",
-        "views": "42K views",
-        "read_time": "3 min read",
-        "p1_ml": "ഈ സീസണിൽ യൂറോപ്പിലെ ഏറ്റവും ഫോമിലുള്ള ടീമുകളിലൊന്നായി ബാഴ്സലോണ മാറിയത് എങ്ങനെ? ഹാൻസി ഫ്ലിക്കിന്റെ ഫിറ്റ്നസ് സംസ്കാരവും മൈതാനത്തെ തീവ്രതയും യുവതാരങ്ങൾക്ക് നൽകുന്ന സ്വാതന്ത്ര്യവും ടീമിന്റെ ആത്മവിശ്വാസം ഉയർത്തിയിരിക്കുകയാണ്. ലാമിൻ യമാലിന്റെ മാന്ത്രികതയും റോഡ്രിയുടെ പ്ലേ-മേക്കിങ് സ്വാധീനവും ചേരുമ്പോൾ യൂറോപ്യൻ ഫുട്ബോളിൽ ബാഴ്സയെ പൂട്ടാൻ ആർക്ക് സാധിക്കും എന്ന ചോദ്യത്തിനുള്ള ഉത്തരമാണ് ഈ വിശകലനം.",
-        "p2_en": "A comprehensive deep dive into the underlying metrics powering Barcelona's dominant run. We explore Hansi Flick's direct attacking verticality, intense counter-pressing metrics, and how young talents thrive within a defined tactical framework that balances high-risk defensive lines with relentless offensive output.",
-        "takeaways": [
-            "Vertical build-up speed replacing redundant lateral circulation",
-            "High defensive pressing block winning possession in opponent's half",
-            "Role of creative wingers in creating cutback and shooting angles",
-            "Physical conditioning and endurance advantages in the second half"
-        ],
-        "tags": ["Barcelona", "Lamine Yamal", "Hansi Flick", "European Football", "Tactical System", "Final Third"]
-    },
-    {
-        "id": "XMR4quSxjHw",
-        "slug": "real-madrid-vs-rb-leipzig-tactical-preview",
-        "sport": "football",
-        "sport_title": "Football Analysis",
-        "playlist": "Real Madrid",
-        "title": "ബാഴ്സക്ക് അത്ര എളുപ്പമാകില്ല കാര്യങ്ങള്‍ ! Real Madrid vs RB Leipzig",
-        "seo_title": "Real Madrid vs RB Leipzig Match Analysis & Champions League Lessons",
-        "meta_desc": "Real Madrid vs RB Leipzig tactical match breakdown. Evaluating defensive solidity, pressing traps, and tactical adjustments in European football.",
-        "published_iso": "2026-10-22T09:49:56+00:00",
-        "views": "42K views",
-        "read_time": "3 min read",
-        "p1_ml": "യൂറോപ്യൻ ഫുട്ബോളിൽ ആർബി ലെയ്പ്സിഗിനെതിരായ റയൽ മാഡ്രിഡിന്റെ പോരാട്ടം നൽകിയ തന്ത്രപരമായ മുന്നറിയിപ്പുകൾ പരിശോധിക്കുകയാണ് ഹാരിസ് നെന്മാറ. ജർമ്മൻ ടീമിന്റെ ഹൈ-ഇന്റൻസിറ്റി പ്രസ്സിങ്ങിന് മുന്നിൽ റയൽ നേരിട്ട വെല്ലുവിളികളും, പ്രതിരോധത്തിലെ വിടവുകൾ നികത്താൻ നടത്തിയ തന്ത്രപരമായ മാറ്റങ്ങളും കളിയിലെ വഴിത്തിരിവുകളായി. ലാ ലിഗയിലെ മറ്റ് മത്സരങ്ങൾക്കും എൽ ക്ലാസിക്കോയ്ക്കും ഈ പോരാട്ടം നൽകുന്ന സന്ദേശങ്ങൾ എന്തൊക്കെയാണ്?",
-        "p2_en": "Analyzing Real Madrid's resilience under tactical duress against RB Leipzig. This video studies how Leipzig's organized pressing challenged Madrid's circulation and how individual tactical moments from Madrid's decisive players salvaged momentum in crucial phases of the game.",
-        "takeaways": [
-            "Defensive mid-block transitions and counter-attack containment",
-            "Individual ball-carrying impact under sustained pressure",
-            "Tactical balance in high-tempo European knockout atmospheres",
-            "Key lessons for Real Madrid heading into top-flight domestic clashes"
-        ],
-        "tags": ["Real Madrid", "RB Leipzig", "Champions League", "Tactical Breakdown", "Haris Nenmara", "Final Third"]
-    },
-    {
-        "id": "9q0iwA1bpkI",
-        "slug": "real-madrid-vs-roma-tactical-breakdown",
-        "sport": "football",
-        "sport_title": "Football Analysis",
-        "playlist": "Real Madrid",
-        "title": "റോമയെ എരിച്ചു ! പഠിക്കാൻ ഇനിയുമേറെ | Real Madrid Vs Roma",
-        "seo_title": "Real Madrid vs Roma Tactical Breakdown | Final Third Football Analysis",
-        "meta_desc": "Real Madrid vs AS Roma match debrief with Haris Nenmara. Comprehensive evaluation of attacking combinations, finishing efficiency, and tactical discipline.",
-        "published_iso": "2026-10-20T12:00:00+00:00",
-        "views": "57K views",
-        "read_time": "3 min read",
-        "p1_ml": "എഎസ് റോമയ്ക്കെതിരായ റയൽ മാഡ്രിഡിന്റെ ഗംഭീര പ്രകടനം ഫുട്ബോൾ പ്രേമികൾക്ക് സമ്മാനിച്ചത് നിരവധി തന്ത്രപരമായ പാഠങ്ങളാണ്. ആക്രമണ നിരയിലെ ഫ്ലൂയിഡിറ്റിയും മധ്യനിരയിലെ നിയന്ത്രണവും എതിരാളികളെ പ്രതിരോധത്തിലാക്കിയെങ്കിലും, പ്രതിരോധത്തിൽ ഇനിയും പരിഹരിക്കപ്പെടേണ്ട ചില കാര്യങ്ങൾ ഈ മത്സരം വ്യക്തമാക്കുന്നു. ഹാരിസ് നെന്മാറയുടെ സവിശേഷമായ വിശകലനം ഇവിടെ കാണാം.",
-        "p2_en": "A detailed technical review of Real Madrid's tactical encounter with Italian side AS Roma. The analysis reviews positional interchangeability in Madrid's front line, penetration into the box, and areas of defensive concentration required ahead of major European tournaments.",
-        "takeaways": [
-            "Positional rotations between front-line attackers",
-            "Box entries via progressive vertical passes",
-            "Defensive transition balance against counter-attacking opponent pace",
-            "Midfield tempo orchestration in controlling the match rhythm"
-        ],
-        "tags": ["Real Madrid", "AS Roma", "European Football", "Tactical Breakdown", "Haris Nenmara", "Football Analysis"]
-    },
-    {
-        "id": "RtpY-aKasEg",
-        "slug": "barcelona-vs-galatasaray-lamine-yamal-analysis",
-        "sport": "football",
-        "sport_title": "Football Analysis",
-        "playlist": "Barcelona",
-        "title": "ആളറിഞ്ഞു കളിക്കടാ ! barcelona vs galatasaray | lamine yamal | Haris Nenmara",
-        "seo_title": "Barcelona vs Galatasaray Match Review | Lamine Yamal Focus | Final Third",
-        "meta_desc": "Barcelona vs Galatasaray tactical match review in Malayalam. How Lamine Yamal and Barcelona broke down aggressive defensive setups with tactical flair.",
-        "published_iso": "2026-10-19T10:00:00+00:00",
-        "views": "72K views",
-        "read_time": "3 min read",
-        "p1_ml": "ബാഴ്സലോണയും ഗലാറ്റസരെയും തമ്മിൽ നടന്ന ആവേശകരമായ മത്സരത്തിന്റെ വിശകലനം. യൂറോപ്യൻ പോരാട്ടങ്ങളിൽ എതിരാളികളുടെ പ്രതിരോധ കോട്ടകൾ തകർക്കാൻ ബാഴ്സ സ്വീകരിച്ച അടവുകളും, കൗമാരതാരം ലാമിൻ യമാലിന്റെ വ്യക്തിഗത മികവും കളിയിൽ നിർണ്ണായകമായി. ഹാരിസ് നെന്മാറ പങ്കുവെക്കുന്ന തന്ത്രപരമായ നിരീക്ഷണങ്ങൾ.",
-        "p2_en": "A tactical breakdown of Barcelona's clash against Galatasaray. We evaluate how Barcelona dismantled Galatasaray's defensive block using positional overloads, intelligent off-the-ball movements, and the individual genius of Lamine Yamal.",
-        "takeaways": [
-            "Breaking down aggressive low-block defensive structures",
-            "Wing overloads creating isolation matchups in the final third",
-            "Patience and ball retention against compact defensive teams",
-            "Tactical maturity of young players on European nights"
-        ],
-        "tags": ["Barcelona", "Galatasaray", "Lamine Yamal", "European Football", "Haris Nenmara", "Final Third"]
-    },
-    {
-        "id": "l1q1MQZSe_0",
-        "slug": "kerala-blasters-sanan-momo-fitness-tactics",
-        "sport": "football",
-        "sport_title": "Football Analysis",
-        "playlist": "Kerala Blasters & Indian Football",
-        "title": "'സനാന് ഫിറ്റ്നസില്ല... മോമോയുടെ മെന്‍റാലിറ്റി'; ആഷ്‍ലിയുടെ തുറന്ന് പറച്ചിലുകള്‍ | Kerala blasters",
-        "seo_title": "Kerala Blasters Squad Analysis: Sanan, Momo & Tactical Realities | Final Third",
-        "meta_desc": "Kerala Blasters player fitness, tactical discipline, and mentality analyzed by Haris Nenmara. In-depth review of Sanan, Momo, and ISL campaign requirements.",
-        "published_iso": "2026-10-18T14:30:00+00:00",
-        "views": "55K views",
-        "read_time": "3 min read",
-        "p1_ml": "കേരള ബ്ലാസ്റ്റേഴ്സിന്റെ ഈ സീസണിലെ പ്രകടനങ്ങളെയും താരങ്ങളുടെ ഫിറ്റ്നസിനെയും സംബന്ധിച്ച് ആഷ്‌ലിയുടെ തുറന്നുപറച്ചിലുകൾ ചൂടേറിയ ചർച്ചകൾക്ക് വഴിവെച്ചിരിക്കുകയാണ്. സനാന്റെ ഫിറ്റ്നസ് പ്രശ്നങ്ങളും മോമോയുടെ കളിയിലെ മനോഭാവവും ടീമിന്റെ വിജയങ്ങളെ എങ്ങനെ ബാധിക്കുന്നുവെന്ന് ഹാരിസ് നെന്മാറ വസ്തുനിഷ്ഠമായി വിലയിരുത്തുന്നു. ബ്ലാസ്റ്റേഴ്സ് ആരാധകർ അറിഞ്ഞിരിക്കേണ്ട സുപ്രധാന വിവരങ്ങൾ.",
-        "p2_en": "Kerala Blasters' campaign under the tactical microscope: scrutinizing squad fitness standards, pressing endurance, and mental resilience. Haris Nenmara evaluates the public commentary on Sanan's physical readiness and Momo's tactical role, explaining what the team must fix to maintain ISL competitiveness.",
-        "takeaways": [
-            "Impact of player physical conditioning on 90-minute pressing",
-            "Momo's attacking positioning and pressing contribution",
-            "Squad rotation challenges in long league tournaments",
-            "Coaching decisions under pressure in the Indian Super League"
-        ],
-        "tags": ["Kerala Blasters", "KBFC", "ISL", "Indian Football", "Sanan", "Haris Nenmara"]
-    },
-    {
-        "id": "ySpbZe77Jgs",
-        "slug": "kerala-blasters-fallou-ndiaye-defensive-wall",
-        "sport": "football",
-        "sport_title": "Football Analysis",
-        "playlist": "Kerala Blasters & Indian Football",
-        "title": "ഫാലു ബാക്ക് ; ബ്ലാസ്റ്റേഴ്സ് ബാക്ക് ലൈൻ സുശക്തം | Fallou ndiaye| Kerala Blasters",
-        "seo_title": "Fallou N'Diaye: Kerala Blasters Defensive Wall Analysis | Final Third",
-        "meta_desc": "Can Fallou N'Diaye solidify Kerala Blasters' backline? Tactical analysis of his defensive positioning, aerial dominance, and ISL impact by Haris Nenmara.",
-        "published_iso": "2026-10-15T08:00:00+00:00",
-        "views": "35K views",
-        "read_time": "3 min read",
-        "p1_ml": "കേരള ബ്ലാസ്റ്റേഴ്സ് പ്രതിരോധ നിരയ്ക്ക് കരുത്തുപകരാൻ ഫാലു എൻദിയായെ തിരിച്ചെത്തുന്നു. അദ്ദേഹത്തിന്റെ വരവ് ബ്ലാസ്റ്റേഴ്സിന്റെ ബാക്ക്-ലൈനിന് എത്രത്തോളം ഉറപ്പ് നൽകും? ഏരിയൽ ഡ്യുവലുകളിലെ ആധിപത്യവും ടാക്കിളുകളിലെ കൃത്യതയും മഞ്ഞപ്പടയുടെ പ്രതിരോധപ്പിഴവുകൾ പരിഹരിക്കാൻ സഹായിക്കുമോ എന്ന് പരിശോധിക്കുന്ന സമഗ്രമായ വിശകലനം.",
-        "p2_en": "Analyzing the return of Fallou N'Diaye to the Kerala Blasters defense. This video examines his aerial prowess, box-defending capabilities, and leadership qualities in stabilizing a backline that has faced high pressure in competitive ISL matches.",
-        "takeaways": [
-            "Dominance in aerial duels defending set pieces and long balls",
-            "Interception positioning in a compact central defensive pairing",
-            "Physicality and composure under opposition high press",
-            "Leadership and communication across the back four"
-        ],
-        "tags": ["Kerala Blasters", "Fallou N'Diaye", "KBFC Defense", "ISL Tactics", "Haris Nenmara", "Indian Football"]
-    },
-    {
-        "id": "cOYjZ39qHAU",
-        "slug": "kerala-blasters-momo-yanson-attack-bolton-defense",
-        "sport": "football",
-        "sport_title": "Football Analysis",
-        "playlist": "Kerala Blasters & Indian Football",
-        "title": "അറ്റാക്കിൽ യാൻസൺ ; കോട്ട കാക്കാൻ ബോൾട്ടൻ | Kerala Blasters | Momo yansane | James Bolton",
-        "seo_title": "Kerala Blasters Squad Analysis: Yansane in Attack, Bolton in Defense | Final Third",
-        "meta_desc": "Kerala Blasters tactical balance: Momo Yansane leading the attack while James Bolton secures the defense. ISL squad analysis by Haris Nenmara.",
-        "published_iso": "2026-10-14T11:00:00+00:00",
-        "views": "48K views",
-        "read_time": "3 min read",
-        "p1_ml": "കേരള ബ്ലാസ്റ്റേഴ്സിന്റെ മുന്നേറ്റ നിരയിൽ മോമോ യാൻസണും പ്രതിരോധത്തിൽ ജെയിംസ് ബോൾട്ടനും ഒത്തുചേരുമ്പോൾ ടീമിന് ലഭിക്കുന്ന തന്ത്രപരമായ സന്തുലിതാവസ്ഥ എന്താണ്? അറ്റാക്കിങ്ങിലെ ഫിനിഷിങ് പോരായ്മകളും ഡിഫൻസിലെ വിടവുകളും പരിഹരിക്കാൻ ഇരുവരുടെയും സാനിധ്യം സഹായിക്കുമോ എന്ന് ഹാരിസ് നെന്മാറ വിശദീകരിക്കുന്നു.",
-        "p2_en": "A strategic review of Kerala Blasters' spine: Momo Yansane's hold-up and pressing ability up front contrasted with James Bolton's defensive solidity at the back. This analysis breaks down how balancing both ends of the pitch creates tactical stability in the ISL.",
-        "takeaways": [
-            "Yansane's physical hold-up play linking attack with midfield",
-            "James Bolton's positional discipline in defending the box",
-            "Transition efficiency from defensive third to attacking third",
-            "Overall squad balance required for consistent league points"
-        ],
-        "tags": ["Kerala Blasters", "Momo Yansane", "James Bolton", "ISL Analysis", "KBFC", "Haris Nenmara"]
-    },
-    {
-        "id": "Ustsj3NHM4Y",
-        "slug": "kerala-blasters-midfield-nebojsa-kosovic-tactics",
-        "sport": "football",
-        "sport_title": "Football Analysis",
-        "playlist": "Kerala Blasters & Indian Football",
-        "title": "ബ്ലാസ്റ്റേഴ്സ് മധ്യനിര ഇനി കൊസോവിച്ച് ഭരിക്കും | Kerala Blasters | Nebojša Kosović",
-        "seo_title": "Nebojša Kosović: Kerala Blasters Midfield Maestro Analysis | Final Third",
-        "meta_desc": "Can Nebojša Kosović control the midfield for Kerala Blasters? Tactical analysis of his passing range, vision, and midfield dictation by Haris Nenmara.",
-        "published_iso": "2026-10-12T07:30:00+00:00",
-        "views": "39K views",
-        "read_time": "3 min read",
-        "p1_ml": "കേരള ബ്ലാസ്റ്റേഴ്സ് മധ്യനിരയെ നിയന്ത്രിക്കാൻ എത്തിയ മോണ്ടിനെഗ്രോ താരം നെബോജ്സ കൊസോവിച്ചിന്റെ കളി ശൈലിയെക്കുറിച്ചുള്ള സമഗ്രമായ പഠനം. കളിയുടെ വേഗത നിയന്ത്രിക്കാനും കൃത്യമായ പാസുകളിലൂടെ മുന്നേറ്റ നിരയിലേക്ക് പന്തെത്തിക്കാനുമുള്ള അദ്ദേഹത്തിന്റെ കഴിവ് ബ്ലാസ്റ്റേഴ്സിന് എത്രത്തോളം മുതൽകൂട്ടാകുമെന്ന് ഹാരിസ് നെന്മാറ പരിശോധിക്കുന്നു.",
-        "p2_en": "Evaluating the tactical profile of Nebojša Kosović at Kerala Blasters. We assess his passing range, vision under pressure, and how a true midfield controller can unlock defenses while protecting the center of the pitch in the ISL.",
-        "takeaways": [
-            "Vision and progressive passing between opponent defensive lines",
-            "Tempo management and retaining possession under pressure",
-            "Spatial positioning in central midfield transitions",
-            "Set-piece delivery and creative chance generation"
-        ],
-        "tags": ["Kerala Blasters", "Nebojsa Kosovic", "KBFC Midfield", "ISL Tactics", "Haris Nenmara", "Indian Football"]
-    },
-    {
-        "id": "ZuU9k-lVTzE",
-        "slug": "kerala-blasters-aston-villa-green-new-signings",
-        "sport": "football",
-        "sport_title": "Football Analysis",
-        "playlist": "Kerala Blasters & Indian Football",
-        "title": "ആസ്റ്റൺ വില്ലയിൽ നിന്ന് കളി പഠിച്ച ഗ്രീൻ;കൊമ്പന്മാരുടെ പുതിയ സൈനിംഗുകൾ| Kerala Blasters New signings",
-        "seo_title": "Kerala Blasters New Signings: Green & Squad Rebuilding | Final Third",
-        "meta_desc": "Aston Villa academy graduate Green arrives at Kerala Blasters. Tactical breakdown of new signings and squad rebuilding by Haris Nenmara.",
-        "published_iso": "2026-10-10T12:00:00+00:00",
-        "views": "44K views",
-        "read_time": "3 min read",
-        "p1_ml": "പ്രീമിയർ ലീഗ് ക്ലബ്ബ് ആസ്റ്റൺ വില്ലയുടെ അക്കാദമിയിൽ നിന്ന് കളി പഠിച്ചെത്തിയ ഗ്രീനും ബ്ലാസ്റ്റേഴ്സിന്റെ പുതിയ സൈനിംഗുകളും ടീമിന് നൽകുന്ന പുതിയ പ്രതീക്ഷകൾ എന്തൊക്കെയാണ്? യുവതാരങ്ങളുടെ സാന്നിധ്യം മഞ്ഞപ്പടയുടെ കളി ശൈലിയിൽ വരുത്തുന്ന മാറ്റങ്ങൾ ഹാരിസ് നെന്മാറ വിശദീകരിക്കുന്നു.",
-        "p2_en": "An overview of Kerala Blasters' latest recruitment strategy, spotlighting Aston Villa academy product Green. We evaluate how modern European youth football foundations can enhance Kerala Blasters' tactical intensity and squad depth in Indian football.",
-        "takeaways": [
-            "Technical fundamentals from top-tier European youth academies",
-            "Versatility across wide and central attacking channels",
-            "Impact of high-energy young signings on squad rotation",
-            "Long-term rebuilding vision for the Kerala Blasters project"
-        ],
-        "tags": ["Kerala Blasters", "Green", "Aston Villa", "KBFC Signings", "ISL", "Haris Nenmara"]
-    },
-    {
-        "id": "rNiXi4pW9nM",
-        "slug": "lionel-messi-football-legacy-tactics",
-        "sport": "football",
-        "sport_title": "Football Analysis",
-        "playlist": "2026 WORLDCUP Stories",
-        "title": "ഇങ്ങനെ ഒരിതിഹാസം ഇനി പിറക്കുമോ ? Lionel Messi | Haris Nenmara",
-        "seo_title": "Lionel Messi Tactical Legacy: Will We Ever See Another? | Final Third",
-        "meta_desc": "A tribute to Lionel Messi's football genius. Haris Nenmara analyzes the spatial awareness, playmaking brilliance, and enduring legacy of the Argentine icon.",
-        "published_iso": "2026-10-08T09:00:00+00:00",
-        "views": "65K views",
-        "read_time": "3 min read",
-        "p1_ml": "ഫുട്ബോൾ ലോകത്ത് ലയണൽ മെസ്സിയെപ്പോലൊരു ഇതിഹാസം ഇനി വീണ്ടും പിറക്കുമോ? കളിക്കളത്തിൽ ഇടങ്ങൾ കണ്ടെത്തുന്നതിലും കളിയുടെ ഗതി ഒറ്റയ്ക്ക് മാറ്റുന്നതിലും മെസ്സി കാണിച്ച പ്രതിഭ അദ്വിതീയമാണ്. കരിയറിന്റെ വിവിധ ഘട്ടങ്ങളിൽ മെസ്സി തന്റെ കളി ശൈലി എങ്ങനെ മാറ്റിമറിച്ചുവെന്നും ഫുട്ബോൾ ചരിത്രത്തിൽ അദ്ദേഹത്തിന്റെ സ്ഥാനം എന്താണെന്നും ഹാരിസ് നെന്മാറ ഹൃദയസ്പർശിയായി വിശകലനം ചെയ്യുന്നു.",
-        "p2_en": "Reflecting on the incomparable tactical and creative genius of Lionel Messi. Haris Nenmara explores Messi's extraordinary spatial intelligence, walking play style that reads opponent spacing, and how his transition from explosive winger to supreme playmaker redefined modern football.",
-        "takeaways": [
-            "Spatial scanning and reading defensive structural weaknesses",
-            "Evolution from rapid dribbler to master orchestral playmaker",
-            "Decisive playmaking in championship and World Cup moments",
-            "The enduring legacy of football's greatest number ten"
-        ],
-        "tags": ["Lionel Messi", "Messi Analysis", "World Cup", "Football Legends", "Haris Nenmara", "Final Third"]
-    },
-    {
-        "id": "mVR_mRYU2YE",
-        "slug": "cristiano-ronaldo-cr7-tactical-philosophy",
-        "sport": "football",
-        "sport_title": "Football Analysis",
-        "playlist": "2026 WORLDCUP Stories",
-        "title": "കോച്ചോ റോണോയോ; ആരാണ് ശരി? | Cristiano Ronaldo | Ronaldo Walkout | CR7",
-        "seo_title": "Cristiano Ronaldo vs Management: Who Was Right? CR7 Analysis | Final Third",
-        "meta_desc": "Coach vs Cristiano Ronaldo: who was right? Haris Nenmara investigates the tactical and psychological clash surrounding the CR7 walkout and modern football demands.",
-        "published_iso": "2026-10-05T14:00:00+00:00",
-        "views": "108K views",
-        "read_time": "3 min read",
-        "p1_ml": "മാഞ്ചസ്റ്റർ യുണൈറ്റഡിലും പോർച്ചുഗൽ ദേശീയ ടീമിലും ക്രിസ്റ്റ്യാനോ റൊണാൾഡോയും പരിശീലകരും തമ്മിലുണ്ടായ അഭിപ്രായവ്യത്യാസങ്ങളുടെ ആഴത്തിലുള്ള പരിശോധന. പ്രശസ്തമായ വാക്ക്ഔട്ട് സംഭവത്തിന് പിന്നിലെ യഥാർത്ഥ കാരണങ്ങളെന്തായിരുന്നു? ആധുനിക ഫുട്ബോളിലെ ഉയർന്ന പ്രസ്സിങ് ഡിമാൻഡുകളും റൊണാൾഡോ എന്ന എലൈറ്റ് ഗോൾവേട്ടക്കാരന്റെ റോളും തമ്മിലുള്ള സംഘർഷത്തെ ഹാരിസ് നെന്മാറ വിശകലനം ചെയ്യുന്നു.",
-        "p2_en": "Analyzing the tactical and leadership tension between superstar Cristiano Ronaldo and modern manager systems. Haris Nenmara weighs both perspectives: the demanding tactical pressing requirements of modern football versus utilizing the greatest goalscorer of a generation.",
-        "takeaways": [
-            "Tactical balance between team pressing systems and individual finishing",
-            "Managing elite superstar personalities in high-pressure clubs",
-            "The evolution of the striker role in contemporary football",
-            "Ronaldo's unmatched professionalism and hunger for victory"
-        ],
-        "tags": ["Cristiano Ronaldo", "CR7", "Manchester United", "Football Tactics", "Ronaldo Walkout", "Haris Nenmara"]
-    },
-
-    # ========================== CRICKET (6) ==========================
-    {
-        "id": "qDn--g-xzQY",
-        "slug": "abhishek-sharma-vaibhav-suryavanshi-ind-vs-nz",
-        "sport": "cricket",
-        "sport_title": "Cricket Analysis",
-        "playlist": "Cricket Stories & Analysis",
-        "title": "ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek Sharma | Vaibhav Suryavanshi",
-        "seo_title": "Brutal Attack: Abhishek Sharma & Vaibhav Suryavanshi Demolish NZ | Final Third",
-        "meta_desc": "Fearless T20 batting: Abhishek Sharma and young sensation Vaibhav Suryavanshi dismantle New Zealand bowling. Match debrief by Haris Nenmara.",
-        "published_iso": "2026-10-25T14:00:00+00:00",
-        "views": "281K views",
-        "read_time": "3 min read",
-        "p1_ml": "ന്യൂസിലൻഡിനെതിരെ ഇന്ത്യൻ ബാറ്റിങ് നിര കെട്ടഴിച്ചുവിട്ട ബാറ്റിങ് വെടിക്കെട്ടിന്റെ പൂർണ്ണ വിവരങ്ങൾ. അഭിഷേക് ശർമ്മയുടെ തകർപ്പൻ ബാറ്റിങ്ങും കൗമാരതാരം വൈഭവ് സൂര്യവംശിയുടെ ഭയമില്ലാത്ത സമീപനവും കിവി ബോളിങ് നിരയെ നിഷ്പ്രഭമാക്കി. ഇന്ത്യൻ ക്രിക്കറ്റിന്റെ ഭാവി ബാറ്റിങ് ശൈലിയെക്കുറിച്ച് ഹാരിസ് നെന്മാറ പങ്കുവെക്കുന്ന നിരീക്ഷണങ്ങൾ.",
-        "p2_en": "An explosive review of India's destructive powerplay batting against New Zealand. Haris Nenmara analyzes the aggressive mindset of Abhishek Sharma and rising sensation Vaibhav Suryavanshi, breaking down how fearless intent and modern bat swings dismantled New Zealand's bowling attack.",
-        "takeaways": [
-            "Fearless intent and intent-first approach in modern powerplays",
-            "Dominance against both pace and spin from ball one",
-            "Emergence of Vaibhav Suryavanshi as an elite young talent",
-            "The evolving blueprint of Team India's aggressive T20 batting"
-        ],
-        "tags": ["Abhishek Sharma", "Vaibhav Suryavanshi", "Ind vs NZ", "Cricket Analysis", "T20 Cricket", "Haris Nenmara"]
-    },
-    {
-        "id": "Xq1PtXOrVRc",
-        "slug": "sanju-samson-redemption-story-india-vs-nz",
-        "sport": "cricket",
-        "sport_title": "Cricket Analysis",
-        "playlist": "Cricket Stories & Analysis",
-        "title": "സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson | India vs Newzealand",
-        "seo_title": "Sanju Samson Redemption Story Continues: India vs NZ Analysis | Final Third",
-        "meta_desc": "Sanju Samson's incredible comeback story against New Zealand. Technical adjustments, mental strength, and match-winning knocks evaluated by Haris Nenmara.",
-        "published_iso": "2026-10-24T18:00:00+00:00",
-        "views": "175K views",
-        "read_time": "3 min read",
-        "p1_ml": "വിമർശകർക്ക് ബാറ്റുകൊണ്ട് മറുപടി നൽകി സഞ്ജു സാംസൺ തന്റെ പ്രതാപം വീണ്ടെടുക്കുകയാണ്. ന്യൂസിലൻഡിനെതിരായ മത്സരത്തിൽ സഞ്ജു പുറത്തെടുത്ത പക്വതയാർന്ന പ്രകടനവും അദ്ദേഹത്തിന്റെ കളിയിലെ സാങ്കേതിക മാറ്റങ്ങളും ഹാരിസ് നെന്മാറ വിശദീകരിക്കുന്നു. സഞ്ജുവിന്റെ യാത്രയിലെ ഈ വഴിത്തിരിവ് ഇന്ത്യൻ ക്രിക്കറ്റിൽ അദ്ദേഹത്തിന്റെ സ്ഥാനത്തെ എങ്ങനെ ഉറപ്പിക്കുമെന്ന് ഈ വീഡിയോ വ്യക്തമാക്കുന്നു.",
-        "p2_en": "Sanju Samson's inspiring journey of redemption against New Zealand analyzed in detail. Haris Nenmara evaluates Samson's technical improvements at the crease, improved shot selection against pace, and the calm mental fortitude that delivered under the national spotlight.",
-        "takeaways": [
-            "Technical adjustments against deliveries aimed at the body",
-            "Patience in shot selection during the initial overs of the innings",
-            "Mental resilience in handling intense media and selection scrutiny",
-            "Cementing a core top-order role in Team India's white-ball plans"
-        ],
-        "tags": ["Sanju Samson", "Ind vs NZ", "Team India", "Cricket Comeback", "Haris Nenmara", "Final Third"]
-    },
-    {
-        "id": "I-40yws8G-E",
-        "slug": "sanju-samson-ind-vs-nz-match-answers",
-        "sport": "cricket",
-        "sport_title": "Cricket Analysis",
-        "playlist": "Cricket Stories & Analysis",
-        "title": "സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | Ind Vs Nz",
-        "seo_title": "Sanju Samson's Statement Knock: Answers on the Field | Final Third",
-        "meta_desc": "Who does Sanju Samson's innings answer? Tactical analysis of his high-pressure match performance against New Zealand by Haris Nenmara.",
-        "published_iso": "2026-10-23T16:00:00+00:00",
-        "views": "85K views",
-        "read_time": "3 min read",
-        "p1_ml": "സഞ്ജു സാംസണിന്റെ മികച്ച പ്രകടനങ്ങൾ കളിക്കളത്തിന് പുറത്തുള്ള ആർക്കൊക്കെയാണ് മറുപടിയാകുന്നത്? അവസരങ്ങൾ കുറവായിരുന്നിട്ടും ലഭിച്ച അവസരങ്ങളിൽ ടീമിനായി തകർപ്പൻ പ്രകടനം പുറത്തെടുക്കുന്ന സഞ്ജുവിന്റെ പോരാട്ടവീര്യത്തെ ഹാരിസ് നെന്മാറ വിശകലനം ചെയ്യുന്നു. ഇന്ത്യൻ ടീം മാനേജ്മെന്റിന്റെ തീരുമാനങ്ങളും ടീം ബാലൻസും ഇതിൽ ചർച്ചയാകുന്നു.",
-        "p2_en": "A tactical and contextual review of Sanju Samson's decisive answers on the cricket pitch. Haris Nenmara breaks down how Samson's match-winning contributions overcome continuous selection debates and provide the wicket-keeping batsman balance India needs.",
-        "takeaways": [
-            "Handling extreme pressure with aggressive clarity of thought",
-            "Dual role impact: clean glovework and rapid run generation",
-            "Tactical balance provided to India's middle and top order",
-            "Consistency across varying match conditions and bowling attacks"
-        ],
-        "tags": ["Sanju Samson", "Ind vs NZ", "Indian Cricket", "Cricket Selection", "Haris Nenmara", "Final Third"]
-    },
-    {
-        "id": "F1X3eE_CBKU",
-        "slug": "tilak-varma-naman-dhir-comeback-analysis",
-        "sport": "cricket",
-        "sport_title": "Cricket Analysis",
-        "playlist": "Cricket Stories & Analysis",
-        "title": "ഇതൊക്കെയാണ് കംബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | NamanDhir",
-        "seo_title": "Tilak Varma Comeback & Naman Dhir Rising Star Analysis | Final Third",
-        "meta_desc": "Tilak Varma's sensational comeback and Naman Dhir's emergence as an explosive batting talent analyzed in Malayalam by Haris Nenmara.",
-        "published_iso": "2026-10-20T17:00:00+00:00",
-        "views": "57K views",
-        "read_time": "3 min read",
-        "p1_ml": "തിലക് വർമ്മയുടെ ഗംഭീര തിരിച്ചുവരവും യുവതാരം നമൻ ധീറിന്റെ വിസ്മയിപ്പിക്കുന്ന ബാറ്റിങ് പ്രകടനവും ഇന്ത്യൻ ക്രിക്കറ്റിന് നൽകുന്ന വലിയ ശുഭസൂചനകൾ എന്തൊക്കെയാണ്? പ്രതിസന്ധി ഘട്ടങ്ങളിൽ ഇന്നിങ്സ് മുന്നോട്ട് നയിക്കാനുള്ള തിലകിന്റെ കഴിവും നമൻ ധീറിന്റെ കൂറ്റൻ സിക്സറുകളും ഹാരിസ് നെന്മാറ വിശദമായി വിലയിരുത്തുന്നു.",
-        "p2_en": "Analyzing the tactical poise of Tilak Varma's comeback alongside the dynamic emergence of Naman Dhir. Haris Nenmara examines middle-order temperament, accelerating under pressure, and how these young batters fit into India's long-term white-ball strategy.",
-        "takeaways": [
-            "Tilak Varma's composure in anchoring and accelerating innings",
-            "Naman Dhir's raw power and boundary-hitting prowess",
-            "Left-hand right-hand combinations disorienting bowling plans",
-            "The bright future of young Indian white-ball batting talent"
-        ],
-        "tags": ["Tilak Varma", "Naman Dhir", "Team India", "Cricket Comeback", "T20 Cricket", "Haris Nenmara"]
-    },
-    {
-        "id": "3-k7z6FqTX0",
-        "slug": "jasprit-bumrah-sanju-samson-ind-vs-wi",
-        "sport": "cricket",
-        "sport_title": "Cricket Analysis",
-        "playlist": "Cricket India",
-        "title": "ഭുവി വരുന്നു ! ബുംറ ഇല്ലെങ്കിൽ ഇന്ത്യ ഇല്ലേ ? Sanju Samson | Jasprit Bumrah |Ind Vs Wi",
-        "seo_title": "Is India Dependent on Bumrah? Bhuvneshwar & Samson Debrief | Final Third",
-        "meta_desc": "Is India overly reliant on Jasprit Bumrah? Fast bowling tactics, Bhuvneshwar Kumar, and Sanju Samson discussed by Haris Nenmara.",
-        "published_iso": "2026-10-16T11:30:27+00:00",
-        "views": "110K views",
-        "read_time": "3 min read",
-        "p1_ml": "ജസ്പ്രീത് ബുംറ എന്ന ഇതിഹാസ പേസറുടെ അസാന്നിധ്യത്തിൽ ഇന്ത്യൻ ബോളിങ് നിര നേരിടുന്ന വെല്ലുവിളികൾ പരിശോധിക്കുന്ന വീഡിയോ. ഭുവനേശ്വർ കുമാറിന്റെ സ്വിങ് ബോളിങ്ങും പരിചയസമ്പത്തും ഇന്ത്യൻ ടീമിന് എത്രത്തോളം ആവശ്യമാണ്? ഡെത്ത് ഓവറുകളിലെ റൺ ഒഴുക്ക് തടയാൻ ബുംറയെപ്പോലൊരു ബൗളറുടെ വിടവ് എങ്ങനെ നികത്താം എന്ന ചോദ്യത്തിന് ഹാരിസ് നെന്മാറ തന്ത്രപരമായ മറുപടികൾ നൽകുന്നു.",
-        "p2_en": "Analyzing Team India's fast-bowling depth and reliance on Jasprit Bumrah. We evaluate powerplay swing from Bhuvneshwar Kumar, death-over yorker execution, and how different bowling combinations perform under pressure against aggressive batting lineups.",
-        "takeaways": [
-            "Jasprit Bumrah's unmatched wicket-taking threat across all phases",
-            "The tactical value of Bhuvneshwar Kumar's new-ball swing control",
-            "Death-over bowling execution and slower ball variations",
-            "Strategic pace bowling combinations for international tournaments"
-        ],
-        "tags": ["Jasprit Bumrah", "Bhuvneshwar Kumar", "Sanju Samson", "Indian Bowling", "Cricket Tactics", "Haris Nenmara"]
-    },
-    {
-        "id": "znjseVIMsE0",
-        "slug": "bhuvneshwar-kumar-jasprit-bumrah-bowling-tactics",
-        "sport": "cricket",
-        "sport_title": "Cricket Analysis",
-        "playlist": "Cricket India",
-        "title": "ഭുവിയും ബുംറയും ചേർന്നാൽ ! Bhuvneshwar Kumar | Jasprit Bumrah",
-        "seo_title": "Bhuvi + Bumrah: The Deadly Bowling Partnership | Final Third",
-        "meta_desc": "The lethal bowling partnership: Bhuvneshwar Kumar and Jasprit Bumrah. Powerplay swing meets death-over yorkers. Analysis by Haris Nenmara.",
-        "published_iso": "2026-10-17T11:36:23+00:00",
-        "views": "21K views",
-        "read_time": "3 min read",
-        "p1_ml": "ഭുവനേശ്വർ കുമാറിന്റെ കൃത്യതയാർന്ന ന്യൂ-ബോൾ സ്വിംഗും ജസ്പ്രീത് ബുംറയുടെ മാരകമായ യോർക്കറുകളും ഒന്നിച്ചപ്പോൾ ഇന്ത്യൻ ക്രിക്കറ്റ് ആസ്വദിച്ചത് ചരിത്രത്തിലെ ഏറ്റവും മികച്ച ബോളിങ് കൂട്ടുകെട്ടുകളിലൊന്നാണ്. ബാറ്റ്സ്മാൻമാരെ എങ്ങനെയാണ് ഇവർ സമ്മർദ്ദത്തിലാക്കുന്നതെന്നും, രണ്ട് വ്യത്യസ്ത ശൈലികൾ പരസ്പരം പൂരകമായി മാറുന്നത് എങ്ങനെയെന്നും വിശദീകരിക്കുന്ന തന്ത്രപരമായ വീഡിയോ.",
-        "p2_en": "A masterclass in bowling synergy: Bhuvneshwar Kumar's swing mastery paired with Jasprit Bumrah's raw pace and yorker accuracy. This debrief studies dot-ball pressure, partnership bowling, and why complementary styles are essential for winning tournaments.",
-        "takeaways": [
-            "Complementary bowling styles dismantling opening batting combinations",
-            "Dot-ball pressure from one end creating wicket chances at the other",
-            "Mastery of swing in the powerplay and pinpoint accuracy at the death",
-            "Strategic blueprint for iconic fast-bowling partnerships"
-        ],
-        "tags": ["Bhuvneshwar Kumar", "Jasprit Bumrah", "Pace Bowling", "Cricket Partnerships", "India Cricket", "Final Third"]
-    }
-]
+_pipeline_file = os.path.join(os.path.dirname(__file__), "../data/content_pipeline.json")
+if os.path.exists(_pipeline_file):
+    with open(_pipeline_file, "r", encoding="utf-8") as _pf:
+        _pipe_data = json.load(_pf)
+    VIDEOS = list(_pipe_data.values())
+else:
+    VIDEOS = []
 
 # Generate common navigation header
 def render_navbar(active_page=""):
@@ -535,6 +97,17 @@ def render_page(video):
     url = f"{DOMAIN}/{sport}/{slug}/"
     thumb_hq = f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"
     thumb_max = f"https://i.ytimg.com/vi/{vid}/maxresdefault.jpg"
+    
+    # Verification Badge & Headings
+    has_transcript = video.get("transcript_available", False)
+    if has_transcript:
+        badge_html = '''<div class="verification-badge verified"><span class="badge-icon">✓</span> Grounded in Verified Broadcast Transcript</div>'''
+        section_h2 = "Verified Match Analysis &amp; Breakdown | മലയാളം അവലോകനം"
+        takeaways_title = "Key Tactical Takeaways &amp; Discussion Points"
+    else:
+        badge_html = '''<div class="verification-badge awaiting"><span class="badge-icon">⏳</span> Awaiting Broadcast Transcript Verification</div>'''
+        section_h2 = "Video Overview &amp; Match Analysis | മലയാളം അവലോകനം"
+        takeaways_title = "Key Discussion Points &amp; Video Details"
     
     # 4 Related videos from the same sport
     same_sport_videos = [v for v in VIDEOS if v["sport"] == sport and v["id"] != vid]
@@ -940,6 +513,29 @@ def render_page(video):
       text-decoration: none;
     }}
 
+    /* Verification Badge */
+    .verification-badge {{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.25rem;
+    }}
+    .verification-badge.verified {{
+      background: rgba(158, 226, 11, 0.12);
+      border: 1px solid rgba(158, 226, 11, 0.35);
+      color: var(--neon-lime);
+    }}
+    .verification-badge.awaiting {{
+      background: rgba(229, 169, 60, 0.12);
+      border: 1px solid rgba(229, 169, 60, 0.35);
+      color: #E5A93C;
+    }}
+
     /* Editorial Section */
     .editorial-content {{
       background: var(--charcoal);
@@ -1232,13 +828,14 @@ def render_page(video):
 
       <!-- Tactical Editorial Breakdown -->
       <section class="editorial-content">
-        <h2>Tactical Breakdown &amp; Match Review | മലയാളം അവലോകനം</h2>
+        {badge_html}
+        <h2>{section_h2}</h2>
         <p lang="ml">{video['p1_ml']}</p>
         <p>{video['p2_en']}</p>
 
         <!-- Key Takeaways Box -->
         <div class="takeaways-box">
-          <h3>Key Tactical Takeaways &amp; Discussion Points</h3>
+          <h3>{takeaways_title}</h3>
           <ul>{takeaways_html}</ul>
         </div>
 
@@ -1350,6 +947,8 @@ def render_category_hub(sport):
               <span class="hub-card-time">{v['published_iso'][:10]}</span>
               <span class="hub-card-dot">·</span>
               <span class="hub-card-read">{v['read_time']}</span>
+              <span class="hub-card-dot">·</span>
+              <span class="{ 'hub-card-verified-tag' if v.get('transcript_available') else 'hub-card-awaiting-tag' }">{ '✓ Verified Transcript' if v.get('transcript_available') else '⏳ Awaiting Transcript' }</span>
             </div>
             <h2 class="hub-card-title"><a href="{page_url}">{v['title']}</a></h2>
             <p class="hub-card-snippet">{v['meta_desc']}</p>
@@ -1703,6 +1302,8 @@ def render_category_hub(sport):
     }}
     .hub-card-dot {{ color: var(--dark-grey); }}
     .hub-card-read {{ color: var(--neon-lime); font-weight: 600; }}
+    .hub-card-verified-tag {{ color: var(--neon-lime); font-size: 0.6875rem; font-weight: 700; display: inline-flex; align-items: center; gap: 3px; }}
+    .hub-card-awaiting-tag {{ color: #E5A93C; font-size: 0.6875rem; font-weight: 700; display: inline-flex; align-items: center; gap: 3px; }}
     .hub-card-title {{
       font-size: 1.0625rem;
       font-weight: 700;
