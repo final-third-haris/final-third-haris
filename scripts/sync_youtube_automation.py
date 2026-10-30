@@ -57,6 +57,10 @@ def check_is_short(video_id, title="", summary=""):
        https://www.youtube.com/shorts/{video_id} returns HTTP 200 for Shorts,
        and redirects (301/302/303) to /watch?v=... for full landscape videos.
     """
+    if not video_id or not isinstance(video_id, str) or not video_id.strip():
+        return False
+    video_id = video_id.strip()
+
     if "#shorts" in (title + " " + summary).lower():
         return True
 
@@ -343,23 +347,35 @@ def run_sync(dry_run=False):
     new_shorts_added = []
     upgraded_videos = 0
 
-    # Load existing config IDs to prevent duplicates
+    # Load all existing IDs from index.html and config.js to strictly prevent duplicates
     with open(INDEX_PATH, "r", encoding="utf-8") as f:
         index_html = f.read()
 
-    existing_config_ids = set(re.findall(r'"id":\s*"([^"]+)"', index_html))
+    existing_config_ids = set(re.findall(r'["\']id["\']:\s*["\']([^"\']+)["\']', index_html))
+    if os.path.exists(CONFIG_JS_PATH):
+        with open(CONFIG_JS_PATH, "r", encoding="utf-8") as f:
+            cfg_js = f.read()
+        existing_config_ids.update(re.findall(r'["\']id["\']:\s*["\']([^"\']+)["\']', cfg_js))
+
+    # Master set of all known IDs across homepage catalogue and content pipeline
+    all_known_ids = existing_config_ids.union(set(pipeline.keys()))
+    print(f"Loaded {len(existing_config_ids)} homepage catalogue IDs and {len(pipeline)} pipeline records ({len(all_known_ids)} total unique known IDs).")
 
     for item in channel_videos:
         try:
-            vid = item["id"]
-            title = item["title"]
-            summary = item["summary"]
-            published = item["published"]
+            vid = item.get("id", "").strip()
+            if not vid:
+                continue
+            title = item.get("title", "").strip()
+            summary = item.get("summary", "").strip()
+            published = item.get("published", "").strip()
+
+            is_already_known = (vid in all_known_ids)
 
             # 1. ACCURATE SHORTS DETECTION
             is_short = check_is_short(vid, title, summary)
             if is_short:
-                if vid not in existing_config_ids:
+                if not is_already_known:
                     print(f"⚡ [NEW SHORT DETECTED] {vid}: {title}")
                     short_record = {
                         "id": vid,
@@ -368,32 +384,39 @@ def run_sync(dry_run=False):
                         "views": "10K views"
                     }
                     new_shorts_added.append(short_record)
+                    all_known_ids.add(vid)
                     existing_config_ids.add(vid)
+                else:
+                    # Existing short - skip cleanly
+                    pass
                 continue
 
-            # 2. EXISTING VIDEO UPGRADE CHECK
-            if vid in pipeline:
-                existing = pipeline[vid]
-                if existing.get("coverage") != "complete":
-                    t_text, t_src, cov = client.get_transcript(vid)
-                    if cov.get("coverage") == "complete":
-                        print(f"★ [TRANSCRIPT UPGRADE] Previously awaiting video {vid} now has COMPLETE transcript!")
-                        grounded = client.process_video_content(existing)
-                        existing["has_transcript"] = True
-                        existing["transcript_available"] = True
-                        existing["transcript_source"] = t_src
-                        existing["coverage"] = "complete"
-                        existing["status"] = "published"
-                        existing["p1_ml"] = grounded["p1_ml"]
-                        existing["p2_en"] = grounded["p2_en"]
-                        existing["takeaways"] = grounded["takeaways"]
-                        existing["tags"] = grounded["tags"]
-                        existing["human_approved"] = True
-                        existing["notes"] = f"Automatically upgraded on {datetime.now(timezone.utc).isoformat()[:10]}."
-                        upgraded_videos += 1
+            # 2. FULL-LENGTH VIDEO: EXISTING OR TRANSCRIPT UPGRADE CHECK
+            if is_already_known:
+                # Video already exists in homepage catalogue or pipeline. Never re-add.
+                if vid in pipeline:
+                    existing = pipeline[vid]
+                    if existing.get("coverage") != "complete":
+                        t_text, t_src, cov = client.get_transcript(vid)
+                        if cov.get("coverage") == "complete":
+                            print(f"★ [TRANSCRIPT UPGRADE] Previously awaiting/partial video {vid} now has COMPLETE transcript!")
+                            grounded = client.process_video_content(existing)
+                            existing["has_transcript"] = True
+                            existing["transcript_available"] = True
+                            existing["transcript_source"] = t_src
+                            existing["coverage"] = "complete"
+                            existing["status"] = "published"
+                            existing["p1_ml"] = grounded["p1_ml"]
+                            existing["p2_en"] = grounded["p2_en"]
+                            existing["takeaways"] = grounded["takeaways"]
+                            existing["tags"] = grounded["tags"]
+                            existing["human_approved"] = True
+                            existing["notes"] = f"Automatically upgraded on {datetime.now(timezone.utc).isoformat()[:10]}."
+                            upgraded_videos += 1
                 continue
 
-            # 3. NEW FULL-LENGTH VIDEO DETECTED!
+            # 3. BRAND NEW FULL-LENGTH VIDEO DETECTED!
+            # Only reached if vid is NOT in all_known_ids (neither on homepage nor pipeline)
             sport_info = classify_sport(title, summary)
             sport = sport_info["sport"]
             sport_title = sport_info["sport_title"]
@@ -436,6 +459,7 @@ def run_sync(dry_run=False):
 
             new_videos_added.append(video_record)
             pipeline[vid] = video_record
+            all_known_ids.add(vid)
             existing_config_ids.add(vid)
 
         except Exception as e:

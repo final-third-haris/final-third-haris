@@ -1,2 +1,6 @@
 .deploy_key*
 NEW_VIDEOS_FOUND.txt
+.credentials.json
+*.token
+.env*
+

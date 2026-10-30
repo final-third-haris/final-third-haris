@@ -1,17 +1,15 @@
-name: Daily YouTube Video Sync
+name: Daily YouTube Video Sync (Legacy - Scheduled Triggers Paused)
+
+# NOTICE: Automated scheduled triggers in this legacy workflow are paused to prevent
+# race conditions and duplicate catalog writes with the master workflow:
+# .github/workflows/daily_youtube_sync.yml
+# This file is preserved for manual rollback if ever required.
 
 on:
-  schedule:
-    # High-reliability multi-slot schedule targeting 7:00 PM and 10:00 PM IST
-    # Non-peak minute offsets (:15, :45) prevent GitHub Actions queue delays:
-    # - 13:15 UTC = 6:45 PM IST
-    # - 13:45 UTC = 7:15 PM IST
-    # - 16:15 UTC = 9:45 PM IST
-    # - 16:45 UTC = 10:15 PM IST
-    # - 10:15 UTC = 3:45 PM IST (Afternoon uploads)
-    - cron: '15,45 13,16 * * *'
-    - cron: '15 10 * * *'
-  workflow_dispatch: # Allows manual 1-click trigger from the "Actions" tab on GitHub
+  # schedule:
+  #   - cron: '15,45 13,16 * * *'
+  #   - cron: '15 10 * * *'
+  workflow_dispatch: # Allows manual 1-click trigger from the "Actions" tab on GitHub if explicitly needed
 
 permissions:
   contents: write
