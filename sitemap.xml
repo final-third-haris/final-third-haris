@@ -3,22 +3,306 @@
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://www.finalthird-haris.com/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-    <video:video>
-      <video:thumbnail_loc>https://i.ytimg.com/vi/F1X3eE_CBKU/hqdefault.jpg</video:thumbnail_loc>
-      <video:title>ഇതൊക്കെയാണ് കം ബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | NamanDhir</video:title>
-      <video:description>Final Third match coverage and cricket analysis with Haris Nenmara.</video:description>
-      <video:player_loc>https://www.youtube.com/embed/F1X3eE_CBKU</video:player_loc>
-      <video:publication_date>2026-10-25T12:00:00+05:30</video:publication_date>
-      <video:family_friendly>yes</video:family_friendly>
-    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/football/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/cricket/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.finalthird-haris.com/privacy.html</loc>
     <lastmod>2026-10-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/football/real-madrid-vs-barcelona-el-clasico-tactical-analysis/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/MT7IaTzzwY4/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara</video:title>
+      <video:description>In-depth tactical analysis of El Clasico between Real Madrid and Barcelona in Malayalam by Haris Nenmara. Breaking down formations, pressing triggers, and key match moments.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/MT7IaTzzwY4</video:player_loc>
+      <video:publication_date>2026-10-26T09:41:12+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/football/barcelona-vs-real-madrid-hansi-flick-tactics/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/RDpM-6xLCao/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico</video:title>
+      <video:description>Hansi Flick's aggressive tactical approach at Barcelona scrutinized ahead of the Real Madrid El Clasico clash. Tactical debrief in Malayalam by Haris Nenmara.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/RDpM-6xLCao</video:player_loc>
+      <video:publication_date>2026-10-24T11:17:04+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/football/barcelona-vs-psg-lamine-yamal-ucl-tactics/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/4LGjduzWzFg/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>PSG യെ വീഴ്ത്താൻ ആരുണ്ട് ഇവിടെ ? | Barcelona vs Psg | Lamine Yamal</video:title>
+      <video:description>UEFA Champions League tactical masterclass: Barcelona vs PSG. Detailed analysis of Lamine Yamal's wing play and tactical dynamics by Haris Nenmara.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/4LGjduzWzFg</video:player_loc>
+      <video:publication_date>2026-10-21T13:36:26+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/football/barcelona-lamine-yamal-rodri-hansi-flick-system/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/ZoU-SU80SLM/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>ബാഴ്സയെ ആര് പിടിച്ച് കെട്ടും ? Barcelona | Lamine Yamal | Rodri | Hansi Flick</video:title>
+      <video:description>Can anyone stop this Barcelona team? Tactical investigation into Hansi Flick's tactical blueprint, Rodri comparisons, and Lamine Yamal's influence.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/ZoU-SU80SLM</video:player_loc>
+      <video:publication_date>2026-10-18T09:39:08+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/football/real-madrid-vs-rb-leipzig-tactical-preview/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/XMR4quSxjHw/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>ബാഴ്സക്ക് അത്ര എളുപ്പമാകില്ല കാര്യങ്ങള്‍ ! Real Madrid vs RB Leipzig</video:title>
+      <video:description>Real Madrid vs RB Leipzig tactical match breakdown. Evaluating defensive solidity, pressing traps, and tactical adjustments in European football.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/XMR4quSxjHw</video:player_loc>
+      <video:publication_date>2026-10-22T09:49:56+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/football/real-madrid-vs-roma-tactical-breakdown/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/9q0iwA1bpkI/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>റോമയെ എരിച്ചു ! പഠിക്കാൻ ഇനിയുമേറെ | Real Madrid Vs Roma</video:title>
+      <video:description>Real Madrid vs AS Roma match debrief with Haris Nenmara. Comprehensive evaluation of attacking combinations, finishing efficiency, and tactical discipline.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/9q0iwA1bpkI</video:player_loc>
+      <video:publication_date>2026-10-20T12:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/football/barcelona-vs-galatasaray-lamine-yamal-analysis/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/RtpY-aKasEg/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>ആളറിഞ്ഞു കളിക്കടാ ! barcelona vs galatasaray | lamine yamal | Haris Nenmara</video:title>
+      <video:description>Barcelona vs Galatasaray tactical match review in Malayalam. How Lamine Yamal and Barcelona broke down aggressive defensive setups with tactical flair.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/RtpY-aKasEg</video:player_loc>
+      <video:publication_date>2026-10-19T14:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/football/kerala-blasters-sanan-momo-fitness-tactics/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/l1q1MQZSe_0/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>'സനാന് ഫിറ്റ്നസില്ല... മോമോയുടെ  മെന്‍റാലിറ്റി'; ആഷ്‍ലിയുടെ തുറന്ന് പറച്ചിലുകള്‍ | Kerala blasters</video:title>
+      <video:description>Kerala Blasters player fitness, tactical discipline, and mentality analyzed by Haris Nenmara. In-depth review of Sanan, Momo, and ISL campaign requirements.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/l1q1MQZSe_0</video:player_loc>
+      <video:publication_date>2026-10-18T10:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/football/kerala-blasters-fallou-ndiaye-defensive-wall/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/ySpbZe77Jgs/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>ഫാലു ബാക്ക് ; ബ്ലാസ്റ്റേഴ്സ് ബാക്ക് ലൈൻ സുശക്തം | Fallou ndiaye| Kerala Blasters</video:title>
+      <video:description>How Fallou Ndiaye reinforces the Kerala Blasters defense. Tactical analysis of defensive shape, aerial duels, and clean sheets in the ISL by Haris Nenmara.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/ySpbZe77Jgs</video:player_loc>
+      <video:publication_date>2026-10-15T12:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/football/kerala-blasters-momo-yanson-attack-bolton-defense/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/cOYjZ39qHAU/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>അറ്റാക്കിൽ യാൻസൺ ; കോട്ട കാക്കാൻ ബോൾട്ടൻ | Kerala Blasters | Momo yansane | James Bolton</video:title>
+      <video:description>Kerala Blasters tactical balance: Momo Yansane spearheading the attack and James Bolton commanding the defense. Detailed ISL tactical debrief.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/cOYjZ39qHAU</video:player_loc>
+      <video:publication_date>2026-10-14T11:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/football/kerala-blasters-midfield-nebojsa-kosovic-tactics/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/Ustsj3NHM4Y/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>ബ്ലാസ്റ്റേഴ്സ് മധ്യനിര ഇനി കൊസോവിച്ച് ഭരിക്കും | Kerala Blasters | Nebojša Kosović</video:title>
+      <video:description>How Nebojsa Kosovic controls the Kerala Blasters midfield tempo. Passing vision, spatial control, and tactical debrief in Malayalam by Haris Nenmara.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/Ustsj3NHM4Y</video:player_loc>
+      <video:publication_date>2026-10-13T10:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/football/kerala-blasters-aston-villa-green-new-signings/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/ZuU9k-lVTzE/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>ആസ്റ്റൺ വില്ലയിൽ നിന്ന് കളി പഠിച്ച ഗ്രീൻ;കൊമ്പന്മാരുടെ പുതിയ സൈനിംഗുകൾ| Kerala Blasters New signings</video:title>
+      <video:description>Aston Villa academy background meets Kerala Blasters FC. Technical evaluation of the new foreign signings and their tactical fit in the ISL by Haris Nenmara.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/ZuU9k-lVTzE</video:player_loc>
+      <video:publication_date>2026-10-12T14:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/football/lionel-messi-football-legacy-tactics/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/rNiXi4pW9nM/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>ഇങ്ങനെ ഒരിതിഹാസം ഇനി പിറക്കുമോ ? Lionel Messi | Haris Nenmara</video:title>
+      <video:description>Lionel Messi's tactical genius, spatial awareness, and career legacy analyzed in Malayalam by Haris Nenmara. The greatest football breakdown.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/rNiXi4pW9nM</video:player_loc>
+      <video:publication_date>2026-10-10T12:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/football/cristiano-ronaldo-cr7-tactical-philosophy/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/mVR_mRYU2YE/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>കോച്ചോ  റോണോയോ; ആരാണ് ശരി? | Cristiano Ronaldo | Ronaldo Walkout | CR7</video:title>
+      <video:description>Cristiano Ronaldo's tactical demands, box positioning, and team dynamics analyzed in Malayalam by Haris Nenmara. A neutral football debrief.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/mVR_mRYU2YE</video:player_loc>
+      <video:publication_date>2026-10-09T14:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/cricket/abhishek-sharma-vaibhav-suryavanshi-ind-vs-nz/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/qDn--g-xzQY/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek Sharma | Vaibhav Suryavanshi</video:title>
+      <video:description>Brutal power-hitting: Abhishek Sharma and Vaibhav Suryavanshi dismantle New Zealand bowling. In-depth cricket analysis in Malayalam by Haris Nenmara.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/qDn--g-xzQY</video:player_loc>
+      <video:publication_date>2026-10-25T14:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/cricket/sanju-samson-redemption-story-india-vs-nz/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/Xq1PtXOrVRc/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson</video:title>
+      <video:description>Sanju Samson's tactical resurgence, stroke play, and match-winning performances for Team India. Complete cricket analysis by Haris Nenmara.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/Xq1PtXOrVRc</video:player_loc>
+      <video:publication_date>2026-10-22T14:50:51+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/cricket/sanju-samson-ind-vs-nz-match-answers/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/I-40yws8G-E/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | Ind Vs Nz</video:title>
+      <video:description>Sanju Samson silences critics with decisive performance in India vs New Zealand. Cricket match review and tactical takeaways by Haris Nenmara.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/I-40yws8G-E</video:player_loc>
+      <video:publication_date>2026-10-23T13:57:49+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/cricket/tilak-varma-naman-dhir-comeback-analysis/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/F1X3eE_CBKU/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>ഇതൊക്കെയാണ് കം ബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | NamanDhir</video:title>
+      <video:description>Tilak Varma's technical comeback and Naman Dhir's explosive potential. Tactical cricket analysis in Malayalam by Haris Nenmara.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/F1X3eE_CBKU</video:player_loc>
+      <video:publication_date>2026-10-25T11:02:47+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/cricket/jasprit-bumrah-sanju-samson-ind-vs-wi/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/3-k7z6FqTX0/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>ഭുവി വരുന്നു ! ബുംറ ഇല്ലെങ്കിൽ ഇന്ത്യ ഇല്ലേ ? Sanju Samson | Jasprit Bumrah |Ind Vs Wi</video:title>
+      <video:description>Is India overly reliant on Jasprit Bumrah? Fast bowling tactics, Bhuvneshwar Kumar, and Sanju Samson discussed by Haris Nenmara.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/3-k7z6FqTX0</video:player_loc>
+      <video:publication_date>2026-10-16T11:30:27+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/cricket/bhuvneshwar-kumar-jasprit-bumrah-bowling-tactics/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/znjseVIMsE0/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>ഭുവിയും ബുംറയും ചേർന്നാൽ ! Bhuvneshwar Kumar | Jasprit Bumrah</video:title>
+      <video:description>The lethal bowling partnership: Bhuvneshwar Kumar and Jasprit Bumrah. Powerplay swing meets death-over yorkers. Analysis by Haris Nenmara.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/znjseVIMsE0</video:player_loc>
+      <video:publication_date>2026-10-17T11:36:23+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
   </url>
 </urlset>
