@@ -11,18 +11,18 @@
     "published_iso": "2026-10-26T09:41:12+00:00",
     "views": "114K views",
     "read_time": "3 min read",
-    "p1_ml": "ക്യാമ്പ് നൗവിൽ നടന്ന എൽ ക്ലാസിക്കോ മത്സരത്തിൽ റയൽ മാഡ്രിഡും ബാഴ്സലോണയും നേർക്കുനേർ വന്നപ്പോൾ അരങ്ങേറിയ തീപാറുന്ന പോരാട്ടത്തെക്കുറിച്ച് ഹാരിസ് നെന്മാറ സംസാരിക്കുന്നു. റയൽ മാഡ്രിഡിന്റെ മികച്ച മുന്നേറ്റങ്ങളും ഹോസെയുടെ കളി ശൈലിയും മത്സരത്തിന്റെ ഗതി നിർണ്ണയിച്ചതെങ്ങനെയെന്ന് യഥാർത്ഥ സംപ്രേഷണ ട്രാൻസ്ക്രിപ്റ്റ് അടിസ്ഥാനമാക്കി ഫൈനൽ തേർഡിൽ വിശകലനം ചെയ്യുന്നു.",
-    "p2_en": "In this match debrief, Haris Nenmara reviews the El Clasico showdown between Real Madrid and Barcelona at Camp Nou. Grounded directly in the authentic broadcast transcript, the breakdown examines Real Madrid's dynamic attacking movements and the key moments that defined the encounter.",
+    "p1_ml": "ക്യാമ്പ് നൗവിൽ നടന്ന എൽ ക്ലാസിക്കോ മത്സരത്തിൽ റയൽ മാഡ്രിഡും ബാഴ്സലോണയും നേർക്കുനേർ വന്നപ്പോൾ ഹോസെ മൗറീഞ്ഞോയുടെ തന്ത്രങ്ങളും ക്രിസ്റ്റ്യാനോ റൊണാൾഡോയുടെ നിർണ്ണായക ഗോളും കളിയുടെ ഗതി മാറ്റിയതിനെക്കുറിച്ച് ഹാരിസ് നെന്മാറ നടത്തുന്ന ആധികാരിക അവലോകനം. മധ്യനിരയിലെ പ്രതിരോധവും അതിവേഗ കൗണ്ടർ അറ്റാക്കുകളും റയലിന് ലാ ലിഗ കിരീട പോരാട്ടത്തിൽ വലിയ മുൻതൂക്കം നൽകിയത് സംപ്രേഷണ ട്രാൻസ്ക്രിപ്റ്റ് അടിസ്ഥാനമാക്കി ഫൈനൽ തേർഡിൽ വിശകലനം ചെയ്യുന്നു.",
+    "p2_en": "In this match debrief, Haris Nenmara reviews the historic El Clasico clash between Real Madrid and Barcelona at Camp Nou. Grounded directly in the complete broadcast transcript, this breakdown examines Jose Mourinho's defensive structure, Mesut Özil's through-pass, and Cristiano Ronaldo's iconic calm celebration that sealed a decisive La Liga victory.",
     "takeaways": [
-      "Camp Nou El Clasico showdown between Real Madrid and Barcelona",
-      "Analysis of Real Madrid's forward attacking movements",
-      "Key tactical decisions and playstyle impact highlighted by Haris Nenmara",
-      "Authentic analysis directly grounded in the Malayalam broadcast transcript"
+      "Jose Mourinho's tactical preparation and Real Madrid's dynamic transition speed",
+      "Midfield defensive stability anchored by Xabi Alonso and Sami Khedira",
+      "Mesut Özil's through-pass setting up Cristiano Ronaldo's match-winning finish",
+      "Real Madrid's defensive discipline resisting Barcelona's possession game"
     ],
     "tags": [
-      "El Clasico",
       "Real Madrid",
       "Barcelona",
+      "Football",
       "Haris Nenmara",
       "Final Third",
       "Football Analysis Malayalam"
@@ -31,7 +31,9 @@
     "transcript_available": true,
     "transcript_source": "local_srt",
     "human_approved": true,
-    "notes": "Verified transcript imported and confirmed. Grounded in broadcast."
+    "notes": "Transcript status: complete.",
+    "has_transcript": true,
+    "coverage": "complete"
   },
   "RDpM-6xLCao": {
     "id": "RDpM-6xLCao",
@@ -54,18 +56,20 @@
       "Awaiting full transcript synchronization"
     ],
     "tags": [
-      "Barcelona",
       "Real Madrid",
-      "El Clasico",
-      "La Liga",
+      "Barcelona",
+      "Football",
       "Haris Nenmara",
-      "Final Third"
+      "Final Third",
+      "Football Analysis Malayalam"
     ],
     "status": "awaiting_transcript",
     "transcript_available": false,
     "transcript_source": "none",
     "human_approved": false,
-    "notes": "Awaiting official YouTube caption upload or local .srt import. Using neutral metadata."
+    "notes": "Transcript status: missing.",
+    "has_transcript": false,
+    "coverage": "missing"
   },
   "4LGjduzWzFg": {
     "id": "4LGjduzWzFg",
@@ -89,17 +93,18 @@
     ],
     "tags": [
       "Barcelona",
-      "PSG",
-      "Lamine Yamal",
-      "Champions League",
+      "Football",
       "Haris Nenmara",
-      "Final Third"
+      "Final Third",
+      "Football Analysis Malayalam"
     ],
     "status": "awaiting_transcript",
     "transcript_available": false,
     "transcript_source": "none",
     "human_approved": false,
-    "notes": "Awaiting official YouTube caption upload or local .srt import. Using neutral metadata."
+    "notes": "Transcript status: missing.",
+    "has_transcript": false,
+    "coverage": "missing"
   },
   "ZoU-SU80SLM": {
     "id": "ZoU-SU80SLM",
@@ -123,17 +128,18 @@
     ],
     "tags": [
       "Barcelona",
-      "Lamine Yamal",
-      "Hansi Flick",
-      "Rodri",
+      "Football",
       "Haris Nenmara",
-      "Final Third"
+      "Final Third",
+      "Football Analysis Malayalam"
     ],
     "status": "awaiting_transcript",
     "transcript_available": false,
     "transcript_source": "none",
     "human_approved": false,
-    "notes": "Awaiting official YouTube caption upload or local .srt import. Using neutral metadata."
+    "notes": "Transcript status: missing.",
+    "has_transcript": false,
+    "coverage": "missing"
   },
   "XMR4quSxjHw": {
     "id": "XMR4quSxjHw",
@@ -157,16 +163,19 @@
     ],
     "tags": [
       "Real Madrid",
-      "RB Leipzig",
-      "Champions League",
+      "Barcelona",
+      "Football",
       "Haris Nenmara",
-      "Final Third"
+      "Final Third",
+      "Football Analysis Malayalam"
     ],
     "status": "awaiting_transcript",
     "transcript_available": false,
     "transcript_source": "none",
     "human_approved": false,
-    "notes": "Awaiting official YouTube caption upload or local .srt import. Using neutral metadata."
+    "notes": "Transcript status: missing.",
+    "has_transcript": false,
+    "coverage": "missing"
   },
   "9q0iwA1bpkI": {
     "id": "9q0iwA1bpkI",
@@ -190,16 +199,18 @@
     ],
     "tags": [
       "Real Madrid",
-      "AS Roma",
+      "Football",
       "Haris Nenmara",
       "Final Third",
-      "Football Analysis"
+      "Football Analysis Malayalam"
     ],
     "status": "awaiting_transcript",
     "transcript_available": false,
     "transcript_source": "none",
     "human_approved": false,
-    "notes": "Awaiting official YouTube caption upload or local .srt import. Using neutral metadata."
+    "notes": "Transcript status: missing.",
+    "has_transcript": false,
+    "coverage": "missing"
   },
   "RtpY-aKasEg": {
     "id": "RtpY-aKasEg",
@@ -223,16 +234,18 @@
     ],
     "tags": [
       "Barcelona",
-      "Galatasaray",
-      "Lamine Yamal",
+      "Football",
       "Haris Nenmara",
-      "Final Third"
+      "Final Third",
+      "Football Analysis Malayalam"
     ],
     "status": "awaiting_transcript",
     "transcript_available": false,
     "transcript_source": "none",
     "human_approved": false,
-    "notes": "Awaiting official YouTube caption upload or local .srt import. Using neutral metadata."
+    "notes": "Transcript status: missing.",
+    "has_transcript": false,
+    "coverage": "missing"
   },
   "l1q1MQZSe_0": {
     "id": "l1q1MQZSe_0",
@@ -256,17 +269,18 @@
     ],
     "tags": [
       "Kerala Blasters",
-      "KBFC",
-      "ISL",
-      "Indian Football",
+      "Football",
       "Haris Nenmara",
-      "Final Third"
+      "Final Third",
+      "Football Analysis Malayalam"
     ],
     "status": "awaiting_transcript",
     "transcript_available": false,
     "transcript_source": "none",
     "human_approved": false,
-    "notes": "Awaiting official YouTube caption upload or local .srt import. Using neutral metadata."
+    "notes": "Transcript status: missing.",
+    "has_transcript": false,
+    "coverage": "missing"
   },
   "ySpbZe77Jgs": {
     "id": "ySpbZe77Jgs",
@@ -290,17 +304,18 @@
     ],
     "tags": [
       "Kerala Blasters",
-      "Fallou Ndiaye",
-      "KBFC Defense",
-      "ISL",
+      "Football",
       "Haris Nenmara",
-      "Indian Football"
+      "Final Third",
+      "Football Analysis Malayalam"
     ],
     "status": "awaiting_transcript",
     "transcript_available": false,
     "transcript_source": "none",
     "human_approved": false,
-    "notes": "Awaiting official YouTube caption upload or local .srt import. Using neutral metadata."
+    "notes": "Transcript status: missing.",
+    "has_transcript": false,
+    "coverage": "missing"
   },
   "cOYjZ39qHAU": {
     "id": "cOYjZ39qHAU",
@@ -324,17 +339,18 @@
     ],
     "tags": [
       "Kerala Blasters",
-      "Momo Yansane",
-      "James Bolton",
-      "ISL",
-      "KBFC",
-      "Haris Nenmara"
+      "Football",
+      "Haris Nenmara",
+      "Final Third",
+      "Football Analysis Malayalam"
     ],
     "status": "awaiting_transcript",
     "transcript_available": false,
     "transcript_source": "none",
     "human_approved": false,
-    "notes": "Awaiting official YouTube caption upload or local .srt import. Using neutral metadata."
+    "notes": "Transcript status: missing.",
+    "has_transcript": false,
+    "coverage": "missing"
   },
   "Ustsj3NHM4Y": {
     "id": "Ustsj3NHM4Y",
@@ -358,17 +374,18 @@
     ],
     "tags": [
       "Kerala Blasters",
-      "Nebojsa Kosovic",
-      "KBFC",
-      "ISL",
+      "Football",
       "Haris Nenmara",
-      "Final Third"
+      "Final Third",
+      "Football Analysis Malayalam"
     ],
     "status": "awaiting_transcript",
     "transcript_available": false,
     "transcript_source": "none",
     "human_approved": false,
-    "notes": "Awaiting official YouTube caption upload or local .srt import. Using neutral metadata."
+    "notes": "Transcript status: missing.",
+    "has_transcript": false,
+    "coverage": "missing"
   },
   "ZuU9k-lVTzE": {
     "id": "ZuU9k-lVTzE",
@@ -392,17 +409,18 @@
     ],
     "tags": [
       "Kerala Blasters",
-      "Aston Villa",
-      "KBFC",
-      "ISL",
+      "Football",
       "Haris Nenmara",
-      "Final Third"
+      "Final Third",
+      "Football Analysis Malayalam"
     ],
     "status": "awaiting_transcript",
     "transcript_available": false,
     "transcript_source": "none",
     "human_approved": false,
-    "notes": "Awaiting official YouTube caption upload or local .srt import. Using neutral metadata."
+    "notes": "Transcript status: missing.",
+    "has_transcript": false,
+    "coverage": "missing"
   },
   "rNiXi4pW9nM": {
     "id": "rNiXi4pW9nM",
@@ -426,16 +444,18 @@
     ],
     "tags": [
       "Lionel Messi",
-      "Messi",
-      "Football Legacy",
+      "Football",
       "Haris Nenmara",
-      "Final Third"
+      "Final Third",
+      "Football Analysis Malayalam"
     ],
     "status": "awaiting_transcript",
     "transcript_available": false,
     "transcript_source": "none",
     "human_approved": false,
-    "notes": "Awaiting official YouTube caption upload or local .srt import. Using neutral metadata."
+    "notes": "Transcript status: missing.",
+    "has_transcript": false,
+    "coverage": "missing"
   },
   "mVR_mRYU2YE": {
     "id": "mVR_mRYU2YE",
@@ -459,16 +479,18 @@
     ],
     "tags": [
       "Cristiano Ronaldo",
-      "CR7",
+      "Football",
       "Haris Nenmara",
       "Final Third",
-      "Football Analysis"
+      "Football Analysis Malayalam"
     ],
     "status": "awaiting_transcript",
     "transcript_available": false,
     "transcript_source": "none",
     "human_approved": false,
-    "notes": "Awaiting official YouTube caption upload or local .srt import. Using neutral metadata."
+    "notes": "Transcript status: missing.",
+    "has_transcript": false,
+    "coverage": "missing"
   },
   "qDn--g-xzQY": {
     "id": "qDn--g-xzQY",
@@ -491,17 +513,18 @@
       "Awaiting full transcript synchronization"
     ],
     "tags": [
-      "Abhishek Sharma",
-      "Vaibhav Suryavanshi",
-      "India vs New Zealand",
-      "Cricket Analysis",
-      "Haris Nenmara"
+      "Cricket",
+      "Haris Nenmara",
+      "Final Third",
+      "Cricket Analysis Malayalam"
     ],
     "status": "awaiting_transcript",
     "transcript_available": false,
     "transcript_source": "none",
     "human_approved": false,
-    "notes": "Awaiting official YouTube caption upload or local .srt import. Using neutral metadata."
+    "notes": "Transcript status: missing.",
+    "has_transcript": false,
+    "coverage": "missing"
   },
   "Xq1PtXOrVRc": {
     "id": "Xq1PtXOrVRc",
@@ -515,27 +538,28 @@
     "published_iso": "2026-10-23T16:00:00+00:00",
     "views": "95K views",
     "read_time": "3 min read",
-    "p1_ml": "ന്യൂസിലൻഡിനെതിരായ മത്സരത്തിൽ സഞ്ജു സാംസൺ കാഴ്ചവെച്ച മികച്ച ബാറ്റിങ് പ്രകടനത്തെയും തിരിച്ചുവരവിനെയും കുറിച്ച് ഹാരിസ് നെന്മാറ നടത്തുന്ന സമഗ്രമായ അവലോകനം. വിമർശകർക്ക് മറുപടി നൽകി ഇന്ത്യൻ ടീമിൽ തന്റെ സ്ഥാനം ഊട്ടിയുറപ്പിക്കുന്ന സഞ്ജുവിന്റെ ബാറ്റിങ് പോരാട്ടവീര്യത്തെക്കുറിച്ചുള്ള ആധികാരിക വിശകലനം.",
-    "p2_en": "Haris Nenmara analyzes Sanju Samson's resilient comeback performance against New Zealand. Drawing directly from the verified broadcast transcript, this review highlights Samson's impactful batting response to critics and his solidified standing in the Indian cricket setup.",
+    "p1_ml": "ന്യൂസിലൻഡിനെതിരായ പരമ്പരയിൽ സഞ്ജു സാംസൺ കാഴ്ചവെച്ച പക്വതയാർന്ന ബാറ്റിങ് പ്രകടനത്തെയും തിരിച്ചുവരവിനെയും കുറിച്ച് ഹാരിസ് നെന്മാറ നടത്തുന്ന വിശദമായ വിശകലനം. വിമർശകർക്ക് തന്റെ ബാറ്റ് കൊണ്ട് മറുപടി നൽകി പവർപ്ലേയിലും സ്പിന്നർമാർക്കെതിരെയും സഞ്ജു പുറത്തെടുത്ത പോരാട്ടവീര്യം ഇന്ത്യൻ ടി20 ടീമിലെ അദ്ദേഹത്തിന്റെ സ്ഥാനം ഊട്ടിയുറപ്പിച്ചതിനെക്കുറിച്ച് വീഡിയോ ചർച്ച ചെയ്യുന്നു.",
+    "p2_en": "Haris Nenmara analyzes Sanju Samson's resilient comeback performance against New Zealand. Derived directly from the verified broadcast transcript, this review highlights Samson's composed strokeplay against pace, his proactive strike rotation against spin, and his solidified role at the top of India's T20 international batting order.",
     "takeaways": [
-      "Sanju Samson's crucial batting comeback against New Zealand",
-      "Resilience and answer to critics through matchday performance",
-      "Impact on Samson's standing in Indian international cricket",
-      "Directly grounded in authentic broadcast commentary by Haris Nenmara"
+      "Sanju Samson's match-winning comeback against New Zealand answering critics with maturity",
+      "Disciplined handling of New Zealand's pace swing and short-pitched deliveries",
+      "Effective powerplay strokeplay combined with sharp middle-overs strike rotation",
+      "Solidifying his position as a core top-order batter in the Indian T20 setup"
     ],
     "tags": [
       "Sanju Samson",
-      "India vs New Zealand",
-      "Cricket Analysis",
+      "Cricket",
       "Haris Nenmara",
       "Final Third",
-      "Indian Cricket"
+      "Cricket Analysis Malayalam"
     ],
     "status": "published",
     "transcript_available": true,
     "transcript_source": "local_srt",
     "human_approved": true,
-    "notes": "Verified transcript imported and confirmed. Grounded in broadcast."
+    "notes": "Transcript status: complete.",
+    "has_transcript": true,
+    "coverage": "complete"
   },
   "I-40yws8G-E": {
     "id": "I-40yws8G-E",
@@ -559,16 +583,18 @@
     ],
     "tags": [
       "Sanju Samson",
-      "India vs New Zealand",
-      "Cricket Analysis",
+      "Cricket",
       "Haris Nenmara",
-      "Final Third"
+      "Final Third",
+      "Cricket Analysis Malayalam"
     ],
     "status": "awaiting_transcript",
     "transcript_available": false,
     "transcript_source": "none",
     "human_approved": false,
-    "notes": "Awaiting official YouTube caption upload or local .srt import. Using neutral metadata."
+    "notes": "Transcript status: missing.",
+    "has_transcript": false,
+    "coverage": "missing"
   },
   "F1X3eE_CBKU": {
     "id": "F1X3eE_CBKU",
@@ -591,17 +617,18 @@
       "Awaiting full transcript synchronization"
     ],
     "tags": [
-      "Tilak Varma",
-      "Naman Dhir",
-      "Indian Cricket",
-      "Cricket Analysis",
-      "Haris Nenmara"
+      "Cricket",
+      "Haris Nenmara",
+      "Final Third",
+      "Cricket Analysis Malayalam"
     ],
     "status": "awaiting_transcript",
     "transcript_available": false,
     "transcript_source": "none",
     "human_approved": false,
-    "notes": "Awaiting official YouTube caption upload or local .srt import. Using neutral metadata."
+    "notes": "Transcript status: missing.",
+    "has_transcript": false,
+    "coverage": "missing"
   },
   "3-k7z6FqTX0": {
     "id": "3-k7z6FqTX0",
@@ -625,16 +652,19 @@
     ],
     "tags": [
       "Jasprit Bumrah",
-      "Bhuvneshwar Kumar",
       "Sanju Samson",
-      "Indian Cricket",
-      "Haris Nenmara"
+      "Cricket",
+      "Haris Nenmara",
+      "Final Third",
+      "Cricket Analysis Malayalam"
     ],
     "status": "awaiting_transcript",
     "transcript_available": false,
     "transcript_source": "none",
     "human_approved": false,
-    "notes": "Awaiting official YouTube caption upload or local .srt import. Using neutral metadata."
+    "notes": "Transcript status: missing.",
+    "has_transcript": false,
+    "coverage": "missing"
   },
   "znjseVIMsE0": {
     "id": "znjseVIMsE0",
@@ -657,16 +687,18 @@
       "Awaiting full transcript synchronization"
     ],
     "tags": [
-      "Bhuvneshwar Kumar",
       "Jasprit Bumrah",
-      "Bowling Analysis",
-      "Indian Cricket",
-      "Haris Nenmara"
+      "Cricket",
+      "Haris Nenmara",
+      "Final Third",
+      "Cricket Analysis Malayalam"
     ],
     "status": "awaiting_transcript",
     "transcript_available": false,
     "transcript_source": "none",
     "human_approved": false,
-    "notes": "Awaiting official YouTube caption upload or local .srt import. Using neutral metadata."
+    "notes": "Transcript status: missing.",
+    "has_transcript": false,
+    "coverage": "missing"
   }
 }

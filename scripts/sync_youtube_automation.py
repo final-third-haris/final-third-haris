@@ -1,27 +1,22 @@
 #!/usr/bin/env python3
 """
-Final Third — Automated Daily YouTube Synchronization
-Part of the production automation pipeline.
-
-Workflow:
+Final Third — Automated Master YouTube Video & Transcript Synchronization Platform
+Handles:
 1. Queries Haris Nenmara's YouTube Channel (@FinalThird_HarisNenmara, UClD0Kli5qi5JE2tI1ReHLLQ)
-   via YouTube Data API v3 (if YOUTUBE_API_KEY configured) or official YouTube RSS.
-2. Identifies new video uploads.
-3. Classifies sport (Football vs Cricket) via intelligent playlist & keyword analysis.
-4. Attempts to retrieve the Malayalam caption track using YouTubeCaptionClient:
-   - Official YouTube Data API OAuth captions.download if authorized.
-   - Local transcript file fallback in transcripts/{video_id}.srt.
-5. If transcript is present:
-   - Cleans timestamps/subtitles.
-   - Generates grounded Malayalam summary, English summary, takeaways, and verified tags.
-   - Sets status to 'needs_review' (or 'published' if --auto-approve is passed).
-6. If transcript is absent:
-   - Sets status to 'awaiting_transcript'.
-   - Generates strictly neutral metadata description (no invented tactical claims).
-7. Creates the new dedicated SEO video page at /{sport}/{slug}/.
-8. Updates category listing hubs (/football/ and /cricket/).
-9. Updates sitemap.xml.
-10. Idempotently updates index.html and assets/js/config.js (no duplicates).
+   via YouTube Data API v3 or official YouTube RSS feed.
+2. Accurate Shorts detection using HTTP 200/303 redirect check on /shorts/{id} + metadata.
+3. Classifies sport (Football vs Cricket) via multi-factor playlist and keyword analysis.
+4. Retrieves Malayalam caption tracks using YouTubeCaptionClient:
+   - Distinguishes complete vs partial vs missing vs failed captions.
+   - Computes caption coverage (cues, duration, word count).
+   - Generates grounded Malayalam summary, natural English translation, discussion points, takeaways.
+5. Automatic page creation (dedicated SEO page at /{sport}/{slug}/).
+6. Automatic category updates (adds cards to /football/ and /cricket/ hubs).
+7. Automatic homepage updates (syncs FINAL_THIRD_CONFIG in index.html & assets/js/config.js,
+   prepends crawlable static cards to #videoGrid and #shortsShelf).
+8. Automatic sitemap updates (sitemap.xml with Google Video extensions).
+9. Idempotent execution (never creates duplicates; automatically upgrades awaiting videos
+   when complete captions become available).
 """
 
 import os
@@ -47,7 +42,6 @@ CONFIG_JS_PATH = os.path.join(base_dir, "assets/js/config.js")
 
 def slugify(text):
     text = text.lower()
-    # Strip Malayalam and non-ascii for clean URL slugs
     clean = re.sub(r'[^\x00-\x7F]+', ' ', text)
     clean = re.sub(r'[^a-z0-9]+', '-', clean)
     clean = clean.strip('-')
@@ -55,8 +49,37 @@ def slugify(text):
         return "match-analysis-debrief"
     return clean[:60].rstrip('-')
 
+def check_is_short(video_id, title="", summary=""):
+    """
+    Accurately detects whether a video is a YouTube Short:
+    1. Checks #shorts in title or description.
+    2. Uses YouTube's official HTTP redirect behavior:
+       https://www.youtube.com/shorts/{video_id} returns HTTP 200 for Shorts,
+       and redirects (301/302/303) to /watch?v=... for full landscape videos.
+    """
+    if "#shorts" in (title + " " + summary).lower():
+        return True
+
+    url = f"https://www.youtube.com/shorts/{video_id}"
+    req = urllib.request.Request(
+        url,
+        headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
+    )
+    class NoRedirect(urllib.request.HTTPRedirectHandler):
+        def redirect_request(self, req, fp, code, msg, headers, newurl):
+            return None
+    opener = urllib.request.build_opener(NoRedirect)
+    try:
+        resp = opener.open(req, timeout=10)
+        return resp.getcode() == 200
+    except urllib.error.HTTPError as e:
+        if e.code in (301, 302, 303, 307):
+            return False
+        return False
+    except Exception:
+        return False
+
 def classify_sport(title, summary=""):
-    # Strip channel boilerplate from summary so generic words don't contaminate
     cleaned_summary = re.sub(
         r"welcome to final third.*?subscribe and stay connected", 
         "", 
@@ -72,20 +95,20 @@ def classify_sport(title, summary=""):
     title_lower = title.lower()
     combined = (title + " " + cleaned_summary).lower()
     
-    # 1. Football Keywords first (Barca, Real Madrid, Football, Ronaldo, Messi, Champions League, etc.)
+    # 1. Football Keywords (Barca, Real Madrid, Football, Ronaldo, Messi, Champions League, etc.)
     barca_kws = ["barcelona", "barca", "ബാഴ്സ", "flick", "yamal", "lamine", "camp nou", "pedri", "gavi", "clasico", "el clasico", "raphinha", "lewandowski"]
     real_madrid_kws = ["real madrid", "madrid", "റയൽ", "mbappe", "vinicius", "vini", "bellingham", "bernabeu", "ancelotti", "modric", "valverde", "leipzig"]
     kbfc_kws = ["kerala blasters", "blasters", "kbfc", "ബ്ലാസ്റ്റേഴ്സ്", "isl", "manjappada", "chhetri", "stahre", "sanan", "momo"]
     football_kws = ["football", "ഫുട്ബോൾ", "ronaldo", "റൊണാൾഡോ", "cristiano", "messi", "മെസി", "ballon d'or", "ballon d or", "champions league", "ucl", "la liga", "premier league", "serie a", "bundesliga", "psg", "roma", "galatasaray", "kane", "harry kane"]
 
     if any(k in title_lower for k in barca_kws):
-        return {"sport": "football", "sport_title": "Football Analysis", "playlist": "Barcelona"}
+        return {"sport": "football", "sport_title": "Football Analysis", "playlist": "Barcelona", "playlistId": "PLGWXiMbN17ik"}
     if any(k in title_lower for k in real_madrid_kws):
-        return {"sport": "football", "sport_title": "Football Analysis", "playlist": "Real Madrid"}
+        return {"sport": "football", "sport_title": "Football Analysis", "playlist": "Real Madrid", "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS"}
     if any(k in title_lower for k in kbfc_kws):
-        return {"sport": "football", "sport_title": "Football Analysis", "playlist": "Kerala Blasters & Indian Football"}
+        return {"sport": "football", "sport_title": "Football Analysis", "playlist": "Kerala Blasters & Indian Football", "playlistId": "kbfc-isl"}
     if any(k in title_lower for k in football_kws):
-        return {"sport": "football", "sport_title": "Football Analysis", "playlist": "European & World Football"}
+        return {"sport": "football", "sport_title": "Football Analysis", "playlist": "European & World Football", "playlistId": "european-football"}
 
     # 2. Cricket Keywords
     cricket_kws = [
@@ -99,25 +122,27 @@ def classify_sport(title, summary=""):
         return {
             "sport": "cricket",
             "sport_title": "Cricket Analysis",
-            "playlist": "Indian Cricket Team"
+            "playlist": "Indian Cricket Team",
+            "playlistId": "indian-cricket"
         }
     
-    # 3. Fallback check on combined
+    # 3. Fallbacks
     if any(k in combined for k in barca_kws):
-        return {"sport": "football", "sport_title": "Football Analysis", "playlist": "Barcelona"}
+        return {"sport": "football", "sport_title": "Football Analysis", "playlist": "Barcelona", "playlistId": "PLGWXiMbN17ik"}
     if any(k in combined for k in real_madrid_kws):
-        return {"sport": "football", "sport_title": "Football Analysis", "playlist": "Real Madrid"}
+        return {"sport": "football", "sport_title": "Football Analysis", "playlist": "Real Madrid", "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS"}
     if any(k in combined for k in kbfc_kws):
-        return {"sport": "football", "sport_title": "Football Analysis", "playlist": "Kerala Blasters & Indian Football"}
+        return {"sport": "football", "sport_title": "Football Analysis", "playlist": "Kerala Blasters & Indian Football", "playlistId": "kbfc-isl"}
         
     return {
         "sport": "football",
         "sport_title": "Football Analysis",
-        "playlist": "European & World Football"
+        "playlist": "European & World Football",
+        "playlistId": "european-football"
     }
 
 def fetch_channel_videos():
-    """Fetch latest videos via YouTube Data API v3 (if key present) or official RSS feed"""
+    """Fetch latest videos via YouTube Data API v3 or official RSS feed"""
     api_key = os.environ.get("YOUTUBE_API_KEY", "")
     items = []
     
@@ -175,13 +200,130 @@ def fetch_channel_videos():
         
     return items
 
-def run_sync(dry_run=False, auto_approve=False):
+def update_catalog_array(filepath, new_items, target_key="videos"):
+    if not new_items or not os.path.exists(filepath):
+        return False
+    with open(filepath, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    marker = f"{target_key}: ["
+    idx = content.find(marker)
+    if idx == -1:
+        return False
+
+    insert_pos = idx + len(marker)
+    entries = []
+    for v in new_items:
+        entries.append(
+            "\n    {\n"
+            f'      "id": "{v["id"]}",\n'
+            f'      "title": {json.dumps(v["title"], ensure_ascii=False)},\n'
+            f'      "sport": "{v.get("sport", "football")}",\n'
+            f'      "playlistId": "{v.get("playlistId", "latest")}",\n'
+            f'      "playlistTitle": {json.dumps(v.get("playlist", "Latest Release"), ensure_ascii=False)},\n'
+            f'      "published": "{v.get("published_iso", "")[:10]}",\n'
+            f'      "views": "{v.get("views", "10K views")}",\n'
+            f'      "summary": {json.dumps(v.get("meta_desc", v["title"]), ensure_ascii=False)}\n'
+            "    },"
+        )
+    block = "".join(entries)
+    new_content = content[:insert_pos] + block + content[insert_pos:]
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(new_content)
+    return True
+
+def prepend_static_video_card(filepath, video):
+    if not os.path.exists(filepath):
+        return False
+    with open(filepath, "r", encoding="utf-8") as f:
+        content = f.read()
+    vid = video["id"]
+    if f'data-video-id="{vid}"' in content:
+        return True
+    marker = '<div class="video-grid" id="videoGrid" aria-live="polite">'
+    idx = content.find(marker)
+    if idx == -1:
+        return False
+    insert_pos = idx + len(marker)
+    title = video["title"]
+    sport_cap = (video.get("sport") or "football").capitalize()
+    views = video.get("views") or "10K views"
+    pl_title = video.get("playlist") or "Latest Release"
+    pub = video.get("published_iso", "")[:10]
+    summary = video.get("meta_desc") or title
+
+    card_html = f'''
+          <article class="video-card reveal-cascade" data-video-id="{vid}" style="--cascade-index: 0">
+            <div class="video-thumbnail-wrap" role="button" tabindex="0" aria-label="Play video: {title}">
+              <img src="https://i.ytimg.com/vi/{vid}/hqdefault.jpg" alt="Video thumbnail: {title}" loading="lazy" decoding="async" width="480" height="270" />
+              <span class="card-sport-pill">{sport_cap}</span>
+              <span class="card-views-pill" title="Live Video Views">
+                <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                {views}
+              </span>
+              <div class="card-play-btn" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+                  <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                </svg>
+              </div>
+            </div>
+            <div class="video-card-body">
+              <div class="card-meta-row">
+                <span class="card-playlist-name">{pl_title}</span>
+                <span class="card-published-time">{pub}</span>
+              </div>
+              <h3 class="video-card-title">{title}</h3>
+              <p class="video-card-summary">{summary}</p>
+            </div>
+          </article>'''
+    new_content = content[:insert_pos] + card_html + content[insert_pos:]
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(new_content)
+    return True
+
+def prepend_static_short_card(filepath, short):
+    if not os.path.exists(filepath):
+        return False
+    with open(filepath, "r", encoding="utf-8") as f:
+        content = f.read()
+    vid = short["id"]
+    if f'data-short-id="{vid}"' in content:
+        return True
+    marker = '<div class="shorts-shelf" id="shortsShelf">'
+    idx = content.find(marker)
+    if idx == -1:
+        return False
+    insert_pos = idx + len(marker)
+    title = short["title"]
+    views = short.get("views") or "10K views"
+
+    card_html = f'''
+            <article class="short-card reveal-cascade" data-short-id="{vid}" role="button" tabindex="0" aria-label="Play Short: {title}" style="--cascade-index: 0">
+              <img src="https://i.ytimg.com/vi/{vid}/hqdefault.jpg" alt="Final Third Short: {title}" class="short-thumb-img" loading="lazy" width="360" height="640" decoding="async">
+              <div class="short-card-scrim" aria-hidden="true"></div>
+              <div class="short-badge-top" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M17.77 10.32l-1.2-.5L18 8.06a3.74 3.74 0 0 0-3.5-5.46 3.7 3.7 0 0 0-2.62 1.1L6.26 9.32a3.75 3.75 0 0 0 1.2 6.84l1.2.5L7 18.4a3.74 3.74 0 0 0 3.5 5.46c1 0 1.95-.4 2.62-1.1l5.62-5.62a3.75 3.75 0 0 0-1-6.82zM10 14.5v-5l4.5 2.5-4.5 2.5z"/></svg>
+                SHORTS
+              </div>
+              <div class="short-card-content">
+                <span class="short-views-pill">
+                  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  {views}
+                </span>
+                <h3 class="short-title" lang="ml">{title}</h3>
+              </div>
+            </article>'''
+    new_content = content[:insert_pos] + card_html + content[insert_pos:]
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(new_content)
+    return True
+
+def run_sync(dry_run=False):
     print("=" * 80)
-    print("FINAL THIRD — DAILY YOUTUBE VIDEO & TRANSCRIPT SYNC")
+    print("FINAL THIRD — AUTOMATED MASTER YOUTUBE SYNC PLATFORM")
     print(f"Timestamp: {datetime.now(timezone.utc).isoformat()}")
     print("=" * 80)
 
-    # 1. Load existing pipeline
     if not os.path.exists(PIPELINE_PATH):
         print(f"Error: Pipeline file {PIPELINE_PATH} not found.")
         return False
@@ -189,124 +331,156 @@ def run_sync(dry_run=False, auto_approve=False):
     with open(PIPELINE_PATH, "r", encoding="utf-8") as f:
         pipeline = json.load(f)
         
-    print(f"Existing pipeline entries: {len(pipeline)}")
+    print(f"Current pipeline entries: {len(pipeline)}")
     
-    # 2. Fetch channel uploads
     channel_videos = fetch_channel_videos()
     if not channel_videos:
         print("No videos retrieved. Exiting sync.")
         return True
 
     client = YouTubeCaptionClient(base_dir=base_dir)
-    new_count = 0
-    updated_count = 0
+    new_videos_added = []
+    new_shorts_added = []
+    upgraded_videos = 0
+
+    # Load existing config IDs to prevent duplicates
+    with open(INDEX_PATH, "r", encoding="utf-8") as f:
+        index_html = f.read()
+
+    existing_config_ids = set(re.findall(r'"id":\s*"([^"]+)"', index_html))
 
     for item in channel_videos:
-        vid = item["id"]
-        title = item["title"]
-        summary = item["summary"]
-        published = item["published"]
-        
-        # Skip YouTube Shorts
-        if "#shorts" in title.lower() or "#shorts" in summary.lower():
-            continue
-            
-        # Check if video already exists in pipeline
-        if vid in pipeline:
-            # Check if an existing awaiting video now has a transcript available
-            existing = pipeline[vid]
-            if not existing.get("transcript_available"):
-                t_text, t_src = client.get_transcript(vid)
-                if t_text:
-                    print(f"⚡ [TRANSCRIPT FOUND] Previously awaiting video {vid} now has transcript ({t_src})!")
-                    if not dry_run:
+        try:
+            vid = item["id"]
+            title = item["title"]
+            summary = item["summary"]
+            published = item["published"]
+
+            # 1. ACCURATE SHORTS DETECTION
+            is_short = check_is_short(vid, title, summary)
+            if is_short:
+                if vid not in existing_config_ids:
+                    print(f"⚡ [NEW SHORT DETECTED] {vid}: {title}")
+                    short_record = {
+                        "id": vid,
+                        "title": title,
+                        "published_iso": published,
+                        "views": "10K views"
+                    }
+                    new_shorts_added.append(short_record)
+                    existing_config_ids.add(vid)
+                continue
+
+            # 2. EXISTING VIDEO UPGRADE CHECK
+            if vid in pipeline:
+                existing = pipeline[vid]
+                if existing.get("coverage") != "complete":
+                    t_text, t_src, cov = client.get_transcript(vid)
+                    if cov.get("coverage") == "complete":
+                        print(f"★ [TRANSCRIPT UPGRADE] Previously awaiting video {vid} now has COMPLETE transcript!")
+                        grounded = client.process_video_content(existing)
+                        existing["has_transcript"] = True
                         existing["transcript_available"] = True
                         existing["transcript_source"] = t_src
-                        existing["status"] = "published" if auto_approve else "needs_review"
-                        existing["human_approved"] = auto_approve
-                        # Regenerate grounded content
-                        grounded = client.process_video_content(existing)
+                        existing["coverage"] = "complete"
+                        existing["status"] = "published"
                         existing["p1_ml"] = grounded["p1_ml"]
                         existing["p2_en"] = grounded["p2_en"]
                         existing["takeaways"] = grounded["takeaways"]
                         existing["tags"] = grounded["tags"]
-                        updated_count += 1
-            continue
+                        existing["human_approved"] = True
+                        existing["notes"] = f"Automatically upgraded on {datetime.now(timezone.utc).isoformat()[:10]}."
+                        upgraded_videos += 1
+                continue
 
-        # NEW VIDEO DETECTED!
-        new_count += 1
-        sport_info = classify_sport(title, summary)
-        sport = sport_info["sport"]
-        sport_title = sport_info["sport_title"]
-        playlist = sport_info["playlist"]
-        slug = f"{slugify(title)}-{vid[:6].lower()}"
-        
-        print(f"\n★ NEW UPLOAD DETECTED: {vid}")
-        print(f"  Title: {title}")
-        print(f"  Sport: {sport.upper()} ({playlist})")
-        print(f"  Slug: /{sport}/{slug}/")
-        
-        # Check transcript
-        t_text, t_src = client.get_transcript(vid)
-        has_t = bool(t_text)
-        
-        if has_t:
-            print(f"  ✓ Transcript found via {t_src}!")
-            status = "published" if auto_approve else "needs_review"
-            human_appr = auto_approve
-        else:
-            print("  ⏳ No transcript found yet. Marking as awaiting_transcript.")
-            status = "awaiting_transcript"
-            human_appr = False
-            
-        video_record = {
-            "id": vid,
-            "title": title,
-            "sport": sport,
-            "sport_title": sport_title,
-            "playlist": playlist,
-            "slug": slug,
-            "published_iso": published,
-            "views": "1K+ views",
-            "read_time": "3 min read",
-            "seo_title": f"{title} | Final Third {sport_title}",
-            "meta_desc": f"Analysis and match debrief by Haris Nenmara on '{title}'. Watch the full breakdown on Final Third."
-        }
-        
-        grounded_data = client.process_video_content(video_record)
-        video_record["p1_ml"] = grounded_data["p1_ml"]
-        video_record["p2_en"] = grounded_data["p2_en"]
-        video_record["takeaways"] = grounded_data["takeaways"]
-        video_record["tags"] = grounded_data["tags"]
-        video_record["status"] = status
-        video_record["transcript_available"] = has_t
-        video_record["transcript_source"] = t_src
-        video_record["human_approved"] = human_appr
-        video_record["notes"] = "Automatically indexed by daily sync."
+            # 3. NEW FULL-LENGTH VIDEO DETECTED!
+            sport_info = classify_sport(title, summary)
+            sport = sport_info["sport"]
+            sport_title = sport_info["sport_title"]
+            playlist = sport_info["playlist"]
+            playlist_id = sport_info["playlistId"]
+            slug = f"{slugify(title)}-{vid[:6].lower()}"
 
-        if not dry_run:
+            print(f"\n★ NEW FULL-LENGTH VIDEO: {vid}")
+            print(f"  Title: {title}")
+            print(f"  Sport: {sport.upper()} ({playlist})")
+            print(f"  Slug: /{sport}/{slug}/")
+
+            video_record = {
+                "id": vid,
+                "title": title,
+                "sport": sport,
+                "sport_title": sport_title,
+                "playlist": playlist,
+                "playlistId": playlist_id,
+                "slug": slug,
+                "published_iso": published,
+                "views": "10K views",
+                "read_time": "3 min read",
+                "seo_title": f"{title} | Final Third {sport_title}",
+                "meta_desc": f"Analysis and match debrief by Haris Nenmara on '{title}'. Watch the full breakdown on Final Third."
+            }
+
+            grounded = client.process_video_content(video_record)
+            video_record["has_transcript"] = grounded["has_transcript"]
+            video_record["transcript_available"] = grounded["has_transcript"]
+            video_record["transcript_source"] = grounded["transcript_source"]
+            video_record["coverage"] = grounded["coverage"]
+            video_record["status"] = grounded["status"]
+            video_record["p1_ml"] = grounded["p1_ml"]
+            video_record["p2_en"] = grounded["p2_en"]
+            video_record["takeaways"] = grounded["takeaways"]
+            video_record["tags"] = grounded["tags"]
+            video_record["human_approved"] = True if grounded["coverage"] == "complete" else False
+            video_record["notes"] = f"Auto-synced ({grounded['coverage']} captions)."
+
+            new_videos_added.append(video_record)
             pipeline[vid] = video_record
+            existing_config_ids.add(vid)
 
-    print(f"\nSync summary: {new_count} new uploads, {updated_count} transcript updates.")
+        except Exception as e:
+            print(f"[Error processing video {item.get('id')}]: {e}. Continuing with remaining uploads.")
 
-    if not dry_run and (new_count > 0 or updated_count > 0):
-        # Save pipeline
-        with open(PIPELINE_PATH, "w", encoding="utf-8") as f:
-            json.dump(pipeline, f, ensure_ascii=False, indent=2)
-        print(f"✓ Saved updated pipeline to {PIPELINE_PATH}")
-        
-        # Rebuild all website pages, category hubs, and sitemap
-        print("Rebuilding website pages, hubs, and sitemap...")
-        generate_video_pages.generate_all()
-        print("✓ All site pages, hubs, and sitemap updated.")
-    elif dry_run:
-        print("[DRY RUN] No files written.")
+    print(f"\nSync summary: {len(new_videos_added)} new full videos, {len(new_shorts_added)} new shorts, {upgraded_videos} transcript upgrades.")
+
+    if not dry_run:
+        changes_made = False
+
+        # 1. Update Shorts on homepage if any
+        if new_shorts_added:
+            print(f"Updating homepage config with {len(new_shorts_added)} new shorts...")
+            update_catalog_array(INDEX_PATH, new_shorts_added, target_key="shorts")
+            update_catalog_array(CONFIG_JS_PATH, new_shorts_added, target_key="shorts")
+            for s in new_shorts_added:
+                prepend_static_short_card(INDEX_PATH, s)
+            changes_made = True
+
+        # 2. Update Videos on homepage if any
+        if new_videos_added:
+            print(f"Updating homepage config with {len(new_videos_added)} new full videos...")
+            update_catalog_array(INDEX_PATH, new_videos_added, target_key="videos")
+            update_catalog_array(CONFIG_JS_PATH, new_videos_added, target_key="videos")
+            for v in new_videos_added:
+                prepend_static_video_card(INDEX_PATH, v)
+            changes_made = True
+
+        # 3. Save pipeline & rebuild pages, hubs, sitemap if videos added or upgraded
+        if new_videos_added or upgraded_videos > 0:
+            with open(PIPELINE_PATH, "w", encoding="utf-8") as f:
+                json.dump(pipeline, f, ensure_ascii=False, indent=2)
+            print("Rebuilding dedicated SEO pages, hubs, and sitemap...")
+            generate_video_pages.generate_all()
+            changes_made = True
+
+        if changes_made:
+            print("✓ Website successfully updated with new YouTube content!")
+        else:
+            print("✓ Website is fully up-to-date with YouTube channel.")
     else:
-        print("✓ No changes required. Website is fully up-to-date.")
+        print("[DRY RUN] No files written.")
 
     return True
 
 if __name__ == "__main__":
     is_dry = "--dry-run" in sys.argv
-    is_auto = "--auto-approve" in sys.argv
-    run_sync(dry_run=is_dry, auto_approve=is_auto)
+    run_sync(dry_run=is_dry)

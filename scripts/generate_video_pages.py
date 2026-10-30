@@ -99,11 +99,15 @@ def render_page(video):
     thumb_max = f"https://i.ytimg.com/vi/{vid}/maxresdefault.jpg"
     
     # Verification Badge & Headings
-    has_transcript = video.get("transcript_available", False)
-    if has_transcript:
-        badge_html = '''<div class="verification-badge verified"><span class="badge-icon">✓</span> Grounded in Verified Broadcast Transcript</div>'''
+    cov_type = video.get("coverage", "complete" if video.get("transcript_available") else "missing")
+    if cov_type == "complete" or (video.get("transcript_available") and cov_type != "partial"):
+        badge_html = '''<div class="verification-badge verified"><span class="badge-icon">✓</span> Grounded in Verified Complete Broadcast Transcript</div>'''
         section_h2 = "Verified Match Analysis &amp; Breakdown | മലയാളം അവലോകനം"
         takeaways_title = "Key Tactical Takeaways &amp; Discussion Points"
+    elif cov_type == "partial":
+        badge_html = '''<div class="verification-badge partial"><span class="badge-icon">ℹ</span> Grounded in Broadcast Excerpt (Full Transcript Pending)</div>'''
+        section_h2 = "Match Analysis Excerpt &amp; Overview | മലയാളം അവലോകനം"
+        takeaways_title = "Key Discussion Points &amp; Video Takeaways"
     else:
         badge_html = '''<div class="verification-badge awaiting"><span class="badge-icon">⏳</span> Awaiting Broadcast Transcript Verification</div>'''
         section_h2 = "Video Overview &amp; Match Analysis | മലയാളം അവലോകനം"
@@ -530,6 +534,11 @@ def render_page(video):
       border: 1px solid rgba(158, 226, 11, 0.35);
       color: var(--neon-lime);
     }}
+    .verification-badge.partial {{
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      color: #60a5fa;
+    }}
     .verification-badge.awaiting {{
       background: rgba(229, 169, 60, 0.12);
       border: 1px solid rgba(229, 169, 60, 0.35);
@@ -930,6 +939,17 @@ def render_category_hub(sport):
     cards_html = ""
     for v in vids:
         page_url = f"/{sport}/{v['slug']}/"
+        cov = v.get("coverage", "complete" if v.get("transcript_available") else "missing")
+        if cov == "complete" or (v.get("transcript_available") and cov != "partial"):
+            tag_cls = "hub-card-verified-tag"
+            tag_lbl = "✓ Verified Transcript"
+        elif cov == "partial":
+            tag_cls = "hub-card-partial-tag"
+            tag_lbl = "ℹ Excerpt Grounded"
+        else:
+            tag_cls = "hub-card-awaiting-tag"
+            tag_lbl = "⏳ Awaiting Transcript"
+
         cards_html += f"""
         <article class="hub-card" onclick="window.location.href='{page_url}'" style="cursor: pointer;">
           <a href="{page_url}" class="hub-card-thumb-link" aria-label="{v['title']}">
@@ -948,7 +968,7 @@ def render_category_hub(sport):
               <span class="hub-card-dot">·</span>
               <span class="hub-card-read">{v['read_time']}</span>
               <span class="hub-card-dot">·</span>
-              <span class="{ 'hub-card-verified-tag' if v.get('transcript_available') else 'hub-card-awaiting-tag' }">{ '✓ Verified Transcript' if v.get('transcript_available') else '⏳ Awaiting Transcript' }</span>
+              <span class="{tag_cls}">{tag_lbl}</span>
             </div>
             <h2 class="hub-card-title"><a href="{page_url}">{v['title']}</a></h2>
             <p class="hub-card-snippet">{v['meta_desc']}</p>
@@ -1303,6 +1323,7 @@ def render_category_hub(sport):
     .hub-card-dot {{ color: var(--dark-grey); }}
     .hub-card-read {{ color: var(--neon-lime); font-weight: 600; }}
     .hub-card-verified-tag {{ color: var(--neon-lime); font-size: 0.6875rem; font-weight: 700; display: inline-flex; align-items: center; gap: 3px; }}
+    .hub-card-partial-tag {{ color: #60a5fa; font-size: 0.6875rem; font-weight: 700; display: inline-flex; align-items: center; gap: 3px; }}
     .hub-card-awaiting-tag {{ color: #E5A93C; font-size: 0.6875rem; font-weight: 700; display: inline-flex; align-items: center; gap: 3px; }}
     .hub-card-title {{
       font-size: 1.0625rem;

@@ -8,11 +8,16 @@ This document outlines the architecture, security, and setup instructions for th
 
 Haris Nenmara uploads authentic Malayalam subtitles/captions with his YouTube videos. These captions serve as the **primary source of truth** for all website descriptions, tactical takeaways, and match analysis.
 
-### Factual Integrity Principles:
+### Factual Integrity & Automation Principles:
 1. **Never Invent Details:** If a tactical point, player formation, coach strategy, or match incident is absent from the broadcast transcript, it will never be fabricated.
-2. **Graceful Awaiting State:** If a caption track cannot be downloaded immediately, the video is classified as `awaiting_transcript` with a clean, neutral metadata description.
-3. **Idempotency:** All processed transcripts are stored locally in `transcripts/{video_id}.srt` and logged in `data/content_pipeline.json` so that videos are never reprocessed unnecessarily.
-4. **Human Approval Gate:** Editorial CLI tools allow previewing, editing, and approving descriptions before final publishing.
+2. **Transcript Coverage Evaluation:**
+   - **Complete Captions (>= 8 cues, >= 130 words, >= 60s):** Automatically generates a natural Malayalam summary, accurate English translation, discussion points, takeaways, and verified tags. Status: `published` (`✓ Grounded in Verified Complete Broadcast Transcript`).
+   - **Partial Captions (Excerpts):** Generates summary limited strictly to the spoken excerpt, clearly labeled as `published_partial` (`ℹ Grounded in Broadcast Excerpt`).
+   - **Missing or Failed Captions:** Publishes a clean, neutral metadata overview without pretending it is transcript-based. Transparent status: `awaiting_transcript` (`⏳ Awaiting Broadcast Transcript Verification`). Retries automatically on future daily runs.
+3. **No Manual Work Required:** The pipeline is 100% autonomous. New uploads are detected, categorized, summarized, and published to production automatically without requiring manual approval.
+4. **Accurate Shorts Detection:** Uses YouTube's official HTTP redirect behavior on `https://www.youtube.com/shorts/{id}` (HTTP 200 = Short, HTTP 303 = Full Video) plus duration and hashtag validation to ensure Shorts go to the Shorts shelf and never become full-length SEO article pages.
+5. **Unified Catalog Sync:** When a new video or short is processed, it is automatically added to both `FINAL_THIRD_CONFIG` in `index.html` and `assets/js/config.js` and prepended to the homepage grids.
+6. **Optional Admin CLI:** While the system is fully automated, the local CLI tool (`scripts/content_review.py`) remains available for inspecting, importing local subtitle files, or manually editing records.
 
 ---
 

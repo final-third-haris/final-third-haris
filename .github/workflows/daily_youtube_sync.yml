@@ -34,7 +34,7 @@ jobs:
           YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
         run: |
-          python3 scripts/sync_youtube_automation.py --auto-approve
+          python3 scripts/sync_youtube_automation.py
 
       - name: Commit & Push Changes
         run: |
@@ -42,7 +42,7 @@ jobs:
           git config --local user.name "GitHub Action [Final Third Sync]"
           
           if [ -n "$(git status --porcelain)" ]; then
-            git add data/ football/ cricket/ transcripts/ sitemap.xml
+            git add data/ index.html assets/js/config.js football/ cricket/ transcripts/ sitemap.xml
             git commit -m "chore(sync): automated daily YouTube video & transcript sync [skip ci]"
             git push origin main
             echo "✓ Changes committed and pushed to main. Vercel deployment triggered automatically."
