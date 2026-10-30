@@ -3565,23 +3565,84 @@ button, input, textarea, select {
 }
 
   
-.card-page-link-row {
+.card-page-link-row,
+.card-dedicated-row {
   margin-top: 10px;
   padding-top: 8px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
-.card-page-link {
+.card-page-link,
+.card-dedicated-btn {
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--neon-lime) !important;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  transition: opacity 0.2s;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(158, 226, 11, 0.08);
+  border: 1px solid rgba(158, 226, 11, 0.25);
+  border-radius: 4px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
 }
-.card-page-link:hover {
-  text-decoration: underline !important;
-  opacity: 0.85;
+.card-page-link:hover,
+.card-dedicated-btn:hover {
+  background: var(--neon-lime) !important;
+  color: #000 !important;
+  transform: translateY(-1px);
+}
+
+/* Category Hubs Quick Navigation Banner on Homepage */
+.category-hubs-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 0 0 20px;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+}
+.category-hubs-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted-grey, #a3a3a3);
+}
+.category-hub-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: #181818;
+  border: 1px solid #2a2a2a;
+  border-radius: 999px;
+  color: #f5f5f0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+.category-hub-chip:hover {
+  background: #222222;
+  border-color: var(--neon-lime);
+  color: var(--neon-lime);
+  transform: translateY(-1px);
+}
+.category-hub-chip .chip-badge {
+  background: rgba(158, 226, 11, 0.15);
+  color: var(--neon-lime);
+  font-size: 0.6875rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 999px;
+}
+.category-hub-chip .chip-arrow {
+  color: var(--neon-lime);
+  font-size: 0.875rem;
 }
 </style>
 </head>
@@ -3613,10 +3674,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </picture>
       </a>
 
-      <!-- Desktop Navigation Links (5 Core Essentials) -->
+      <!-- Desktop Navigation Links -->
       <nav class="main-nav" role="navigation" aria-label="Primary Navigation">
         <ul class="nav-list">
           <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="/football/" class="nav-link">⚽ Football Hub</a></li>
+          <li><a href="/cricket/" class="nav-link">🏏 Cricket Hub</a></li>
           <li><a href="#videos" class="nav-link">Videos</a></li>
           <li><a href="#shorts" class="nav-link">Shorts</a></li>
           <li><a href="#sponsor" class="nav-link">Sponsor</a></li>
@@ -3651,11 +3714,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="scroll-progress-bar" id="scrollProgressBar" aria-hidden="true"></div>
   </header>
 
-  <!-- Mobile Drawer (5 Core Essentials) -->
+  <!-- Mobile Drawer -->
   <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
     <ul class="mobile-nav-list">
       <li><a href="#hero" class="mobile-nav-link active">Home</a></li>
-      <li><a href="#videos" class="mobile-nav-link">Videos</a></li>
+      <li><a href="/football/" class="mobile-nav-link">⚽ Football Hub (14 Videos)</a></li>
+      <li><a href="/cricket/" class="mobile-nav-link">🏏 Cricket Hub (6 Videos)</a></li>
+      <li><a href="#videos" class="mobile-nav-link">All Videos (300+)</a></li>
       <li><a href="#shorts" class="mobile-nav-link">Shorts</a></li>
       <li><a href="#sponsor" class="mobile-nav-link">Sponsor &amp; Advertise</a></li>
       <li><a href="#about" class="mobile-nav-link">About Haris</a></li>
@@ -3852,6 +3917,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <a href="https://www.youtube.com/@FinalThird_HarisNenmara/videos" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
             ALL ON YOUTUBE ↗
+          </a>
+        </div>
+
+        <!-- Category Hubs Quick Navigation -->
+        <div class="category-hubs-banner" aria-label="Category Hubs Navigation">
+          <span class="category-hubs-title">Dedicated Analysis Hubs:</span>
+          <a href="/football/" class="category-hub-chip">
+            <span class="chip-icon">⚽</span>
+            <span>Football Hub</span>
+            <span class="chip-badge">14 Pages</span>
+            <span class="chip-arrow">→</span>
+          </a>
+          <a href="/cricket/" class="category-hub-chip">
+            <span class="chip-icon">🏏</span>
+            <span>Cricket Hub</span>
+            <span class="chip-badge">6 Pages</span>
+            <span class="chip-arrow">→</span>
           </a>
         </div>
 
@@ -5069,10 +5151,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h4 class="footer-col-title">Navigation</h4>
           <ul class="footer-links-list">
             <li><a href="#hero">Home</a></li>
+            <li><a href="/football/">⚽ Football Hub (14 Videos)</a></li>
+            <li><a href="/cricket/">🏏 Cricket Hub (6 Videos)</a></li>
             <li><a href="#featured">Featured Match</a></li>
-            <li><a href="#videos">Video Catalogue</a></li>
+            <li><a href="#videos">Video Catalogue (300+)</a></li>
             <li><a href="#sponsor">Sponsor &amp; Advertise</a></li>
-            <li><a href="#videos">Football &amp; Cricket Analysis</a></li>
             <li><a href="#about">Meet Haris Nenmara</a></li>
             <li><a href="/privacy.html">Privacy Policy</a></li>
           </ul>
@@ -8520,6 +8603,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Dedicated SEO Page mappings for top 20 videos
+  const DEDICATED_PAGE_MAP = {
+    'MT7IaTzzwY4': '/football/real-madrid-vs-barcelona-el-clasico-tactical-analysis/',
+    'RDpM-6xLCao': '/football/barcelona-vs-real-madrid-hansi-flick-tactics/',
+    '4LGjduzWzFg': '/football/barcelona-vs-psg-lamine-yamal-ucl-tactics/',
+    'ZoU-SU80SLM': '/football/barcelona-lamine-yamal-rodri-hansi-flick-system/',
+    'XMR4quSxjHw': '/football/real-madrid-vs-rb-leipzig-tactical-preview/',
+    '9q0iwA1bpkI': '/football/real-madrid-vs-roma-tactical-breakdown/',
+    'RtpY-aKasEg': '/football/barcelona-vs-galatasaray-lamine-yamal-analysis/',
+    'l1q1MQZSe_0': '/football/kerala-blasters-sanan-momo-fitness-tactics/',
+    'ySpbZe77Jgs': '/football/kerala-blasters-fallou-ndiaye-defensive-wall/',
+    'cOYjZ39qHAU': '/football/kerala-blasters-momo-yanson-attack-bolton-defense/',
+    'Ustsj3NHM4Y': '/football/kerala-blasters-midfield-nebojsa-kosovic-tactics/',
+    'ZuU9k-lVTzE': '/football/kerala-blasters-aston-villa-green-new-signings/',
+    'rNiXi4pW9nM': '/football/lionel-messi-football-legacy-tactics/',
+    'mVR_mRYU2YE': '/football/cristiano-ronaldo-cr7-tactical-philosophy/',
+    'qDn--g-xzQY': '/cricket/abhishek-sharma-vaibhav-suryavanshi-ind-vs-nz/',
+    'Xq1PtXOrVRc': '/cricket/sanju-samson-redemption-story-india-vs-nz/',
+    'I-40yws8G-E': '/cricket/sanju-samson-ind-vs-nz-match-answers/',
+    'F1X3eE_CBKU': '/cricket/tilak-varma-naman-dhir-comeback-analysis/',
+    '3-k7z6FqTX0': '/cricket/jasprit-bumrah-sanju-samson-ind-vs-wi/',
+    'znjseVIMsE0': '/cricket/bhuvneshwar-kumar-jasprit-bumrah-bowling-tactics/'
+  };
+
   // Render Video Grid
   function renderVideos() {
     if (!videoGrid) return;
@@ -8571,6 +8678,13 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <h3 class="video-card-title" role="button" tabindex="0">${escapeHtml(video.title)}</h3>
             <p class="video-card-summary">${escapeHtml(video.summary || '')}</p>
+            ${DEDICATED_PAGE_MAP[video.id] ? `
+            <div class="card-dedicated-row">
+              <a href="${DEDICATED_PAGE_MAP[video.id]}" class="card-dedicated-btn">
+                <span>📖 Read Dedicated Tactical Breakdown</span>
+                <span>↗</span>
+              </a>
+            </div>` : ''}
             <div class="video-card-footer">
               <button class="card-action-link" type="button" data-video-id="${video.id}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

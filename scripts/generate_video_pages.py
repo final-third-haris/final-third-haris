@@ -1,22 +1,19 @@
 #!/usr/bin/env python3
 """
-Final Third — Automated Generator for Dedicated Video SEO Pages & Category Hubs
+Final Third — Dedicated Video SEO Pages & Category Hubs Generator
 Generates:
-1. 20 dedicated, high-performance SEO video pages (14 Football, 6 Cricket)
-2. Football category hub (/football/index.html)
-3. Cricket category hub (/cricket/index.html)
-4. Video sitemap (sitemap.xml) with complete Google Video metadata
-5. Updated homepage video cards linking to dedicated pages
+1. 20 dedicated, accessible SEO video pages (14 Football, 6 Cricket)
+2. Football category hub (/football/index.html) with 14 clickable video cards
+3. Cricket category hub (/cricket/index.html) with 6 clickable video cards
+4. Google Video XML Sitemap (sitemap.xml)
 """
 
 import os
 import json
 import re
-from datetime import datetime
 
 DOMAIN = "https://www.finalthird-haris.com"
 
-# 20 Selected High-Performing & Evergreen Videos (14 Football, 6 Cricket)
 VIDEOS = [
     # ========================== FOOTBALL (14) ==========================
     {
@@ -27,19 +24,19 @@ VIDEOS = [
         "playlist": "Barcelona & Real Madrid",
         "title": "ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara",
         "seo_title": "Real Madrid vs Barcelona El Clasico Tactical Analysis | Final Third",
-        "meta_desc": "In-depth tactical analysis of El Clasico between Real Madrid and Barcelona in Malayalam by Haris Nenmara. Breaking down formations, pressing triggers, and key match moments.",
+        "meta_desc": "In-depth tactical analysis of El Clasico between Real Madrid and Barcelona in Malayalam by Haris Nenmara. Dissecting match moments, tactical setups, and key plays.",
         "published_iso": "2026-10-26T09:41:12+00:00",
         "views": "114K views",
         "read_time": "3 min read",
-        "p1_ml": "എൽ ക്ലാസിക്കോ പോരാട്ടത്തിൽ റയൽ മാഡ്രിഡും ബാഴ്സലോണയും നേർക്കുനേർ വന്നപ്പോൾ കളിക്കളത്തിൽ പിറന്നത് ആധുനിക ഫുട്ബോളിന്റെ ഏറ്റവും മികച്ച തന്ത്രപരമായ വിരുന്നുകളിലൊന്നാണ്. ക്യാമ്പ് നൗവിൽ നടന്ന മത്സരത്തിൽ റയൽ മാഡ്രിഡിന്റെ ഹൈ-പ്രസ്സിങ് ഘടനയും കൗണ്ടർ-അറ്റാക്കിങ് വേഗവും ബാഴ്സയുടെ പ്രതിരോധത്തെ നിരന്തരം സമ്മർദ്ദത്തിലാക്കി. ഹോസെയുടെ തന്ത്രങ്ങളും കാർലോ ആഞ്ചലോട്ടിയുടെ ടീം ഷേപ്പും എങ്ങനെയെല്ലാമാണ് കളിയുടെ ഗതി മാറ്റിയതെന്ന് ഹാരിസ് നെന്മാറ ഈ വീഡിയോയിൽ കൃത്യമായി പരിശോധിക്കുന്നു.",
-        "p2_en": "This tactical breakdown dissects the tactical setups of both European heavyweights. We examine how Real Madrid exploited transition spaces behind Barcelona's defensive high line, the positioning of wingers to isolate full-backs, and the midfield battle between both sides. Haris Nenmara breaks down why structural discipline and quick direct passes made the decisive difference in this fierce El Clasico showdown.",
+        "p1_ml": "എൽ ക്ലാസിക്കോ പോരാട്ടത്തിൽ റയൽ മാഡ്രിഡും ബാഴ്സലോണയും നേർക്കുനേർ വന്നപ്പോൾ കളിക്കളത്തിൽ പിറന്നത് ആധുനിക ഫുട്ബോളിന്റെ ഏറ്റവും മികച്ച പോരാട്ടങ്ങളിലൊന്നാണ്. ക്യാമ്പ് നൗവിൽ നടന്ന മത്സരത്തിൽ റയൽ മാഡ്രിഡിന്റെ ഘടനയും കൗണ്ടർ-അറ്റാക്കിങ് വേഗവും ബാഴ്സയുടെ പ്രതിരോധത്തെ നിരന്തരം സമ്മർദ്ദത്തിലാക്കി. ഹോസെയുടെ തന്ത്രപരമായ നീക്കങ്ങളും ടീം ഷേപ്പും എങ്ങനെയെല്ലാമാണ് കളിയുടെ ഗതി മാറ്റിയതെന്ന് ഹാരിസ് നെന്മാറ ഈ വീഡിയോയിൽ കൃത്യമായി പരിശോധിക്കുന്നു.",
+        "p2_en": "This tactical breakdown dissects the tactical setups of both European heavyweights in El Clasico. We examine how Real Madrid exploited transition spaces, the positioning of wingers to isolate defenders, and the intense midfield battle. Haris Nenmara breaks down why structural discipline and quick direct passes made the decisive difference in this high-voltage showdown.",
         "takeaways": [
-            "Exploitation of spaces behind Barcelona's aggressive high defensive block",
-            "Midfield pressing triggers that disrupted build-up play from the back",
-            "Rapid vertical transition play through wingers creating 1v1 overloads",
-            "Key defensive adjustments made during second-half tactical phases"
+            "Exploitation of transition spaces during rapid counter-attacking phases",
+            "Midfield pressing triggers that disrupted opponent build-up play",
+            "Wing play and isolated one-on-one attacking matchups",
+            "Key defensive balance maintained across both halves"
         ],
-        "tags": ["El Clasico", "Real Madrid", "Barcelona", "La Liga Tactics", "Haris Nenmara", "Football Analysis Malayalam"]
+        "tags": ["El Clasico", "Real Madrid", "Barcelona", "Football Analysis Malayalam", "Haris Nenmara", "Final Third"]
     },
     {
         "id": "RDpM-6xLCao",
@@ -48,20 +45,20 @@ VIDEOS = [
         "sport_title": "Football Analysis",
         "playlist": "Barcelona",
         "title": "ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico",
-        "seo_title": "Can Real Madrid Beat Hansi Flick's Barcelona? El Clasico Tactical Preview",
-        "meta_desc": "Hansi Flick's aggressive tactical approach at Barcelona scrutinized ahead of the Real Madrid El Clasico clash. Tactical debrief in Malayalam by Haris Nenmara.",
+        "seo_title": "Can Real Madrid Beat Barcelona? El Clasico Match Analysis | Final Third",
+        "meta_desc": "Can Real Madrid stop this in-form Barcelona squad? Comprehensive El Clasico tactical preview and match debrief in Malayalam by Haris Nenmara.",
         "published_iso": "2026-10-24T11:17:04+00:00",
         "views": "55K views",
         "read_time": "3 min read",
-        "p1_ml": "ഹാൻസി ഫ്ലിക്കിന്റെ കീഴിൽ പുതിയ ഊർജ്ജത്തോടെ കുതിക്കുന്ന ബാഴ്സലോണയെ തടഞ്ഞുനിർത്താൻ റയൽ മാഡ്രിഡിന് സാധിക്കുമോ? അതിവേഗത്തിലുള്ള ബോൾ റിക്കവറിയും കംപാക്റ്റ് ഹൈ-ലൈൻ ഡിഫൻസും അടിസ്ഥാനമാക്കിയുള്ള ബാഴ്സയുടെ ശൈലി ലാ ലിഗയിലെ ഏറ്റവും വലിയ ചോദ്യചിഹ്നമായി മാറിയിരിക്കുകയാണ്. എതിരാളികളുടെ പിഴവുകളെ വേഗത്തിൽ മുതലെടുക്കുന്ന ഫ്ലിക്കിന്റെ തന്ത്രങ്ങൾ എൽ ക്ലാസിക്കോയിൽ എത്രത്തോളം നിർണ്ണായകമാകുമെന്ന് ഈ വീഡിയോ വ്യക്തമാക്കുന്നു.",
-        "p2_en": "An analytical exploration of Hansi Flick's tactical revolution at FC Barcelona. We evaluate their synchronized offside traps, fluid front three combinations, and spatial dominance in the final third. The analysis investigates whether Real Madrid's individual brilliance can bypass Barcelona's suffocating central pressing or if Flick's system will dictate terms.",
+        "p1_ml": "യൂറോപ്യൻ ഫുട്ബോളിൽ പുതിയ ഊർജ്ജത്തോടെ കുതിക്കുന്ന ബാഴ്സലോണയെ തടഞ്ഞുനിർത്താൻ റയൽ മാഡ്രിഡിന് സാധിക്കുമോ? അതിവേഗത്തിലുള്ള ബോൾ റിക്കവറിയും ഒത്തിണക്കമുള്ള പ്രതിരോധവും അടിസ്ഥാനമാക്കിയുള്ള ബാഴ്സയുടെ ശൈലി ലാ ലിഗയിലെ ഏറ്റവും വലിയ ചോദ്യചിഹ്നമായി മാറിയിരിക്കുകയാണ്. എതിരാളികളുടെ പിഴവുകളെ വേഗത്തിൽ മുതലെടുക്കുന്ന നീക്കങ്ങൾ എൽ ക്ലാസിക്കോയിൽ എത്രത്തോളം നിർണ്ണായകമാകുമെന്ന് ഈ വീഡിയോ വ്യക്തമാക്കുന്നു.",
+        "p2_en": "An analytical exploration of Barcelona's high-tempo football ahead of the El Clasico clash with Real Madrid. We evaluate their synchronized defensive discipline, fluid front-line combinations, and spatial dominance in the final third. The analysis investigates whether Real Madrid can exploit transition moments or if Barcelona's structural intensity will dictate the match.",
         "takeaways": [
-            "Hansi Flick's synchronized offside trap execution and compact back line",
-            "Central counter-pressing structures enabling instant possession regain",
+            "Synchronized defensive line coordination and compact team shape",
+            "Central counter-pressing enabling instant possession regain",
             "Movement of attacking midfielders into half-spaces to break low blocks",
-            "Potential vulnerabilities against elite speed in defensive transitions"
+            "Transition management against elite speed on the counter"
         ],
-        "tags": ["Barcelona", "Hansi Flick", "El Clasico", "Real Madrid", "Tactical Preview", "La Liga"]
+        "tags": ["Barcelona", "Real Madrid", "El Clasico", "La Liga", "Tactical Preview", "Haris Nenmara"]
     },
     {
         "id": "4LGjduzWzFg",
@@ -75,13 +72,13 @@ VIDEOS = [
         "published_iso": "2026-10-21T13:36:26+00:00",
         "views": "55K views",
         "read_time": "3 min read",
-        "p1_ml": "യുവേഫ ചാമ്പ്യൻസ് ലീഗിൽ ബാഴ്സലോണയും പാരീസ് സെന്റ് ജെർമെയ്നും (PSG) തമ്മിൽ നടന്ന തീപാറുന്ന പോരാട്ടത്തിന്റെ സമഗ്രമായ അവലോകനം. കൗമാര വിസ്മയം ലാമിൻ യമാലിന്റെ അസാധാരണമായ വിങ്-പ്ലേയും ഡ്രിബ്ലിങ് വൈദഗ്ധ്യവും പിഎസ്ജിയുടെ ലെഫ്റ്റ്-ബാക്ക് പൊസിഷനെ എങ്ങിനെ തകിടം മറിച്ചുവെന്ന് ഹാരിസ് നെന്മാറ വിശദീകരിക്കുന്നു. യൂറോപ്യൻ വമ്പന്മാരുടെ കളിക്കളത്തിലെ തന്ത്രപരമായ ഏറ്റുമുട്ടൽ ഇതിൽ കാണാം.",
-        "p2_en": "Focusing on the Champions League blockbuster between Barcelona and PSG, this video analyzes tactical dynamics in high-stakes knockout football. Discover how Lamine Yamal's isolation plays on the right flank stretched PSG's defensive shape, allowing interior runners to penetrate into dangerous attacking pockets.",
+        "p1_ml": "യുവേഫ ചാമ്പ്യൻസ് ലീഗിൽ ബാഴ്സലോണയും പാരീസ് സെന്റ് ജെർമെയ്നും (PSG) തമ്മിൽ നടന്ന തീപാറുന്ന പോരാട്ടത്തിന്റെ സമഗ്രമായ അവലോകനം. കൗമാര വിസ്മയം ലാമിൻ യമാലിന്റെ അസാധാരണമായ വിങ്-പ്ലേയും ഡ്രിബ്ലിങ് വൈദഗ്ധ്യവും പിഎസ്ജിയുടെ പ്രതിരോധ നിരയെ എങ്ങിനെ സമ്മർദ്ദത്തിലാക്കിയെന്ന് ഹാരിസ് നെന്മാറ വിശദീകരിക്കുന്നു. യൂറോപ്യൻ വമ്പന്മാരുടെ കളിക്കളത്തിലെ തന്ത്രപരമായ ഏറ്റുമുട്ടൽ ഇതിൽ കാണാം.",
+        "p2_en": "Focusing on the Champions League blockbuster between Barcelona and PSG, this video analyzes tactical dynamics in high-stakes European football. Discover how Lamine Yamal's directness on the right flank stretched PSG's defensive shape, allowing runners to penetrate dangerous attacking pockets.",
         "takeaways": [
-            "Lamine Yamal's 1v1 dribbling statistics and box-entry creation",
-            "PSG's tactical overload strategies in the attacking third",
-            "Midfield distribution battles between Pedri and PSG's pivot",
-            "Key defensive transitions under high European competition tempo"
+            "Lamine Yamal's 1v1 dribbling and box-entry creation",
+            "Tactical overload strategies in the attacking third",
+            "Midfield possession control under high European competition tempo",
+            "Key defensive transitions in knockout European football"
         ],
         "tags": ["Barcelona vs PSG", "Champions League", "Lamine Yamal", "UCL Analysis", "Football Tactics", "Haris Nenmara"]
     },
@@ -93,7 +90,7 @@ VIDEOS = [
         "playlist": "Barcelona",
         "title": "ബാഴ്സയെ ആര് പിടിച്ച് കെട്ടും ? Barcelona | Lamine Yamal | Rodri | Hansi Flick",
         "seo_title": "Who Can Stop Barcelona? Lamine Yamal, Rodri & Hansi Flick System Analysis",
-        "meta_desc": "Can anyone stop this Barcelona team? Tactical investigation into Hansi Flick's tactical blueprint, Rodri comparisons, and Lamine Yamal's influence.",
+        "meta_desc": "Can anyone stop this Barcelona team? Tactical investigation into Hansi Flick's blueprint, Rodri comparisons, and Lamine Yamal's influence.",
         "published_iso": "2026-10-18T09:39:08+00:00",
         "views": "42K views",
         "read_time": "3 min read",
@@ -119,15 +116,15 @@ VIDEOS = [
         "published_iso": "2026-10-22T09:49:56+00:00",
         "views": "42K views",
         "read_time": "3 min read",
-        "p1_ml": "യൂറോപ്യൻ ഫുട്ബോളിൽ ആർബി ലെയ്പ്സിഗിനെതിരായ റയൽ മാഡ്രിഡിന്റെ പോരാട്ടം നൽകിയ തന്ത്രപരമായ മുന്നറിയിപ്പുകൾ പരിശോധിക്കുകയാണ് ഹാരിസ് നെന്മാറ. ജർമ്മൻ ടീമിന്റെ ഹൈ-ഇന്റൻസിറ്റി പ്രസ്സിങ്ങിന് മുന്നിൽ റയൽ നേരിട്ട വെല്ലുവിളികളും, പ്രതിരോധത്തിലെ വിടവുകൾ നികത്താൻ കാർലോ ആഞ്ചലോട്ടി നടത്തിയ പകരക്കാരെ ഇറക്കലും കളിയിലെ വഴിത്തിരിവുകളായി. ലാ ലിഗയിലെ മറ്റ് മത്സരങ്ങൾക്കും എൽ ക്ലാസിക്കോയ്ക്കും ഈ പോരാട്ടം നൽകുന്ന സന്ദേശങ്ങൾ എന്തൊക്കെയാണ്?",
-        "p2_en": "Analyzing Real Madrid's resilience under tactical duress against RB Leipzig. This video studies how Leipzig's 4-2-2-2 system suffocated Madrid's central circulation and how individual tactical moments from Madrid's star players salvaged decisive momentum in crucial phases of the game.",
+        "p1_ml": "യൂറോപ്യൻ ഫുട്ബോളിൽ ആർബി ലെയ്പ്സിഗിനെതിരായ റയൽ മാഡ്രിഡിന്റെ പോരാട്ടം നൽകിയ തന്ത്രപരമായ മുന്നറിയിപ്പുകൾ പരിശോധിക്കുകയാണ് ഹാരിസ് നെന്മാറ. ജർമ്മൻ ടീമിന്റെ ഹൈ-ഇന്റൻസിറ്റി പ്രസ്സിങ്ങിന് മുന്നിൽ റയൽ നേരിട്ട വെല്ലുവിളികളും, പ്രതിരോധത്തിലെ വിടവുകൾ നികത്താൻ നടത്തിയ തന്ത്രപരമായ മാറ്റങ്ങളും കളിയിലെ വഴിത്തിരിവുകളായി. ലാ ലിഗയിലെ മറ്റ് മത്സരങ്ങൾക്കും എൽ ക്ലാസിക്കോയ്ക്കും ഈ പോരാട്ടം നൽകുന്ന സന്ദേശങ്ങൾ എന്തൊക്കെയാണ്?",
+        "p2_en": "Analyzing Real Madrid's resilience under tactical duress against RB Leipzig. This video studies how Leipzig's organized pressing challenged Madrid's circulation and how individual tactical moments from Madrid's decisive players salvaged momentum in crucial phases of the game.",
         "takeaways": [
-            "Leipzig's narrow defensive shape forcing Madrid wide",
             "Defensive mid-block transitions and counter-attack containment",
             "Individual ball-carrying impact under sustained pressure",
-            "Tactical lessons for Real Madrid heading into top-flight fixtures"
+            "Tactical balance in high-tempo European knockout atmospheres",
+            "Key lessons for Real Madrid heading into top-flight domestic clashes"
         ],
-        "tags": ["Real Madrid", "RB Leipzig", "Champions League", "Tactical Breakdown", "Carlo Ancelotti", "Haris Nenmara"]
+        "tags": ["Real Madrid", "RB Leipzig", "Champions League", "Tactical Breakdown", "Haris Nenmara", "Final Third"]
     },
     {
         "id": "9q0iwA1bpkI",
@@ -141,15 +138,15 @@ VIDEOS = [
         "published_iso": "2026-10-20T12:00:00+00:00",
         "views": "57K views",
         "read_time": "3 min read",
-        "p1_ml": "എഎസ് റോമയ്ക്കെതിരായ റയൽ മാഡ്രിഡിന്റെ ഗംഭീര പ്രകടനം ഫുട്ബോൾ പ്രേമികൾക്ക് സമ്മാനിച്ചത് നിരവധി തന്ത്രപരമായ പാഠങ്ങളാണ്. ആക്രമണ നിരയിലെ ഫ്ലൂയിഡിറ്റിയും മധ്യനിരയിലെ നിയന്ത്രണവും എതിരാളികളെ പ്രതിരോധത്തിലാക്കിയെങ്കിലും, പ്രതിരോധത്തിൽ ഇനിയും പരിഹരിക്കപ്പെടേണ്ട ചില ദൗർബല്യങ്ങൾ ഈ മത്സരം തുറന്നുകാട്ടുന്നു. ഹാരിസ് നെന്മാറയുടെ സവിശേഷമായ വിശകലനം ഇവിടെ കാണാം.",
-        "p2_en": "A detailed technical review of Real Madrid's tactical encounter with Italian side AS Roma. The analysis reviews positional interchangeability in Madrid's front three, box-crashing runs from central midfielders, and areas of defensive concentration that require calibration ahead of tournament knockouts.",
+        "p1_ml": "എഎസ് റോമയ്ക്കെതിരായ റയൽ മാഡ്രിഡിന്റെ ഗംഭീര പ്രകടനം ഫുട്ബോൾ പ്രേമികൾക്ക് സമ്മാനിച്ചത് നിരവധി തന്ത്രപരമായ പാഠങ്ങളാണ്. ആക്രമണ നിരയിലെ ഫ്ലൂയിഡിറ്റിയും മധ്യനിരയിലെ നിയന്ത്രണവും എതിരാളികളെ പ്രതിരോധത്തിലാക്കിയെങ്കിലും, പ്രതിരോധത്തിൽ ഇനിയും പരിഹരിക്കപ്പെടേണ്ട ചില കാര്യങ്ങൾ ഈ മത്സരം വ്യക്തമാക്കുന്നു. ഹാരിസ് നെന്മാറയുടെ സവിശേഷമായ വിശകലനം ഇവിടെ കാണാം.",
+        "p2_en": "A detailed technical review of Real Madrid's tactical encounter with Italian side AS Roma. The analysis reviews positional interchangeability in Madrid's front line, penetration into the box, and areas of defensive concentration required ahead of major European tournaments.",
         "takeaways": [
-            "Positional rotations between wingers and false nine attackers",
+            "Positional rotations between front-line attackers",
             "Box entries via progressive vertical passes",
-            "Defensive transition vulnerabilities against pace on the counter",
-            "Midfield tempo orchestration in controlling the rhythm of play"
+            "Defensive transition balance against counter-attacking opponent pace",
+            "Midfield tempo orchestration in controlling the match rhythm"
         ],
-        "tags": ["Real Madrid", "Roma", "Match Analysis", "European Football", "Tactical Debrief", "Final Third"]
+        "tags": ["Real Madrid", "AS Roma", "European Football", "Tactical Breakdown", "Haris Nenmara", "Football Analysis"]
     },
     {
         "id": "RtpY-aKasEg",
@@ -158,20 +155,20 @@ VIDEOS = [
         "sport_title": "Football Analysis",
         "playlist": "Barcelona",
         "title": "ആളറിഞ്ഞു കളിക്കടാ ! barcelona vs galatasaray | lamine yamal | Haris Nenmara",
-        "seo_title": "Barcelona vs Galatasaray Match Review | Lamine Yamal Performance Analysis",
+        "seo_title": "Barcelona vs Galatasaray Match Review | Lamine Yamal Focus | Final Third",
         "meta_desc": "Barcelona vs Galatasaray tactical match review in Malayalam. How Lamine Yamal and Barcelona broke down aggressive defensive setups with tactical flair.",
-        "published_iso": "2026-10-19T14:00:00+00:00",
+        "published_iso": "2026-10-19T10:00:00+00:00",
         "views": "72K views",
         "read_time": "3 min read",
-        "p1_ml": "തുർക്കിഷ് കരുത്തരായ ഗലാത്സരെയ്ക്കെതിരെ ബാഴ്സലോണ നടത്തിയ പോരാട്ടത്തിൽ കളിയുടെ നിയന്ത്രണം പിടിച്ചെടുത്തത് തന്ത്രപരമായ പക്വതയാണ്. എതിർ ടീമിന്റെ കടുത്ത വെല്ലുവിളികളെയും ശാരീരികമായ അഗ്രഷനെയും അതിജീവിച്ച് ബാഴ്സലോണ തങ്ങളുടെ സ്വാഭാവിക പാസിങ് ഗെയിം എങ്ങനെ പുറത്തെടുത്തുവെന്ന് ഈ വീഡിയോ വിശദീകരിക്കുന്നു. ലാമിൻ യമാലിന്റെ ക്ലാസ് പ്രകടനവും മത്സരത്തിൽ നിർണ്ണായകമായി.",
-        "p2_en": "Reviewing Barcelona's tactical composure against Galatasaray's combative defensive block. Haris Nenmara analyzes how patience in build-up, precision diagonal switches, and individual flair dismantled the opponent's aggressive defensive strategy.",
+        "p1_ml": "ബാഴ്സലോണയും ഗലാറ്റസരെയും തമ്മിൽ നടന്ന ആവേശകരമായ മത്സരത്തിന്റെ വിശകലനം. യൂറോപ്യൻ പോരാട്ടങ്ങളിൽ എതിരാളികളുടെ പ്രതിരോധ കോട്ടകൾ തകർക്കാൻ ബാഴ്സ സ്വീകരിച്ച അടവുകളും, കൗമാരതാരം ലാമിൻ യമാലിന്റെ വ്യക്തിഗത മികവും കളിയിൽ നിർണ്ണായകമായി. ഹാരിസ് നെന്മാറ പങ്കുവെക്കുന്ന തന്ത്രപരമായ നിരീക്ഷണങ്ങൾ.",
+        "p2_en": "A tactical breakdown of Barcelona's clash against Galatasaray. We evaluate how Barcelona dismantled Galatasaray's defensive block using positional overloads, intelligent off-the-ball movements, and the individual genius of Lamine Yamal.",
         "takeaways": [
-            "Overcoming aggressive man-marking through quick one-touch passing",
-            "Diagonal long-ball switches to exploit the under-defended flank",
-            "Lamine Yamal's decisive playmaking in the final third",
-            "Patience and positional discipline against low defensive blocks"
+            "Breaking down aggressive low-block defensive structures",
+            "Wing overloads creating isolation matchups in the final third",
+            "Patience and ball retention against compact defensive teams",
+            "Tactical maturity of young players on European nights"
         ],
-        "tags": ["Barcelona", "Galatasaray", "Lamine Yamal", "European Football", "Match Review", "Haris Nenmara"]
+        "tags": ["Barcelona", "Galatasaray", "Lamine Yamal", "European Football", "Haris Nenmara", "Final Third"]
     },
     {
         "id": "l1q1MQZSe_0",
@@ -179,21 +176,21 @@ VIDEOS = [
         "sport": "football",
         "sport_title": "Football Analysis",
         "playlist": "Kerala Blasters & Indian Football",
-        "title": "'സനാന് ഫിറ്റ്നസില്ല... മോമോയുടെ  മെന്‍റാലിറ്റി'; ആഷ്‍ലിയുടെ തുറന്ന് പറച്ചിലുകള്‍ | Kerala blasters",
-        "seo_title": "Kerala Blasters Player Fitness & Mental Approach Analysis | ISL Tactical Review",
+        "title": "'സനാന് ഫിറ്റ്നസില്ല... മോമോയുടെ മെന്‍റാലിറ്റി'; ആഷ്‍ലിയുടെ തുറന്ന് പറച്ചിലുകള്‍ | Kerala blasters",
+        "seo_title": "Kerala Blasters Squad Analysis: Sanan, Momo & Tactical Realities | Final Third",
         "meta_desc": "Kerala Blasters player fitness, tactical discipline, and mentality analyzed by Haris Nenmara. In-depth review of Sanan, Momo, and ISL campaign requirements.",
-        "published_iso": "2026-10-18T10:00:00+00:00",
+        "published_iso": "2026-10-18T14:30:00+00:00",
         "views": "55K views",
         "read_time": "3 min read",
-        "p1_ml": "കേരള ബ്ലാസ്റ്റേഴ്സിന്റെ ഈ സീസണിലെ പ്രകടനങ്ങളെയും ടീം മാനേജ്മെന്റിന്റെ നിലപാടുകളെയും വിലയിരുത്തുന്ന സമഗ്രമായ ചർച്ച. മുഹമ്മദ് സനാന്റെ ഫിറ്റ്നസ് ലെവലുകളെക്കുറിച്ചും മോമോ യാൻസന്റെ ഫൈറ്റിങ് മെന്റാലിറ്റിയെക്കുറിച്ചും പുറത്തുവന്ന വെളിപ്പെടുത്തലുകൾ ബ്ലാസ്റ്റേഴ്സ് ക്യാമ്പിലെ യാഥാർത്ഥ്യങ്ങളിലേക്ക് വിരൽചൂണ്ടുന്നു. ഐഎസ്എല്ലിൽ മുന്നേറാൻ സാങ്കേതിക തികവിനൊപ്പം ശാരീരിക ക്ഷമത എത്രത്തോളം പ്രധാനമാണെന്ന് ഹാരിസ് നെന്മാറ പങ്കുവെക്കുന്നു.",
-        "p2_en": "A critical examination of player development and squad depth at Kerala Blasters FC. This video analyzes the technical potential of Indian youngsters like Sanan alongside the physical and psychological demands of the Indian Super League (ISL), highlighting why tactical consistency demands elite fitness standards.",
+        "p1_ml": "കേരള ബ്ലാസ്റ്റേഴ്സിന്റെ ഈ സീസണിലെ പ്രകടനങ്ങളെയും താരങ്ങളുടെ ഫിറ്റ്നസിനെയും സംബന്ധിച്ച് ആഷ്‌ലിയുടെ തുറന്നുപറച്ചിലുകൾ ചൂടേറിയ ചർച്ചകൾക്ക് വഴിവെച്ചിരിക്കുകയാണ്. സനാന്റെ ഫിറ്റ്നസ് പ്രശ്നങ്ങളും മോമോയുടെ കളിയിലെ മനോഭാവവും ടീമിന്റെ വിജയങ്ങളെ എങ്ങനെ ബാധിക്കുന്നുവെന്ന് ഹാരിസ് നെന്മാറ വസ്തുനിഷ്ഠമായി വിലയിരുത്തുന്നു. ബ്ലാസ്റ്റേഴ്സ് ആരാധകർ അറിഞ്ഞിരിക്കേണ്ട സുപ്രധാന വിവരങ്ങൾ.",
+        "p2_en": "Kerala Blasters' campaign under the tactical microscope: scrutinizing squad fitness standards, pressing endurance, and mental resilience. Haris Nenmara evaluates the public commentary on Sanan's physical readiness and Momo's tactical role, explaining what the team must fix to maintain ISL competitiveness.",
         "takeaways": [
-            "The physical intensity benchmarks required in the modern ISL",
-            "Tactical balance between flair players and high-work-rate runners",
-            "Squad rotation challenges facing Kerala Blasters coaching staff",
-            "Mentality and resilience needed in crunch matchday scenarios"
+            "Impact of player physical conditioning on 90-minute pressing",
+            "Momo's attacking positioning and pressing contribution",
+            "Squad rotation challenges in long league tournaments",
+            "Coaching decisions under pressure in the Indian Super League"
         ],
-        "tags": ["Kerala Blasters", "ISL", "Indian Football", "Sanan", "Momo Yansane", "Haris Nenmara"]
+        "tags": ["Kerala Blasters", "KBFC", "ISL", "Indian Football", "Sanan", "Haris Nenmara"]
     },
     {
         "id": "ySpbZe77Jgs",
@@ -202,20 +199,20 @@ VIDEOS = [
         "sport_title": "Football Analysis",
         "playlist": "Kerala Blasters & Indian Football",
         "title": "ഫാലു ബാക്ക് ; ബ്ലാസ്റ്റേഴ്സ് ബാക്ക് ലൈൻ സുശക്തം | Fallou ndiaye| Kerala Blasters",
-        "seo_title": "Fallou Ndiaye & Kerala Blasters Defensive Line Tactical Analysis | ISL",
-        "meta_desc": "How Fallou Ndiaye reinforces the Kerala Blasters defense. Tactical analysis of defensive shape, aerial duels, and clean sheets in the ISL by Haris Nenmara.",
-        "published_iso": "2026-10-15T12:00:00+00:00",
+        "seo_title": "Fallou N'Diaye: Kerala Blasters Defensive Wall Analysis | Final Third",
+        "meta_desc": "Can Fallou N'Diaye solidify Kerala Blasters' backline? Tactical analysis of his defensive positioning, aerial dominance, and ISL impact by Haris Nenmara.",
+        "published_iso": "2026-10-15T08:00:00+00:00",
         "views": "35K views",
         "read_time": "3 min read",
-        "p1_ml": "കേരള ബ്ലാസ്റ്റേഴ്സിന്റെ പ്രതിരോധ കോട്ടയ്ക്ക് കാവലാളായി ഫാലു എൻദിയായെ തിരികെയെത്തുമ്പോൾ ടീമിന്റെ ഗെയിം പ്ലാനിൽ വരുന്ന മാറ്റങ്ങൾ എന്തൊക്കെയാണ്? ഗ്രൗണ്ടിലെ എയറിയൽ ഡോമിനൻസും ലീഡർഷിപ്പ് ക്വാളിറ്റിയും ബ്ലാസ്റ്റേഴ്സിന്റെ ബോക്സ് പ്രതിരോധത്തെ എത്രത്തോളം ശക്തമാക്കുന്നു എന്ന് ഈ വീഡിയോ വിശകലനം ചെയ്യുന്നു. പ്രതിരോധ പിഴവുകൾ കുറച്ച് ക്ലീൻ ഷീറ്റുകൾ നിലനിർത്താൻ ഫാലുവിന്റെ തിരിച്ചുവരവ് നൽകുന്ന മുൻതൂക്കം ഇതിൽ ചർച്ചയാകുന്നു.",
-        "p2_en": "Analyzing the tactical impact of center-back Fallou Ndiaye on Kerala Blasters' defensive solidity. We break down defensive line height, aerial duel win rates, box defending, and how a confident ball-playing defender stabilizes build-up under pressure from opposition forwards.",
+        "p1_ml": "കേരള ബ്ലാസ്റ്റേഴ്സ് പ്രതിരോധ നിരയ്ക്ക് കരുത്തുപകരാൻ ഫാലു എൻദിയായെ തിരിച്ചെത്തുന്നു. അദ്ദേഹത്തിന്റെ വരവ് ബ്ലാസ്റ്റേഴ്സിന്റെ ബാക്ക്-ലൈനിന് എത്രത്തോളം ഉറപ്പ് നൽകും? ഏരിയൽ ഡ്യുവലുകളിലെ ആധിപത്യവും ടാക്കിളുകളിലെ കൃത്യതയും മഞ്ഞപ്പടയുടെ പ്രതിരോധപ്പിഴവുകൾ പരിഹരിക്കാൻ സഹായിക്കുമോ എന്ന് പരിശോധിക്കുന്ന സമഗ്രമായ വിശകലനം.",
+        "p2_en": "Analyzing the return of Fallou N'Diaye to the Kerala Blasters defense. This video examines his aerial prowess, box-defending capabilities, and leadership qualities in stabilizing a backline that has faced high pressure in competitive ISL matches.",
         "takeaways": [
-            "Commanding aerial presence in defending set-pieces and crosses",
-            "Communication and organization of the defensive back four",
-            "Calm progressive passing out of the defensive defensive third",
-            "Impact on goalkeeper confidence and reducing conceded shots on target"
+            "Dominance in aerial duels defending set pieces and long balls",
+            "Interception positioning in a compact central defensive pairing",
+            "Physicality and composure under opposition high press",
+            "Leadership and communication across the back four"
         ],
-        "tags": ["Kerala Blasters", "Fallou Ndiaye", "ISL Defense", "Indian Football", "Tactical Review"]
+        "tags": ["Kerala Blasters", "Fallou N'Diaye", "KBFC Defense", "ISL Tactics", "Haris Nenmara", "Indian Football"]
     },
     {
         "id": "cOYjZ39qHAU",
@@ -224,20 +221,20 @@ VIDEOS = [
         "sport_title": "Football Analysis",
         "playlist": "Kerala Blasters & Indian Football",
         "title": "അറ്റാക്കിൽ യാൻസൺ ; കോട്ട കാക്കാൻ ബോൾട്ടൻ | Kerala Blasters | Momo yansane | James Bolton",
-        "seo_title": "Kerala Blasters Tactical Balance: Yansane Attack & Bolton Defense | ISL",
-        "meta_desc": "Kerala Blasters tactical balance: Momo Yansane spearheading the attack and James Bolton commanding the defense. Detailed ISL tactical debrief.",
+        "seo_title": "Kerala Blasters Squad Analysis: Yansane in Attack, Bolton in Defense | Final Third",
+        "meta_desc": "Kerala Blasters tactical balance: Momo Yansane leading the attack while James Bolton secures the defense. ISL squad analysis by Haris Nenmara.",
         "published_iso": "2026-10-14T11:00:00+00:00",
-        "views": "60K views",
+        "views": "48K views",
         "read_time": "3 min read",
-        "p1_ml": "മുന്നേറ്റ നിരയിൽ മോമോ യാൻസന്റെ ഗോളടി മികവും പ്രതിരോധത്തിൽ ജെയിംസ് ബോൾട്ടന്റെ പരിചയസമ്പത്തും ചേരുമ്പോൾ കേരള ബ്ലാസ്റ്റേഴ്സിന് ലഭിക്കുന്ന തന്ത്രപരമായ സന്തുലിതാവസ്ഥ പരിശോധിക്കുന്ന വീഡിയോ. കൗണ്ടർ അറ്റാക്കുകളിൽ യാൻസന്റെ സ്പീഡും ബോക്സിലെ ഫിനിഷിങ്ങും ടീമിന് എത്രത്തോളം കരുത്തുപകരുന്നു? മറുവശത്ത് ബോൾട്ടന്റെ സാന്നിധ്യം പ്രതിരോധത്തെ എങ്ങനെ സുരക്ഷിതമാക്കുന്നു? ഹാരിസ് നെന്മാറ വിശദീകരിക്കുന്നു.",
-        "p2_en": "Evaluating the tactical spine of Kerala Blasters FC. This video breaks down the dual dynamic of Momo Yansane's physical focal-point hold-up play in attack and James Bolton's defensive experience in organizing the offside line and managing spatial threats.",
+        "p1_ml": "കേരള ബ്ലാസ്റ്റേഴ്സിന്റെ മുന്നേറ്റ നിരയിൽ മോമോ യാൻസണും പ്രതിരോധത്തിൽ ജെയിംസ് ബോൾട്ടനും ഒത്തുചേരുമ്പോൾ ടീമിന് ലഭിക്കുന്ന തന്ത്രപരമായ സന്തുലിതാവസ്ഥ എന്താണ്? അറ്റാക്കിങ്ങിലെ ഫിനിഷിങ് പോരായ്മകളും ഡിഫൻസിലെ വിടവുകളും പരിഹരിക്കാൻ ഇരുവരുടെയും സാനിധ്യം സഹായിക്കുമോ എന്ന് ഹാരിസ് നെന്മാറ വിശദീകരിക്കുന്നു.",
+        "p2_en": "A strategic review of Kerala Blasters' spine: Momo Yansane's hold-up and pressing ability up front contrasted with James Bolton's defensive solidity at the back. This analysis breaks down how balancing both ends of the pitch creates tactical stability in the ISL.",
         "takeaways": [
-            "Hold-up and link-up play from the central target striker",
-            "Defensive anticipation and blocking dangerous interior passing lanes",
-            "Tactical balance between aggressive attack and defensive rest-defense",
-            "Key partnerships driving Kerala Blasters' competitive ambitions"
+            "Yansane's physical hold-up play linking attack with midfield",
+            "James Bolton's positional discipline in defending the box",
+            "Transition efficiency from defensive third to attacking third",
+            "Overall squad balance required for consistent league points"
         ],
-        "tags": ["Kerala Blasters", "Momo Yansane", "James Bolton", "ISL", "Indian Super League", "Tactical Analysis"]
+        "tags": ["Kerala Blasters", "Momo Yansane", "James Bolton", "ISL Analysis", "KBFC", "Haris Nenmara"]
     },
     {
         "id": "Ustsj3NHM4Y",
@@ -246,20 +243,20 @@ VIDEOS = [
         "sport_title": "Football Analysis",
         "playlist": "Kerala Blasters & Indian Football",
         "title": "ബ്ലാസ്റ്റേഴ്സ് മധ്യനിര ഇനി കൊസോവിച്ച് ഭരിക്കും | Kerala Blasters | Nebojša Kosović",
-        "seo_title": "Nebojsa Kosovic Midfield Masterclass & Kerala Blasters Tactics | ISL",
-        "meta_desc": "How Nebojsa Kosovic controls the Kerala Blasters midfield tempo. Passing vision, spatial control, and tactical debrief in Malayalam by Haris Nenmara.",
-        "published_iso": "2026-10-13T10:00:00+00:00",
-        "views": "87K views",
+        "seo_title": "Nebojša Kosović: Kerala Blasters Midfield Maestro Analysis | Final Third",
+        "meta_desc": "Can Nebojša Kosović control the midfield for Kerala Blasters? Tactical analysis of his passing range, vision, and midfield dictation by Haris Nenmara.",
+        "published_iso": "2026-10-12T07:30:00+00:00",
+        "views": "39K views",
         "read_time": "3 min read",
-        "p1_ml": "കേരള ബ്ലാസ്റ്റേഴ്സിന്റെ മധ്യനിരയുടെ താളവും വേഗതയും നിയന്ത്രിക്കുന്നതിൽ നെബോയ്ഷ കൊസോവിച്ച് എന്ന മിഡ്ഫീൽഡ് ജനറലിന്റെ പ്രാധാന്യം വ്യക്തമാക്കുന്ന അവലോകനം. ബോൾ ഡിസ്ട്രിബ്യൂഷനിലെ കൃത്യത, പ്രതിരോധത്തിൽ നിന്നും പന്ത് സ്വീകരിച്ച് മുന്നേറ്റ നിരയിലേക്ക് പകർന്നുനൽകാനുള്ള കഴിവ്, മത്സരത്തിന്റെ ടെമ്പോ നിയന്ത്രിക്കൽ എന്നിവയിലൂടെ കൊസോവിച്ച് ബ്ലാസ്റ്റേഴ്സിന് നൽകുന്ന അധിക ആനുകൂല്യങ്ങൾ എന്തൊക്കെയാണെന്ന് പരിശോധിക്കാം.",
-        "p2_en": "Deep technical analysis of Nebojsa Kosovic's midfield playmaking profile for Kerala Blasters. We assess pass completion rates under press, progressive line-breaking deliveries, positional awareness, and his ability to dictate game tempo across demanding ISL matches.",
+        "p1_ml": "കേരള ബ്ലാസ്റ്റേഴ്സ് മധ്യനിരയെ നിയന്ത്രിക്കാൻ എത്തിയ മോണ്ടിനെഗ്രോ താരം നെബോജ്സ കൊസോവിച്ചിന്റെ കളി ശൈലിയെക്കുറിച്ചുള്ള സമഗ്രമായ പഠനം. കളിയുടെ വേഗത നിയന്ത്രിക്കാനും കൃത്യമായ പാസുകളിലൂടെ മുന്നേറ്റ നിരയിലേക്ക് പന്തെത്തിക്കാനുമുള്ള അദ്ദേഹത്തിന്റെ കഴിവ് ബ്ലാസ്റ്റേഴ്സിന് എത്രത്തോളം മുതൽകൂട്ടാകുമെന്ന് ഹാരിസ് നെന്മാറ പരിശോധിക്കുന്നു.",
+        "p2_en": "Evaluating the tactical profile of Nebojša Kosović at Kerala Blasters. We assess his passing range, vision under pressure, and how a true midfield controller can unlock defenses while protecting the center of the pitch in the ISL.",
         "takeaways": [
-            "Controlling the tempo through short-long passing variance",
-            "Shielding the central center-backs against direct attacks",
-            "Creating numerical overloads in the central third of the pitch",
-            "Set-piece delivery accuracy and tactical awareness in transition"
+            "Vision and progressive passing between opponent defensive lines",
+            "Tempo management and retaining possession under pressure",
+            "Spatial positioning in central midfield transitions",
+            "Set-piece delivery and creative chance generation"
         ],
-        "tags": ["Kerala Blasters", "Nebojsa Kosovic", "ISL Midfield", "Football Analysis", "Indian Football"]
+        "tags": ["Kerala Blasters", "Nebojsa Kosovic", "KBFC Midfield", "ISL Tactics", "Haris Nenmara", "Indian Football"]
     },
     {
         "id": "ZuU9k-lVTzE",
@@ -268,64 +265,64 @@ VIDEOS = [
         "sport_title": "Football Analysis",
         "playlist": "Kerala Blasters & Indian Football",
         "title": "ആസ്റ്റൺ വില്ലയിൽ നിന്ന് കളി പഠിച്ച ഗ്രീൻ;കൊമ്പന്മാരുടെ പുതിയ സൈനിംഗുകൾ| Kerala Blasters New signings",
-        "seo_title": "Aston Villa Pedigree: Kerala Blasters New Signings & Tactical Role",
-        "meta_desc": "Aston Villa academy background meets Kerala Blasters FC. Technical evaluation of the new foreign signings and their tactical fit in the ISL by Haris Nenmara.",
-        "published_iso": "2026-10-12T14:00:00+00:00",
-        "views": "111K views",
+        "seo_title": "Kerala Blasters New Signings: Green & Squad Rebuilding | Final Third",
+        "meta_desc": "Aston Villa academy graduate Green arrives at Kerala Blasters. Tactical breakdown of new signings and squad rebuilding by Haris Nenmara.",
+        "published_iso": "2026-10-10T12:00:00+00:00",
+        "views": "44K views",
         "read_time": "3 min read",
-        "p1_ml": "ഇംഗ്ലീഷ് പ്രീമിയർ ലീഗ് ക്ലബ്ബ് ആസ്റ്റൺ വില്ലയുടെ അക്കാദമിയിൽ നിന്നും കളിയഭ്യസിച്ച താരങ്ങളുടെ വരവ് കേരള ബ്ലാസ്റ്റേഴ്സിന്റെ നിലവാരത്തെ എങ്ങനെയെല്ലാമാണ് ഉയർത്തുന്നത്? പുതിയ സീസണിലേക്കായി ബ്ലാസ്റ്റേഴ്സ് മാനേജ്മെന്റ് നടത്തിയ മികച്ച സൈനിങ്ങുകളുടെ സാങ്കേതിക മേന്മകളും, അവർ ടീമിന്റെ സിസ്റ്റത്തിൽ എങ്ങനെ ഫിറ്റാകും എന്നതും വിശദമായി പരിശോധിക്കുന്ന വീഡിയോ.",
-        "p2_en": "Examining the footballing pedigree and tactical attributes of Kerala Blasters' new arrivals with Premier League academy backgrounds. We investigate positional flexibility, technical fundamentals, and how European football training translates to the physical environment of the Indian Super League.",
+        "p1_ml": "പ്രീമിയർ ലീഗ് ക്ലബ്ബ് ആസ്റ്റൺ വില്ലയുടെ അക്കാദമിയിൽ നിന്ന് കളി പഠിച്ചെത്തിയ ഗ്രീനും ബ്ലാസ്റ്റേഴ്സിന്റെ പുതിയ സൈനിംഗുകളും ടീമിന് നൽകുന്ന പുതിയ പ്രതീക്ഷകൾ എന്തൊക്കെയാണ്? യുവതാരങ്ങളുടെ സാന്നിധ്യം മഞ്ഞപ്പടയുടെ കളി ശൈലിയിൽ വരുത്തുന്ന മാറ്റങ്ങൾ ഹാരിസ് നെന്മാറ വിശദീകരിക്കുന്നു.",
+        "p2_en": "An overview of Kerala Blasters' latest recruitment strategy, spotlighting Aston Villa academy product Green. We evaluate how modern European youth football foundations can enhance Kerala Blasters' tactical intensity and squad depth in Indian football.",
         "takeaways": [
-            "Technical foundations honed in elite English youth academies",
-            "High footballing IQ and quick decision-making under tight pressure",
-            "Tactical flexibility across multiple roles in attacking and midfield setups",
-            "Elevating team passing accuracy and combination speed in the final third"
+            "Technical fundamentals from top-tier European youth academies",
+            "Versatility across wide and central attacking channels",
+            "Impact of high-energy young signings on squad rotation",
+            "Long-term rebuilding vision for the Kerala Blasters project"
         ],
-        "tags": ["Kerala Blasters", "Aston Villa", "New Signings", "ISL Transfers", "Indian Football", "Haris Nenmara"]
+        "tags": ["Kerala Blasters", "Green", "Aston Villa", "KBFC Signings", "ISL", "Haris Nenmara"]
     },
     {
         "id": "rNiXi4pW9nM",
         "slug": "lionel-messi-football-legacy-tactics",
         "sport": "football",
         "sport_title": "Football Analysis",
-        "playlist": "World Cup & Football Legends",
+        "playlist": "2026 WORLDCUP Stories",
         "title": "ഇങ്ങനെ ഒരിതിഹാസം ഇനി പിറക്കുമോ ? Lionel Messi | Haris Nenmara",
-        "seo_title": "Lionel Messi Tactical Genius & Enduring Legacy | Final Third Football Special",
-        "meta_desc": "Lionel Messi's tactical genius, spatial awareness, and career legacy analyzed in Malayalam by Haris Nenmara. The greatest football breakdown.",
-        "published_iso": "2026-10-10T12:00:00+00:00",
+        "seo_title": "Lionel Messi Tactical Legacy: Will We Ever See Another? | Final Third",
+        "meta_desc": "A tribute to Lionel Messi's football genius. Haris Nenmara analyzes the spatial awareness, playmaking brilliance, and enduring legacy of the Argentine icon.",
+        "published_iso": "2026-10-08T09:00:00+00:00",
         "views": "65K views",
         "read_time": "3 min read",
-        "p1_ml": "ഫുട്ബോൾ ചരിത്രത്തിലെ ഏറ്റവും മഹാനായ കളിക്കാരനായ ലയണൽ മെസ്സിയുടെ തന്ത്രപരമായ പ്രതിഭയെയും അവിസ്മരണീയമായ കരിയറിനെയും അടയാളപ്പെടുത്തുന്ന സ്പെഷ്യൽ വീഡിയോ. സാധാരണ കളിക്കാർ കാണാത്ത സ്പേസുകൾ കണ്ടെത്താനുള്ള മെസ്സിയുടെ വിഷൻ, ചെറിയ ഇടങ്ങളിലെ ഡ്രിബ്ലിങ് നിയന്ത്രണം, ഗോളിന് മുന്നിലെ കാംനസ് എന്നിവയെല്ലാം ഫുട്ബോളിന്റെ സൌന്ദര്യശാസ്ത്രമായി മാറിയത് എങ്ങനെയെന്ന് ഹാരിസ് നെന്മാറ വിശദീകരിക്കുന്നു.",
-        "p2_en": "A tribute and tactical dissection of Lionel Messi's career-defining qualities. From false nine movement under Guardiola to deep-lying playmaker roles in international triumphs, we break down Messi's walking telemetry, scan rates, and unmatched playmaking output in world football history.",
+        "p1_ml": "ഫുട്ബോൾ ലോകത്ത് ലയണൽ മെസ്സിയെപ്പോലൊരു ഇതിഹാസം ഇനി വീണ്ടും പിറക്കുമോ? കളിക്കളത്തിൽ ഇടങ്ങൾ കണ്ടെത്തുന്നതിലും കളിയുടെ ഗതി ഒറ്റയ്ക്ക് മാറ്റുന്നതിലും മെസ്സി കാണിച്ച പ്രതിഭ അദ്വിതീയമാണ്. കരിയറിന്റെ വിവിധ ഘട്ടങ്ങളിൽ മെസ്സി തന്റെ കളി ശൈലി എങ്ങനെ മാറ്റിമറിച്ചുവെന്നും ഫുട്ബോൾ ചരിത്രത്തിൽ അദ്ദേഹത്തിന്റെ സ്ഥാനം എന്താണെന്നും ഹാരിസ് നെന്മാറ ഹൃദയസ്പർശിയായി വിശകലനം ചെയ്യുന്നു.",
+        "p2_en": "Reflecting on the incomparable tactical and creative genius of Lionel Messi. Haris Nenmara explores Messi's extraordinary spatial intelligence, walking play style that reads opponent spacing, and how his transition from explosive winger to supreme playmaker redefined modern football.",
         "takeaways": [
-            "Head scan frequency and pitch spatial mapping before receiving the ball",
-            "The mechanics of decelerating and shifting momentum in 1v1 dribbles",
-            "Transition from inverted winger to generational false nine and deep creator",
-            "Clutch performance metrics in World Cup and European tournament finals"
+            "Spatial scanning and reading defensive structural weaknesses",
+            "Evolution from rapid dribbler to master orchestral playmaker",
+            "Decisive playmaking in championship and World Cup moments",
+            "The enduring legacy of football's greatest number ten"
         ],
-        "tags": ["Lionel Messi", "Football Legend", "Tactical Genius", "World Cup", "Argentina", "Haris Nenmara"]
+        "tags": ["Lionel Messi", "Messi Analysis", "World Cup", "Football Legends", "Haris Nenmara", "Final Third"]
     },
     {
         "id": "mVR_mRYU2YE",
         "slug": "cristiano-ronaldo-cr7-tactical-philosophy",
         "sport": "football",
         "sport_title": "Football Analysis",
-        "playlist": "World Cup & Football Legends",
-        "title": "കോച്ചോ  റോണോയോ; ആരാണ് ശരി? | Cristiano Ronaldo | Ronaldo Walkout | CR7",
-        "seo_title": "Cristiano Ronaldo Tactical Role & Manager Dynamics | CR7 Analysis",
-        "meta_desc": "Cristiano Ronaldo's tactical demands, box positioning, and team dynamics analyzed in Malayalam by Haris Nenmara. A neutral football debrief.",
-        "published_iso": "2026-10-09T14:00:00+00:00",
+        "playlist": "2026 WORLDCUP Stories",
+        "title": "കോച്ചോ റോണോയോ; ആരാണ് ശരി? | Cristiano Ronaldo | Ronaldo Walkout | CR7",
+        "seo_title": "Cristiano Ronaldo vs Management: Who Was Right? CR7 Analysis | Final Third",
+        "meta_desc": "Coach vs Cristiano Ronaldo: who was right? Haris Nenmara investigates the tactical and psychological clash surrounding the CR7 walkout and modern football demands.",
+        "published_iso": "2026-10-05T14:00:00+00:00",
         "views": "108K views",
         "read_time": "3 min read",
-        "p1_ml": "ക്രിസ്റ്റ്യാനോ റൊണാൾഡോ എന്ന ഇതിഹാസ താരത്തിന്റെ കളിക്കളത്തിലെ റോളും മാനേജർമാരുടെ തന്ത്രപരമായ സമീപനങ്ങളും തമ്മിലുള്ള സംഘർഷങ്ങൾ പരിശോധിക്കുന്ന വീഡിയോ. പ്രായത്തെ വെല്ലുന്ന ഫിനിഷിങ് മികവും അത്‌ലറ്റിസിസവും നിലനിർത്തുമ്പോഴും ആധുനിക ഫുട്ബോളിന്റെ ഹൈ-പ്രസ്സിങ് ആവശ്യകതകളുമായി ഒരു സൂപ്പർ താരം എങ്ങനെ പൊരുത്തപ്പെടുന്നു? ഹാരിസ് നെന്മാറയുടെ നിഷ്പക്ഷവും ആഴത്തിലുള്ളതുമായ വിശകലനം.",
-        "p2_en": "Analyzing the tactical friction between modern collective pressing systems and the lethal box-finishing profile of Cristiano Ronaldo. We evaluate box-movement geometry, aerial heading physics, and how elite managers structure team balance around an undisputed goal-scoring phenomenon.",
+        "p1_ml": "മാഞ്ചസ്റ്റർ യുണൈറ്റഡിലും പോർച്ചുഗൽ ദേശീയ ടീമിലും ക്രിസ്റ്റ്യാനോ റൊണാൾഡോയും പരിശീലകരും തമ്മിലുണ്ടായ അഭിപ്രായവ്യത്യാസങ്ങളുടെ ആഴത്തിലുള്ള പരിശോധന. പ്രശസ്തമായ വാക്ക്ഔട്ട് സംഭവത്തിന് പിന്നിലെ യഥാർത്ഥ കാരണങ്ങളെന്തായിരുന്നു? ആധുനിക ഫുട്ബോളിലെ ഉയർന്ന പ്രസ്സിങ് ഡിമാൻഡുകളും റൊണാൾഡോ എന്ന എലൈറ്റ് ഗോൾവേട്ടക്കാരന്റെ റോളും തമ്മിലുള്ള സംഘർഷത്തെ ഹാരിസ് നെന്മാറ വിശകലനം ചെയ്യുന്നു.",
+        "p2_en": "Analyzing the tactical and leadership tension between superstar Cristiano Ronaldo and modern manager systems. Haris Nenmara weighs both perspectives: the demanding tactical pressing requirements of modern football versus utilizing the greatest goalscorer of a generation.",
         "takeaways": [
-            "Box movement timing creating separation from man-markers",
-            "Aerial duel biomechanics and leaping leverage on set pieces",
-            "Balancing pressing work-rates with penalty-box poaching efficiency",
-            "The evolving tactical requirements of modern legendary center-forwards"
+            "Tactical balance between team pressing systems and individual finishing",
+            "Managing elite superstar personalities in high-pressure clubs",
+            "The evolution of the striker role in contemporary football",
+            "Ronaldo's unmatched professionalism and hunger for victory"
         ],
-        "tags": ["Cristiano Ronaldo", "CR7", "Football Analysis", "Real Madrid", "Portugal", "Haris Nenmara"]
+        "tags": ["Cristiano Ronaldo", "CR7", "Manchester United", "Football Tactics", "Ronaldo Walkout", "Haris Nenmara"]
     },
 
     # ========================== CRICKET (6) ==========================
@@ -335,21 +332,21 @@ VIDEOS = [
         "sport": "cricket",
         "sport_title": "Cricket Analysis",
         "playlist": "Cricket Stories & Analysis",
-        "title": "ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek Sharma | Vaibhav Suryavanshi",
-        "seo_title": "Abhishek Sharma & Vaibhav Brutal Batting vs New Zealand | Cricket Analysis",
-        "meta_desc": "Brutal power-hitting: Abhishek Sharma and Vaibhav Suryavanshi dismantle New Zealand bowling. In-depth cricket analysis in Malayalam by Haris Nenmara.",
+        "title": "ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek Sharma | Vaibhav Suryavanshi",
+        "seo_title": "Brutal Attack: Abhishek Sharma & Vaibhav Suryavanshi Demolish NZ | Final Third",
+        "meta_desc": "Fearless T20 batting: Abhishek Sharma and young sensation Vaibhav Suryavanshi dismantle New Zealand bowling. Match debrief by Haris Nenmara.",
         "published_iso": "2026-10-25T14:00:00+00:00",
         "views": "281K views",
         "read_time": "3 min read",
-        "p1_ml": "ന്യൂസിലൻഡിനെതിരായ ടി20 പോരാട്ടത്തിൽ അഭിഷേക് ശർമ്മയും വൈഭവ് സൂര്യവംശിയും ചേർന്ന് പുറത്തെടുത്തത് ആധുനിക ടി20 ക്രിക്കറ്റിന്റെ വിനാശകരമായ ബാറ്റിങ് വിരുന്നാണ്. പവർപ്ലേ ഓവറുകളിൽ ന്യൂസിലൻഡ് ബൗളർമാരുടെ ലൈനും ലെങ്തും തകർത്തുകൊണ്ട് കളിച്ച ഷോട്ടുകളുടെ കൃത്യതയും സാങ്കേതികതയും ഹാരിസ് നെന്മാറ പരിശോധിക്കുന്നു. ഭയമില്ലാത്ത ഈ ക്രിക്കറ്റ് ശൈലി ഇന്ത്യൻ ടീമിന്റെ ടി20 ഭാവിക്ക് നൽകുന്ന പുത്തൻ ദിശാബോധം എന്തൊക്കെയാണ്?",
-        "p2_en": "A comprehensive cricket tactical breakdown of modern aggressive batting against quality pace and spin. This video analyzes bat-speed, base stability against short deliveries, boundary percentage through the powerplay, and how fearless top-order intent reshapes T20 match outcomes.",
+        "p1_ml": "ന്യൂസിലൻഡിനെതിരെ ഇന്ത്യൻ ബാറ്റിങ് നിര കെട്ടഴിച്ചുവിട്ട ബാറ്റിങ് വെടിക്കെട്ടിന്റെ പൂർണ്ണ വിവരങ്ങൾ. അഭിഷേക് ശർമ്മയുടെ തകർപ്പൻ ബാറ്റിങ്ങും കൗമാരതാരം വൈഭവ് സൂര്യവംശിയുടെ ഭയമില്ലാത്ത സമീപനവും കിവി ബോളിങ് നിരയെ നിഷ്പ്രഭമാക്കി. ഇന്ത്യൻ ക്രിക്കറ്റിന്റെ ഭാവി ബാറ്റിങ് ശൈലിയെക്കുറിച്ച് ഹാരിസ് നെന്മാറ പങ്കുവെക്കുന്ന നിരീക്ഷണങ്ങൾ.",
+        "p2_en": "An explosive review of India's destructive powerplay batting against New Zealand. Haris Nenmara analyzes the aggressive mindset of Abhishek Sharma and rising sensation Vaibhav Suryavanshi, breaking down how fearless intent and modern bat swings dismantled New Zealand's bowling attack.",
         "takeaways": [
-            "Maximizing powerplay run-rates through intent and boundary targeting",
-            "Weight transfer and clean bat swing against international pace bowling",
-            "Disrupting bowler field placements with innovative 360-degree shot making",
-            "The evolving fearless mindset defining India's new generation of T20 batters"
+            "Fearless intent and intent-first approach in modern powerplays",
+            "Dominance against both pace and spin from ball one",
+            "Emergence of Vaibhav Suryavanshi as an elite young talent",
+            "The evolving blueprint of Team India's aggressive T20 batting"
         ],
-        "tags": ["Abhishek Sharma", "Vaibhav Suryavanshi", "India vs New Zealand", "T20 Cricket", "Cricket Analysis Malayalam", "Haris Nenmara"]
+        "tags": ["Abhishek Sharma", "Vaibhav Suryavanshi", "Ind vs NZ", "Cricket Analysis", "T20 Cricket", "Haris Nenmara"]
     },
     {
         "id": "Xq1PtXOrVRc",
@@ -357,21 +354,21 @@ VIDEOS = [
         "sport": "cricket",
         "sport_title": "Cricket Analysis",
         "playlist": "Cricket Stories & Analysis",
-        "title": "സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson",
-        "seo_title": "Sanju Samson Redemption Story & Match-Winning Knocks | Cricket Analysis",
-        "meta_desc": "Sanju Samson's tactical resurgence, stroke play, and match-winning performances for Team India. Complete cricket analysis by Haris Nenmara.",
-        "published_iso": "2026-10-22T14:50:51+00:00",
+        "title": "സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson | India vs Newzealand",
+        "seo_title": "Sanju Samson Redemption Story Continues: India vs NZ Analysis | Final Third",
+        "meta_desc": "Sanju Samson's incredible comeback story against New Zealand. Technical adjustments, mental strength, and match-winning knocks evaluated by Haris Nenmara.",
+        "published_iso": "2026-10-24T18:00:00+00:00",
         "views": "175K views",
         "read_time": "3 min read",
-        "p1_ml": "മലയാളികളുടെ പ്രിയ താരം സഞ്ജു സാംസണിന്റെ കരിയറിലെ ഏറ്റവും നിർണ്ണായകമായ ഘട്ടങ്ങളെയും അദ്ദേഹത്തിന്റെ തിരിച്ചുവരവുകളെയും ആഴത്തിൽ വിശകലനം ചെയ്യുന്ന വീഡിയോ. തുടർച്ചയായ അവഗണനകൾക്കും സമ്മർദ്ദങ്ങൾക്കും നടുവിൽ ക്രീസിലെത്തുമ്പോൾ സഞ്ജു പുറത്തെടുക്കുന്ന പക്വതയും, ഷോട്ട് സെലക്ഷനിലെ പുരോഗതിയും അദ്ദേഹത്തെ വിശ്വസ്തനായ മാച്ച് വിന്നറാക്കി മാറ്റുന്നത് എങ്ങനെയെന്ന് ഹാരിസ് നെന്മാറ വിശദീകരിക്കുന്നു.",
-        "p2_en": "A technical and psychological assessment of Sanju Samson's evolution as an international top-order batter. We break down his balance at the crease, improved shot selection against hard lengths, temperament during middle-overs consolidation, and boundary acceleration against spin.",
+        "p1_ml": "വിമർശകർക്ക് ബാറ്റുകൊണ്ട് മറുപടി നൽകി സഞ്ജു സാംസൺ തന്റെ പ്രതാപം വീണ്ടെടുക്കുകയാണ്. ന്യൂസിലൻഡിനെതിരായ മത്സരത്തിൽ സഞ്ജു പുറത്തെടുത്ത പക്വതയാർന്ന പ്രകടനവും അദ്ദേഹത്തിന്റെ കളിയിലെ സാങ്കേതിക മാറ്റങ്ങളും ഹാരിസ് നെന്മാറ വിശദീകരിക്കുന്നു. സഞ്ജുവിന്റെ യാത്രയിലെ ഈ വഴിത്തിരിവ് ഇന്ത്യൻ ക്രിക്കറ്റിൽ അദ്ദേഹത്തിന്റെ സ്ഥാനത്തെ എങ്ങനെ ഉറപ്പിക്കുമെന്ന് ഈ വീഡിയോ വ്യക്തമാക്കുന്നു.",
+        "p2_en": "Sanju Samson's inspiring journey of redemption against New Zealand analyzed in detail. Haris Nenmara evaluates Samson's technical improvements at the crease, improved shot selection against pace, and the calm mental fortitude that delivered under the national spotlight.",
         "takeaways": [
-            "Balance and head position enabling effortless lofted shots over extra cover",
-            "Adaptation against variations in pace and back-of-length bowling",
-            "Patience in strike rotation leading to calculated boundary expansion",
-            "Mental toughness and consistency under relentless selection scrutiny"
+            "Technical adjustments against deliveries aimed at the body",
+            "Patience in shot selection during the initial overs of the innings",
+            "Mental resilience in handling intense media and selection scrutiny",
+            "Cementing a core top-order role in Team India's white-ball plans"
         ],
-        "tags": ["Sanju Samson", "Team India", "Cricket Analysis", "T20 Cricket", "Sanju Samson Batting", "Haris Nenmara"]
+        "tags": ["Sanju Samson", "Ind vs NZ", "Team India", "Cricket Comeback", "Haris Nenmara", "Final Third"]
     },
     {
         "id": "I-40yws8G-E",
@@ -380,20 +377,20 @@ VIDEOS = [
         "sport_title": "Cricket Analysis",
         "playlist": "Cricket Stories & Analysis",
         "title": "സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | Ind Vs Nz",
-        "seo_title": "Sanju Samson Silences Critics: Ind vs NZ Match Breakdown | Final Third",
-        "meta_desc": "Sanju Samson silences critics with decisive performance in India vs New Zealand. Cricket match review and tactical takeaways by Haris Nenmara.",
-        "published_iso": "2026-10-23T13:57:49+00:00",
+        "seo_title": "Sanju Samson's Statement Knock: Answers on the Field | Final Third",
+        "meta_desc": "Who does Sanju Samson's innings answer? Tactical analysis of his high-pressure match performance against New Zealand by Haris Nenmara.",
+        "published_iso": "2026-10-23T16:00:00+00:00",
         "views": "85K views",
         "read_time": "3 min read",
-        "p1_ml": "വിമർശകർക്ക് കളിക്കളത്തിലെ ബാറ്റുകൊണ്ട് തന്നെ മറുപടി നൽകി സഞ്ജു സാംസൺ വീണ്ടും തിളങ്ങിയ ഇന്ത്യ-ന്യൂസിലൻഡ് മത്സരത്തിന്റെ സമഗ്രമായ റിവ്യൂ. ബാറ്റിങ് ഓർഡറിലെ അനിശ്ചിതത്വങ്ങൾക്കിടയിലും ലഭിച്ച അവസരത്തെ പരമാവധി പ്രയോജനപ്പെടുത്തി ടീമിനെ വിജയത്തിലേക്ക് നയിക്കാൻ സഞ്ജുവിന് സാധിച്ചത് എങ്ങനെയാണ്? ഈ ഇന്നിങ്സ് ഇന്ത്യൻ ടീം മാനേജ്മെന്റിന് നൽകുന്ന ശക്തമായ സന്ദേശങ്ങൾ എന്തൊക്കെയാണ്?",
-        "p2_en": "Breaking down Sanju Samson's match-defining performance against the Black Caps. We study his pacing through different phases of the innings, running between wickets, strike-rate management in challenging pitch conditions, and ability to hit clean boundaries without taking unwarranted risks.",
+        "p1_ml": "സഞ്ജു സാംസണിന്റെ മികച്ച പ്രകടനങ്ങൾ കളിക്കളത്തിന് പുറത്തുള്ള ആർക്കൊക്കെയാണ് മറുപടിയാകുന്നത്? അവസരങ്ങൾ കുറവായിരുന്നിട്ടും ലഭിച്ച അവസരങ്ങളിൽ ടീമിനായി തകർപ്പൻ പ്രകടനം പുറത്തെടുക്കുന്ന സഞ്ജുവിന്റെ പോരാട്ടവീര്യത്തെ ഹാരിസ് നെന്മാറ വിശകലനം ചെയ്യുന്നു. ഇന്ത്യൻ ടീം മാനേജ്മെന്റിന്റെ തീരുമാനങ്ങളും ടീം ബാലൻസും ഇതിൽ ചർച്ചയാകുന്നു.",
+        "p2_en": "A tactical and contextual review of Sanju Samson's decisive answers on the cricket pitch. Haris Nenmara breaks down how Samson's match-winning contributions overcome continuous selection debates and provide the wicket-keeping batsman balance India needs.",
         "takeaways": [
-            "Pacing the innings according to pitch behavior and match requirements",
-            "Dominating spinners through footwork and precision placement",
-            "Calm leadership on the field and positive body language",
-            "Securing his rightful spot in India's limited-overs tactical blueprint"
+            "Handling extreme pressure with aggressive clarity of thought",
+            "Dual role impact: clean glovework and rapid run generation",
+            "Tactical balance provided to India's middle and top order",
+            "Consistency across varying match conditions and bowling attacks"
         ],
-        "tags": ["Sanju Samson", "Ind vs Nz", "Cricket Review", "Team India", "T20 Match", "Final Third Cricket"]
+        "tags": ["Sanju Samson", "Ind vs NZ", "Indian Cricket", "Cricket Selection", "Haris Nenmara", "Final Third"]
     },
     {
         "id": "F1X3eE_CBKU",
@@ -401,21 +398,21 @@ VIDEOS = [
         "sport": "cricket",
         "sport_title": "Cricket Analysis",
         "playlist": "Cricket Stories & Analysis",
-        "title": "ഇതൊക്കെയാണ് കം ബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | NamanDhir",
-        "seo_title": "Tilak Varma & Naman Dhir Comeback Analysis | Emerging Cricket Talent",
-        "meta_desc": "Tilak Varma's technical comeback and Naman Dhir's explosive potential. Tactical cricket analysis in Malayalam by Haris Nenmara.",
-        "published_iso": "2026-10-25T11:02:47+00:00",
+        "title": "ഇതൊക്കെയാണ് കംബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | NamanDhir",
+        "seo_title": "Tilak Varma Comeback & Naman Dhir Rising Star Analysis | Final Third",
+        "meta_desc": "Tilak Varma's sensational comeback and Naman Dhir's emergence as an explosive batting talent analyzed in Malayalam by Haris Nenmara.",
+        "published_iso": "2026-10-20T17:00:00+00:00",
         "views": "57K views",
         "read_time": "3 min read",
-        "p1_ml": "പരിക്കുകളിൽ നിന്നും ഫോം വീണ്ടെടുക്കലുകളിൽ നിന്നും ശക്തമായി തിരിച്ചെത്തിയ തിലക് വർമ്മയുടെ പ്രകടനവും, യുവതാരം നമൻ ധീർ നൽകുന്ന വലിയ പ്രതീക്ഷകളും ചർച്ച ചെയ്യുന്ന വീഡിയോ. മധ്യനിരയിൽ കളി മുന്നോട്ട് കൊണ്ടുപോകാനുള്ള സാങ്കേതിക മികവും ഡെത്ത് ഓവറുകളിലെ പവർ ഹിറ്റിങ്ങും ഇന്ത്യൻ ക്രിക്കറ്റിന് പുതിയൊരു കരുത്താണ് സമ്മാനിക്കുന്നത്. ഹാരിസ് നെന്മാറയുടെ ആഴത്തിലുള്ള ക്രിക്കറ്റ് വിശകലനം ഇവിടെ കാണാം.",
-        "p2_en": "An analytical look at young Indian batting talents Tilak Varma and Naman Dhir. This debrief assesses left-hand right-hand middle-order combinations, shot selection under scoreboard pressure, handling high-speed bouncers, and execution of sweep shots against wrist spin.",
+        "p1_ml": "തിലക് വർമ്മയുടെ ഗംഭീര തിരിച്ചുവരവും യുവതാരം നമൻ ധീറിന്റെ വിസ്മയിപ്പിക്കുന്ന ബാറ്റിങ് പ്രകടനവും ഇന്ത്യൻ ക്രിക്കറ്റിന് നൽകുന്ന വലിയ ശുഭസൂചനകൾ എന്തൊക്കെയാണ്? പ്രതിസന്ധി ഘട്ടങ്ങളിൽ ഇന്നിങ്സ് മുന്നോട്ട് നയിക്കാനുള്ള തിലകിന്റെ കഴിവും നമൻ ധീറിന്റെ കൂറ്റൻ സിക്സറുകളും ഹാരിസ് നെന്മാറ വിശദമായി വിലയിരുത്തുന്നു.",
+        "p2_en": "Analyzing the tactical poise of Tilak Varma's comeback alongside the dynamic emergence of Naman Dhir. Haris Nenmara examines middle-order temperament, accelerating under pressure, and how these young batters fit into India's long-term white-ball strategy.",
         "takeaways": [
-            "Technical adjustments against deliveries angling across the left-hander",
-            "Naman Dhir's boundary-hitting leverage and bat swing mechanics",
-            "Middle-overs acceleration without losing wicket clusters",
-            "Long-term role in Indian white-ball squad transition plans"
+            "Tilak Varma's composure in anchoring and accelerating innings",
+            "Naman Dhir's raw power and boundary-hitting prowess",
+            "Left-hand right-hand combinations disorienting bowling plans",
+            "The bright future of young Indian white-ball batting talent"
         ],
-        "tags": ["Tilak Varma", "Naman Dhir", "Team India", "Cricket Talent", "Comeback Analysis", "Haris Nenmara"]
+        "tags": ["Tilak Varma", "Naman Dhir", "Team India", "Cricket Comeback", "T20 Cricket", "Haris Nenmara"]
     },
     {
         "id": "3-k7z6FqTX0",
@@ -424,18 +421,18 @@ VIDEOS = [
         "sport_title": "Cricket Analysis",
         "playlist": "Cricket India",
         "title": "ഭുവി വരുന്നു ! ബുംറ ഇല്ലെങ്കിൽ ഇന്ത്യ ഇല്ലേ ? Sanju Samson | Jasprit Bumrah |Ind Vs Wi",
-        "seo_title": "Is India Dependent on Jasprit Bumrah? Bowling Tactics & Match Review",
+        "seo_title": "Is India Dependent on Bumrah? Bhuvneshwar & Samson Debrief | Final Third",
         "meta_desc": "Is India overly reliant on Jasprit Bumrah? Fast bowling tactics, Bhuvneshwar Kumar, and Sanju Samson discussed by Haris Nenmara.",
         "published_iso": "2026-10-16T11:30:27+00:00",
         "views": "110K views",
         "read_time": "3 min read",
         "p1_ml": "ജസ്പ്രീത് ബുംറ എന്ന ഇതിഹാസ പേസറുടെ അസാന്നിധ്യത്തിൽ ഇന്ത്യൻ ബോളിങ് നിര നേരിടുന്ന വെല്ലുവിളികൾ പരിശോധിക്കുന്ന വീഡിയോ. ഭുവനേശ്വർ കുമാറിന്റെ സ്വിങ് ബോളിങ്ങും പരിചയസമ്പത്തും ഇന്ത്യൻ ടീമിന് എത്രത്തോളം ആവശ്യമാണ്? ഡെത്ത് ഓവറുകളിലെ റൺ ഒഴുക്ക് തടയാൻ ബുംറയെപ്പോലൊരു ബൗളറുടെ വിടവ് എങ്ങനെ നികത്താം എന്ന ചോദ്യത്തിന് ഹാരിസ് നെന്മാറ തന്ത്രപരമായ മറുപടികൾ നൽകുന്നു.",
-        "p2_en": "Analyzing Team India's fast-bowling depth and tactical reliance on Jasprit Bumrah. We evaluate yorker precision, release height, reverse swing in subcontinental conditions, and how different bowling combinations perform during powerplay and death-over phases.",
+        "p2_en": "Analyzing Team India's fast-bowling depth and reliance on Jasprit Bumrah. We evaluate powerplay swing from Bhuvneshwar Kumar, death-over yorker execution, and how different bowling combinations perform under pressure against aggressive batting lineups.",
         "takeaways": [
-            "Jasprit Bumrah's unique release angle generating late inward seam movement",
-            "The value of Bhuvneshwar Kumar's new-ball swing control in the powerplay",
-            "Execution of defensive wide yorkers and slower ball variations",
-            "Tactical blueprints for India's pace attack across varied international tracks"
+            "Jasprit Bumrah's unmatched wicket-taking threat across all phases",
+            "The tactical value of Bhuvneshwar Kumar's new-ball swing control",
+            "Death-over bowling execution and slower ball variations",
+            "Strategic pace bowling combinations for international tournaments"
         ],
         "tags": ["Jasprit Bumrah", "Bhuvneshwar Kumar", "Sanju Samson", "Indian Bowling", "Cricket Tactics", "Haris Nenmara"]
     },
@@ -446,58 +443,124 @@ VIDEOS = [
         "sport_title": "Cricket Analysis",
         "playlist": "Cricket India",
         "title": "ഭുവിയും ബുംറയും ചേർന്നാൽ ! Bhuvneshwar Kumar | Jasprit Bumrah",
-        "seo_title": "Bhuvneshwar Kumar & Jasprit Bumrah Bowling Synergy | Cricket Tactics",
+        "seo_title": "Bhuvi + Bumrah: The Deadly Bowling Partnership | Final Third",
         "meta_desc": "The lethal bowling partnership: Bhuvneshwar Kumar and Jasprit Bumrah. Powerplay swing meets death-over yorkers. Analysis by Haris Nenmara.",
         "published_iso": "2026-10-17T11:36:23+00:00",
         "views": "21K views",
         "read_time": "3 min read",
         "p1_ml": "ഭുവനേശ്വർ കുമാറിന്റെ കൃത്യതയാർന്ന ന്യൂ-ബോൾ സ്വിംഗും ജസ്പ്രീത് ബുംറയുടെ മാരകമായ യോർക്കറുകളും ഒന്നിച്ചപ്പോൾ ഇന്ത്യൻ ക്രിക്കറ്റ് ആസ്വദിച്ചത് ചരിത്രത്തിലെ ഏറ്റവും മികച്ച ബോളിങ് കൂട്ടുകെട്ടുകളിലൊന്നാണ്. ബാറ്റ്സ്മാൻമാരെ എങ്ങനെയാണ് ഇവർ സമ്മർദ്ദത്തിലാക്കുന്നതെന്നും, രണ്ട് വ്യത്യസ്ത ശൈലികൾ പരസ്പരം പൂരകമായി മാറുന്നത് എങ്ങനെയെന്നും വിശദീകരിക്കുന്ന തന്ത്രപരമായ വീഡിയോ.",
-        "p2_en": "A masterclass in bowling synergy: Bhuvneshwar Kumar's swing mastery paired with Jasprit Bumrah's raw pace and yorker accuracy. This debrief studies strike rates, dot-ball percentages, pressure creation from both ends, and why complementary bowling styles are essential for tournament victories.",
+        "p2_en": "A masterclass in bowling synergy: Bhuvneshwar Kumar's swing mastery paired with Jasprit Bumrah's raw pace and yorker accuracy. This debrief studies dot-ball pressure, partnership bowling, and why complementary styles are essential for winning tournaments.",
         "takeaways": [
             "Complementary bowling styles dismantling opening batting combinations",
-            "Dot-ball pressure from one end forcing rash shots at the other",
-            "Mastery of seam presentation and wrist position at point of release",
-            "Strategic blueprint for modern fast-bowling partnerships"
+            "Dot-ball pressure from one end creating wicket chances at the other",
+            "Mastery of swing in the powerplay and pinpoint accuracy at the death",
+            "Strategic blueprint for iconic fast-bowling partnerships"
         ],
         "tags": ["Bhuvneshwar Kumar", "Jasprit Bumrah", "Pace Bowling", "Cricket Partnerships", "India Cricket", "Final Third"]
     }
 ]
 
+# Generate common navigation header
+def render_navbar(active_page=""):
+    football_active = ' active' if active_page == 'football' else ''
+    cricket_active = ' active' if active_page == 'cricket' else ''
+    home_active = ' active' if active_page == 'home' else ''
+    
+    return f"""  <header class="site-header">
+    <div class="nav-container">
+      <a href="/" class="brand-link" aria-label="Final Third Home">
+        <picture>
+          <source srcset="/assets/images/final-third-logo.webp" type="image/webp">
+          <img src="/assets/images/final-third-logo.png" alt="Final Third Logo" class="brand-logo" width="160" height="36">
+        </picture>
+        <span class="brand-name">FINAL THIRD</span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="main-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link{home_active}">Home</a></li>
+          <li><a href="/football/" class="nav-link{football_active}">⚽ Football Hub</a></li>
+          <li><a href="/cricket/" class="nav-link{cricket_active}">🏏 Cricket Hub</a></li>
+          <li><a href="/#videos" class="nav-link">Full Catalog (300+)</a></li>
+          <li><a href="/#about" class="nav-link">About Haris</a></li>
+          <li><a href="/#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="nav-actions">
+        <a href="https://www.youtube.com/@FinalThird_HarisNenmara" target="_blank" rel="noopener noreferrer" class="btn btn-subscribe" aria-label="Subscribe on YouTube">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          SUBSCRIBE
+        </a>
+        <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="drawer-content">
+      <ul class="drawer-list">
+        <li><a href="/" class="drawer-link{home_active}">Home</a></li>
+        <li><a href="/football/" class="drawer-link{football_active}">⚽ Football Category Hub (14 Videos)</a></li>
+        <li><a href="/cricket/" class="drawer-link{cricket_active}">🏏 Cricket Category Hub (6 Videos)</a></li>
+        <li><a href="/#videos" class="drawer-link">Full Video Catalog (300+)</a></li>
+        <li><a href="/#about" class="drawer-link">About Haris Nenmara</a></li>
+        <li><a href="/privacy.html" class="drawer-link">Privacy Policy</a></li>
+        <li><a href="/#contact" class="drawer-link">Contact &amp; Sponsorships</a></li>
+      </ul>
+      <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #2a2a2a;">
+        <a href="https://www.youtube.com/@FinalThird_HarisNenmara" target="_blank" rel="noopener noreferrer" class="btn btn-subscribe" style="width: 100%; justify-content: center;">
+          SUBSCRIBE ON YOUTUBE ↗
+        </a>
+      </div>
+    </div>
+  </div>"""
+
+# Render individual video page
 def render_page(video):
     vid = video["id"]
     slug = video["slug"]
     sport = video["sport"]
+    sport_name = "Football" if sport == "football" else "Cricket"
+    sport_hub_url = f"/{sport}/"
     url = f"{DOMAIN}/{sport}/{slug}/"
     thumb_hq = f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"
     thumb_max = f"https://i.ytimg.com/vi/{vid}/maxresdefault.jpg"
     
-    # Select related videos from same sport
-    related = [v for v in VIDEOS if v["sport"] == sport and v["id"] != vid][:3]
-    if len(related) < 3:
-        related += [v for v in VIDEOS if v["id"] != vid][:3 - len(related)]
+    # 4 Related videos from the same sport
+    same_sport_videos = [v for v in VIDEOS if v["sport"] == sport and v["id"] != vid]
+    related = same_sport_videos[:4]
+    if len(related) < 4:
+        other_videos = [v for v in VIDEOS if v["id"] != vid and v not in related]
+        related += other_videos[:4 - len(related)]
     
     related_cards_html = ""
     for r in related:
         r_url = f"/{r['sport']}/{r['slug']}/"
         related_cards_html += f"""
-        <article class="related-card">
+        <article class="related-card" onclick="window.location.href='{r_url}'" style="cursor: pointer;">
           <a href="{r_url}" class="related-thumb-link" aria-label="{r['title']}">
             <img src="https://i.ytimg.com/vi/{r['id']}/hqdefault.jpg" alt="{r['title']}" width="320" height="180" loading="lazy" decoding="async">
             <span class="related-sport-pill">{r['sport'].upper()}</span>
           </a>
           <div class="related-info">
             <span class="related-meta">{r['playlist']} · {r['views']}</span>
-            <h3 class="related-title"><a href="{r_url}">{r['title']}</a></h3>
+            <h4 class="related-title"><a href="{r_url}">{r['title']}</a></h4>
+            <a href="{r_url}" class="related-action-link">Read Breakdown ↗</a>
           </div>
-        </article>
-        """
+        </article>"""
 
     takeaways_html = "".join([f"<li>{t}</li>" for t in video["takeaways"]])
-    tags_html = "".join([f'<span class="tag-pill">{tag}</span>' for tag in video["tags"]])
-
-    # Breadcrumb schema
-    sport_hub_name = "Football Analysis" if sport == "football" else "Cricket Analysis"
-    sport_hub_url = f"{DOMAIN}/{sport}/"
+    tags_html = "".join([f'<span class="tag-pill">#{t}</span>' for t in video["tags"]])
 
     html = f"""<!DOCTYPE html>
 <html lang="en" xml:lang="ml" dir="ltr">
@@ -513,7 +576,7 @@ def render_page(video):
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
 
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph -->
   <meta property="og:site_name" content="Final Third with Haris Nenmara">
   <meta property="og:type" content="video.other">
   <meta property="og:url" content="{url}">
@@ -530,21 +593,19 @@ def render_page(video):
   <meta name="twitter:description" content="{video['meta_desc']}">
   <meta name="twitter:image" content="{thumb_max}">
 
-  <!-- Google Tag Manager (Container 1) -->
+  <!-- Tracking -->
   <script>(function(w,d,s,l,i){{w[l]=w[l]||[];w[l].push({{'gtm.start':
   new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   }})(window,document,'script','dataLayer','GTM-KFC9JGQJ');</script>
 
-  <!-- Google Tag Manager (Container 2) -->
   <script>(function(w,d,s,l,i){{w[l]=w[l]||[];w[l].push({{'gtm.start':
   new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   }})(window,document,'script','dataLayer','GTM-5N6XFRJ7');</script>
 
-  <!-- Google Analytics 4 (Async) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XR8PCQNHRE"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -556,12 +617,12 @@ def render_page(video):
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5399554232098923" crossorigin="anonymous"></script>
 
-  <!-- Typography -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Schema.org JSON-LD Structured Data -->
+  <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
   {{
     "@context": "https://schema.org",
@@ -606,13 +667,13 @@ def render_page(video):
           {{
             "@type": "ListItem",
             "position": 2,
-            "name": "{sport_hub_name}",
-            "item": "{sport_hub_url}"
+            "name": "{sport_name} Analysis",
+            "item": "{DOMAIN}{sport_hub_url}"
           }},
           {{
             "@type": "ListItem",
             "position": 3,
-            "name": {json.dumps(video['seo_title'], ensure_ascii=False)},
+            "name": {json.dumps(video['title'], ensure_ascii=False)},
             "item": "{url}"
           }}
         ]
@@ -635,7 +696,6 @@ def render_page(video):
     :root {{
       --neon-lime: #9EE20B;
       --neon-lime-hover: #b4f51e;
-      --neon-lime-subtle: rgba(158, 226, 11, 0.12);
       --pitch-black: #080808;
       --charcoal: #151515;
       --charcoal-light: #202020;
@@ -659,7 +719,8 @@ def render_page(video):
     a {{ color: var(--neon-lime); text-decoration: none; transition: color 0.2s ease; }}
     a:hover {{ color: var(--neon-lime-hover); text-decoration: underline; }}
 
-    .navbar {{
+    /* Header & Navigation */
+    .site-header {{
       border-bottom: 1px solid var(--charcoal-border);
       background-color: rgba(8, 8, 8, 0.95);
       backdrop-filter: blur(10px);
@@ -668,7 +729,6 @@ def render_page(video):
       z-index: 100;
       padding: 0.875rem 1.5rem;
     }}
-
     .nav-container {{
       max-width: 1140px;
       margin: 0 auto;
@@ -676,7 +736,6 @@ def render_page(video):
       justify-content: space-between;
       align-items: center;
     }}
-
     .brand-link {{
       display: flex;
       align-items: center;
@@ -686,15 +745,49 @@ def render_page(video):
       font-size: 1.125rem;
       letter-spacing: -0.02em;
     }}
-
     .brand-logo {{ height: 36px; width: auto; display: block; }}
-    .nav-menu {{ display: flex; align-items: center; gap: 1.5rem; list-style: none; }}
+    .brand-name {{ font-weight: 800; color: var(--off-white); letter-spacing: -0.02em; }}
+    .main-nav {{ display: flex; align-items: center; }}
+    .nav-list {{ display: flex; align-items: center; gap: 1.5rem; list-style: none; }}
     .nav-link {{ color: var(--muted-grey); font-weight: 600; font-size: 0.875rem; transition: color 0.2s; }}
     .nav-link:hover, .nav-link.active {{ color: var(--neon-lime); text-decoration: none; }}
+    .nav-actions {{ display: flex; align-items: center; gap: 1rem; }}
+    .btn-subscribe {{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--neon-lime);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.8125rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }}
+    .btn-subscribe:hover {{ background: var(--neon-lime-hover); text-decoration: none; }}
+    .mobile-toggle {{
+      display: none;
+      background: none;
+      border: none;
+      color: var(--off-white);
+      cursor: pointer;
+    }}
+    .mobile-drawer {{
+      display: none;
+      background: var(--charcoal);
+      border-bottom: 1px solid var(--charcoal-border);
+      padding: 1.5rem;
+    }}
+    .mobile-drawer.open {{ display: block; }}
+    .drawer-list {{ list-style: none; display: flex; flex-direction: column; gap: 1rem; }}
+    .drawer-link {{ color: var(--off-white); font-weight: 600; font-size: 1rem; text-decoration: none; }}
+    .drawer-link.active {{ color: var(--neon-lime); }}
 
+    /* Breadcrumbs Bar */
     .breadcrumb-bar {{
       max-width: 1140px;
-      margin: 1.5rem auto 0;
+      margin: 1.25rem auto 0;
       padding: 0 1.5rem;
       font-size: 0.8125rem;
       color: var(--dark-grey);
@@ -703,20 +796,47 @@ def render_page(video):
       gap: 0.5rem;
       flex-wrap: wrap;
     }}
-
     .breadcrumb-bar a {{ color: var(--muted-grey); }}
     .breadcrumb-bar a:hover {{ color: var(--neon-lime); }}
-    .breadcrumb-sep {{ color: var(--dark-grey); }}
+    .breadcrumb-sep {{ color: var(--dark-grey); font-weight: 700; }}
+    .breadcrumb-current {{
+      color: var(--off-white);
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 500px;
+    }}
 
+    /* Back Link Bar */
+    .back-link-bar {{
+      max-width: 1140px;
+      margin: 0.75rem auto 0;
+      padding: 0 1.5rem;
+    }}
+    .back-link {{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--neon-lime);
+      text-decoration: none;
+      transition: transform 0.2s;
+    }}
+    .back-link:hover {{ text-decoration: underline; transform: translateX(-3px); }}
+
+    /* Layout */
     .page-layout {{
       max-width: 1140px;
-      margin: 1.5rem auto 5rem;
+      margin: 1rem auto 5rem;
       padding: 0 1.5rem;
       display: grid;
       grid-template-columns: 1fr 340px;
       gap: 2.5rem;
     }}
 
+    /* Video Hero Box */
     .video-hero {{
       background: var(--charcoal);
       border: 1px solid var(--charcoal-border);
@@ -724,14 +844,12 @@ def render_page(video):
       overflow: hidden;
       margin-bottom: 2rem;
     }}
-
     .video-aspect-frame {{
       position: relative;
       width: 100%;
-      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      padding-top: 56.25%;
       background: #000;
     }}
-
     .video-aspect-frame iframe {{
       position: absolute;
       top: 0;
@@ -740,12 +858,10 @@ def render_page(video):
       height: 100%;
       border: 0;
     }}
-
     .video-meta-bar {{
       padding: 1.5rem;
       border-bottom: 1px solid var(--charcoal-border);
     }}
-
     .meta-pills {{
       display: flex;
       align-items: center;
@@ -753,7 +869,6 @@ def render_page(video):
       margin-bottom: 0.75rem;
       flex-wrap: wrap;
     }}
-
     .sport-pill {{
       background-color: var(--neon-lime);
       color: #000;
@@ -763,7 +878,6 @@ def render_page(video):
       border-radius: 4px;
       letter-spacing: 0.05em;
     }}
-
     .playlist-pill {{
       background-color: var(--charcoal-light);
       border: 1px solid var(--charcoal-border);
@@ -773,7 +887,6 @@ def render_page(video):
       padding: 0.2rem 0.6rem;
       border-radius: 4px;
     }}
-
     .views-pill {{
       color: var(--muted-grey);
       font-size: 0.8125rem;
@@ -782,20 +895,18 @@ def render_page(video):
       align-items: center;
       gap: 4px;
     }}
-
     .article-h1 {{
-      font-size: 1.875rem;
+      font-size: 1.75rem;
       font-weight: 800;
-      line-height: 1.3;
+      line-height: 1.35;
       color: var(--off-white);
       margin-bottom: 1rem;
     }}
-
     .cta-row {{
       display: flex;
       gap: 0.75rem;
       flex-wrap: wrap;
-      margin-top: 1rem;
+      margin-top: 1.25rem;
     }}
 
     .btn {{
@@ -809,7 +920,6 @@ def render_page(video):
       text-decoration: none;
       transition: all 0.2s ease;
     }}
-
     .btn-primary {{
       background-color: var(--neon-lime);
       color: #000;
@@ -819,7 +929,6 @@ def render_page(video):
       text-decoration: none;
       transform: translateY(-1px);
     }}
-
     .btn-outline {{
       background: transparent;
       border: 1px solid var(--charcoal-border);
@@ -831,6 +940,7 @@ def render_page(video):
       text-decoration: none;
     }}
 
+    /* Editorial Section */
     .editorial-content {{
       background: var(--charcoal);
       border: 1px solid var(--charcoal-border);
@@ -838,7 +948,6 @@ def render_page(video):
       padding: 2rem;
       margin-bottom: 2rem;
     }}
-
     .editorial-content h2 {{
       font-size: 1.25rem;
       font-weight: 700;
@@ -846,14 +955,12 @@ def render_page(video):
       margin-bottom: 1rem;
       letter-spacing: -0.01em;
     }}
-
     .editorial-content p {{
       color: #d8d8d8;
       font-size: 1.0625rem;
       margin-bottom: 1.25rem;
       line-height: 1.8;
     }}
-
     .takeaways-box {{
       background-color: rgba(158, 226, 11, 0.05);
       border-left: 3px solid var(--neon-lime);
@@ -861,7 +968,6 @@ def render_page(video):
       border-radius: 0 8px 8px 0;
       margin: 1.5rem 0;
     }}
-
     .takeaways-box h3 {{
       font-size: 1rem;
       font-weight: 800;
@@ -870,7 +976,6 @@ def render_page(video):
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }}
-
     .takeaways-box ul {{ list-style-type: none; }}
     .takeaways-box ul li {{
       position: relative;
@@ -880,31 +985,30 @@ def render_page(video):
       color: #e5e5e5;
     }}
     .takeaways-box ul li::before {{
-      content: "✓";
-      color: var(--neon-lime);
+      content: "✔";
       position: absolute;
       left: 0;
-      font-weight: bold;
+      color: var(--neon-lime);
+      font-weight: 800;
     }}
-
     .tags-row {{
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
       margin-top: 1.5rem;
-      padding-top: 1.5rem;
+      padding-top: 1rem;
       border-top: 1px solid var(--charcoal-border);
     }}
-
     .tag-pill {{
-      background-color: var(--charcoal-light);
+      background: var(--charcoal-light);
       border: 1px solid var(--charcoal-border);
       color: var(--muted-grey);
       font-size: 0.75rem;
-      padding: 0.25rem 0.625rem;
+      padding: 0.25rem 0.6rem;
       border-radius: 4px;
     }}
 
+    /* Author Card */
     .author-card {{
       background: var(--charcoal);
       border: 1px solid var(--charcoal-border);
@@ -913,23 +1017,21 @@ def render_page(video):
       display: flex;
       gap: 1.25rem;
       align-items: center;
+      margin-bottom: 2rem;
     }}
-
     .author-img {{
       width: 72px;
       height: 72px;
       border-radius: 50%;
-      object-fit: cover;
       border: 2px solid var(--neon-lime);
+      object-fit: cover;
       flex-shrink: 0;
     }}
-
     .author-info h4 {{
-      font-size: 1.0625rem;
-      font-weight: 700;
+      font-size: 1rem;
+      font-weight: 800;
       color: var(--off-white);
     }}
-
     .author-role {{ font-size: 0.8125rem; color: var(--neon-lime); margin-bottom: 0.25rem; }}
     .author-bio {{ font-size: 0.875rem; color: var(--muted-grey); line-height: 1.5; }}
 
@@ -941,7 +1043,6 @@ def render_page(video):
       padding: 1.5rem;
       margin-bottom: 2rem;
     }}
-
     .widget-title {{
       font-size: 1rem;
       font-weight: 800;
@@ -953,13 +1054,18 @@ def render_page(video):
       justify-content: space-between;
       align-items: center;
     }}
-
     .related-card {{
       margin-bottom: 1.25rem;
       display: flex;
       gap: 0.875rem;
+      padding: 8px;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.2s;
     }}
-
+    .related-card:hover {{
+      background: rgba(255, 255, 255, 0.04);
+      transform: translateX(2px);
+    }}
     .related-thumb-link {{
       position: relative;
       width: 120px;
@@ -968,27 +1074,25 @@ def render_page(video):
       border-radius: 6px;
       overflow: hidden;
       background: #000;
+      display: block;
     }}
-
     .related-thumb-link img {{
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }}
-
     .related-sport-pill {{
       position: absolute;
       top: 4px;
       left: 4px;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.85);
       color: var(--neon-lime);
       font-size: 0.625rem;
       font-weight: 800;
       padding: 1px 4px;
       border-radius: 2px;
     }}
-
     .related-info {{ flex: 1; min-width: 0; }}
     .related-meta {{ font-size: 0.6875rem; color: var(--dark-grey); display: block; }}
     .related-title {{
@@ -1003,6 +1107,13 @@ def render_page(video):
     }}
     .related-title a {{ color: var(--off-white); }}
     .related-title a:hover {{ color: var(--neon-lime); text-decoration: none; }}
+    .related-action-link {{
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--neon-lime);
+      display: inline-block;
+      margin-top: 4px;
+    }}
 
     .catalog-cta-card {{
       background: linear-gradient(135deg, #151515 0%, #222222 100%);
@@ -1011,14 +1122,12 @@ def render_page(video):
       padding: 1.5rem;
       text-align: center;
     }}
-
     .catalog-cta-card h3 {{
       font-size: 1.125rem;
       font-weight: 800;
       margin-bottom: 0.5rem;
       color: var(--off-white);
     }}
-
     .catalog-cta-card p {{
       font-size: 0.875rem;
       color: var(--muted-grey);
@@ -1028,12 +1137,11 @@ def render_page(video):
     /* Footer */
     .site-footer {{
       border-top: 1px solid var(--charcoal-border);
-      background-color: var(--pitch-black);
-      padding: 3rem 1.5rem;
-      color: var(--muted-grey);
+      background: var(--pitch-black);
+      padding: 2.5rem 1.5rem;
+      color: var(--dark-grey);
       font-size: 0.875rem;
     }}
-
     .footer-container {{
       max-width: 1140px;
       margin: 0 auto;
@@ -1041,52 +1149,44 @@ def render_page(video):
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 1.5rem;
+      gap: 1rem;
     }}
-
     .footer-links {{ display: flex; gap: 1.5rem; list-style: none; }}
-    .footer-links a {{ color: var(--muted-grey); font-weight: 600; }}
+    .footer-links a {{ color: var(--muted-grey); }}
     .footer-links a:hover {{ color: var(--neon-lime); }}
 
     @media (max-width: 900px) {{
       .page-layout {{ grid-template-columns: 1fr; }}
       .article-h1 {{ font-size: 1.5rem; }}
-      .nav-menu {{ display: none; }}
+      .main-nav {{ display: none; }}
+      .mobile-toggle {{ display: block; }}
+      .breadcrumb-current {{ max-width: 250px; }}
     }}
   </style>
 </head>
 <body>
 
-  <!-- Google Tag Manager (noscript fallbacks) -->
+  <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KFC9JGQJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5N6XFRJ7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-  <!-- Navigation -->
-  <nav class="navbar" aria-label="Main Navigation">
-    <div class="nav-container">
-      <a href="/" class="brand-link" aria-label="Final Third Home">
-        <img src="/assets/images/final-third-logo.png" alt="Final Third Logo" class="brand-logo" width="160" height="36">
-        <span>FINAL THIRD</span>
-      </a>
-      <ul class="nav-menu">
-        <li><a href="/" class="nav-link">Home</a></li>
-        <li><a href="/football/" class="nav-link{' active' if sport == 'football' else ''}">Football</a></li>
-        <li><a href="/cricket/" class="nav-link{' active' if sport == 'cricket' else ''}">Cricket</a></li>
-        <li><a href="/#videos" class="nav-link">Full Catalog (300+)</a></li>
-        <li><a href="/#about" class="nav-link">About Haris</a></li>
-        <li><a href="/#contact" class="nav-link">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+  {render_navbar(active_page=sport)}
 
   <!-- Breadcrumbs -->
   <nav class="breadcrumb-bar" aria-label="Breadcrumb">
     <a href="/">Home</a>
-    <span class="breadcrumb-sep">/</span>
-    <a href="{sport_hub_url}">{sport_hub_name}</a>
-    <span class="breadcrumb-sep">/</span>
-    <span style="color: var(--off-white);">{video['slug']}</span>
+    <span class="breadcrumb-sep">&gt;</span>
+    <a href="{sport_hub_url}">{sport_name}</a>
+    <span class="breadcrumb-sep">&gt;</span>
+    <span class="breadcrumb-current">{video['title']}</span>
   </nav>
+
+  <!-- Back Link -->
+  <div class="back-link-bar">
+    <a href="{sport_hub_url}" class="back-link">
+      &larr; Back to {sport_name} Match Analysis Hub
+    </a>
+  </div>
 
   <!-- Main Content Layout -->
   <main class="page-layout">
@@ -1124,7 +1224,7 @@ def render_page(video):
               Watch on YouTube ↗
             </a>
             <a href="{sport_hub_url}" class="btn btn-outline">
-              ← More {video['sport_title']}
+              &larr; Back to {sport_name}
             </a>
           </div>
         </div>
@@ -1132,27 +1232,36 @@ def render_page(video):
 
       <!-- Tactical Editorial Breakdown -->
       <section class="editorial-content">
-        <h2>Tactical Breakdown & Match Review | മലയാളം അവലോകനം</h2>
+        <h2>Tactical Breakdown &amp; Match Review | മലയാളം അവലോകനം</h2>
         <p lang="ml">{video['p1_ml']}</p>
         <p>{video['p2_en']}</p>
 
         <!-- Key Takeaways Box -->
         <div class="takeaways-box">
-          <h3>Key Tactical Takeaways & Discussion Points</h3>
+          <h3>Key Tactical Takeaways &amp; Discussion Points</h3>
           <ul>{takeaways_html}</ul>
         </div>
 
         <div class="tags-row">
           {tags_html}
         </div>
+
+        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--charcoal-border);">
+          <a href="{sport_hub_url}" class="btn btn-outline">
+            &larr; Back to All {sport_name} Videos
+          </a>
+        </div>
       </section>
 
       <!-- Author Attribution Card -->
       <section class="author-card">
-        <img src="/assets/images/haris-hero-portrait.png" alt="Haris Nenmara" class="author-img" width="72" height="72" loading="lazy">
+        <picture>
+          <source srcset="/assets/images/haris-opt.webp" type="image/webp">
+          <img src="/assets/images/haris-hero-portrait.png" alt="Haris Nenmara" class="author-img" width="72" height="72" loading="lazy">
+        </picture>
         <div class="author-info">
           <h4>Analyzed by Haris Nenmara (ഹാരിസ് നെന്മാറ)</h4>
-          <p class="author-role">Sports Journalist & Tactical Analyst · Final Third</p>
+          <p class="author-role">Sports Journalist &amp; Tactical Analyst · Final Third</p>
           <p class="author-bio">Covering European football tactical systems, Kerala Blasters matchday dynamics in the ISL, and international cricket analysis in Malayalam.</p>
         </div>
       </section>
@@ -1190,16 +1299,31 @@ def render_page(video):
     </div>
   </footer>
 
+  <script>
+    // Mobile Drawer Toggle
+    const mobileBtn = document.getElementById('mobileMenuToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileBtn && mobileDrawer) {{
+      mobileBtn.addEventListener('click', function() {{
+        const isOpen = mobileDrawer.classList.toggle('open');
+        mobileBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }});
+    }}
+  </script>
+
 </body>
 </html>
 """
     return html
 
+# Render category hub listing page
 def render_category_hub(sport):
     sport_name = "Football" if sport == "football" else "Cricket"
+    other_sport = "cricket" if sport == "football" else "football"
+    other_sport_name = "Cricket" if sport == "football" else "Football"
     sport_ml = "ഫുട്ബോൾ അവലോകനങ്ങൾ" if sport == "football" else "ക്രിക്കറ്റ് അവലോകനങ്ങൾ"
     meta_desc = (
-        "Kerala's premier Malayalam football tactical analysis platform by Haris Nenmara. In-depth match debriefs, El Clasico, Hansi Flick's Barcelona, Real Madrid, and Kerala Blasters ISL breakdowns."
+        "Kerala's premier Malayalam football tactical analysis platform by Haris Nenmara. In-depth match debriefs, El Clasico, European leagues, and Kerala Blasters ISL breakdowns."
         if sport == "football" else
         "Malayalam cricket match analysis, tactical breakdowns, and player stories by Haris Nenmara. In-depth coverage of Sanju Samson, Jasprit Bumrah, Team India T20s, and World Cup moments."
     )
@@ -1210,20 +1334,32 @@ def render_category_hub(sport):
     for v in vids:
         page_url = f"/{sport}/{v['slug']}/"
         cards_html += f"""
-        <article class="hub-card">
+        <article class="hub-card" onclick="window.location.href='{page_url}'" style="cursor: pointer;">
           <a href="{page_url}" class="hub-card-thumb-link" aria-label="{v['title']}">
-            <img src="https://i.ytimg.com/vi/{v['id']}/hqdefault.jpg" alt="{v['title']}" width="480" height="270" loading="lazy">
+            <img src="https://i.ytimg.com/vi/{v['id']}/hqdefault.jpg" alt="{v['title']}" width="480" height="270" loading="lazy" decoding="async">
             <span class="hub-card-badge">{v['playlist']}</span>
             <span class="hub-card-views">{v['views']}</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
           </a>
           <div class="hub-card-body">
-            <span class="hub-card-time">{v['published_iso'][:10]} · {v['read_time']}</span>
+            <div class="hub-card-meta">
+              <span class="hub-card-time">{v['published_iso'][:10]}</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">{v['read_time']}</span>
+            </div>
             <h2 class="hub-card-title"><a href="{page_url}">{v['title']}</a></h2>
             <p class="hub-card-snippet">{v['meta_desc']}</p>
-            <a href="{page_url}" class="hub-card-read-more">Read Tactical Breakdown ↗</a>
+            <div class="hub-card-footer">
+              <a href="{page_url}" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
           </div>
-        </article>
-        """
+        </article>"""
 
     hub_url = f"{DOMAIN}/{sport}/"
 
@@ -1232,7 +1368,7 @@ def render_category_hub(sport):
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{sport_name} Match Analysis & Tactical Debriefs | Final Third with Haris Nenmara</title>
+  <title>{sport_name} Match Analysis &amp; Tactical Debriefs | Final Third with Haris Nenmara</title>
   <meta name="description" content="{meta_desc}">
   <meta name="author" content="Haris Nenmara (ഹാരിസ് നെന്മാറ)">
   <meta name="robots" content="index, follow">
@@ -1329,45 +1465,146 @@ def render_category_hub(sport):
       --off-white: #F5F5F0;
       --muted-grey: #a0a0a0;
       --dark-grey: #666666;
-      --font-primary: 'Anek Malayalam', 'Inter', sans-serif;
+      --font-primary: 'Anek Malayalam', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }}
 
     * {{ box-sizing: border-box; margin: 0; padding: 0; }}
-    body {{ background: var(--pitch-black); color: var(--off-white); font-family: var(--font-primary); line-height: 1.6; }}
+    body {{
+      background: var(--pitch-black);
+      color: var(--off-white);
+      font-family: var(--font-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }}
     a {{ color: var(--neon-lime); text-decoration: none; }}
     a:hover {{ text-decoration: underline; }}
 
-    .navbar {{
+    /* Header & Navigation */
+    .site-header {{
       border-bottom: 1px solid var(--charcoal-border);
       background: rgba(8, 8, 8, 0.95);
       position: sticky;
       top: 0;
       z-index: 100;
       padding: 0.875rem 1.5rem;
+      backdrop-filter: blur(10px);
     }}
     .nav-container {{ max-width: 1140px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }}
     .brand-link {{ display: flex; align-items: center; gap: 0.75rem; color: var(--off-white); font-weight: 800; font-size: 1.125rem; }}
-    .brand-logo {{ height: 36px; width: auto; }}
-    .nav-menu {{ display: flex; gap: 1.5rem; list-style: none; }}
-    .nav-link {{ color: var(--muted-grey); font-weight: 600; font-size: 0.875rem; }}
+    .brand-logo {{ height: 36px; width: auto; display: block; }}
+    .brand-name {{ font-weight: 800; color: var(--off-white); }}
+    .main-nav {{ display: flex; align-items: center; }}
+    .nav-list {{ display: flex; align-items: center; gap: 1.5rem; list-style: none; }}
+    .nav-link {{ color: var(--muted-grey); font-weight: 600; font-size: 0.875rem; transition: color 0.2s; }}
     .nav-link:hover, .nav-link.active {{ color: var(--neon-lime); text-decoration: none; }}
+    .nav-actions {{ display: flex; align-items: center; gap: 1rem; }}
+    .btn-subscribe {{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--neon-lime);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.8125rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }}
+    .btn-subscribe:hover {{ background: var(--neon-lime-hover); text-decoration: none; }}
+    .mobile-toggle {{
+      display: none;
+      background: none;
+      border: none;
+      color: var(--off-white);
+      cursor: pointer;
+    }}
+    .mobile-drawer {{
+      display: none;
+      background: var(--charcoal);
+      border-bottom: 1px solid var(--charcoal-border);
+      padding: 1.5rem;
+    }}
+    .mobile-drawer.open {{ display: block; }}
+    .drawer-list {{ list-style: none; display: flex; flex-direction: column; gap: 1rem; }}
+    .drawer-link {{ color: var(--off-white); font-weight: 600; font-size: 1rem; text-decoration: none; }}
+    .drawer-link.active {{ color: var(--neon-lime); }}
 
+    /* Hub Hero */
     .hub-hero {{
       max-width: 1140px;
-      margin: 2rem auto;
-      padding: 2.5rem 1.5rem;
+      margin: 1.5rem auto 0;
+      padding: 2rem 1.5rem;
       border-bottom: 1px solid var(--charcoal-border);
     }}
-    .hub-eyebrow {{ color: var(--neon-lime); font-size: 0.8125rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }}
-    .hub-title {{ font-size: 2.25rem; font-weight: 800; color: var(--off-white); line-height: 1.2; margin-bottom: 1rem; }}
-    .hub-lead {{ font-size: 1.0625rem; color: var(--muted-grey); max-width: 800px; line-height: 1.7; }}
+    .hub-eyebrow {{
+      color: var(--neon-lime);
+      font-size: 0.8125rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }}
+    .hub-title {{
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--off-white);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }}
+    .hub-lead {{
+      font-size: 1.0625rem;
+      color: var(--muted-grey);
+      max-width: 820px;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }}
 
+    /* Sport Switcher Chips */
+    .hub-switcher {{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }}
+    .switch-chip {{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--charcoal);
+      border: 1px solid var(--charcoal-border);
+      border-radius: 999px;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--off-white);
+      text-decoration: none;
+      transition: all 0.2s;
+    }}
+    .switch-chip:hover, .switch-chip.active {{
+      background: rgba(158, 226, 11, 0.12);
+      border-color: var(--neon-lime);
+      color: var(--neon-lime);
+      text-decoration: none;
+    }}
+    .switch-count {{
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-size: 0.6875rem;
+    }}
+    .switch-chip.active .switch-count {{
+      background: var(--neon-lime);
+      color: #000;
+    }}
+
+    /* Hub Grid */
     .hub-grid {{
       max-width: 1140px;
       margin: 2rem auto 5rem;
       padding: 0 1.5rem;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
       gap: 1.75rem;
     }}
 
@@ -1378,9 +1615,13 @@ def render_category_hub(sport):
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: transform 0.2s, border-color 0.2s;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
     }}
-    .hub-card:hover {{ transform: translateY(-3px); border-color: rgba(158, 226, 11, 0.4); }}
+    .hub-card:hover {{
+      transform: translateY(-4px);
+      border-color: rgba(158, 226, 11, 0.5);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+    }}
 
     .hub-card-thumb-link {{
       position: relative;
@@ -1388,6 +1629,7 @@ def render_category_hub(sport):
       padding-top: 56.25%;
       display: block;
       background: #000;
+      overflow: hidden;
     }}
     .hub-card-thumb-link img {{
       position: absolute;
@@ -1396,6 +1638,10 @@ def render_category_hub(sport):
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.3s ease;
+    }}
+    .hub-card:hover .hub-card-thumb-link img {{
+      transform: scale(1.03);
     }}
     .hub-card-badge {{
       position: absolute;
@@ -1407,6 +1653,7 @@ def render_category_hub(sport):
       font-weight: 800;
       padding: 3px 6px;
       border-radius: 4px;
+      z-index: 2;
     }}
     .hub-card-views {{
       position: absolute;
@@ -1418,50 +1665,130 @@ def render_category_hub(sport):
       font-weight: 600;
       padding: 3px 6px;
       border-radius: 4px;
+      z-index: 2;
+    }}
+    .hub-play-overlay {{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px;
+      height: 48px;
+      background: rgba(0, 0, 0, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--neon-lime);
+      opacity: 0.85;
+      transition: all 0.2s;
+      z-index: 2;
+    }}
+    .hub-card:hover .hub-play-overlay {{
+      background: var(--neon-lime);
+      color: #000;
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.1);
     }}
 
     .hub-card-body {{ padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }}
-    .hub-card-time {{ font-size: 0.75rem; color: var(--dark-grey); margin-bottom: 0.35rem; }}
-    .hub-card-title {{ font-size: 1rem; font-weight: 700; line-height: 1.4; margin-bottom: 0.625rem; }}
+    .hub-card-meta {{
+      font-size: 0.75rem;
+      color: var(--dark-grey);
+      margin-bottom: 0.4rem;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }}
+    .hub-card-dot {{ color: var(--dark-grey); }}
+    .hub-card-read {{ color: var(--neon-lime); font-weight: 600; }}
+    .hub-card-title {{
+      font-size: 1.0625rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 0.625rem;
+    }}
     .hub-card-title a {{ color: var(--off-white); }}
     .hub-card-title a:hover {{ color: var(--neon-lime); text-decoration: none; }}
-    .hub-card-snippet {{ font-size: 0.8125rem; color: var(--muted-grey); line-height: 1.5; margin-bottom: 1rem; flex: 1; }}
-    .hub-card-read-more {{ font-size: 0.8125rem; font-weight: 700; color: var(--neon-lime); align-self: flex-start; }}
+    .hub-card-snippet {{
+      font-size: 0.8125rem;
+      color: var(--muted-grey);
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }}
+    .hub-card-footer {{
+      margin-top: auto;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--charcoal-border);
+    }}
+    .hub-card-btn {{
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--neon-lime);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: opacity 0.2s;
+    }}
+    .hub-card-btn:hover {{
+      text-decoration: underline;
+      opacity: 0.85;
+    }}
 
     .site-footer {{
       border-top: 1px solid var(--charcoal-border);
       background: var(--pitch-black);
       padding: 2.5rem 1.5rem;
-      text-align: center;
       color: var(--dark-grey);
       font-size: 0.875rem;
+    }}
+    .footer-container {{
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }}
+    .footer-links {{ display: flex; gap: 1.5rem; list-style: none; }}
+    .footer-links a {{ color: var(--muted-grey); }}
+    .footer-links a:hover {{ color: var(--neon-lime); }}
+
+    @media (max-width: 900px) {{
+      .main-nav {{ display: none; }}
+      .mobile-toggle {{ display: block; }}
+      .hub-grid {{ grid-template-columns: 1fr; }}
+      .hub-title {{ font-size: 1.75rem; }}
     }}
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="/" class="brand-link">
-        <img src="/assets/images/final-third-logo.png" alt="Final Third Logo" class="brand-logo" width="160" height="36">
-        <span>FINAL THIRD</span>
-      </a>
-      <ul class="nav-menu">
-        <li><a href="/" class="nav-link">Home</a></li>
-        <li><a href="/football/" class="nav-link{' active' if sport == 'football' else ''}">Football</a></li>
-        <li><a href="/cricket/" class="nav-link{' active' if sport == 'cricket' else ''}">Cricket</a></li>
-        <li><a href="/#videos" class="nav-link">Catalog (300+)</a></li>
-        <li><a href="/privacy.html" class="nav-link">Privacy</a></li>
-        <li><a href="/#contact" class="nav-link">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KFC9JGQJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5N6XFRJ7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  {render_navbar(active_page=sport)}
 
   <header class="hub-hero">
-    <div class="hub-eyebrow">Category Hub · {sport_ml}</div>
-    <h1 class="hub-title">{sport_name} Match Analysis & Tactical Debriefs</h1>
+    <div class="hub-eyebrow">Category Listing · {sport_ml}</div>
+    <h1 class="hub-title">{sport_name} Match Analysis &amp; Tactical Debriefs</h1>
     <p class="hub-lead">{meta_desc}</p>
+    <div class="hub-switcher">
+      <span style="font-size: 0.8125rem; color: var(--muted-grey); font-weight: 600;">Explore Categories:</span>
+      <a href="/football/" class="switch-chip{' active' if sport == 'football' else ''}">
+        ⚽ Football Analysis <span class="switch-count">14</span>
+      </a>
+      <a href="/cricket/" class="switch-chip{' active' if sport == 'cricket' else ''}">
+        🏏 Cricket Analysis <span class="switch-count">6</span>
+      </a>
+      <a href="/#videos" class="switch-chip">
+        📺 Full 300+ Archive <span class="switch-count">All</span>
+      </a>
+    </div>
   </header>
 
   <main class="hub-grid">
@@ -1469,8 +1796,29 @@ def render_category_hub(sport):
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 FINAL THIRD with Haris Nenmara. All rights reserved. · <a href="/">Home</a> · <a href="/privacy.html">Privacy Policy</a></p>
+    <div class="footer-container">
+      <p>&copy; 2026 FINAL THIRD with Haris Nenmara. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/football/">Football Hub</a></li>
+        <li><a href="/cricket/">Cricket Hub</a></li>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </div>
   </footer>
+
+  <script>
+    // Mobile Drawer Toggle
+    const mobileBtn = document.getElementById('mobileMenuToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (mobileBtn && mobileDrawer) {{
+      mobileBtn.addEventListener('click', function() {{
+        const isOpen = mobileDrawer.classList.toggle('open');
+        mobileBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }});
+    }}
+  </script>
 
 </body>
 </html>
@@ -1481,7 +1829,7 @@ def generate_all():
     base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     
     print("=" * 60)
-    print("Final Third — Generating 20 Dedicated Video SEO Pages & Hubs")
+    print("Final Third — Generating Dedicated Video Pages & Hubs")
     print("=" * 60)
 
     # 1. Create Football & Cricket Hub Directories
@@ -1566,58 +1914,6 @@ def generate_all():
     with open(sitemap_path, "w", encoding="utf-8") as f:
         f.write(full_sitemap)
     print(f"✓ Successfully generated sitemap.xml with {len(sitemap_entries)} entries (including 20 video extensions)!")
-
-    # 4. Update index.html cards with crawlable permalinks
-    index_path = os.path.join(base_dir, "index.html")
-    with open(index_path, "r", encoding="utf-8") as f:
-        index_html = f.read()
-
-    links_added = 0
-    slug_map = {v["id"]: f"/{v['sport']}/{v['slug']}/" for v in VIDEOS}
-
-    for vid, url_path in slug_map.items():
-        pattern = rf'(<article class="video-card[^>]*data-video-id="{re.escape(vid)}"[^>]*>.*?</article>)'
-        match = re.search(pattern, index_html, re.DOTALL)
-        if match:
-            card_html = match.group(1)
-            if 'class="card-page-link"' not in card_html:
-                new_card_html = card_html.replace(
-                    '</div>\n          </article>',
-                    f'  <div class="card-page-link-row"><a href="{url_path}" class="card-page-link">Read Tactical Breakdown ↗</a></div>\n            </div>\n          </article>'
-                )
-                if new_card_html != card_html:
-                    index_html = index_html[:match.start()] + new_card_html + index_html[match.end():]
-                    links_added += 1
-
-    if links_added > 0:
-        # Add CSS for card-page-link-row if not present
-        if '.card-page-link' not in index_html:
-            style_marker = '</style>'
-            css_add = """
-.card-page-link-row {
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-.card-page-link {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--neon-lime) !important;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  transition: opacity 0.2s;
-}
-.card-page-link:hover {
-  text-decoration: underline !important;
-  opacity: 0.85;
-}
-</style>"""
-            index_html = index_html.replace(style_marker, css_add, 1)
-
-        with open(index_path, "w", encoding="utf-8") as f:
-            f.write(index_html)
-        print(f"✓ Injected crawlable internal links into {links_added} static video cards on homepage!")
 
 if __name__ == "__main__":
     generate_all()
