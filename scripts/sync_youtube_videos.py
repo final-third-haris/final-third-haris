@@ -379,10 +379,10 @@ def update_schema_video_object(filepath, video):
     desc = f"Final Third match coverage and {sport_desc} analysis with Haris Nenmara."
     upload_date = video.get("published_iso") or datetime.now(timezone.utc).isoformat()
 
-    vo_pattern = r'\{\s*"@type":\s*"VideoObject",\s*"@id":\s*"https://final-third-haris\.github\.io/#featured-video".*?\}\n    \]'
+    vo_pattern = r'\{\s*"@type":\s*"VideoObject",\s*"@id":\s*"https://(?:final-third-haris\.github\.io|www\.finalthird-haris\.com)/#featured-video".*?\}\n    \]'
     new_vo = f'''{{
         "@type": "VideoObject",
-        "@id": "https://final-third-haris.github.io/#featured-video",
+        "@id": "https://www.finalthird-haris.com/#featured-video",
         "name": {json.dumps(title, ensure_ascii=False)},
         "description": {json.dumps(desc, ensure_ascii=False)},
         "thumbnailUrl": [
@@ -394,7 +394,7 @@ def update_schema_video_object(filepath, video):
         "contentUrl": "https://www.youtube.com/watch?v={vid}",
         "inLanguage": "ml",
         "creator": {{
-          "@id": "https://final-third-haris.github.io/#person"
+          "@id": "https://www.finalthird-haris.com/#person"
         }}
       }}
     ]'''

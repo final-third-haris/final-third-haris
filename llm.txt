@@ -4,12 +4,12 @@
 
 ## Website & Core Sections
 
-- [Final Third](https://final-third-haris.github.io/): The official website featuring latest tactical breakdowns and video releases.
-- [Football & Cricket Video Catalog](https://final-third-haris.github.io/#videos): Searchable archive of football match analysis, tactical debriefs, and cricket stories.
-- [Final Third Shorts](https://final-third-haris.github.io/#shorts): Short-form tactical highlights and sports analysis reels.
-- [About Haris Nenmara](https://final-third-haris.github.io/#about): Background, journalistic perspective, and editorial philosophy of host Haris Nenmara.
-- [Partnership & Brand Inquiries](https://final-third-haris.github.io/#sponsor): Information on media sponsorships, video shoutouts, and brand collaborations.
-- [Contact](https://final-third-haris.github.io/#contact): Direct contact channels including WhatsApp and email.
+- [Final Third](https://www.finalthird-haris.com/): The official website featuring latest tactical breakdowns and video releases.
+- [Football & Cricket Video Catalog](https://www.finalthird-haris.com/#videos): Searchable archive of football match analysis, tactical debriefs, and cricket stories.
+- [Final Third Shorts](https://www.finalthird-haris.com/#shorts): Short-form tactical highlights and sports analysis reels.
+- [About Haris Nenmara](https://www.finalthird-haris.com/#about): Background, journalistic perspective, and editorial philosophy of host Haris Nenmara.
+- [Partnership & Brand Inquiries](https://www.finalthird-haris.com/#sponsor): Information on media sponsorships, video shoutouts, and brand collaborations.
+- [Contact](https://www.finalthird-haris.com/#contact): Direct contact channels including WhatsApp and email.
 
 ## Official Channels
 
