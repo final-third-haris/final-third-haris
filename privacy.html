@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="ml" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | Final Third with Haris Nenmara</title>
+  <meta name="description" content="Privacy Policy for Final Third (www.finalthird-haris.com) — detailing our data collection practices, Google AdSense, Meta Pixel, Google Analytics, cookies, and EEA/UK visitor rights.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.finalthird-haris.com/privacy.html">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+
+  <!-- Typography: Anek Malayalam & System Fallbacks -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --neon-lime: #9EE20B;
+      --neon-lime-hover: #b4f51e;
+      --neon-lime-subtle: rgba(158, 226, 11, 0.12);
+      --pitch-black: #080808;
+      --charcoal: #151515;
+      --charcoal-light: #202020;
+      --charcoal-border: #2a2a2a;
+      --off-white: #F5F5F0;
+      --muted-grey: #a0a0a0;
+      --dark-grey: #666666;
+      --font-primary: 'Anek Malayalam', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--pitch-black);
+      color: var(--off-white);
+      font-family: var(--font-primary);
+      line-height: 1.7;
+      font-size: 1rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--neon-lime);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--neon-lime-hover);
+      text-decoration: underline;
+    }
+
+    .header-bar {
+      border-bottom: 1px solid var(--charcoal-border);
+      background-color: rgba(8, 8, 8, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 1.5rem;
+    }
+
+    .header-container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-img {
+      height: 38px;
+      width: auto;
+      display: block;
+    }
+
+    .brand-title {
+      font-weight: 800;
+      font-size: 1.125rem;
+      letter-spacing: -0.02em;
+      color: var(--off-white);
+    }
+
+    .back-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      background-color: var(--charcoal-light);
+      border: 1px solid var(--charcoal-border);
+      color: var(--off-white);
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .back-home-btn:hover {
+      background-color: var(--charcoal-border);
+      color: var(--neon-lime);
+      text-decoration: none;
+    }
+
+    .content-container {
+      max-width: 860px;
+      margin: 3rem auto 6rem;
+      padding: 0 1.5rem;
+    }
+
+    .policy-header {
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--charcoal-border);
+      padding-bottom: 1.5rem;
+    }
+
+    .policy-eyebrow {
+      color: var(--neon-lime);
+      text-transform: uppercase;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .policy-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--off-white);
+      margin-bottom: 0.75rem;
+    }
+
+    .policy-meta {
+      color: var(--muted-grey);
+      font-size: 0.875rem;
+    }
+
+    .policy-section {
+      background-color: var(--charcoal);
+      border: 1px solid var(--charcoal-border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .policy-section h2 {
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: var(--off-white);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .policy-section h2 .section-num {
+      color: var(--neon-lime);
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .policy-section p {
+      color: #d8d8d8;
+      margin-bottom: 1rem;
+    }
+
+    .policy-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .policy-section ul {
+      list-style-type: none;
+      margin: 1rem 0;
+      padding-left: 0;
+    }
+
+    .policy-section ul li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.625rem;
+      color: #cccccc;
+    }
+
+    .policy-section ul li::before {
+      content: "•";
+      color: var(--neon-lime);
+      position: absolute;
+      left: 0.35rem;
+      font-weight: bold;
+    }
+
+    .highlight-card {
+      background-color: rgba(158, 226, 11, 0.05);
+      border-left: 3px solid var(--neon-lime);
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1rem 0;
+      font-size: 0.9375rem;
+      color: #e5e5e5;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .contact-item {
+      background: var(--charcoal-light);
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--charcoal-border);
+    }
+
+    .contact-label {
+      font-size: 0.75rem;
+      color: var(--muted-grey);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-value {
+      color: var(--off-white);
+      font-weight: 600;
+      font-size: 0.9375rem;
+    }
+
+    .footer-bar {
+      border-top: 1px solid var(--charcoal-border);
+      background-color: var(--pitch-black);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: var(--dark-grey);
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 640px) {
+      .policy-title {
+        font-size: 1.75rem;
+      }
+      .policy-section {
+        padding: 1.25rem;
+      }
+      .content-container {
+        margin-top: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="header-bar">
+    <div class="header-container">
+      <a href="/" class="logo-wrap" aria-label="Final Third Home">
+        <img src="assets/images/final-third-logo.png" alt="Final Third Logo" class="logo-img" width="160" height="38">
+        <span class="brand-title">FINAL THIRD</span>
+      </a>
+      <a href="/" class="back-home-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+          <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+        </svg>
+        Back to Home
+      </a>
+    </div>
+  </header>
+
+  <main class="content-container">
+    <div class="policy-header">
+      <div class="policy-eyebrow">Trust & Transparency</div>
+      <h1 class="policy-title">Privacy Policy</h1>
+      <p class="policy-meta">
+        Official policy for <strong>Final Third</strong> (<a href="https://www.finalthird-haris.com/">www.finalthird-haris.com</a>) · Last updated: October 30, 2026
+      </p>
+    </div>
+
+    <!-- Section 1 -->
+    <section class="policy-section">
+      <h2><span class="section-num">01.</span> Overview & Brand Information</h2>
+      <p>
+        <strong>Final Third</strong> is an independent Malayalam sports journalism and tactical analysis platform created and hosted by <strong>Haris Nenmara</strong>, covering football match debriefs, European football leagues, Kerala Blasters, ISL, and international cricket analysis.
+      </p>
+      <p>
+        We respect your privacy and are committed to protecting any information associated with your visit to our website (<code>https://www.finalthird-haris.com/</code>). This Privacy Policy explains what data we collect, how it is used, how third-party tools operate on our site, and your rights as a visitor.
+      </p>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="policy-section">
+      <h2><span class="section-num">02.</span> Information We Collect</h2>
+      <p>
+        <strong>Browsing Data:</strong> You do not need to register, create an account, or log in to browse our video catalog, read match overviews, or watch analysis breakdowns on Final Third. We do not collect names or financial credentials from standard browsing.
+      </p>
+      <p>
+        <strong>Contact & Inquiry Form Data:</strong> If you voluntarily reach out to us for brand sponsorships, media kit inquiries, partnerships, or viewer feedback via our direct contact channels or contact inquiry forms, we may receive:
+      </p>
+      <ul>
+        <li><strong>Name:</strong> To address you professionally in communications.</li>
+        <li><strong>Email Address:</strong> To reply to your inquiry and provide match-day sponsorship details.</li>
+        <li><strong>Phone Number / WhatsApp:</strong> If provided to facilitate direct conversation.</li>
+        <li><strong>Message Content:</strong> The specific details of your sponsorship or editorial query.</li>
+      </ul>
+      <div class="highlight-card">
+        <strong>Strict Data Commitment:</strong> We never sell, rent, or lease your contact information to third-party brokers or advertisers. Contact data is used exclusively to respond to your specific request.
+      </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="policy-section">
+      <h2><span class="section-num">03.</span> Google AdSense & Third-Party Advertising</h2>
+      <p>
+        This website uses <strong>Google AdSense</strong> to display advertisements. Google, as a third-party vendor, uses cookies to serve ads on our site based on a user's prior visits to this website or other sites on the Internet.
+      </p>
+      <ul>
+        <li>
+          <strong>Advertising Cookies:</strong> Google's use of advertising cookies (such as the DoubleClick cookie) enables it and its partners to serve ads to our users based on their visits to our site and/or other sites on the web.
+        </li>
+        <li>
+          <strong>Personalized Ads Opt-Out:</strong> Users may opt out of personalized advertising at any time by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.
+        </li>
+        <li>
+          <strong>Third-Party Vendor Opt-Out:</strong> Alternatively, you can opt out of a third-party vendor's use of cookies for personalized advertising by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer">www.aboutads.info</a> or <a href="https://www.youronlinechoices.eu/" target="_blank" rel="noopener noreferrer">Your Online Choices (Europe)</a>.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="policy-section">
+      <h2><span class="section-num">04.</span> Analytics & Tag Management</h2>
+      <p>
+        To understand how visitors engage with our sports analysis and improve our website performance, we use standard analytics tools:
+      </p>
+      <ul>
+        <li>
+          <strong>Google Analytics 4 (GA4):</strong> GA4 collects pseudonymized operational metrics, including device type, operating system, general geographic region (country/city level), session duration, and pages visited. GA4 does not log or store full IP addresses. You can prevent Google Analytics tracking across all websites by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.
+        </li>
+        <li>
+          <strong>Google Tag Manager (GTM):</strong> GTM is a tag management platform that executes script tags on our website. The tag manager itself operates without setting persistent user cookies and ensures scripts load efficiently.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section 5 -->
+    <section class="policy-section">
+      <h2><span class="section-num">05.</span> Meta Pixel (Facebook & Instagram)</h2>
+      <p>
+        Our website integrates the <strong>Meta Pixel</strong> (provided by Meta Platforms, Inc.) to measure the effectiveness of our social media communications, understand audience engagement from Facebook and Instagram, and serve relevant sports analysis updates to people who have visited our platform.
+      </p>
+      <ul>
+        <li>
+          The Meta Pixel places a small tracking snippet that allows Meta to recognize visitors and associate aggregated site actions with their Facebook/Instagram profiles in accordance with Meta's Data Policy.
+        </li>
+        <li>
+          You can manage your social media ad preferences and opt out of interest-based ads from Meta by visiting <a href="https://www.facebook.com/adpreferences/ad_settings" target="_blank" rel="noopener noreferrer">Facebook Ad Settings</a>.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Section 6 -->
+    <section class="policy-section">
+      <h2><span class="section-num">06.</span> Embedded YouTube Video Players</h2>
+      <p>
+        Final Third embeds match breakdowns, tactical reviews, and shorts hosted on <strong>YouTube</strong> (operated by Google LLC).
+      </p>
+      <p>
+        When you click on a video card to play a story in our cinema player, YouTube may set cookies or HTML5 local storage tokens on your device to collect viewing statistics, maintain playback quality, and serve relevant video recommendations. Interactions with embedded video players are governed by the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a> and <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">YouTube Terms of Service</a>.
+      </p>
+    </section>
+
+    <!-- Section 7 -->
+    <section class="policy-section">
+      <h2><span class="section-num">07.</span> Rights & Consent for Visitors in the EEA and UK</h2>
+      <p>
+        If you are located in the European Economic Area (EEA) or the United Kingdom (UK), your personal data is protected under the <strong>General Data Protection Regulation (EU GDPR)</strong> and the <strong>UK GDPR / Data Protection Act 2018</strong>.
+      </p>
+      <p><strong>Legal Bases for Processing:</strong></p>
+      <ul>
+        <li><strong>Consent:</strong> Where required by law (such as non-essential advertising and tracking cookies), we process data based on your freely given consent.</li>
+        <li><strong>Legitimate Interests:</strong> We process pseudonymized operational metrics and security logs to deliver a functional, secure website and protect against malicious traffic.</li>
+        <li><strong>Contractual / Direct Requests:</strong> If you contact us for business partnerships or sponsorships, we process your contact details to respond to your specific request.</li>
+      </ul>
+      <p><strong>Your Statutory Rights:</strong> Under the GDPR, you have the right to:</p>
+      <ul>
+        <li><strong>Access:</strong> Request a copy of any personal data we hold about you.</li>
+        <li><strong>Rectification:</strong> Request correction of inaccurate or incomplete information.</li>
+        <li><strong>Erasure ("Right to be Forgotten"):</strong> Request that we delete your contact communications.</li>
+        <li><strong>Restriction & Objection:</strong> Object to processing or request restriction of data processing.</li>
+        <li><strong>Data Portability:</strong> Request transmission of your data in a structured, machine-readable format.</li>
+        <li><strong>Lodge a Complaint:</strong> You have the right to lodge a complaint with your national Data Protection Authority (DPA) in the EU or the Information Commissioner’s Office (ICO) in the UK.</li>
+      </ul>
+      <p>
+        To exercise any of these rights, please contact us at <a href="mailto:mailtofinalthird@gmail.com">mailtofinalthird@gmail.com</a>.
+      </p>
+    </section>
+
+    <!-- Section 8 -->
+    <section class="policy-section">
+      <h2><span class="section-num">08.</span> How to Manage or Disable Cookies</h2>
+      <p>
+        You can control and manage cookie settings directly in your browser. Disabling cookies will not prevent you from browsing our video library, though certain personalized features may be affected.
+      </p>
+      <ul>
+        <li><strong>Google Chrome:</strong> Settings → Privacy and security → Cookies and other site data.</li>
+        <li><strong>Apple Safari:</strong> Preferences → Privacy → Manage Website Data.</li>
+        <li><strong>Mozilla Firefox:</strong> Options → Privacy & Security → Cookies and Site Data.</li>
+        <li><strong>Microsoft Edge:</strong> Settings → Cookies and site permissions.</li>
+      </ul>
+    </section>
+
+    <!-- Section 9 -->
+    <section class="policy-section">
+      <h2><span class="section-num">09.</span> Contact Us</h2>
+      <p>
+        If you have any questions, feedback, or requests regarding this Privacy Policy or our data practices, please reach out directly:
+      </p>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="contact-label">Editorial & Privacy Email</div>
+          <div class="contact-value"><a href="mailto:mailtofinalthird@gmail.com">mailtofinalthird@gmail.com</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-label">Direct WhatsApp / Phone</div>
+          <div class="contact-value"><a href="https://wa.me/918129059309" target="_blank" rel="noopener noreferrer">+91 8129059309</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-label">Location / Base</div>
+          <div class="contact-value">Kerala, India</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-bar">
+    <p>&copy; 2026 FINAL THIRD with Haris Nenmara. All rights reserved. · <a href="/">Return to Home</a></p>
+  </footer>
+
+</body>
+</html>
