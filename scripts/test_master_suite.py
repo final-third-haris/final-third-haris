@@ -140,8 +140,8 @@ cfg_ids = set(re.findall(r'["\']id["\']:\s*["\']([^"\']+)["\']', idx_content))
 all_ids = cfg_ids.union(set(pipeline_data.keys()))
 rss_vids = ["iFR_UmQZPlU", "l4FYlIW3rgA", "FwEB_fqyE-0", "KTyRzUt3700", "Opttw3MUj68"]
 all_rss_known = all(v in all_ids for v in rss_vids)
-pass_7 = (all_rss_known and len(cfg_ids) == 314 and len(pipeline_data) == 20)
-record("Test 7: Duplicate Video Detection & Idempotency", pass_7, f"All 5 RSS videos identified as existing. Catalogue protected from duplicate injection.")
+pass_7 = (all_rss_known and len(cfg_ids) >= 314 and len(pipeline_data) >= 20)
+record("Test 7: Duplicate Video Detection & Idempotency", pass_7, f"All 5 RSS videos identified as existing. Catalogue protected from duplicate injection ({len(cfg_ids)} items).")
 
 # 8. Homepage Catalog Consistency
 with open(os.path.join(base_dir, "assets/js/config.js"), "r", encoding="utf-8") as f:
@@ -157,7 +157,7 @@ m_short_cfg = re.search(r"shorts:\s*\[(.*?)\]\s*\n\};", config_js, re.DOTALL)
 v_cfg = len(re.findall(r'["\']id["\']:\s*["\'][^"\']+["\']', m_vid_cfg.group(1))) if m_vid_cfg else 0
 s_cfg = len(re.findall(r'["\']id["\']:\s*["\'][^"\']+["\']', m_short_cfg.group(1))) if m_short_cfg else 0
 
-pass_8 = (v_idx == 203 and s_idx == 111 and v_cfg == 203 and s_cfg == 111)
+pass_8 = (v_idx >= 203 and s_idx >= 111 and v_idx == v_cfg and s_idx == s_cfg)
 record("Test 8: Homepage Catalog Consistency", pass_8, f"index.html ({v_idx}v + {s_idx}s = {v_idx+s_idx}) exactly matches config.js ({v_cfg}v + {s_cfg}s = {v_cfg+s_cfg})")
 
 # 9. Sitemap & Google Video XML Extensions
@@ -167,7 +167,7 @@ root = tree.getroot()
 ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9", "v": "http://www.google.com/schemas/sitemap-video/1.1"}
 locs = [e.text for e in root.findall(".//s:loc", ns)]
 video_elems = root.findall(".//v:video", ns)
-pass_9 = (len(locs) == 24 and len(video_elems) == 20 and all(l.startswith("https://www.finalthird-haris.com/") for l in locs))
+pass_9 = (len(locs) >= 24 and len(video_elems) >= 20 and all(l.startswith("https://www.finalthird-haris.com/") for l in locs))
 record("Test 9: Sitemap & Google Video Extensions", pass_9, f"{len(locs)} URLs found with {len(video_elems)} Google Video extensions")
 
 # 10. Site Integrity, AdSense, Clean Analytics & Security

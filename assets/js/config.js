@@ -88,18 +88,38 @@ const FINAL_THIRD_CONFIG = {
     ]
   },
 
-  featuredVideoId: "iFR_UmQZPlU",
+  featuredVideoId: "In9vwjZ6sVQ",
 
   // 300+ Authentic Videos from YouTube @FinalThird_HarisNenmara
   videos: [
+    {
+      "id": "In9vwjZ6sVQ",
+      "title": "രോഹിത് വീണ്ടും മുംബൈ നായകനാവും ! Rohit Sharma | Mumbai Indians",
+      "sport": "cricket",
+      "playlistId": "indian-cricket",
+      "playlistTitle": "Indian Cricket Team",
+      "published": "17 hours ago",
+      "views": "17K views",
+      "summary": "Analysis and match debrief by Haris Nenmara on 'രോഹിത് വീണ്ടും മുംബൈ നായകനാവും ! Rohit Sharma | Mumbai Indians'. Watch the full breakdown on Final Third."
+    },
+    {
+      "id": "2SZTXVLPFow",
+      "title": "ഡിക്റ്റേറ്റര്‍ എംബാപ്പെ; ഒടുക്കം കളി കാര്യമായി ! എന്താണ് ചൈനയുമായുള്ള പ്രശ്നം? kylian mbappé | China",
+      "sport": "football",
+      "playlistId": "european-football",
+      "playlistTitle": "European & World Football",
+      "published": "1 day ago",
+      "views": "47K views",
+      "summary": "Analysis and match debrief by Haris Nenmara on 'ഡിക്റ്റേറ്റര്‍ എംബാപ്പെ; ഒടുക്കം കളി കാര്യമായി ! എന്താണ് ചൈനയുമായുള്ള പ്രശ്നം? kylian mbappé | China'. Watch the full breakdown on Final Third."
+    },
   {
     "id": "iFR_UmQZPlU",
     "title": "ഇഷാൻ കൂടെ വന്നാൽ സഞ്ജു എന്ത് ചെയ്യും ?  | Sanju Samson | Abhishek Sharma | Vaibhav Suryavanshi",
     "sport": "cricket",
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
-    "published": "Just now",
-    "views": "2.7K views",
+    "published": "3 days ago",
+    "views": "40K views",
     "summary": "ഇഷാൻ കൂടെ വന്നാൽ സഞ്ജു എന്ത് ചെയ്യും ?  | Sanju Samson | Abhishek Sharma | Vaibhav Suryavanshi"
   },
   {
@@ -108,8 +128,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "european-football",
     "playlistTitle": "European & World Football",
-    "published": "2 hours ago",
-    "views": "13K views",
+    "published": "3 days ago",
+    "views": "54K views",
     "summary": "ക്രിസ്റ്റ്യാനോ ലോക ഫുട്ബോളില്‍ അത്ഭുതങ്ങള്‍ കാണിച്ച വര്‍ഷം | Cristiano Ronaldo 2008 | ballon d or"
   },
   {
@@ -118,8 +138,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "cricket",
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
-    "published": "2 hours ago",
-    "views": "281K views",
+    "published": "5 days ago",
+    "views": "300K views",
     "summary": "ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek Sharma | Vaibhav Suryavanshi"
   },
   {
@@ -128,8 +148,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "european-football",
     "playlistTitle": "European & World Football",
-    "published": "Just now",
-    "views": "40K views",
+    "published": "5 days ago",
+    "views": "42K views",
     "summary": "യമാലിനിയും കാത്തിരിക്കണം... ഹാരികെയിന്‍ അര്‍ഹിച്ച പുരസ്കാരം | ballon d'or 2026 | harry kane"
   },
   {
@@ -138,8 +158,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
-    "published": "5 hours ago",
-    "views": "114K views",
+    "published": "6 days ago",
+    "views": "125K views",
     "summary": "ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara"
   },
   {
@@ -148,7 +168,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "cricket",
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
-    "published": "Just now",
+    "published": "7 days ago",
     "views": "57K views",
     "summary": "ഇതൊക്കെയാണ് കം ബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | NamanDhir"
   },
@@ -158,8 +178,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
-    "published": "2 hours ago",
-    "views": "55K views",
+    "published": "8 days ago",
+    "views": "56K views",
     "summary": "ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico"
   },
   {
@@ -168,7 +188,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "cricket",
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
-    "published": "Just now",
+    "published": "9 days ago",
     "views": "85K views",
     "summary": "സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | Ind Vs Nz"
   },
@@ -178,7 +198,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "cricket",
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
-    "published": "3 hours ago",
+    "published": "9 days ago",
     "views": "32K views",
     "summary": "400 ചേസ് ചെയ്ത ലങ്ക ! ഇംഗ്ലണ്ടിനെ കൊന്നു കൊലവിളിച്ചു ! | srilanka vs england"
   },
@@ -188,7 +208,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "cricket",
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
-    "published": "Just now",
+    "published": "10 days ago",
     "views": "175K views",
     "summary": "സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson"
   },
@@ -198,7 +218,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
     "playlistTitle": "Real Madrid",
-    "published": "6 hours ago",
+    "published": "10 days ago",
     "views": "42K views",
     "summary": "ബാഴ്സക്ക് അത്ര എളുപ്പമാകില്ല കാര്യങ്ങള്‍ ! Real Madrid vs RB Leipzig"
   },
@@ -208,7 +228,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "cricket",
     "playlistId": "PLcWlSk4Ir_yg",
     "playlistTitle": "Cricket India",
-    "published": "15 hr ago",
+    "published": "11 days ago",
     "views": "14K views",
     "summary": "ഭുവി വന്നു; ഷമി വരില്ലേ ? Mohammed Shami "
   },
@@ -218,7 +238,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
-    "published": "17 hr ago",
+    "published": "11 days ago",
     "views": "55K views",
     "summary": "PSG യെ വീഴ്ത്താൻ ആരുണ്ട് ഇവിടെ ? | Barcelona vs Psg | Lamine Yamal"
   },
@@ -228,7 +248,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
-    "published": "3 days ago",
+    "published": "2 weeks ago",
     "views": "42K views",
     "summary": "ബാഴ്സയെ ആര് പിടിച്ച് കെട്ടും ? Barcelona | Lamine Yamal | Rodri | Hansi Flick"
   },
@@ -238,7 +258,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "cricket",
     "playlistId": "PLcWlSk4Ir_yg",
     "playlistTitle": "Cricket India",
-    "published": "4 days ago",
+    "published": "2 weeks ago",
     "views": "21K views",
     "summary": "ഭുവിയും ബുംറയും ചേർന്നാൽ ! Bhuvneshwar Kumar | Jasprit Bumrah"
   },
@@ -248,8 +268,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "cricket",
     "playlistId": "PLcWlSk4Ir_yg",
     "playlistTitle": "Cricket India",
-    "published": "5 days ago",
-    "views": "110K views",
+    "published": "2 weeks ago",
+    "views": "111K views",
     "summary": "ഭുവി വരുന്നു ! ബുംറ ഇല്ലെങ്കിൽ ഇന്ത്യ ഇല്ലേ ? Sanju Samson | Jasprit Bumrah |Ind Vs Wi "
   },
   {
@@ -258,8 +278,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
     "playlistTitle": "Real Madrid",
-    "published": "6 days ago",
-    "views": "57k views",
+    "published": "2 weeks ago",
+    "views": "58K views",
     "summary": "റോമയെ എരിച്ചു ! പഠിക്കാൻ ഇനിയുമേറെ | Real Madrid Vs Roma"
   },
   {
@@ -268,8 +288,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
-    "published": "7 days ago",
-    "views": "72k views",
+    "published": "2 weeks ago",
+    "views": "72K views",
     "summary": "ആളറിഞ്ഞു കളിക്കടാ ! barcelona vs galatasaray | lamine yamal | Haris Nenmara"
   },
   {
@@ -278,8 +298,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "cricket",
     "playlistId": "PLY1FBwOFOWvQ",
     "playlistTitle": "India T20",
-    "published": "8 days ago",
-    "views": "24k views",
+    "published": "2 weeks ago",
+    "views": "24K views",
     "summary": "ഇന്ന് വൈഭവ് ഇറങ്ങുമോ ? Sanju Samson | Vaibhav Suryavanshi"
   },
   {
@@ -288,8 +308,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
-    "published": "8 days ago",
-    "views": "55k views",
+    "published": "2 weeks ago",
+    "views": "55K views",
     "summary": "'സനാന് ഫിറ്റ്നസില്ല... മോമോയുടെ  മെന്‍റാലിറ്റി'; ആഷ്‍ലിയുടെ തുറന്ന് പറച്ചിലുകള്‍ | Kerala blasters"
   },
   {
@@ -298,8 +318,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
-    "published": "9 days ago",
-    "views": "26k views",
+    "published": "2 weeks ago",
+    "views": "26K views",
     "summary": "ഡോക്കുവും ആന്‍റേഴ്സണും നിറയുന്നു; ചെര്‍ക്കിയുടെ കോള്‍ഡ് സെലിബ്രേഷന് ! |Liverpool vs Manchester City"
   },
   {
@@ -308,8 +328,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
-    "published": "9 days ago",
-    "views": "45k views",
+    "published": "2 weeks ago",
+    "views": "45K views",
     "summary": "ഇമ്മാതിരി കണ്ടമൊരുക്കിയാല്‍ എങ്ങനെ കളിക്കും ? ഒരുങ്ങാന്‍ സമയം ഇനിയും വേണം | Kerala Blasters"
   },
   {
@@ -318,8 +338,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
-    "published": "11 days ago",
-    "views": "35k views",
+    "published": "3 weeks ago",
+    "views": "35K views",
     "summary": "ഫാലു ബാക്ക് ; ബ്ലാസ്റ്റേഴ്സ് ബാക്ക് ലൈൻ സുശക്തം | Fallou ndiaye| Kerala Blasters "
   },
   {
@@ -328,8 +348,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "cricket",
     "playlistId": "PLcWlSk4Ir_yg",
     "playlistTitle": "Cricket India",
-    "published": "11 days ago",
-    "views": "71k views",
+    "published": "3 weeks ago",
+    "views": "71K views",
     "summary": "സഞ്ജു ബാക്ക് ; ഗംഭീർ ഇപ്പോൾ പിച്ചിനെ പഴി പറയുന്നു | Gautam Gambhir | Sanju samson "
   },
   {
@@ -338,8 +358,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
-    "published": "12 days ago",
-    "views": "60k views",
+    "published": "3 weeks ago",
+    "views": "60K views",
     "summary": "അറ്റാക്കിൽ യാൻസൺ ; കോട്ട കാക്കാൻ ബോൾട്ടൻ | Kerala Blasters | Momo yansane | James Bolton "
   },
   {
@@ -348,8 +368,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
-    "published": "13 days ago",
-    "views": "87k views",
+    "published": "3 weeks ago",
+    "views": "87K views",
     "summary": "ബ്ലാസ്റ്റേഴ്സ് മധ്യനിര ഇനി കൊസോവിച്ച് ഭരിക്കും | Kerala Blasters | Nebojša Kosović"
   },
   {
@@ -358,8 +378,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "PLRqJyYpkYUnExHY8MwKteSHdDYvAC5MT7",
     "playlistTitle": "2026 WORLDCUP Stories",
-    "published": "2 wk ago",
-    "views": "65k views",
+    "published": "3 weeks ago",
+    "views": "66K views",
     "summary": "ഇങ്ങനെ ഒരിതിഹാസം ഇനി പിറക്കുമോ ? Lionel Messi | Haris Nenmara "
   },
   {
@@ -368,8 +388,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "kbfc-isl",
     "playlistTitle": "Kerala Blasters & Indian Football",
-    "published": "2 wk ago",
-    "views": "41k views",
+    "published": "3 weeks ago",
+    "views": "41K views",
     "summary": "സനാന്‍ പ്രതീക്ഷയാണ്...ഖാലിദ് ജമീല്‍ പഠിച്ച പാഠങ്ങള്‍ | indian football | Muhammed Sanan"
   },
   {

@@ -92,8 +92,8 @@ if m_vid and m_short:
     v_objs = re.findall(r'["\']id["\']:\s*["\'][^"\']+["\']', m_vid.group(1))
     s_objs = re.findall(r'["\']id["\']:\s*["\'][^"\']+["\']', m_short.group(1))
     total_videos = len(v_objs) + len(s_objs)
-    if total_videos != 314:
-        errors.append(f"Expected 314 total video items in FINAL_THIRD_CONFIG, found {total_videos}")
+    if total_videos < 314:
+        errors.append(f"Expected at least 314 total video items in FINAL_THIRD_CONFIG, found {total_videos}")
     print(f"✓ 4a. FINAL_THIRD_CONFIG verified: {len(v_objs)} videos + {len(s_objs)} shorts = {total_videos} items (100% intact)")
 else:
     errors.append("Could not find videos or shorts array in index.html FINAL_THIRD_CONFIG")

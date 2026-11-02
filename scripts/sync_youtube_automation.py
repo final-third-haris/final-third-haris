@@ -145,6 +145,313 @@ def classify_sport(title, summary=""):
         "playlistId": "european-football"
     }
 
+def format_views(count_val):
+    try:
+        n = int(count_val)
+        if n >= 1_000_000:
+            return f"{n / 1_000_000:.1f}M views"
+        elif n >= 100_000:
+            return f"{n // 1_000}K views"
+        elif n >= 1_000:
+            val = n / 1_000.0
+            return f"{val:.1f}K views" if val < 10.0 else f"{round(val)}K views"
+        else:
+            return f"{n} views"
+    except (ValueError, TypeError):
+        return "10K views"
+
+def format_published_time(iso_str):
+    try:
+        pub_dt = datetime.fromisoformat(iso_str.replace("Z", "+00:00"))
+        now = datetime.now(timezone.utc)
+        diff = now - pub_dt
+        days = diff.days
+        hours = diff.seconds // 3600
+
+        if days == 0:
+            if hours <= 1:
+                return "Just now"
+            return f"{hours} hours ago"
+        elif days == 1:
+            return "Yesterday"
+        elif days < 7:
+            return f"{days} days ago"
+        elif days < 30:
+            weeks = days // 7
+            return f"{weeks} week{'s' if weeks > 1 else ''} ago"
+        elif days < 365:
+            months = days // 30
+            return f"{months} month{'s' if months > 1 else ''} ago"
+        else:
+            years = days // 365
+            return f"{years} year{'s' if years > 1 else ''} ago"
+    except Exception:
+        return "Recent"
+
+def update_existing_views(filepath, views_map, pub_time_map=None):
+    if not views_map or not os.path.exists(filepath):
+        return 0
+
+    with open(filepath, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    update_count = 0
+
+    # 1. Update JSON config entries in FINAL_THIRD_CONFIG
+    for vid, v_str in views_map.items():
+        pattern = rf'("id":\s*"{re.escape(vid)}"[^}}]+?"views":\s*")[^"]*(")'
+        match = re.search(pattern, content, re.DOTALL)
+        if match:
+            old_full = match.group(0)
+            new_full = re.sub(pattern, rf'\g<1>{v_str}\g<2>', old_full, flags=re.DOTALL)
+            if old_full != new_full:
+                content = content[:match.start()] + new_full + content[match.end():]
+                update_count += 1
+
+        if pub_time_map and vid in pub_time_map and pub_time_map[vid]:
+            p_time = pub_time_map[vid]
+            p_pattern = rf'("id":\s*"{re.escape(vid)}"[^}}]+?"published":\s*")[^"]*(")'
+            p_match = re.search(p_pattern, content, re.DOTALL)
+            if p_match:
+                p_old = p_match.group(0)
+                p_new = re.sub(p_pattern, rf'\g<1>{p_time}\g<2>', p_old, flags=re.DOTALL)
+                if p_old != p_new:
+                    content = content[:p_match.start()] + p_new + content[p_match.end():]
+                    update_count += 1
+
+    # 2. Update static video cards in HTML (if present)
+    for vid, v_str in views_map.items():
+        card_pattern = rf'(<article[^>]+data-video-id="{re.escape(vid)}"[^>]*>.*?</article>)'
+        card_match = re.search(card_pattern, content, re.DOTALL)
+        if card_match:
+            card_html = card_match.group(1)
+            new_card = re.sub(
+                r'(<span class="card-views-pill"[^>]*>\s*<svg[^>]*>.*?</svg>\s*)[^<]+(</span>)',
+                rf'\g<1>{v_str}\n              \g<2>',
+                card_html,
+                flags=re.DOTALL
+            )
+            if pub_time_map and vid in pub_time_map and pub_time_map[vid]:
+                new_card = re.sub(
+                    r'(<span class="card-published-time">)[^<]+(</span>)',
+                    rf'\g<1>{pub_time_map[vid]}\g<2>',
+                    new_card
+                )
+            if card_html != new_card:
+                content = content[:card_match.start()] + new_card + content[card_match.end():]
+                update_count += 1
+
+    # 3. Update static short cards in HTML (if present)
+    for vid, v_str in views_map.items():
+        short_pattern = rf'(<article[^>]+data-short-id="{re.escape(vid)}"[^>]*>.*?</article>)'
+        short_match = re.search(short_pattern, content, re.DOTALL)
+        if short_match:
+            short_html = short_match.group(1)
+            new_short = re.sub(
+                r'(<span class="short-views-pill"[^>]*>\s*<svg[^>]*>.*?</svg>\s*)[^<]+(</span>)',
+                rf'\g<1>{v_str}\n                \g<2>',
+                short_html,
+                flags=re.DOTALL
+            )
+            if short_html != new_short:
+                content = content[:short_match.start()] + new_short + content[short_match.end():]
+                update_count += 1
+
+    if update_count > 0:
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(content)
+
+    return update_count
+
+def update_featured_id(filepath, video_id):
+    if not os.path.exists(filepath):
+        return False
+    with open(filepath, "r", encoding="utf-8") as f:
+        content = f.read()
+    new_content, n = re.subn(r'featuredVideoId:\s*"[^"]*"', f'featuredVideoId: "{video_id}"', content)
+    if n > 0:
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(new_content)
+        return True
+    return False
+
+def update_static_featured(filepath, video):
+    if not os.path.exists(filepath):
+        return False
+    with open(filepath, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    vid = video["id"]
+    title = video["title"]
+    sport = (video.get("sport") or "football").upper()
+    pl_title = video.get("playlist") or video.get("playlistTitle") or "Latest Release"
+    pub = video.get("published") or video.get("published_relative") or "Latest Upload"
+    views = video.get("views") or "10K views"
+    summary = video.get("meta_desc") or video.get("summary") or title
+
+    featured_pattern = r'<section class="section featured-match-section" id="featured">.*?</section>'
+    new_featured = f'''<section class="section featured-match-section" id="featured">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">Featured Story | മലയാളം സ്പോർട്സ് ഫീച്ചർ</div>
+          <h2 class="section-title">Spotlight <span class="highlight">Analysis</span></h2>
+        </div>
+
+        <div class="featured-match-card">
+          <!-- 16:9 Thumbnail with Cinema Modal Trigger -->
+          <div 
+            class="featured-media-container" 
+            id="featuredThumbnail" 
+            role="button" 
+            tabindex="0" 
+            onclick="openVideoModal('{vid}')"
+            aria-label="Play featured story: {title}"
+          >
+            <img 
+              src="https://i.ytimg.com/vi/{vid}/maxresdefault.jpg" 
+              alt="Featured Story Thumbnail: {title}" 
+              width="680" 
+              height="382" 
+              loading="lazy"
+              onerror="this.src='https://i.ytimg.com/vi/{vid}/hqdefault.jpg'"
+            />
+            <div class="play-overlay-btn" id="featuredPlayBtn" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Video Details & Metadata -->
+          <div class="featured-info-container">
+            <div>
+              <div class="featured-tag-bar">
+                <span class="badge-tag">{sport}</span>
+                <span class="featured-views-pill" id="featuredViewsPill">
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px; margin-right:4px;" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>{views}
+                </span>
+                <span style="font-size: 0.8125rem; color: var(--muted-grey); font-weight: 700;">
+                  {pl_title} · Latest Upload · {pub}
+                </span>
+              </div>
+
+              <h3 class="featured-headline" lang="ml" id="featuredHeadline" style="cursor: pointer;" onclick="openVideoModal('{vid}')">
+                {title}
+              </h3>
+
+              <p class="featured-summary">
+                {summary}
+              </p>
+            </div>
+
+            <div class="featured-actions">
+              <button class="btn btn-primary" id="featuredWatchStoryBtn" type="button" onclick="openVideoModal('{vid}')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                WATCH STORY
+              </button>
+              <a 
+                href="https://www.youtube.com/watch?v={vid}" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="btn btn-outline"
+              >
+                WATCH ON YOUTUBE ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>'''
+
+    new_content, n = re.subn(featured_pattern, new_featured, content, count=1, flags=re.DOTALL)
+    if n > 0:
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(new_content)
+        return True
+    return False
+
+def update_schema_video_object(filepath, video):
+    if not os.path.exists(filepath):
+        return False
+    with open(filepath, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    vid = video["id"]
+    title = video["title"]
+    sport_desc = "football" if video.get("sport") == "football" else "cricket"
+    desc = f"Final Third match coverage and {sport_desc} analysis with Haris Nenmara."
+    upload_date = video.get("published_iso") or datetime.now(timezone.utc).isoformat()
+
+    vo_pattern = r'\{\s*"@type":\s*"VideoObject",\s*"@id":\s*"https://(?:final-third-haris\.github\.io|www\.finalthird-haris\.com)/#featured-video".*?\}\n    \]'
+    new_vo = f'''{{
+        "@type": "VideoObject",
+        "@id": "https://www.finalthird-haris.com/#featured-video",
+        "name": {json.dumps(title, ensure_ascii=False)},
+        "description": {json.dumps(desc, ensure_ascii=False)},
+        "thumbnailUrl": [
+          "https://i.ytimg.com/vi/{vid}/maxresdefault.jpg",
+          "https://i.ytimg.com/vi/{vid}/hqdefault.jpg"
+        ],
+        "uploadDate": "{upload_date}",
+        "embedUrl": "https://www.youtube.com/embed/{vid}",
+        "contentUrl": "https://www.youtube.com/watch?v={vid}",
+        "inLanguage": "ml",
+        "creator": {{
+          "@id": "https://www.finalthird-haris.com/#person"
+        }}
+      }}
+    ]'''
+
+    new_content, n = re.subn(vo_pattern, new_vo, content, count=1, flags=re.DOTALL)
+    if n > 0:
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(new_content)
+        return True
+    return False
+
+def sync_active_featured_stats(filepath, views_map, pub_time_map=None):
+    if not os.path.exists(filepath):
+        return False
+    with open(filepath, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    m_fid = re.search(r'featuredVideoId:\s*"([^"]+)"', content)
+    if not m_fid:
+        return False
+    fid = m_fid.group(1)
+
+    changed = False
+    if fid in views_map:
+        v_str = views_map[fid]
+        new_content = re.sub(
+            r'(<span class="featured-views-pill" id="featuredViewsPill">\s*<svg[^>]*>.*?</svg>)[^<]+(</span>)',
+            rf'\g<1>{v_str}\g<2>',
+            content,
+            flags=re.DOTALL
+        )
+        if new_content != content:
+            content = new_content
+            changed = True
+
+    if pub_time_map and fid in pub_time_map and pub_time_map[fid]:
+        p_str = pub_time_map[fid]
+        new_content = re.sub(
+            r'(· Latest Upload · )[^<]+(</span>)',
+            rf'\g<1>{p_str}\g<2>',
+            content
+        )
+        if new_content != content:
+            content = new_content
+            changed = True
+
+    if changed:
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(content)
+        return True
+    return False
+
 def fetch_channel_videos():
     """Fetch latest videos via YouTube Data API v3 or official RSS feed"""
     api_key = os.environ.get("YOUTUBE_API_KEY", "")
@@ -159,10 +466,13 @@ def fetch_channel_videos():
                 for it in data.get("items", []):
                     vid = it["id"]["videoId"]
                     snip = it["snippet"]
+                    pub_iso = snip.get("publishedAt", "")
                     items.append({
                         "id": vid,
                         "title": snip.get("title", ""),
-                        "published": snip.get("publishedAt", ""),
+                        "published": pub_iso,
+                        "published_relative": format_published_time(pub_iso),
+                        "views": "10K views",
                         "summary": snip.get("description", "")
                     })
                 if items:
@@ -190,17 +500,96 @@ def fetch_channel_videos():
                 published_elem = entry.find("atom:published", ns)
                 media_grp = entry.find("media:group", ns)
                 desc_elem = media_grp.find("media:description", ns) if media_grp is not None else None
+                stats_elem = entry.find("media:group/media:community/media:statistics", ns)
                 
                 if vid_elem is not None and title_elem is not None:
+                    vid = vid_elem.text.strip()
+                    title = title_elem.text.strip()
+                    pub_iso = published_elem.text.strip() if published_elem is not None else ""
+                    desc = desc_elem.text.strip() if desc_elem is not None and desc_elem.text else ""
+                    views_raw = stats_elem.attrib.get("views") if stats_elem is not None else None
+                    views_fmt = format_views(views_raw) if views_raw else "10K views"
+
                     items.append({
-                        "id": vid_elem.text.strip(),
-                        "title": title_elem.text.strip(),
-                        "published": published_elem.text.strip() if published_elem is not None else "",
-                        "summary": desc_elem.text.strip() if desc_elem is not None and desc_elem.text else ""
+                        "id": vid,
+                        "title": title,
+                        "published": pub_iso,
+                        "published_relative": format_published_time(pub_iso),
+                        "views": views_fmt,
+                        "views_raw": int(views_raw) if views_raw and views_raw.isdigit() else 10000,
+                        "summary": desc
                     })
             print(f"✓ Retrieved {len(items)} videos via YouTube RSS feed.")
     except Exception as e:
         print(f"[Error] Failed to fetch channel RSS feed: {e}")
+
+    # Fallback to direct channel page scrape
+    if not items:
+        try:
+            print("[Channel Scrape] RSS feed unavailable. Falling back to direct channel page...")
+            url = f"https://www.youtube.com/@FinalThird_HarisNenmara/videos"
+            req = urllib.request.Request(
+                url, 
+                headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
+            )
+            with urllib.request.urlopen(req, timeout=12) as resp:
+                html = resp.read().decode("utf-8")
+
+            start_marker = "ytInitialData = "
+            idx = html.find(start_marker)
+            if idx != -1:
+                idx += len(start_marker)
+                end_idx = html.find(";</script>", idx)
+                data = json.loads(html[idx:end_idx])
+
+                def extract_from_obj(obj):
+                    res = []
+                    if isinstance(obj, dict):
+                        if "lockupViewModel" in obj:
+                            lvm = obj["lockupViewModel"]
+                            vid = lvm.get("contentId")
+                            meta = lvm.get("metadata", {}).get("lockupMetadataViewModel", {})
+                            title = meta.get("title", {}).get("content", "")
+                            rows = meta.get("metadata", {}).get("contentMetadataViewModel", {}).get("metadataRows", [])
+                            views = ""
+                            pub_time = ""
+                            for r in rows:
+                                for part in r.get("metadataParts", []):
+                                    txt = part.get("text", {}).get("content", "")
+                                    acc = part.get("accessibilityLabel", "")
+                                    if "view" in acc.lower():
+                                        v_text = part.get("text", {}).get("content", "")
+                                        if v_text:
+                                            v_text = v_text.upper()
+                                            views = v_text if v_text.endswith("VIEWS") else f"{v_text} views"
+                                    elif "ago" in acc.lower() or "yesterday" in acc.lower() or "hour" in acc.lower():
+                                        pub_time = acc
+                            if vid and title:
+                                res.append({
+                                    "id": vid,
+                                    "title": title,
+                                    "published": pub_time or "Recent",
+                                    "published_relative": pub_time or "Recent",
+                                    "views": views or "10K views",
+                                    "summary": title
+                                })
+                        for k, v in obj.items():
+                            res.extend(extract_from_obj(v))
+                    elif isinstance(obj, list):
+                        for x in obj:
+                            res.extend(extract_from_obj(x))
+                    return res
+
+                extracted = extract_from_obj(data)
+                seen = set()
+                for it in extracted:
+                    if it["id"] not in seen:
+                        seen.add(it["id"])
+                        items.append(it)
+                if items:
+                    print(f"✓ Retrieved {len(items)} videos via direct channel page fallback.")
+        except Exception as e:
+            print(f"[Error] Failed to fetch channel page fallback: {e}")
         
     return items
 
@@ -225,7 +614,7 @@ def update_catalog_array(filepath, new_items, target_key="videos"):
             f'      "sport": "{v.get("sport", "football")}",\n'
             f'      "playlistId": "{v.get("playlistId", "latest")}",\n'
             f'      "playlistTitle": {json.dumps(v.get("playlist", "Latest Release"), ensure_ascii=False)},\n'
-            f'      "published": "{v.get("published_iso", "")[:10]}",\n'
+            f'      "published": "{v.get("published", v.get("published_iso", "")[:10])}",\n'
             f'      "views": "{v.get("views", "10K views")}",\n'
             f'      "summary": {json.dumps(v.get("meta_desc", v["title"]), ensure_ascii=False)}\n'
             "    },"
@@ -244,16 +633,15 @@ def prepend_static_video_card(filepath, video):
     vid = video["id"]
     if f'data-video-id="{vid}"' in content:
         return True
-    marker = '<div class="video-grid" id="videoGrid" aria-live="polite">'
-    idx = content.find(marker)
-    if idx == -1:
+    m = re.search(r'<div[^>]+id="videoGrid"[^>]*>', content)
+    if not m:
         return False
-    insert_pos = idx + len(marker)
+    insert_pos = m.end()
     title = video["title"]
     sport_cap = (video.get("sport") or "football").capitalize()
     views = video.get("views") or "10K views"
     pl_title = video.get("playlist") or "Latest Release"
-    pub = video.get("published_iso", "")[:10]
+    pub = video.get("published") or video.get("published_relative") or video.get("published_iso", "")[:10]
     summary = video.get("meta_desc") or title
 
     card_html = f'''
@@ -293,11 +681,10 @@ def prepend_static_short_card(filepath, short):
     vid = short["id"]
     if f'data-short-id="{vid}"' in content:
         return True
-    marker = '<div class="shorts-shelf" id="shortsShelf">'
-    idx = content.find(marker)
-    if idx == -1:
+    m = re.search(r'<div[^>]+id="shortsShelf"[^>]*>', content)
+    if not m:
         return False
-    insert_pos = idx + len(marker)
+    insert_pos = m.end()
     title = short["title"]
     views = short.get("views") or "10K views"
 
@@ -342,6 +729,9 @@ def run_sync(dry_run=False):
         print("No videos retrieved. Exiting sync.")
         return True
 
+    views_map = {item["id"]: item["views"] for item in channel_videos if item.get("id") and item.get("views")}
+    pub_time_map = {item["id"]: item["published_relative"] for item in channel_videos if item.get("id") and item.get("published_relative")}
+
     client = YouTubeCaptionClient(base_dir=base_dir)
     now_dt = datetime.now(timezone.utc)
     now_iso = now_dt.isoformat()
@@ -385,7 +775,8 @@ def run_sync(dry_run=False):
                         "id": vid,
                         "title": title,
                         "published_iso": published,
-                        "views": "10K views"
+                        "published": item.get("published_relative", "Recent"),
+                        "views": item.get("views", "10K views")
                     }
                     new_shorts_added.append(short_record)
                     all_known_ids.add(vid)
@@ -420,7 +811,8 @@ def run_sync(dry_run=False):
                 "playlistId": playlist_id,
                 "slug": slug,
                 "published_iso": published,
-                "views": "10K views",
+                "published": item.get("published_relative", "Recent"),
+                "views": item.get("views", "10K views"),
                 "read_time": "3 min read",
                 "seo_title": f"{title} | Final Third {sport_title}",
                 "meta_desc": f"Analysis and match debrief by Haris Nenmara on '{title}'. Watch the full breakdown on Final Third."
@@ -551,12 +943,25 @@ def run_sync(dry_run=False):
     if not dry_run:
         changes_made = False
 
+        # 0. Update view counts and relative timestamps on existing items
+        if views_map:
+            print("Refreshing view counts across existing catalogue...")
+            vc1 = update_existing_views(INDEX_PATH, views_map, pub_time_map)
+            vc2 = update_existing_views(CONFIG_JS_PATH, views_map, pub_time_map)
+            for v_id, v_str in views_map.items():
+                if v_id in pipeline and pipeline[v_id].get("views") != v_str:
+                    pipeline[v_id]["views"] = v_str
+                    changes_made = True
+            if vc1 > 0 or vc2 > 0:
+                changes_made = True
+                print(f"✓ Updated live view counts for existing cards ({vc1} HTML updates, {vc2} JS updates).")
+
         # 1. Update Shorts on homepage if any
         if new_shorts_added:
             print(f"Updating homepage config with {len(new_shorts_added)} new shorts...")
             update_catalog_array(INDEX_PATH, new_shorts_added, target_key="shorts")
             update_catalog_array(CONFIG_JS_PATH, new_shorts_added, target_key="shorts")
-            for s in new_shorts_added:
+            for s in reversed(new_shorts_added):
                 prepend_static_short_card(INDEX_PATH, s)
             changes_made = True
 
@@ -565,15 +970,26 @@ def run_sync(dry_run=False):
             print(f"Updating homepage config with {len(new_homepage_videos)} new full videos...")
             update_catalog_array(INDEX_PATH, new_homepage_videos, target_key="videos")
             update_catalog_array(CONFIG_JS_PATH, new_homepage_videos, target_key="videos")
-            for v in new_homepage_videos:
+            for v in reversed(new_homepage_videos):
                 prepend_static_video_card(INDEX_PATH, v)
+
+            # Update Spotlight / Featured analysis to newest video
+            latest_new_video = new_homepage_videos[0]
+            update_featured_id(INDEX_PATH, latest_new_video["id"])
+            update_featured_id(CONFIG_JS_PATH, latest_new_video["id"])
+            update_static_featured(INDEX_PATH, latest_new_video)
+            update_schema_video_object(INDEX_PATH, latest_new_video)
+            print(f"✓ Spotlight Analysis updated to newest video: {latest_new_video['id']}")
             changes_made = True
+        else:
+            # If no new video, keep active featured video view stats updated
+            if sync_active_featured_stats(INDEX_PATH, views_map, pub_time_map):
+                changes_made = True
 
         # 3. Save pipeline if any modifications occurred
-        if new_homepage_videos or upgraded_videos > 0 or retry_state_updated:
+        if new_homepage_videos or upgraded_videos > 0 or retry_state_updated or changes_made:
             with open(PIPELINE_PATH, "w", encoding="utf-8") as f:
                 json.dump(pipeline, f, ensure_ascii=False, indent=2)
-            changes_made = True
 
         # 4. Rebuild dedicated SEO pages, hubs, and sitemap if new published pages or upgrades occurred
         if new_published_videos or upgraded_videos > 0:
