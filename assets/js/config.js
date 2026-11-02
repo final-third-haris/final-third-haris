@@ -88,18 +88,28 @@ const FINAL_THIRD_CONFIG = {
     ]
   },
 
-  featuredVideoId: "In9vwjZ6sVQ",
+  featuredVideoId: "bv_PCaAJy-8",
 
   // 300+ Authentic Videos from YouTube @FinalThird_HarisNenmara
   videos: [
+    {
+      "id": "bv_PCaAJy-8",
+      "title": "ഡിയോമന്‍റെയുടെ റോക്കറ്റുകള്‍ ! വിനി മടങ്ങി വന്നാല്‍ ഹോസേ എന്ത് ചെയ്യും ? Real Madrid | Yan Diomandé",
+      "sport": "football",
+      "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
+      "playlistTitle": "Real Madrid",
+      "published": "4 hours ago",
+      "views": "10.0K views",
+      "summary": "Analysis and match debrief by Haris Nenmara on 'ഡിയോമന്‍റെയുടെ റോക്കറ്റുകള്‍ ! വിനി മടങ്ങി വന്നാല്‍ ഹോസേ എന്ത് ചെയ്യും ? Real Madrid | Yan Diomandé'. Watch the full breakdown on Final Third."
+    },
     {
       "id": "In9vwjZ6sVQ",
       "title": "രോഹിത് വീണ്ടും മുംബൈ നായകനാവും ! Rohit Sharma | Mumbai Indians",
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "17 hours ago",
-      "views": "17K views",
+      "published": "Yesterday",
+      "views": "20K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'രോഹിത് വീണ്ടും മുംബൈ നായകനാവും ! Rohit Sharma | Mumbai Indians'. Watch the full breakdown on Final Third."
     },
     {
@@ -108,8 +118,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "european-football",
       "playlistTitle": "European & World Football",
-      "published": "1 day ago",
-      "views": "47K views",
+      "published": "2 days ago",
+      "views": "55K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ഡിക്റ്റേറ്റര്‍ എംബാപ്പെ; ഒടുക്കം കളി കാര്യമായി ! എന്താണ് ചൈനയുമായുള്ള പ്രശ്നം? kylian mbappé | China'. Watch the full breakdown on Final Third."
     },
   {
@@ -128,8 +138,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "european-football",
     "playlistTitle": "European & World Football",
-    "published": "3 days ago",
-    "views": "54K views",
+    "published": "4 days ago",
+    "views": "55K views",
     "summary": "ക്രിസ്റ്റ്യാനോ ലോക ഫുട്ബോളില്‍ അത്ഭുതങ്ങള്‍ കാണിച്ച വര്‍ഷം | Cristiano Ronaldo 2008 | ballon d or"
   },
   {
@@ -138,7 +148,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "cricket",
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
-    "published": "5 days ago",
+    "published": "6 days ago",
     "views": "300K views",
     "summary": "ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek Sharma | Vaibhav Suryavanshi"
   },
@@ -148,7 +158,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "european-football",
     "playlistTitle": "European & World Football",
-    "published": "5 days ago",
+    "published": "6 days ago",
     "views": "42K views",
     "summary": "യമാലിനിയും കാത്തിരിക്കണം... ഹാരികെയിന്‍ അര്‍ഹിച്ച പുരസ്കാരം | ballon d'or 2026 | harry kane"
   },
@@ -158,7 +168,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
-    "published": "6 days ago",
+    "published": "1 week ago",
     "views": "125K views",
     "summary": "ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara"
   },
@@ -168,8 +178,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "cricket",
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
-    "published": "7 days ago",
-    "views": "57K views",
+    "published": "1 week ago",
+    "views": "58K views",
     "summary": "ഇതൊക്കെയാണ് കം ബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | NamanDhir"
   },
   {
@@ -178,7 +188,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
-    "published": "8 days ago",
+    "published": "1 week ago",
     "views": "56K views",
     "summary": "ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico"
   },
@@ -188,8 +198,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "cricket",
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
-    "published": "9 days ago",
-    "views": "85K views",
+    "published": "1 week ago",
+    "views": "86K views",
     "summary": "സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | Ind Vs Nz"
   },
   {
@@ -198,7 +208,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "cricket",
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
-    "published": "9 days ago",
+    "published": "1 week ago",
     "views": "32K views",
     "summary": "400 ചേസ് ചെയ്ത ലങ്ക ! ഇംഗ്ലണ്ടിനെ കൊന്നു കൊലവിളിച്ചു ! | srilanka vs england"
   },
@@ -208,7 +218,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "cricket",
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
-    "published": "10 days ago",
+    "published": "1 week ago",
     "views": "175K views",
     "summary": "സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson"
   },
@@ -218,7 +228,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
     "playlistTitle": "Real Madrid",
-    "published": "10 days ago",
+    "published": "1 week ago",
     "views": "42K views",
     "summary": "ബാഴ്സക്ക് അത്ര എളുപ്പമാകില്ല കാര്യങ്ങള്‍ ! Real Madrid vs RB Leipzig"
   },
@@ -228,7 +238,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "cricket",
     "playlistId": "PLcWlSk4Ir_yg",
     "playlistTitle": "Cricket India",
-    "published": "11 days ago",
+    "published": "1 week ago",
     "views": "14K views",
     "summary": "ഭുവി വന്നു; ഷമി വരില്ലേ ? Mohammed Shami "
   },
