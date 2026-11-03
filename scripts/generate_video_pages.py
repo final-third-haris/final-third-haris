@@ -11,6 +11,7 @@ Generates:
 import os
 import json
 import re
+from datetime import datetime, timezone
 
 DOMAIN = "https://www.finalthird-haris.com"
 
@@ -1426,9 +1427,8 @@ def generate_all():
     if os.path.exists(pipeline_file):
         with open(pipeline_file, "r", encoding="utf-8") as pf:
             pipe_data = json.load(pf)
-        # Dynamically filter to include all published, excerpt, or active pipeline articles
-        # (Excludes records strictly in awaiting_captions retry queue without published content)
-        VIDEOS = [v for v in pipe_data.values() if v.get("status") in ("published", "published_partial", "excerpt", "awaiting_transcript")]
+        # Dynamically filter to include all dedicated SEO page articles
+        VIDEOS = [v for v in pipe_data.values() if v.get("slug") and v.get("title") and v.get("status") in ("published", "published_partial", "excerpt", "awaiting_transcript")]
 
     print("=" * 60)
     print("Final Third — Generating Dedicated Video Pages & Hubs")
@@ -1458,30 +1458,83 @@ def generate_all():
 
     print(f"\n✓ Successfully created {len(created_pages)} dedicated video pages!")
 
-    # 3. Generate Updated sitemap.xml with Video Extensions
+    # 3. Synchronize DEDICATED_PAGE_MAP and counts in index.html
+    index_path = os.path.join(base_dir, "index.html")
+    if os.path.exists(index_path):
+        with open(index_path, "r", encoding="utf-8") as f:
+            idx_html = f.read()
+
+        # Update DEDICATED_PAGE_MAP
+        map_lines = []
+        for v in VIDEOS:
+            map_lines.append(f"    '{v['id']}': '/{v['sport']}/{v['slug']}/'")
+        new_map_str = "  const DEDICATED_PAGE_MAP = {\n" + ",\n".join(map_lines) + "\n  };"
+
+        idx_html = re.sub(
+            r"  const DEDICATED_PAGE_MAP = \{.*?\n  \};",
+            new_map_str,
+            idx_html,
+            flags=re.DOTALL
+        )
+
+        fb_count = len([v for v in VIDEOS if v.get("sport") == "football"])
+        cr_count = len([v for v in VIDEOS if v.get("sport") == "cricket"])
+
+        # Update category hub chips badges on homepage
+        idx_html = re.sub(
+            r'(<a\s+href="/football/"\s+class="category-hub-chip">.*?<span\s+class="chip-badge">)\d+\s+Pages(</span>)',
+            rf'\g<1>{fb_count} Pages\g<2>',
+            idx_html,
+            flags=re.DOTALL
+        )
+        idx_html = re.sub(
+            r'(<a\s+href="/cricket/"\s+class="category-hub-chip">.*?<span\s+class="chip-badge">)\d+\s+Pages(</span>)',
+            rf'\g<1>{cr_count} Pages\g<2>',
+            idx_html,
+            flags=re.DOTALL
+        )
+
+        # Update mobile nav drawer and footer video counts
+        idx_html = re.sub(
+            r'⚽ Football Hub \(\d+ Videos\)',
+            f'⚽ Football Hub ({fb_count} Videos)',
+            idx_html
+        )
+        idx_html = re.sub(
+            r'🏏 Cricket Hub \(\d+ Videos\)',
+            f'🏏 Cricket Hub ({cr_count} Videos)',
+            idx_html
+        )
+
+        with open(index_path, "w", encoding="utf-8") as f:
+            f.write(idx_html)
+        print(f"✓ Synchronized DEDICATED_PAGE_MAP ({len(VIDEOS)} entries) and hub badges ({fb_count} Football, {cr_count} Cricket) in index.html")
+
+    # 4. Generate Updated sitemap.xml with Video Extensions
+    now_date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     sitemap_path = os.path.join(base_dir, "sitemap.xml")
     sitemap_entries = [
         f"""  <url>
     <loc>{DOMAIN}/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>{now_date}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>""",
         f"""  <url>
     <loc>{DOMAIN}/football/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>{now_date}</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>""",
         f"""  <url>
     <loc>{DOMAIN}/cricket/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>{now_date}</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>""",
         f"""  <url>
     <loc>{DOMAIN}/privacy.html</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>{now_date}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>"""
@@ -1492,10 +1545,11 @@ def generate_all():
         thumb_url = f"https://i.ytimg.com/vi/{v['id']}/maxresdefault.jpg"
         clean_title = v["title"].replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
         clean_desc = v["meta_desc"].replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+        v_lastmod = (v.get("published_iso") or now_date)[:10]
         
         sitemap_entries.append(f"""  <url>
     <loc>{vid_url}</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>{v_lastmod}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <video:video>

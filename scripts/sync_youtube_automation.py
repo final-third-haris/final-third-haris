@@ -101,9 +101,16 @@ def classify_sport(title, summary=""):
     
     # 1. Football Keywords (Barca, Real Madrid, Football, Ronaldo, Messi, Champions League, etc.)
     barca_kws = ["barcelona", "barca", "ബാഴ്സ", "flick", "yamal", "lamine", "camp nou", "pedri", "gavi", "clasico", "el clasico", "raphinha", "lewandowski"]
-    real_madrid_kws = ["real madrid", "madrid", "റയൽ", "mbappe", "vinicius", "vini", "bellingham", "bernabeu", "ancelotti", "modric", "valverde", "leipzig"]
+    real_madrid_kws = ["real madrid", "madrid", "റയൽ", "mbappe", "vinicius", "vini", "bellingham", "bernabeu", "ancelotti", "modric", "valverde", "leipzig", "diomande", "ഡിയോമന്‍റെ"]
     kbfc_kws = ["kerala blasters", "blasters", "kbfc", "ബ്ലാസ്റ്റേഴ്സ്", "isl", "manjappada", "chhetri", "stahre", "sanan", "momo"]
-    football_kws = ["football", "ഫുട്ബോൾ", "ronaldo", "റൊണാൾഡോ", "cristiano", "messi", "മെസി", "ballon d'or", "ballon d or", "champions league", "ucl", "la liga", "premier league", "serie a", "bundesliga", "psg", "roma", "galatasaray", "kane", "harry kane"]
+    football_kws = [
+        "football", "ഫുട്ബോൾ", "ronaldo", "റൊണാൾഡോ", "cristiano", "messi", "മെസി", 
+        "ballon d'or", "ballon d or", "champions league", "ucl", "la liga", "premier league", 
+        "epl", "serie a", "bundesliga", "psg", "roma", "galatasaray", "kane", "harry kane",
+        "arsenal", "ആഴ്സണൽ", "liverpool", "ലിവർപൂൾ", "arteta", "ആർട്ടേറ്റ", "അർട്ടേറ്റ", 
+        "manchester", "chelsea", "tottenham", "shot on target", "ഷോട്ട് ഓൺ ടാർഗറ്റ്", 
+        "slot", "arne slot", "guardiola", "pep guardiola", "amorim", "ruben amorim", "haaland"
+    ]
 
     if any(k in title_lower for k in barca_kws):
         return {"sport": "football", "sport_title": "Football Analysis", "playlist": "Barcelona", "playlistId": "PLGWXiMbN17ik"}
@@ -119,7 +126,7 @@ def classify_sport(title, summary=""):
         "cricket", "ക്രിക്കറ്റ്", "sanju", "samson", "സഞ്ജു", "bumrah", "ബുംറ", 
         "bhuvneshwar", "bhuvi", "ഭുവി", "kohli", "rohit", "sharma", "abhishek", 
         "tilak varma", "varma", "suryavanshi", "dhoni", "ipl", "bcci", "ind vs", 
-        "india vs", "new zealand", "kiwis", "srilanka", "england", "shami", "mohammed shami",
+        "india vs", "new zealand", "kiwis", "srilanka", "shami", "mohammed shami",
         "t20", "odi", "test match", "wicket", "chase"
     ]
     if any(k in combined for k in cricket_kws):
@@ -137,6 +144,8 @@ def classify_sport(title, summary=""):
         return {"sport": "football", "sport_title": "Football Analysis", "playlist": "Real Madrid", "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS"}
     if any(k in combined for k in kbfc_kws):
         return {"sport": "football", "sport_title": "Football Analysis", "playlist": "Kerala Blasters & Indian Football", "playlistId": "kbfc-isl"}
+    if any(k in combined for k in football_kws):
+        return {"sport": "football", "sport_title": "Football Analysis", "playlist": "European & World Football", "playlistId": "european-football"}
         
     return {
         "sport": "football",
@@ -643,6 +652,17 @@ def prepend_static_video_card(filepath, video):
     pl_title = video.get("playlist") or "Latest Release"
     pub = video.get("published") or video.get("published_relative") or video.get("published_iso", "")[:10]
     summary = video.get("meta_desc") or title
+    slug = video.get("slug")
+    sport = video.get("sport") or "football"
+    dedicated_btn_html = ""
+    if slug:
+        dedicated_btn_html = f'''
+            <div class="card-dedicated-row">
+              <a href="/{sport}/{slug}/" class="card-dedicated-btn">
+                <span>📖 Read Dedicated Tactical Breakdown</span>
+                <span>↗</span>
+              </a>
+            </div>'''
 
     card_html = f'''
           <article class="video-card reveal-cascade" data-video-id="{vid}" style="--cascade-index: 0">
@@ -665,7 +685,7 @@ def prepend_static_video_card(filepath, video):
                 <span class="card-published-time">{pub}</span>
               </div>
               <h3 class="video-card-title">{title}</h3>
-              <p class="video-card-summary">{summary}</p>
+              <p class="video-card-summary">{summary}</p>{dedicated_btn_html}
             </div>
           </article>'''
     new_content = content[:insert_pos] + card_html + content[insert_pos:]
@@ -851,15 +871,16 @@ def run_sync(dry_run=False):
                 new_homepage_videos.append(video_record)
                 print(f"  ℹ Quality Gate EXCERPT: Published as broadcast excerpt, queued for weekly retry.")
             else:
-                # Missing captions: add to homepage modal playback only; DO NOT create thin SEO page
-                video_record["status"] = "awaiting_captions"
+                # Missing captions: publish grounded matchday debrief with awaiting badge & queue for weekly transcript retry
+                video_record["status"] = "awaiting_transcript"
                 video_record["human_approved"] = False
                 video_record["next_retry"] = (now_dt + timedelta(days=7)).isoformat()
                 video_record["retry_count"] = 0
                 video_record["retry_status"] = "queued"
-                video_record["notes"] = "Awaiting captions in weekly retry queue."
+                video_record["notes"] = "Auto-synced as grounded debrief; full transcript queued for weekly verification."
+                new_published_videos.append(video_record)
                 new_homepage_videos.append(video_record)
-                print(f"  ⏳ Quality Gate HOLD: Missing captions. Added to homepage modal, enqueued in weekly retry without thin SEO page.")
+                print(f"  ✓ Quality Gate GROUNDED: Published dedicated SEO page with awaiting-transcript badge; queued for weekly caption retry.")
 
             pipeline[vid] = video_record
             all_known_ids.add(vid)

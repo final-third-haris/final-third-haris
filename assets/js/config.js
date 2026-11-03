@@ -95,9 +95,9 @@ const FINAL_THIRD_CONFIG = {
     {
       "id": "CjgogCPPqzo",
       "title": "സീറോ ഷോട്ട് ഓൺ ടാർഗറ്റ് ! ആർട്ടേറ്റ ലിവർപൂളിനെ തീർത്തത് എങ്ങനെ ?| Arsenal vs Liverpool",
-      "sport": "cricket",
-      "playlistId": "indian-cricket",
-      "playlistTitle": "Indian Cricket Team",
+      "sport": "football",
+      "playlistId": "european-football",
+      "playlistTitle": "European & World Football",
       "published": "16 hours ago",
       "views": "14K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'സീറോ ഷോട്ട് ഓൺ ടാർഗറ്റ് ! ആർട്ടേറ്റ ലിവർപൂളിനെ തീർത്തത് എങ്ങനെ ?| Arsenal vs Liverpool'. Watch the full breakdown on Final Third."
