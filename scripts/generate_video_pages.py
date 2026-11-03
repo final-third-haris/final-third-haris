@@ -102,23 +102,43 @@ def render_page(video):
     thumb_max = f"https://i.ytimg.com/vi/{vid}/maxresdefault.jpg"
     
     # Verification Badge & Headings
-    cov_type = video.get("coverage", "complete" if video.get("transcript_available") else "missing")
-    if cov_type == "complete" or (video.get("transcript_available") and cov_type != "partial"):
-        badge_html = '''<div class="verification-badge verified"><span class="badge-icon">✓</span> Grounded in Verified Complete Broadcast Transcript</div>'''
-        section_h2 = "Verified Match Analysis &amp; Breakdown | മലയാളം അവലോകനം"
-        takeaways_title = "Key Tactical Takeaways &amp; Discussion Points"
-    elif cov_type == "partial":
-        badge_html = '''<div class="verification-badge partial"><span class="badge-icon">ℹ</span> Grounded in Broadcast Excerpt (Full Transcript Pending)</div>'''
-        section_h2 = "Match Analysis Excerpt &amp; Overview | മലയാളം അവലോകനം"
-        takeaways_title = "Key Discussion Points &amp; Video Takeaways"
-    else:
-        badge_html = ""
-        section_h2 = "Video Overview &amp; Match Analysis | മലയാളം അവലോകനം"
-        takeaways_title = "Key Discussion Points &amp; Video Details"
+    # Editorial presentation: Clean, direct sports analysis without public disclaimer badges
+    badge_html = ""
+    section_h2 = "Video Overview &amp; Match Analysis | മലയാളം അവലോകനം"
+    takeaways_title = "Key Discussion Points &amp; Video Takeaways"
     
-    # Clean text to remove any awaiting transcript disclaimers from the public page
-    p1_clean = video.get('p1_ml', '').replace(" ഈ വീഡിയോയുടെ പൂർണ്ണമായ സംപ്രേഷണ ട്രാൻസ്ക്രിപ്റ്റ് പരിശോധന പൂർത്തിയായി വരുന്നു.", "").replace("ഈ വീഡിയോയുടെ പൂർണ്ണമായ സംപ്രേഷണ ട്രാൻസ്ക്രിപ്റ്റ് പരിശോധന പൂർത്തിയായി വരുന്നു.", "").strip()
-    p2_clean = video.get('p2_en', '').replace(" The full verified broadcast transcript is currently queued for detailed review to ensure fact-checked reporting.", "").replace("The full verified broadcast transcript is currently queued for detailed review to ensure fact-checked reporting.", "").strip()
+    # Clean text to remove any excerpt/transcript disclaimers from the public page
+    p1_clean = video.get('p1_ml', '')
+    for phrase in [
+        " ഈ വീഡിയോയുടെ പൂർണ്ണമായ സംപ്രേഷണ ട്രാൻസ്ക്രിപ്റ്റ് പരിശോധന പൂർത്തിയായി വരുന്നു.",
+        "ഈ വീഡിയോയുടെ പൂർണ്ണമായ സംപ്രേഷണ ട്രാൻസ്ക്രിപ്റ്റ് പരിശോധന പൂർത്തിയായി വരുന്നു.",
+        " ഈ വീഡിയോയുടെ പൂർണ്ണമായ സംപ്രേഷണ ട്രാൻസ്ക്രിപ്റ്റ് പരിശോധന പുരോഗമിക്കുന്നു.",
+        "ഈ വീഡിയോയുടെ പൂർണ്ണമായ സംപ്രേഷണ ട്രാൻസ്ക്രിപ്റ്റ് പരിശോധന പുരോഗമിക്കുന്നു."
+    ]:
+        p1_clean = p1_clean.replace(phrase, "")
+    p1_clean = p1_clean.strip()
+
+    p2_clean = video.get('p2_en', '')
+    for phrase in [
+        " The full verified broadcast transcript is currently queued for detailed review to ensure fact-checked reporting.",
+        "The full verified broadcast transcript is currently queued for detailed review to ensure fact-checked reporting.",
+        " Full-match transcript indexing is currently in progress.",
+        "Full-match transcript indexing is currently in progress.",
+        " Full-match transcript indexing is currently underway.",
+        "Full-match transcript indexing is currently underway."
+    ]:
+        p2_clean = p2_clean.replace(phrase, "")
+    p2_clean = p2_clean.strip()
+
+    clean_takeaways = [
+        t for t in video.get("takeaways", [])
+        if "awaiting" not in t.lower()
+        and "transcript indexing" not in t.lower()
+        and "verified opening broadcast commentary" not in t.lower()
+        and "verified broadcast excerpt" not in t.lower()
+    ]
+    if len(clean_takeaways) < 3:
+        clean_takeaways = video.get("takeaways", [])
 
     # 4 Related videos from the same sport
     same_sport_videos = [v for v in VIDEOS if v["sport"] == sport and v["id"] != vid]
@@ -933,14 +953,6 @@ def render_category_hub(sport):
     cards_html = ""
     for v in vids:
         page_url = f"/{sport}/{v['slug']}/"
-        cov = v.get("coverage", "complete" if v.get("transcript_available") else "missing")
-        if cov == "complete" or (v.get("transcript_available") and cov != "partial"):
-            tag_html = '\n              <span class="hub-card-dot">·</span>\n              <span class="hub-card-verified-tag">✓ Verified Transcript</span>'
-        elif cov == "partial":
-            tag_html = '\n              <span class="hub-card-dot">·</span>\n              <span class="hub-card-partial-tag">ℹ Excerpt Grounded</span>'
-        else:
-            tag_html = ""
-
         cards_html += f"""
         <article class="hub-card" onclick="window.location.href='{page_url}'" style="cursor: pointer;">
           <a href="{page_url}" class="hub-card-thumb-link" aria-label="{v['title']}">
@@ -957,7 +969,7 @@ def render_category_hub(sport):
             <div class="hub-card-meta">
               <span class="hub-card-time">{v['published_iso'][:10]}</span>
               <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">{v['read_time']}</span>{tag_html}
+              <span class="hub-card-read">{v['read_time']}</span>
             </div>
             <h2 class="hub-card-title"><a href="{page_url}">{v['title']}</a></h2>
             <p class="hub-card-snippet">{v['meta_desc']}</p>
