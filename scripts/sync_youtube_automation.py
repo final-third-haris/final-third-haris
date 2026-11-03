@@ -504,7 +504,7 @@ def update_static_featured(filepath, video):
                   <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-1px; margin-right:4px;" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>{views}
                 </span>
                 <span style="font-size: 0.8125rem; color: var(--muted-grey); font-weight: 700;">
-                  {pl_title} · Latest Upload · {pub}
+                  {pl_title} · Spotlight Analysis
                 </span>
               </div>
 
@@ -603,17 +603,6 @@ def sync_active_featured_stats(filepath, views_map, pub_time_map=None):
             rf'\g<1>{v_str}\g<2>',
             content,
             flags=re.DOTALL
-        )
-        if new_content != content:
-            content = new_content
-            changed = True
-
-    if pub_time_map and fid in pub_time_map and pub_time_map[fid]:
-        p_str = pub_time_map[fid]
-        new_content = re.sub(
-            r'(· Latest Upload · )[^<]+(</span>)',
-            rf'\g<1>{p_str}\g<2>',
-            content
         )
         if new_content != content:
             content = new_content

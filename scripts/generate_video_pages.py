@@ -179,7 +179,15 @@ def render_page(video):
   <link rel="canonical" href="{url}">
 
   <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicon-192x192.png">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicon-192x192.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
 
   <!-- Open Graph -->
   <meta property="og:site_name" content="Final Third with Haris Nenmara">
@@ -994,7 +1002,11 @@ def render_category_hub(sport):
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{hub_url}">
 
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicon-192x192.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
 
   <!-- Open Graph -->
   <meta property="og:site_name" content="Final Third with Haris Nenmara">
