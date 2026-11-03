@@ -199,6 +199,13 @@ for sport in ["football", "cricket"]:
                     types = [n.get("@type") for n in d.get("@graph", [])]
                     if "VideoObject" not in types or "BreadcrumbList" not in types:
                         errors.append(f"Missing VideoObject/BreadcrumbList in {page_file}")
+                    for node in d.get("@graph", []):
+                        if node.get("@type") == "VideoObject":
+                            creator = node.get("creator")
+                            if not isinstance(creator, dict) or not creator.get("url"):
+                                errors.append(f"Missing creator.url in VideoObject of {page_file}")
+                            elif creator.get("url") != "https://www.finalthird-haris.com/#about":
+                                errors.append(f"Unexpected creator.url in {page_file}: {creator.get('url')}")
                 except Exception as e:
                     errors.append(f"JSON-LD error in {page_file}: {e}")
             

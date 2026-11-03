@@ -211,7 +211,8 @@ def render_page(video):
           "@id": "{DOMAIN}/#person",
           "name": "Haris Nenmara",
           "alternateName": "ഹാരിസ് നെന്മാറ",
-          "jobTitle": "Sports Journalist & Analyst"
+          "jobTitle": "Sports Journalist & Analyst",
+          "url": "{DOMAIN}/#about"
         }},
         "publisher": {{
           "@type": "SportsOrganization",
