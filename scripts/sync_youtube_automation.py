@@ -272,6 +272,170 @@ def update_existing_views(filepath, views_map, pub_time_map=None):
 
     return update_count
 
+def fetch_channel_stats(channel_id=CHANNEL_ID):
+    """
+    Fetches real-time total channel views and subscriber count for Haris Nenmara.
+    1. Tries YouTube Data API v3 if YOUTUBE_API_KEY is present in the environment.
+    2. Falls back to scraping the public channel about page (no API quota needed).
+    Returns dict: {'view_count': int, 'subscriber_text': str} or None on failure.
+    """
+    api_key = os.environ.get("YOUTUBE_API_KEY")
+    if api_key:
+        try:
+            api_url = f"https://www.googleapis.com/youtube/v3/channels?part=statistics&id={channel_id}&key={api_key}"
+            req = urllib.request.Request(api_url, headers={"User-Agent": "FinalThirdSync/1.0"})
+            with urllib.request.urlopen(req, timeout=10) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+                items = data.get("items", [])
+                if items:
+                    stats = items[0].get("statistics", {})
+                    v_raw = int(stats.get("viewCount", 0))
+                    s_raw = int(stats.get("subscriberCount", 0))
+                    if s_raw >= 1000:
+                        s_val = s_raw / 1000.0
+                        s_text = f"{s_val:.1f}K+" if s_val < 100.0 else f"{round(s_val)}K+"
+                    else:
+                        s_text = f"{s_raw}+"
+                    if v_raw > 0:
+                        return {"view_count": v_raw, "subscriber_text": s_text}
+        except Exception as e:
+            print(f"[fetch_channel_stats API error]: {e}. Falling back to public channel scrape.")
+
+    # Fallback: Scrape public channel about page
+    try:
+        url = "https://www.youtube.com/@FinalThird_HarisNenmara/about"
+        req = urllib.request.Request(
+            url,
+            headers={
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                "Accept-Language": "en-US,en;q=0.9"
+            }
+        )
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            html = resp.read().decode("utf-8")
+
+        v_match = re.search(r'"viewCountText":\s*\{\s*"simpleText":\s*"([^"]+)"', html)
+        if not v_match:
+            v_match = re.search(r'"viewCountText":\s*"([^"]+)"', html)
+        if not v_match:
+            v_match = re.search(r'([0-9,]+)\s+views', html)
+
+        s_match = re.search(r'"subscriberCountText":\s*\{\s*"simpleText":\s*"([^"]+)"', html)
+        if not s_match:
+            s_match = re.search(r'"subscriberCountText":\s*"([^"]+)"', html)
+
+        v_raw = 0
+        if v_match:
+            digits = re.sub(r"[^\d]", "", v_match.group(1))
+            if digits:
+                v_raw = int(digits)
+
+        s_text = "41.3K+"
+        if s_match:
+            raw_sub = s_match.group(1).strip()
+            sub_val = re.sub(r"(?i)\s*subscribers?", "", raw_sub).strip()
+            if not sub_val.endswith("+"):
+                sub_val = f"{sub_val.upper()}+"
+            else:
+                sub_val = sub_val.upper()
+            s_text = sub_val
+
+        if v_raw > 0:
+            return {"view_count": v_raw, "subscriber_text": s_text}
+    except Exception as e:
+        print(f"[fetch_channel_stats scrape error]: {e}")
+
+    return None
+
+def update_ecosystem_views(filepath, stats=None):
+    """
+    Updates the Total Ecosystem Reach banner, the sponsor audience strip,
+    and the YouTube social card with real-time views and subscriber counts.
+    Preserves other platform metrics (Instagram 2.5M+, FB 1.8M+, WhatsApp 500K+).
+    Returns number of modified sections, or 0 if already up to date.
+    """
+    if not os.path.exists(filepath):
+        return 0
+
+    if not stats:
+        stats = fetch_channel_stats()
+    if not stats or not stats.get("view_count"):
+        return 0
+
+    v_count = stats["view_count"]
+    yt_m = v_count / 1_000_000.0
+    yt_views_str = f"{yt_m:.1f}M+"
+
+    # Cross-platform ecosystem calculation:
+    # YouTube (live) + Reels (2.5M) + FB (1.8M) + WhatsApp (0.5M) = yt_m + 4.8M
+    total_reach = yt_m + 4.8
+    total_reach_str = f"{round(total_reach, 1):.1f}M+"
+
+    subs_str = stats.get("subscriber_text", "41.3K+")
+
+    with open(filepath, "r", encoding="utf-8") as f:
+        old_content = f.read()
+
+    content = old_content
+    match_count = 0
+
+    # 1. Ecosystem strip total number
+    content, n1 = re.subn(
+        r'(<div class="ecosystem-total-num">)[^<]+(</div>)',
+        rf'\g<1>{total_reach_str}\g<2>',
+        content
+    )
+    match_count += n1
+
+    # 2. Ecosystem strip YouTube Views pill
+    content, n2 = re.subn(
+        r'(<span><strong>)[^<]+(</strong>\s*YouTube Views</span>)',
+        rf'\g<1>{yt_views_str}\g<2>',
+        content
+    )
+    match_count += n2
+
+    # 3. Sponsor strip - Total YouTube Views
+    content, n3 = re.subn(
+        r'(<div class="sponsor-stat-value">)[^<]+(</div>\s*<div class="sponsor-stat-label">Total YouTube Views</div>)',
+        rf'\g<1>{yt_views_str}\g<2>',
+        content
+    )
+    match_count += n3
+
+    # 4. Sponsor strip - Cross-Platform Views
+    content, n4 = re.subn(
+        r'(<div class="sponsor-stat-value">)[^<]+(</div>\s*<div class="sponsor-stat-label">Cross-Platform Views</div>)',
+        rf'\g<1>{total_reach_str}\g<2>',
+        content
+    )
+    match_count += n4
+
+    # 5. Sponsor strip - Dedicated Subscribers
+    content, n5 = re.subn(
+        r'(<div class="sponsor-stat-value">)[^<]+(</div>\s*<div class="sponsor-stat-label">Dedicated Subscribers</div>)',
+        rf'\g<1>{subs_str}\g<2>',
+        content
+    )
+    match_count += n5
+
+    # 6. YouTube Social Card ONLY
+    yt_card_pattern = r'(<!-- YouTube Card -->.*?<div class="social-card">.*?<span class="social-views-num">)[^<]+(</span>\s*<span class="social-views-label">Total Views</span>.*?<span class="social-sub-stat">)[^<]+(</span>)'
+    content, n6 = re.subn(
+        yt_card_pattern,
+        rf'\g<1>{yt_views_str}\g<2>{subs_str} Subs\g<3>',
+        content,
+        flags=re.DOTALL
+    )
+    match_count += n6
+
+    if content != old_content:
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(content)
+        return match_count
+
+    return 0
+
 def update_featured_id(filepath, video_id):
     if not os.path.exists(filepath):
         return False
@@ -977,6 +1141,15 @@ def run_sync(dry_run=False):
                 changes_made = True
                 print(f"✓ Updated live view counts for existing cards ({vc1} HTML updates, {vc2} JS updates).")
 
+        # 0b. Refresh channel ecosystem reach, audience stats & YouTube social cards
+        print("Refreshing channel ecosystem reach & audience stats...")
+        channel_stats = fetch_channel_stats()
+        if channel_stats:
+            eco_updates = update_ecosystem_views(INDEX_PATH, channel_stats)
+            if eco_updates > 0:
+                changes_made = True
+                print(f"✓ Updated Total Ecosystem Reach & Channel Stats ({eco_updates} sections updated).")
+
         # 1. Update Shorts on homepage if any
         if new_shorts_added:
             print(f"Updating homepage config with {len(new_shorts_added)} new shorts...")
@@ -1024,6 +1197,9 @@ def run_sync(dry_run=False):
             print("✓ Website is fully up-to-date with YouTube channel.")
     else:
         print("[DRY RUN] No files written.")
+        channel_stats = fetch_channel_stats()
+        if channel_stats:
+            print(f"[DRY RUN] Channel stats: views={channel_stats['view_count']}, subs={channel_stats['subscriber_text']}")
 
     return True
 
