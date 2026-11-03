@@ -112,10 +112,14 @@ def render_page(video):
         section_h2 = "Match Analysis Excerpt &amp; Overview | മലയാളം അവലോകനം"
         takeaways_title = "Key Discussion Points &amp; Video Takeaways"
     else:
-        badge_html = '''<div class="verification-badge awaiting"><span class="badge-icon">⏳</span> Awaiting Broadcast Transcript Verification</div>'''
+        badge_html = ""
         section_h2 = "Video Overview &amp; Match Analysis | മലയാളം അവലോകനം"
         takeaways_title = "Key Discussion Points &amp; Video Details"
     
+    # Clean text to remove any awaiting transcript disclaimers from the public page
+    p1_clean = video.get('p1_ml', '').replace(" ഈ വീഡിയോയുടെ പൂർണ്ണമായ സംപ്രേഷണ ട്രാൻസ്ക്രിപ്റ്റ് പരിശോധന പൂർത്തിയായി വരുന്നു.", "").replace("ഈ വീഡിയോയുടെ പൂർണ്ണമായ സംപ്രേഷണ ട്രാൻസ്ക്രിപ്റ്റ് പരിശോധന പൂർത്തിയായി വരുന്നു.", "").strip()
+    p2_clean = video.get('p2_en', '').replace(" The full verified broadcast transcript is currently queued for detailed review to ensure fact-checked reporting.", "").replace("The full verified broadcast transcript is currently queued for detailed review to ensure fact-checked reporting.", "").strip()
+
     # 4 Related videos from the same sport
     same_sport_videos = [v for v in VIDEOS if v["sport"] == sport and v["id"] != vid]
     related = same_sport_videos[:4]
@@ -139,7 +143,8 @@ def render_page(video):
           </div>
         </article>"""
 
-    takeaways_html = "".join([f"<li>{t}</li>" for t in video["takeaways"]])
+    clean_takeaways = [t for t in video.get("takeaways", []) if "awaiting" not in t.lower()]
+    takeaways_html = "".join([f"<li>{t}</li>" for t in clean_takeaways])
     tags_html = "".join([f'<span class="tag-pill">#{t}</span>' for t in video["tags"]])
 
     html = f"""<!DOCTYPE html>
@@ -828,8 +833,8 @@ def render_page(video):
       <section class="editorial-content">
         {badge_html}
         <h2>{section_h2}</h2>
-        <p lang="ml">{video['p1_ml']}</p>
-        <p>{video['p2_en']}</p>
+        <p lang="ml">{p1_clean}</p>
+        <p>{p2_clean}</p>
 
         <!-- Key Takeaways Box -->
         <div class="takeaways-box">
@@ -930,14 +935,11 @@ def render_category_hub(sport):
         page_url = f"/{sport}/{v['slug']}/"
         cov = v.get("coverage", "complete" if v.get("transcript_available") else "missing")
         if cov == "complete" or (v.get("transcript_available") and cov != "partial"):
-            tag_cls = "hub-card-verified-tag"
-            tag_lbl = "✓ Verified Transcript"
+            tag_html = '\n              <span class="hub-card-dot">·</span>\n              <span class="hub-card-verified-tag">✓ Verified Transcript</span>'
         elif cov == "partial":
-            tag_cls = "hub-card-partial-tag"
-            tag_lbl = "ℹ Excerpt Grounded"
+            tag_html = '\n              <span class="hub-card-dot">·</span>\n              <span class="hub-card-partial-tag">ℹ Excerpt Grounded</span>'
         else:
-            tag_cls = "hub-card-awaiting-tag"
-            tag_lbl = "⏳ Awaiting Transcript"
+            tag_html = ""
 
         cards_html += f"""
         <article class="hub-card" onclick="window.location.href='{page_url}'" style="cursor: pointer;">
@@ -955,9 +957,7 @@ def render_category_hub(sport):
             <div class="hub-card-meta">
               <span class="hub-card-time">{v['published_iso'][:10]}</span>
               <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">{v['read_time']}</span>
-              <span class="hub-card-dot">·</span>
-              <span class="{tag_cls}">{tag_lbl}</span>
+              <span class="hub-card-read">{v['read_time']}</span>{tag_html}
             </div>
             <h2 class="hub-card-title"><a href="{page_url}">{v['title']}</a></h2>
             <p class="hub-card-snippet">{v['meta_desc']}</p>
