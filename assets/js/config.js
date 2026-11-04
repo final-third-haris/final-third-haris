@@ -88,18 +88,38 @@ const FINAL_THIRD_CONFIG = {
     ]
   },
 
-  featuredVideoId: "8-Ve7FQQFLY",
+  featuredVideoId: "Yr2rpr2YPrA",
 
   // 300+ Authentic Videos from YouTube @FinalThird_HarisNenmara
   videos: [
+    {
+      "id": "Yr2rpr2YPrA",
+      "title": "ആ പറക്കും ക്യാച്ച് ! പിന്നെ വെടിക്കെട്ട്, കോഹ്‌ലി ഷോ തുടരുന്നു! | India vs New Zealand | Virat Kohli",
+      "sport": "cricket",
+      "playlistId": "indian-cricket",
+      "playlistTitle": "Indian Cricket Team",
+      "published": "Just now",
+      "views": "972 views",
+      "summary": "Analysis and match debrief by Haris Nenmara on 'ആ പറക്കും ക്യാച്ച് ! പിന്നെ വെടിക്കെട്ട്, കോഹ്‌ലി ഷോ തുടരുന്നു! | India vs New Zealand | Virat Kohli'. Watch the full breakdown on Final Third."
+    },
+    {
+      "id": "dMeN-hNlpXw",
+      "title": "ഹർദിക് പോകും... അർഷ്ദീപ് or ജയ്സ്വാൾ, ആര് വരും ? Hardik Pandya | Mumbai Indians",
+      "sport": "cricket",
+      "playlistId": "indian-cricket",
+      "playlistTitle": "Indian Cricket Team",
+      "published": "Just now",
+      "views": "939 views",
+      "summary": "Analysis and match debrief by Haris Nenmara on 'ഹർദിക് പോകും... അർഷ്ദീപ് or ജയ്സ്വാൾ, ആര് വരും ? Hardik Pandya | Mumbai Indians'. Watch the full breakdown on Final Third."
+    },
     {
       "id": "8-Ve7FQQFLY",
       "title": "ഫ്ലിക്കിന്‍റെ പിള്ളേര്‍ ഇവിടെയൊക്കെ തന്നെ കാണും ! Barcelona vs aston villa | Lamine yamal | Raphinha",
       "sport": "football",
       "playlistId": "PLGWXiMbN17ik",
       "playlistTitle": "Barcelona",
-      "published": "Just now",
-      "views": "1.3K views",
+      "published": "4 hours ago",
+      "views": "6.6K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ഫ്ലിക്കിന്‍റെ പിള്ളേര്‍ ഇവിടെയൊക്കെ തന്നെ കാണും ! Barcelona vs aston villa | Lamine yamal | Raphinha'. Watch the full breakdown on Final Third."
     },
     {
@@ -109,7 +129,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "Yesterday",
-      "views": "20K views",
+      "views": "21K views",
       "summary": "Analysis and match debrief by Haris Nenmara on '91 ന്  7 ;  ആ കുഴിമാടത്തിൽ നിന്ന് മാക്സ് വെൽ നടത്തിയ കംബാക്ക് ! |  Glenn Maxwell 201 vs Afghanistan'. Watch the full breakdown on Final Third."
     },
     {
@@ -118,7 +138,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "european-football",
       "playlistTitle": "European & World Football",
-      "published": "Yesterday",
+      "published": "2 days ago",
       "views": "21K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'സീറോ ഷോട്ട് ഓൺ ടാർഗറ്റ് ! ആർട്ടേറ്റ ലിവർപൂളിനെ തീർത്തത് എങ്ങനെ ?| Arsenal vs Liverpool'. Watch the full breakdown on Final Third."
     },
@@ -158,7 +178,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "cricket",
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
-    "published": "5 days ago",
+    "published": "6 days ago",
     "views": "40K views",
     "summary": "ഇഷാൻ കൂടെ വന്നാൽ സഞ്ജു എന്ത് ചെയ്യും ?  | Sanju Samson | Abhishek Sharma | Vaibhav Suryavanshi"
   },
