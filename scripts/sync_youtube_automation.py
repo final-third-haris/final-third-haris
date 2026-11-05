@@ -272,12 +272,88 @@ def update_existing_views(filepath, views_map, pub_time_map=None):
 
     return update_count
 
+def parse_follower_number(val_str):
+    """
+    Parses follower / subscriber text (e.g. '41.3K+', '27K', '21,727', '1.5M') into an integer.
+    """
+    if not val_str:
+        return 0
+    clean = str(val_str).strip().upper().replace(",", "").replace("+", "")
+    if clean.endswith("M"):
+        try:
+            return int(float(clean[:-1]) * 1_000_000)
+        except ValueError:
+            return 0
+    if clean.endswith("K"):
+        try:
+            return int(float(clean[:-1]) * 1_000)
+        except ValueError:
+            return 0
+    try:
+        return int(float(clean))
+    except ValueError:
+        return 0
+
+def fetch_instagram_followers(username="finalthird.official"):
+    """
+    Fetches real-time follower count from public Instagram profile.
+    Uses crawler User-Agent to retrieve OpenGraph description metadata.
+    Falls back to verified baseline (27K+) if network or platform changes occur.
+    """
+    url = f"https://www.instagram.com/{username}/"
+    headers = {
+        "User-Agent": "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)",
+        "Accept-Language": "en-US,en;q=0.9"
+    }
+    try:
+        req = urllib.request.Request(url, headers=headers)
+        with urllib.request.urlopen(req, timeout=8) as resp:
+            html = resp.read().decode("utf-8", errors="ignore")
+        m = re.search(r"([0-9.,]+[KMBkmb]?)\s*Followers", html, re.I)
+        if m:
+            raw_val = m.group(1).strip()
+            num = parse_follower_number(raw_val)
+            text = f"{raw_val.upper()}+" if not raw_val.endswith("+") else raw_val.upper()
+            if num > 0:
+                return {"count": num, "text": text}
+    except Exception as e:
+        print(f"[fetch_instagram_followers notice]: {e}. Using baseline.")
+    return {"count": 27000, "text": "27K+"}
+
+def fetch_facebook_followers(page_id="61590005744291"):
+    """
+    Fetches real-time follower count from public Facebook page.
+    Uses crawler User-Agent to retrieve OpenGraph description metadata.
+    Matches English 'followers' and Malayalam 'ഫോളോവേഴ്‌സ്'.
+    Falls back to verified baseline (21.7K+) if network or platform changes occur.
+    """
+    url = f"https://www.facebook.com/profile.php?id={page_id}"
+    headers = {
+        "User-Agent": "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)",
+        "Accept-Language": "en-US,en;q=0.9"
+    }
+    try:
+        req = urllib.request.Request(url, headers=headers)
+        with urllib.request.urlopen(req, timeout=8) as resp:
+            html = resp.read().decode("utf-8", errors="ignore")
+        m = re.search(r"([0-9,]+)\s*(?:followers|ഫോളോവേഴ്‌സ്|people follow this)", html, re.I)
+        if m:
+            raw_str = m.group(1).replace(",", "").strip()
+            num = int(raw_str)
+            k_val = round(num / 1000.0, 1)
+            text = f"{k_val}K+"
+            if num > 0:
+                return {"count": num, "text": text}
+    except Exception as e:
+        print(f"[fetch_facebook_followers notice]: {e}. Using baseline.")
+    return {"count": 21727, "text": "21.7K+"}
+
 def fetch_channel_stats(channel_id=CHANNEL_ID):
     """
     Fetches real-time total channel views and subscriber count for Haris Nenmara.
     1. Tries YouTube Data API v3 if YOUTUBE_API_KEY is present in the environment.
     2. Falls back to scraping the public channel about page (no API quota needed).
-    Returns dict: {'view_count': int, 'subscriber_text': str} or None on failure.
+    Returns dict: {'view_count': int, 'subscriber_text': str, 'subscriber_count': int} or None on failure.
     """
     api_key = os.environ.get("YOUTUBE_API_KEY")
     if api_key:
@@ -297,7 +373,7 @@ def fetch_channel_stats(channel_id=CHANNEL_ID):
                     else:
                         s_text = f"{s_raw}+"
                     if v_raw > 0:
-                        return {"view_count": v_raw, "subscriber_text": s_text}
+                        return {"view_count": v_raw, "subscriber_text": s_text, "subscriber_count": s_raw}
         except Exception as e:
             print(f"[fetch_channel_stats API error]: {e}. Falling back to public channel scrape.")
 
@@ -341,7 +417,8 @@ def fetch_channel_stats(channel_id=CHANNEL_ID):
             s_text = sub_val
 
         if v_raw > 0:
-            return {"view_count": v_raw, "subscriber_text": s_text}
+            s_count = parse_follower_number(s_text)
+            return {"view_count": v_raw, "subscriber_text": s_text, "subscriber_count": s_count}
     except Exception as e:
         print(f"[fetch_channel_stats scrape error]: {e}")
 
@@ -350,8 +427,9 @@ def fetch_channel_stats(channel_id=CHANNEL_ID):
 def update_ecosystem_views(filepath, stats=None):
     """
     Updates the Total Ecosystem Reach banner, the sponsor audience strip,
-    and the YouTube social card with real-time views and subscriber counts.
-    Preserves other platform metrics (Instagram 2.5M+, FB 1.8M+, WhatsApp 500K+).
+    and all social cards (YouTube, Instagram, Facebook) with real-time views,
+    subscribers, and followers across YouTube, Instagram, and Facebook.
+    Preserves other platform metrics (Instagram Reels 2.5M+, FB 1.8M+, WhatsApp 500K+).
     Returns number of modified sections, or 0 if already up to date.
     """
     if not os.path.exists(filepath):
@@ -371,7 +449,18 @@ def update_ecosystem_views(filepath, stats=None):
     total_reach = yt_m + 4.8
     total_reach_str = f"{round(total_reach, 1):.1f}M+"
 
+    # YouTube Subscribers
     subs_str = stats.get("subscriber_text", "41.3K+")
+    yt_subs_count = stats.get("subscriber_count") or parse_follower_number(subs_str)
+
+    # Instagram & Facebook Followers
+    ig_stats = fetch_instagram_followers()
+    fb_stats = fetch_facebook_followers()
+
+    # Combined Followers & Subscribers across YouTube, Instagram, and Facebook
+    total_followers_num = yt_subs_count + ig_stats["count"] + fb_stats["count"]
+    total_followers_k = total_followers_num / 1000.0
+    total_followers_str = f"{total_followers_k:.1f}K+" if total_followers_k < 100.0 else f"{round(total_followers_k)}K+"
 
     with open(filepath, "r", encoding="utf-8") as f:
         old_content = f.read()
@@ -411,16 +500,33 @@ def update_ecosystem_views(filepath, stats=None):
     )
     match_count += n4
 
-    # 5. Sponsor strip - Dedicated Subscribers
+    # 5. Sponsor strip - Combined Followers & Subscribers (YouTube + IG + FB)
+    sponsor_cell_pattern = (
+        r'(<div class="sponsor-stat-cell">\s*'
+        r'<div class="sponsor-stat-value">)[^<]+(</div>\s*'
+        r'<div class="sponsor-stat-label">)[^<]+(</div>\s*'
+        r'<div class="sponsor-stat-sub">)[^<]+(</div>\s*'
+        r'</div>\s*<div class="sponsor-stat-cell">\s*<div class="sponsor-stat-value">Kerala &amp; GCC</div>)'
+    )
     content, n5 = re.subn(
-        r'(<div class="sponsor-stat-value">)[^<]+(</div>\s*<div class="sponsor-stat-label">Dedicated Subscribers</div>)',
-        rf'\g<1>{subs_str}\g<2>',
+        sponsor_cell_pattern,
+        rf'\g<1>{total_followers_str}\g<2>Followers &amp; Subscribers\g<3>YouTube • Instagram • Facebook\g<4>',
         content
     )
+    if n5 == 0:
+        content, n5 = re.subn(
+            r'(<div class="sponsor-stat-value">)[^<]+(</div>\s*<div class="sponsor-stat-label">(?:Dedicated Subscribers|Followers &amp; Subscribers|Followers & Subscribers)</div>)',
+            rf'\g<1>{total_followers_str}\g<2>',
+            content
+        )
     match_count += n5
 
-    # 6. YouTube Social Card ONLY
-    yt_card_pattern = r'(<!-- YouTube Card -->.*?<div class="social-card">.*?<span class="social-views-num">)[^<]+(</span>\s*<span class="social-views-label">Total Views</span>.*?<span class="social-sub-stat">)[^<]+(</span>)'
+    # 6. YouTube Social Card
+    yt_card_pattern = (
+        r'(<!-- YouTube Card -->.*?<div class="social-card">.*?'
+        r'<span class="social-views-num">)[^<]+(</span>\s*<span class="social-views-label">Total Views</span>.*?'
+        r'<span class="social-sub-stat">)[^<]+(</span>)'
+    )
     content, n6 = re.subn(
         yt_card_pattern,
         rf'\g<1>{yt_views_str}\g<2>{subs_str} Subs\g<3>',
@@ -428,6 +534,32 @@ def update_ecosystem_views(filepath, stats=None):
         flags=re.DOTALL
     )
     match_count += n6
+
+    # 7. Instagram Social Card
+    ig_card_pattern = (
+        r'(<!-- Instagram Card -->.*?<div class="social-card">.*?'
+        r'<span class="social-sub-stat">)[^<]+(</span>)'
+    )
+    content, n7 = re.subn(
+        ig_card_pattern,
+        rf'\g<1>{ig_stats["text"]} Followers\g<2>',
+        content,
+        flags=re.DOTALL
+    )
+    match_count += n7
+
+    # 8. Facebook Social Card
+    fb_card_pattern = (
+        r'(<!-- Facebook Card -->.*?<div class="social-card">.*?'
+        r'<span class="social-sub-stat">)[^<]+(</span>)'
+    )
+    content, n8 = re.subn(
+        fb_card_pattern,
+        rf'\g<1>{fb_stats["text"]} Followers\g<2>',
+        content,
+        flags=re.DOTALL
+    )
+    match_count += n8
 
     if content != old_content:
         with open(filepath, "w", encoding="utf-8") as f:
@@ -546,42 +678,11 @@ def update_static_featured(filepath, video):
     return False
 
 def update_schema_video_object(filepath, video):
-    if not os.path.exists(filepath):
-        return False
-    with open(filepath, "r", encoding="utf-8") as f:
-        content = f.read()
-
-    vid = video["id"]
-    title = video["title"]
-    sport_desc = "football" if video.get("sport") == "football" else "cricket"
-    desc = f"Final Third match coverage and {sport_desc} analysis with Haris Nenmara."
-    upload_date = video.get("published_iso") or datetime.now(timezone.utc).isoformat()
-
-    vo_pattern = r'\{\s*"@type":\s*"VideoObject",\s*"@id":\s*"https://(?:final-third-haris\.github\.io|www\.finalthird-haris\.com)/#featured-video".*?\}\n    \]'
-    new_vo = f'''{{
-        "@type": "VideoObject",
-        "@id": "https://www.finalthird-haris.com/#featured-video",
-        "name": {json.dumps(title, ensure_ascii=False)},
-        "description": {json.dumps(desc, ensure_ascii=False)},
-        "thumbnailUrl": [
-          "https://i.ytimg.com/vi/{vid}/maxresdefault.jpg",
-          "https://i.ytimg.com/vi/{vid}/hqdefault.jpg"
-        ],
-        "uploadDate": "{upload_date}",
-        "embedUrl": "https://www.youtube.com/embed/{vid}",
-        "contentUrl": "https://www.youtube.com/watch?v={vid}",
-        "inLanguage": "ml",
-        "creator": {{
-          "@id": "https://www.finalthird-haris.com/#person"
-        }}
-      }}
-    ]'''
-
-    new_content, n = re.subn(vo_pattern, new_vo, content, count=1, flags=re.DOTALL)
-    if n > 0:
-        with open(filepath, "w", encoding="utf-8") as f:
-            f.write(new_content)
-        return True
+    """
+    Safeguard: Homepage schema deliberately excludes VideoObject to protect
+    Google Search snippet appearance (preventing misleading 'X days ago' relative date badges).
+    Legitimate VideoObject structured data is preserved on dedicated video pages.
+    """
     return False
 
 def sync_active_featured_stats(filepath, views_map, pub_time_map=None):
