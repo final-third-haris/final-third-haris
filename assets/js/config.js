@@ -98,8 +98,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "european-football",
       "playlistTitle": "European & World Football",
-      "published": "5 hours ago",
-      "views": "4.1K views",
+      "published": "7 hours ago",
+      "views": "13K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'അയാളെ പ്രൊവോക്ക് ചെയ്യാൻ പോകരുതായിരുന്നു ! Cristiano Ronaldo | Haris Nenmara'. Watch the full breakdown on Final Third."
     },
     {
@@ -108,8 +108,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "european-football",
       "playlistTitle": "European & World Football",
-      "published": "20 hours ago",
-      "views": "47K views",
+      "published": "22 hours ago",
+      "views": "49K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'CR7... അതൊരു വികാരമായിരുന്നു ! | Cristiano Ronaldo Retirement | Cr7'. Watch the full breakdown on Final Third."
     },
     {
@@ -128,7 +128,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "Yesterday",
+      "published": "2 days ago",
       "views": "42K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ആ പറക്കും ക്യാച്ച് ! പിന്നെ വെടിക്കെട്ട്, കോഹ്‌ലി ഷോ തുടരുന്നു! | India vs New Zealand | Virat Kohli'. Watch the full breakdown on Final Third."
     },
@@ -138,8 +138,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "Yesterday",
-      "views": "29K views",
+      "published": "2 days ago",
+      "views": "30K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ഹർദിക് പോകും... അർഷ്ദീപ് or ജയ്സ്വാൾ, ആര് വരും ? Hardik Pandya | Mumbai Indians'. Watch the full breakdown on Final Third."
     },
     {
@@ -168,7 +168,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "european-football",
       "playlistTitle": "European & World Football",
-      "published": "3 days ago",
+      "published": "4 days ago",
       "views": "22K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'സീറോ ഷോട്ട് ഓൺ ടാർഗറ്റ് ! ആർട്ടേറ്റ ലിവർപൂളിനെ തീർത്തത് എങ്ങനെ ?| Arsenal vs Liverpool'. Watch the full breakdown on Final Third."
     },
@@ -2241,8 +2241,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "2 hours ago",
-      "views": "323 views",
+      "published": "5 hours ago",
+      "views": "455 views",
       "summary": "റോണോയുടെ റിവഞ്ചുകൾ| Cristiano Ronaldo | CR7"
     },
     {
@@ -2251,8 +2251,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "10 hours ago",
-      "views": "2.2K views",
+      "published": "12 hours ago",
+      "views": "3.0K views",
       "summary": "മറക്കില്ല  റോണോ |  Cristiano ronaldo retires | Cr7 | Portugal |"
     },
     {
@@ -2261,8 +2261,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "10 hours ago",
-      "views": "743 views",
+      "published": "12 hours ago",
+      "views": "1.1K views",
       "summary": "റയല്‍.... റെമോന്‍ടാഡ... റിപ്പീറ്റ് ! Real Madrid"
     },
     {
@@ -2271,8 +2271,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "10 hours ago",
-      "views": "1.0K views",
+      "published": "12 hours ago",
+      "views": "1.4K views",
       "summary": "CR 7 ഫുട്ബോള്‍ ലോകത്തെ കാല്‍ക്കീഴിലാക്കിയ കാലം | Cristiano ronaldo | cr7"
     },
     {
