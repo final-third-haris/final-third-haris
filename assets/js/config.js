@@ -149,7 +149,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "PLGWXiMbN17ik",
       "playlistTitle": "Barcelona",
       "published": "3 days ago",
-      "views": "29K views",
+      "views": "30K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ഫ്ലിക്കിന്‍റെ പിള്ളേര്‍ ഇവിടെയൊക്കെ തന്നെ കാണും ! Barcelona vs aston villa | Lamine yamal | Raphinha'. Watch the full breakdown on Final Third."
     },
     {
@@ -2242,7 +2242,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
       "published": "Just now",
-      "views": "520 views",
+      "views": "665 views",
       "summary": "സിമിയോണി ഒന്നും മറക്കില്ല | Cristiano Ronaldo"
     },
     {
@@ -2262,7 +2262,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
       "published": "Yesterday",
-      "views": "5.4K views",
+      "views": "5.5K views",
       "summary": "മറക്കില്ല  റോണോ |  Cristiano ronaldo retires | Cr7 | Portugal |"
     },
     {
@@ -2272,7 +2272,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
       "published": "Yesterday",
-      "views": "2.2K views",
+      "views": "2.3K views",
       "summary": "റയല്‍.... റെമോന്‍ടാഡ... റിപ്പീറ്റ് ! Real Madrid"
     },
     {
