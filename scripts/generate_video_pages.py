@@ -208,6 +208,16 @@ def render_page(video):
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="{url}">
 
+  <!-- Mirror & GitHub Pages Deprecation Protection -->
+  <script>
+    if (window.location.hostname.endsWith('github.io')) {{
+      var rMeta = document.querySelector('meta[name="robots"]');
+      if (rMeta) {{ rMeta.setAttribute('content', 'noindex, nofollow, noarchive'); }}
+      var cleanPath = window.location.pathname.replace(/^\\/final-third-haris/, '') || '/';
+      window.location.replace('https://www.finalthird-haris.com' + cleanPath + window.location.search + window.location.hash);
+    }}
+  </script>
+
   <!-- Favicon -->
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -1083,6 +1093,16 @@ def render_category_hub(sport):
   <meta name="author" content="Haris Nenmara (ഹാരിസ് നെന്മാറ)">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{hub_url}">
+
+  <!-- Mirror & GitHub Pages Deprecation Protection -->
+  <script>
+    if (window.location.hostname.endsWith('github.io')) {{
+      var rMeta = document.querySelector('meta[name="robots"]');
+      if (rMeta) {{ rMeta.setAttribute('content', 'noindex, nofollow, noarchive'); }}
+      var cleanPath = window.location.pathname.replace(/^\\/final-third-haris/, '') || '/';
+      window.location.replace('https://www.finalthird-haris.com' + cleanPath + window.location.search + window.location.hash);
+    }}
+  </script>
 
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="icon" href="/favicon.ico" sizes="any">

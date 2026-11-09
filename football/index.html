@@ -9,6 +9,16 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.finalthird-haris.com/football/">
 
+  <!-- Mirror & GitHub Pages Deprecation Protection -->
+  <script>
+    if (window.location.hostname.endsWith('github.io')) {
+      var rMeta = document.querySelector('meta[name="robots"]');
+      if (rMeta) { rMeta.setAttribute('content', 'noindex, nofollow, noarchive'); }
+      var cleanPath = window.location.pathname.replace(/^\/final-third-haris/, '') || '/';
+      window.location.replace('https://www.finalthird-haris.com' + cleanPath + window.location.search + window.location.hash);
+    }
+  </script>
+
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicon-48x48.png">
