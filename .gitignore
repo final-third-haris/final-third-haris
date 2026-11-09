@@ -4,3 +4,7 @@ NEW_VIDEOS_FOUND.txt
 *.token
 .env*
 
+
+__pycache__/
+*.pyc
+.DS_Store

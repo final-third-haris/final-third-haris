@@ -1040,50 +1040,36 @@ def render_category_hub(sport):
 
     hub_url = f"{DOMAIN}/{sport}/"
 
-    if sport == "football":
-        hub_guide_html = '''  <section class="hub-editorial-guide">
-    <div class="guide-header">
-      <h2>ഫുട്ബോൾ വിശകലന തത്വം &amp; കവറേജ് | Final Third Football Editorial Guide</h2>
-      <p class="guide-lead">
-        ഫൈനൽ തേർഡിൽ ഫുട്ബോൾ മത്സരങ്ങളെ വെറും സ്കോർബോർഡിൻ്റെയോ ഗോളുകളുടെയോ അടിസ്ഥാനത്തിലല്ല ഞങ്ങൾ വിലയിരുത്തുന്നത്. ഓരോ മത്സരത്തിലും ടീമുകൾ സ്വീകരിക്കുന്ന തന്ത്രപരമായ വിന്യാസം (Tactical Formations), ഹൈ-പ്രസ്സിങ് ഘടന (High-Pressing Structures), ബോൾ ട്രാൻസിഷൻ സ്പീഡ് (Transition Speed), സ്പേസ് കണ്ടെത്താനുള്ള നീക്കങ്ങൾ (Half-Space Overloads) എന്നിവ ആഴത്തിൽ പരിശോധിക്കുന്നതാണ് ഹാരിസ് നെന്മാറയുടെ വിശകലന രീതി.
-      </p>
-    </div>
-    <div class="guide-grid">
-      <div class="guide-card">
-        <h3>⚽ European Football &amp; UEFA Champions League</h3>
-        <p>ലാ ലിഗയിലെ എൽ ക്ലാസിക്കോ (Real Madrid vs Barcelona), യുവേഫ ചാമ്പ്യൻസ് ലീഗ് നോക്കൗട്ട് മത്സരങ്ങൾ, പ്രീമിയർ ലീഗ് ടാക്റ്റിക്കൽ ബാറ്റിലുകൾ എന്നിവയിലെ മൈതാന തന്ത്രങ്ങൾ. ഹാൻസി ഫ്ലിക്കിന്റെ ഹൈ ഓഫ്‌സൈഡ് ട്രാപ്പും പെപ് ഗ്വാർഡിയോളയുടെ പൊസിഷനൽ പ്ലേയും മുതൽ കാർലോ ആഞ്ചലോട്ടിയുടെ കൗണ്ടർ അറ്റാക്കിങ് വൈഭവവും ഇതിഹാസ താരങ്ങളുടെ പ്രകടനങ്ങളും ഇവിടെ വിശകലനം ചെയ്യുന്നു.</p>
+    toc_items_html = ""
+    for idx, v in enumerate(vids, 1):
+        page_url = f"/{sport}/{v['slug']}/"
+        toc_items_html += f'''
+        <li class="contents-item">
+          <a href="{page_url}" class="contents-link" title="{v['title']}">
+            <span class="contents-num">{idx:02d}</span>
+            <span class="contents-info">
+              <span class="contents-title" lang="ml">{v['title']}</span>
+              <span class="contents-sub">{v['playlist']} · {v['views']}</span>
+            </span>
+            <span class="contents-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </li>'''
+
+    sport_label = "Football" if sport == "football" else "Cricket"
+
+    hub_contents_html = f'''  <!-- List of Contents (Table of Contents) -->
+  <section class="hub-contents-section">
+    <div class="contents-card">
+      <div class="contents-header">
+        <div class="contents-header-text">
+          <span class="contents-badge">TABLE OF CONTENTS · ഉള്ളടക്ക സൂചിക</span>
+          <h2>List of Contents | {sport_label} Match Analysis Archive ({len(vids)} Videos)</h2>
+          <p class="contents-lead">Quick index of all in-depth {sport_label.lower()} video breakdowns, tactical match debriefs, and stories by Haris Nenmara.</p>
+        </div>
       </div>
-      <div class="guide-card">
-        <h3>🐘 Kerala Blasters &amp; Indian Super League (ISL)</h3>
-        <p>കേരള ബ്ലാസ്റ്റേഴ്സിന്റെ ഓരോ ഐ.എസ്.എൽ മത്സരങ്ങളുടെയും തന്ത്രപരമായ പോസ്റ്റ്-മാച്ച് റിവ്യൂകൾ. മധ്യനിര നിയന്ത്രണം (Midfield Dominance), പ്രതിരോധ പിഴവുകൾ, ഫോറിൻ സൈനിങ്ങുകളുടെ സ്വാധീനം, മലയാളി യുവതാരങ്ങളുടെ വളർച്ച എന്നിവയെക്കുറിച്ചുള്ള നിഷ്പക്ഷവും വസ്തുതാപരവുമായ റിപ്പോർട്ടിങ്.</p>
-      </div>
-      <div class="guide-card">
-        <h3>📊 Data-Driven Modern Tactics &amp; Video Journalism</h3>
-        <p>Expected Goals (xG), പാസിങ് നെറ്റ്‌വർക്കുകൾ, ഡിഫെൻസീവ് ബ്ലോക്കുകൾ (Low Block vs Mid Block) തുടങ്ങിയ ആധുനിക ഫുട്ബോൾ അനലിറ്റിക്സ് ഡാറ്റ സാധാരണ ഫുട്ബോൾ പ്രേമികൾക്ക് ലളിതമായി മനസ്സിലാകുന്ന മലയാളം വീഡിയോ അവലോകനങ്ങളിലൂടെ ലഭ്യമാക്കുന്നു.</p>
-      </div>
-    </div>
-  </section>'''
-    else:
-        hub_guide_html = '''  <section class="hub-editorial-guide">
-    <div class="guide-header">
-      <h2>ക്രിക്കറ്റ് വിശകലന തത്വം &amp; കവറേജ് | Final Third Cricket Editorial Guide</h2>
-      <p class="guide-lead">
-        ആധുനിക ക്രിക്കറ്റ് മത്സരങ്ങളുടെ സങ്കീർണ്ണമായ ഡാറ്റയും മൈതാന തന്ത്രങ്ങളും മലയാളത്തിൽ വിശദമായി വിശകലനം ചെയ്യുന്ന പ്ലാറ്റ്‌ഫോമാണ് ഫൈനൽ തേർഡ്. ടി20 ക്രിക്കറ്റിന്റെ ആക്രമണാത്മക മാറ്റങ്ങൾ, ഡെത്ത് ഓവർ ബൗളിങ് പ്ലാനുകൾ, മാച്ച്-അപ്പ് സിദ്ധാന്തങ്ങൾ (Matchup Theory), ക്യാപ്റ്റൻസി തീരുമാനങ്ങൾ എന്നിവയാണ് ഞങ്ങളുടെ പ്രധാന ശ്രദ്ധാകേന്ദ്രം.
-      </p>
-    </div>
-    <div class="guide-grid">
-      <div class="guide-card">
-        <h3>🏏 Team India Campaigns &amp; ICC Tournaments</h3>
-        <p>ഇന്ത്യൻ ദേശീയ ടീമിന്റെ ഐസിസി ടൂർണമെന്റ് പോരാട്ടങ്ങൾ, ദ്വിരാഷ്ട്ര പരമ്പരകൾ, ടി20 ലോകകപ്പ് പ്ലാനുകൾ എന്നിവയുടെ സൂക്ഷ്മ വിശകലനം. രോഹിത് ശർമ്മയുടെ പവർപ്ലേ അഗ്രഷൻ, വിരാട് കോഹ്‌ലിയുടെ ചേസിങ് മാസ്റ്റർക്ലാസ്, യുവതാരങ്ങളുടെ വരവ് എന്നിവ സമഗ്രമായി വിലയിരുത്തുന്നു.</p>
-      </div>
-      <div class="guide-card">
-        <h3>⚡ Sanju Samson &amp; Matchup Evolution</h3>
-        <p>കേരളത്തിന്റെ അഭിമാനമായ സഞ്ജു സാംസന്റെ ബാറ്റിങ് ടെക്നിക്കൽ മാറ്റങ്ങൾ, പേസിനും സ്പിന്നിനുമെതിരായ സ്ട്രൈക്ക്-റേറ്റ് അപ്രോച്ച്, ടീം സെലക്ഷൻ സമ്മർദ്ദങ്ങളെ അതിജീവിക്കുന്ന ക്ലാസ് ഇന്നിങ്സുകൾ എന്നിവയുടെ പ്രത്യേക അവലോകനം.</p>
-      </div>
-      <div class="guide-card">
-        <h3>🎯 Elite Bowling Mastery (Bumrah &amp; Bhuvi)</h3>
-        <p>ജസ്പ്രീത് ബുംറയുടെ അൺപ്ലേയെബിൾ യോർക്കറുകൾ, ഭുവനേശ്വർ കുമാറിന്റെ സ്വിങ് ബോളിങ്, ഡെത്ത് ഓവർ എക്കണോമി കൺട്രോൾ എന്നിവ മൈക്രോ ലെവലിൽ പരിശോധിക്കുന്ന ബൗളിങ് സ്പെഷ്യൽ അനാലിസിസുകൾ.</p>
-      </div>
+      <ol class="contents-grid">
+        {toc_items_html}
+      </ol>
     </div>
   </section>'''
 
@@ -1276,53 +1262,129 @@ def render_category_hub(sport):
     }}
 
     /* Sport Switcher Chips */
-    /* Editorial Guide in Category Hub */
-    .hub-editorial-guide {{
+    /* List of Contents (Table of Contents) in Category Hub */
+    .hub-contents-section {{
       max-width: 1140px;
       margin: 2rem auto 0;
       padding: 0 1.5rem;
     }}
-    .guide-header {{
+    .contents-card {{
       background: var(--charcoal);
       border: 1px solid var(--charcoal-border);
-      border-radius: 12px 12px 0 0;
-      padding: 2rem;
-      border-bottom: none;
+      border-radius: 12px;
+      padding: 1.75rem 2rem;
     }}
-    .guide-header h2 {{
-      font-size: 1.375rem;
+    .contents-header {{
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--charcoal-border);
+    }}
+    .contents-badge {{
+      display: inline-block;
+      font-size: 0.6875rem;
       font-weight: 800;
       color: var(--neon-lime);
-      margin-bottom: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(158, 226, 11, 0.1);
+      border: 1px solid rgba(158, 226, 11, 0.25);
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
     }}
-    .guide-lead {{
-      font-size: 0.9375rem;
+    .contents-header h2 {{
+      font-size: 1.375rem;
+      font-weight: 800;
       color: var(--off-white);
-      line-height: 1.8;
+      margin-bottom: 0.375rem;
     }}
-    .guide-grid {{
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1px;
-      background: var(--charcoal-border);
-      border: 1px solid var(--charcoal-border);
-      border-radius: 0 0 12px 12px;
-      overflow: hidden;
-    }}
-    .guide-card {{
-      background: var(--charcoal);
-      padding: 1.5rem;
-    }}
-    .guide-card h3 {{
-      font-size: 1.0625rem;
-      font-weight: 700;
-      color: var(--off-white);
-      margin-bottom: 0.625rem;
-    }}
-    .guide-card p {{
-      font-size: 0.8125rem;
+    .contents-lead {{
+      font-size: 0.875rem;
       color: var(--muted-grey);
-      line-height: 1.65;
+    }}
+    .contents-grid {{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 0.625rem 1rem;
+    }}
+    .contents-item {{
+      display: flex;
+    }}
+    .contents-link {{
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      width: 100%;
+      padding: 0.625rem 0.875rem;
+      background: var(--charcoal-light);
+      border: 1px solid var(--charcoal-border);
+      border-radius: 8px;
+      color: var(--off-white);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }}
+    .contents-link:hover {{
+      border-color: var(--neon-lime);
+      background: rgba(158, 226, 11, 0.06);
+      transform: translateX(2px);
+      text-decoration: none;
+    }}
+    .contents-num {{
+      flex-shrink: 0;
+      font-family: monospace;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--neon-lime);
+      background: rgba(158, 226, 11, 0.12);
+      border-radius: 4px;
+      padding: 2px 6px;
+    }}
+    .contents-info {{
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }}
+    .contents-title {{
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #f0f0f0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.4;
+    }}
+    .contents-link:hover .contents-title {{
+      color: var(--neon-lime);
+    }}
+    .contents-sub {{
+      font-size: 0.6875rem;
+      color: var(--dark-grey);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }}
+    .contents-arrow {{
+      flex-shrink: 0;
+      color: var(--dark-grey);
+      font-size: 0.875rem;
+      font-weight: 700;
+      transition: transform 0.2s, color 0.2s;
+    }}
+    .contents-link:hover .contents-arrow {{
+      color: var(--neon-lime);
+      transform: translateX(3px);
+    }}
+    @media (max-width: 768px) {{
+      .contents-card {{
+        padding: 1.25rem 1rem;
+      }}
+      .contents-grid {{
+        grid-template-columns: 1fr;
+      }}
     }}
 
     .hub-switcher {{
@@ -1557,8 +1619,7 @@ def render_category_hub(sport):
     </div>
   </header>
 
-  <!-- Editorial Philosophy & Deep-Dive Category Guide -->
-  {hub_guide_html}
+  {hub_contents_html}
 
   <main class="hub-grid">
     {cards_html}

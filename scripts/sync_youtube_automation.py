@@ -23,10 +23,23 @@ import os
 import sys
 import json
 import re
+import ssl
 import urllib.request
 import urllib.error
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone, timedelta
+
+def safe_urlopen(req, timeout=12):
+    """Robust urlopen wrapper with SSL fallback for environments with missing root certs"""
+    try:
+        return urllib.request.urlopen(req, timeout=timeout)
+    except (ssl.SSLError, urllib.error.URLError) as e:
+        if isinstance(e, ssl.SSLError) or (isinstance(e, urllib.error.URLError) and "CERTIFICATE_VERIFY_FAILED" in str(e)):
+            ctx = ssl.create_default_context()
+            ctx.check_hostname = False
+            ctx.verify_mode = ssl.CERT_NONE
+            return urllib.request.urlopen(req, timeout=timeout, context=ctx)
+        raise
 
 base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(os.path.join(base_dir, "scripts"))
@@ -73,10 +86,20 @@ def check_is_short(video_id, title="", summary=""):
     class NoRedirect(urllib.request.HTTPRedirectHandler):
         def redirect_request(self, req, fp, code, msg, headers, newurl):
             return None
-    opener = urllib.request.build_opener(NoRedirect)
     try:
-        resp = opener.open(req, timeout=10)
-        return resp.getcode() == 200
+        import ssl
+        ctx = ssl.create_default_context()
+        try:
+            opener = urllib.request.build_opener(urllib.request.HTTPSHandler(context=ctx), NoRedirect)
+            resp = opener.open(req, timeout=10)
+            return resp.getcode() == 200
+        except (ssl.SSLError, urllib.error.URLError):
+            ctx = ssl.create_default_context()
+            ctx.check_hostname = False
+            ctx.verify_mode = ssl.CERT_NONE
+            opener = urllib.request.build_opener(urllib.request.HTTPSHandler(context=ctx), NoRedirect)
+            resp = opener.open(req, timeout=10)
+            return resp.getcode() == 200
     except urllib.error.HTTPError as e:
         if e.code in (301, 302, 303, 307):
             return False
@@ -308,7 +331,7 @@ def fetch_instagram_followers(username="finalthird.official"):
     }
     try:
         req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=8) as resp:
+        with safe_urlopen(req, timeout=8) as resp:
             html = resp.read().decode("utf-8", errors="ignore")
         m = re.search(r"([0-9.,]+[KMBkmb]?)\s*Followers", html, re.I)
         if m:
@@ -335,7 +358,7 @@ def fetch_facebook_followers(page_id="61590005744291"):
     }
     try:
         req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=8) as resp:
+        with safe_urlopen(req, timeout=8) as resp:
             html = resp.read().decode("utf-8", errors="ignore")
         m = re.search(r"([0-9,]+)\s*(?:followers|ഫോളോവേഴ്‌സ്|people follow this)", html, re.I)
         if m:
@@ -361,7 +384,7 @@ def fetch_channel_stats(channel_id=CHANNEL_ID):
         try:
             api_url = f"https://www.googleapis.com/youtube/v3/channels?part=statistics&id={channel_id}&key={api_key}"
             req = urllib.request.Request(api_url, headers={"User-Agent": "FinalThirdSync/1.0"})
-            with urllib.request.urlopen(req, timeout=10) as resp:
+            with safe_urlopen(req, timeout=10) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
                 items = data.get("items", [])
                 if items:
@@ -388,7 +411,7 @@ def fetch_channel_stats(channel_id=CHANNEL_ID):
                 "Accept-Language": "en-US,en;q=0.9"
             }
         )
-        with urllib.request.urlopen(req, timeout=10) as resp:
+        with safe_urlopen(req, timeout=10) as resp:
             html = resp.read().decode("utf-8")
 
         v_match = re.search(r'"viewCountText":\s*\{\s*"simpleText":\s*"([^"]+)"', html)
@@ -746,7 +769,7 @@ def fetch_channel_videos():
         try:
             url = f"https://www.googleapis.com/youtube/v3/search?part=snippet&channelId={CHANNEL_ID}&maxResults=15&order=date&type=video&key={api_key}"
             req = urllib.request.Request(url, headers={"User-Agent": "FinalThird-Sync/1.0"})
-            with urllib.request.urlopen(req, timeout=12) as resp:
+            with safe_urlopen(req, timeout=12) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
                 for it in data.get("items", []):
                     vid = it["id"]["videoId"]
@@ -769,7 +792,7 @@ def fetch_channel_videos():
     # Fallback to RSS feed
     try:
         req = urllib.request.Request(RSS_FEED_URL, headers={"User-Agent": "Mozilla/5.0 (FinalThird-Sync/1.0)"})
-        with urllib.request.urlopen(req, timeout=12) as resp:
+        with safe_urlopen(req, timeout=12) as resp:
             xml_data = resp.read()
             root = ET.fromstring(xml_data)
             
@@ -817,7 +840,7 @@ def fetch_channel_videos():
                 url, 
                 headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
             )
-            with urllib.request.urlopen(req, timeout=12) as resp:
+            with safe_urlopen(req, timeout=12) as resp:
                 html = resp.read().decode("utf-8")
 
             start_marker = "ytInitialData = "
