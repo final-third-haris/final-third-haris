@@ -99,7 +99,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "european-football",
       "playlistTitle": "European & World Football",
       "published": "2 days ago",
-      "views": "38K views",
+      "views": "39K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'അയാളെ പ്രൊവോക്ക് ചെയ്യാൻ പോകരുതായിരുന്നു ! Cristiano Ronaldo | Haris Nenmara'. Watch the full breakdown on Final Third."
     },
     {
