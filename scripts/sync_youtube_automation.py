@@ -39,6 +39,7 @@ RSS_FEED_URL = f"https://www.youtube.com/feeds/videos.xml?channel_id={CHANNEL_ID
 PIPELINE_PATH = os.path.join(base_dir, "data/content_pipeline.json")
 INDEX_PATH = os.path.join(base_dir, "index.html")
 CONFIG_JS_PATH = os.path.join(base_dir, "assets/js/config.js")
+SITEMAP_PATH = os.path.join(base_dir, "sitemap.xml")
 
 def slugify(text):
     text = text.lower()
@@ -230,7 +231,7 @@ def update_existing_views(filepath, views_map, pub_time_map=None):
 
     # 2. Update static video cards in HTML (if present)
     for vid, v_str in views_map.items():
-        card_pattern = rf'(<article[^>]+data-video-id="{re.escape(vid)}"[^>]*>.*?</article>)'
+        card_pattern = rf'(<(?:article|div)[^>]+data-video-id="{re.escape(vid)}"[^>]*>.*?</(?:article|div)>)'
         card_match = re.search(card_pattern, content, re.DOTALL)
         if card_match:
             card_html = card_match.group(1)
@@ -242,8 +243,8 @@ def update_existing_views(filepath, views_map, pub_time_map=None):
             )
             if pub_time_map and vid in pub_time_map and pub_time_map[vid]:
                 new_card = re.sub(
-                    r'(<span class="card-published-time">)[^<]+(</span>)',
-                    rf'\g<1>{pub_time_map[vid]}\g<2>',
+                    r'(<span class="card-published-time"[^>]*>)[^<]+(</span>)',
+                    rf'<span class="card-published-time" data-nosnippet>{pub_time_map[vid]}\g<2>',
                     new_card
                 )
             if card_html != new_card:
@@ -252,7 +253,7 @@ def update_existing_views(filepath, views_map, pub_time_map=None):
 
     # 3. Update static short cards in HTML (if present)
     for vid, v_str in views_map.items():
-        short_pattern = rf'(<article[^>]+data-short-id="{re.escape(vid)}"[^>]*>.*?</article>)'
+        short_pattern = rf'(<(?:article|div)[^>]+data-short-id="{re.escape(vid)}"[^>]*>.*?</(?:article|div)>)'
         short_match = re.search(short_pattern, content, re.DOTALL)
         if short_match:
             short_html = short_match.group(1)
@@ -685,6 +686,27 @@ def update_schema_video_object(filepath, video):
     """
     return False
 
+def sanitize_sitemap_homepage(sitemap_path):
+    """
+    Safeguard: Ensures the root homepage URL in sitemap.xml does not have a <lastmod> tag,
+    preventing Google Search from treating the homepage as a dated article and attaching
+    relative date bylines ('X days ago') to the search snippet.
+    """
+    if not os.path.exists(sitemap_path):
+        return False
+    with open(sitemap_path, "r", encoding="utf-8") as f:
+        content = f.read()
+    new_content = re.sub(
+        r'(<loc>https://(?:www\.)?finalthird-haris\.com/</loc>\s*)<lastmod>[^<]+</lastmod>\s*',
+        r'\g<1>',
+        content
+    )
+    if new_content != content:
+        with open(sitemap_path, "w", encoding="utf-8") as f:
+            f.write(new_content)
+        return True
+    return False
+
 def sync_active_featured_stats(filepath, views_map, pub_time_map=None):
     if not os.path.exists(filepath):
         return False
@@ -919,7 +941,7 @@ def prepend_static_video_card(filepath, video):
             </div>'''
 
     card_html = f'''
-          <article class="video-card reveal-cascade" data-video-id="{vid}" style="--cascade-index: 0">
+          <div class="video-card reveal-cascade" data-video-id="{vid}" style="--cascade-index: 0">
             <div class="video-thumbnail-wrap" role="button" tabindex="0" aria-label="Play video: {title}">
               <img src="https://i.ytimg.com/vi/{vid}/hqdefault.jpg" alt="Video thumbnail: {title}" loading="lazy" decoding="async" width="480" height="270" />
               <span class="card-sport-pill">{sport_cap}</span>
@@ -936,12 +958,12 @@ def prepend_static_video_card(filepath, video):
             <div class="video-card-body">
               <div class="card-meta-row">
                 <span class="card-playlist-name">{pl_title}</span>
-                <span class="card-published-time">{pub}</span>
+                <span class="card-published-time" data-nosnippet>{pub}</span>
               </div>
               <h3 class="video-card-title">{title}</h3>
               <p class="video-card-summary">{summary}</p>{dedicated_btn_html}
             </div>
-          </article>'''
+          </div>'''
     new_content = content[:insert_pos] + card_html + content[insert_pos:]
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(new_content)
@@ -963,7 +985,7 @@ def prepend_static_short_card(filepath, short):
     views = short.get("views") or "10K views"
 
     card_html = f'''
-            <article class="short-card reveal-cascade" data-short-id="{vid}" role="button" tabindex="0" aria-label="Play Short: {title}" style="--cascade-index: 0">
+            <div class="short-card reveal-cascade" data-short-id="{vid}" role="button" tabindex="0" aria-label="Play Short: {title}" style="--cascade-index: 0">
               <img src="https://i.ytimg.com/vi/{vid}/hqdefault.jpg" alt="Final Third Short: {title}" class="short-thumb-img" loading="lazy" width="360" height="640" decoding="async">
               <div class="short-card-scrim" aria-hidden="true"></div>
               <div class="short-badge-top" aria-hidden="true">
@@ -977,7 +999,7 @@ def prepend_static_short_card(filepath, short):
                 </span>
                 <h3 class="short-title" lang="ml">{title}</h3>
               </div>
-            </article>'''
+            </div>'''
     new_content = content[:insert_pos] + card_html + content[insert_pos:]
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(new_content)
@@ -1005,6 +1027,11 @@ def run_sync(dry_run=False):
 
     views_map = {item["id"]: item["views"] for item in channel_videos if item.get("id") and item.get("views")}
     pub_time_map = {item["id"]: item["published_relative"] for item in channel_videos if item.get("id") and item.get("published_relative")}
+
+    # Recalculate fresh relative timestamps for all known videos from their actual publication ISO
+    for p_id, p_val in pipeline.items():
+        if p_id not in pub_time_map and p_val.get("published_iso"):
+            pub_time_map[p_id] = format_published_time(p_val["published_iso"])
 
     client = YouTubeCaptionClient(base_dir=base_dir)
     now_dt = datetime.now(timezone.utc)
@@ -1279,6 +1306,10 @@ def run_sync(dry_run=False):
         if new_published_videos or upgraded_videos > 0:
             print("Rebuilding dedicated SEO pages, hubs, and sitemap...")
             generate_video_pages.generate_all()
+            changes_made = True
+
+        # Always ensure sitemap homepage has no <lastmod> to protect Google Search snippet
+        if sanitize_sitemap_homepage(SITEMAP_PATH):
             changes_made = True
 
         if changes_made:

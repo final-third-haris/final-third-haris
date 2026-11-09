@@ -1544,7 +1544,6 @@ def generate_all():
     sitemap_entries = [
         f"""  <url>
     <loc>{DOMAIN}/</loc>
-    <lastmod>{now_date}</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>""",

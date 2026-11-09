@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const ytWatchUrl = `https://www.youtube.com/watch?v=${video.id}`;
 
       return `
-        <article class="video-card reveal-cascade" data-video-id="${video.id}" style="--cascade-index: ${idx % 4}">
+        <div class="video-card reveal-cascade" data-video-id="${video.id}" style="--cascade-index: ${idx % 4}">
           <div class="video-thumbnail-wrap" role="button" tabindex="0" aria-label="Play video: ${escapeHtml(video.title)}">
             <img 
               src="${thumbUrl}" 
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="video-card-body">
             <div class="video-card-meta">
               <span class="playlist-name">${escapeHtml(video.playlistTitle)}</span>
-              <span>${video.published}</span>
+              <span data-nosnippet>${video.published}</span>
             </div>
             <h3 class="video-card-title" role="button" tabindex="0">${escapeHtml(video.title)}</h3>
             <p class="video-card-summary">${escapeHtml(video.summary || '')}</p>
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
               </a>
             </div>
           </div>
-        </article>
+        </div>
       `;
     }).join('');
 
@@ -538,7 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const sportLabel = (short.sport || 'Sports').toUpperCase();
 
       return `
-        <article class="short-card reveal-cascade" data-short-id="${short.id}" role="button" tabindex="0" aria-label="Play Short: ${escapeHtml(short.title)}" style="--cascade-index: ${idx % 4}">
+        <div class="short-card reveal-cascade" data-short-id="${short.id}" role="button" tabindex="0" aria-label="Play Short: ${escapeHtml(short.title)}" style="--cascade-index: ${idx % 4}">
           <img src="${thumb}" alt="${escapeHtml(short.title)}" class="short-thumb-img" loading="lazy">
           <div class="short-card-scrim" aria-hidden="true"></div>
           
@@ -565,7 +565,7 @@ document.addEventListener('DOMContentLoaded', () => {
               </a>
             </div>
           </div>
-        </article>
+        </div>
       `;
     }).join('');
 
