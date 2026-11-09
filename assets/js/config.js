@@ -88,18 +88,38 @@ const FINAL_THIRD_CONFIG = {
     ]
   },
 
-  featuredVideoId: "Kv8iQzoqvlg",
+  featuredVideoId: "Yb8KSc7RVDE",
 
   // 300+ Authentic Videos from YouTube @FinalThird_HarisNenmara
   videos: [
+    {
+      "id": "Yb8KSc7RVDE",
+      "title": "ചെന്നൈയ്ക്കും മുംബൈക്കും വലിയ പ്ലാനുകൾ | IPL | IPL trade window | Hardik Pandya | IPL mini auction",
+      "sport": "cricket",
+      "playlistId": "indian-cricket",
+      "playlistTitle": "Indian Cricket Team",
+      "published": "Just now",
+      "views": "304 views",
+      "summary": "Analysis and match debrief by Haris Nenmara on 'ചെന്നൈയ്ക്കും മുംബൈക്കും വലിയ പ്ലാനുകൾ | IPL | IPL trade window | Hardik Pandya | IPL mini auction'. Watch the full breakdown on Final Third."
+    },
+    {
+      "id": "lNCeUwY0gC8",
+      "title": "ഡിയോങ്ങിൻ്റെ വരവിൽ മാറിയ കളി; പെഡ്രി എന്ന എഞ്ചിന്‍! Barcelona vs Atletico madrid",
+      "sport": "football",
+      "playlistId": "PLGWXiMbN17ik",
+      "playlistTitle": "Barcelona",
+      "published": "3 hours ago",
+      "views": "6.5K views",
+      "summary": "Analysis and match debrief by Haris Nenmara on 'ഡിയോങ്ങിൻ്റെ വരവിൽ മാറിയ കളി; പെഡ്രി എന്ന എഞ്ചിന്‍! Barcelona vs Atletico madrid'. Watch the full breakdown on Final Third."
+    },
     {
       "id": "Kv8iQzoqvlg",
       "title": "അയാളെ പ്രൊവോക്ക് ചെയ്യാൻ പോകരുതായിരുന്നു ! Cristiano Ronaldo | Haris Nenmara",
       "sport": "football",
       "playlistId": "european-football",
       "playlistTitle": "European & World Football",
-      "published": "2 days ago",
-      "views": "39K views",
+      "published": "3 days ago",
+      "views": "40K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'അയാളെ പ്രൊവോക്ക് ചെയ്യാൻ പോകരുതായിരുന്നു ! Cristiano Ronaldo | Haris Nenmara'. Watch the full breakdown on Final Third."
     },
     {
@@ -109,7 +129,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "european-football",
       "playlistTitle": "European & World Football",
       "published": "3 days ago",
-      "views": "71K views",
+      "views": "72K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'CR7... അതൊരു വികാരമായിരുന്നു ! | Cristiano Ronaldo Retirement | Cr7'. Watch the full breakdown on Final Third."
     },
     {
@@ -118,8 +138,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
       "playlistTitle": "Real Madrid",
-      "published": "3 days ago",
-      "views": "40K views",
+      "published": "4 days ago",
+      "views": "41K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'മാറ്റമൊന്നുമില്ലാതെ വിനി ! ഫെഡെയുടെ റോക്കറ്റുകള്‍, ജൂഡ് മാജിക് | Real Madrid | Federico Valverde'. Watch the full breakdown on Final Third."
     },
     {
@@ -139,7 +159,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "4 days ago",
-      "views": "45K views",
+      "views": "47K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ഹർദിക് പോകും... അർഷ്ദീപ് or ജയ്സ്വാൾ, ആര് വരും ? Hardik Pandya | Mumbai Indians'. Watch the full breakdown on Final Third."
     },
     {
@@ -148,8 +168,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "PLGWXiMbN17ik",
       "playlistTitle": "Barcelona",
-      "published": "4 days ago",
-      "views": "30K views",
+      "published": "5 days ago",
+      "views": "31K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ഫ്ലിക്കിന്‍റെ പിള്ളേര്‍ ഇവിടെയൊക്കെ തന്നെ കാണും ! Barcelona vs aston villa | Lamine yamal | Raphinha'. Watch the full breakdown on Final Third."
     },
     {
@@ -158,7 +178,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "5 days ago",
+      "published": "6 days ago",
       "views": "23K views",
       "summary": "Analysis and match debrief by Haris Nenmara on '91 ന്  7 ;  ആ കുഴിമാടത്തിൽ നിന്ന് മാക്സ് വെൽ നടത്തിയ കംബാക്ക് ! |  Glenn Maxwell 201 vs Afghanistan'. Watch the full breakdown on Final Third."
     },
@@ -2242,7 +2262,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
       "published": "Yesterday",
-      "views": "5.7K views",
+      "views": "6.2K views",
       "summary": "സിമിയോണി ഒന്നും മറക്കില്ല | Cristiano Ronaldo"
     },
     {
@@ -2251,8 +2271,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "2 days ago",
-      "views": "2.1K views",
+      "published": "3 days ago",
+      "views": "2.4K views",
       "summary": "റോണോയുടെ റിവഞ്ചുകൾ| Cristiano Ronaldo | CR7"
     },
     {
@@ -2261,8 +2281,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "2 days ago",
-      "views": "6.9K views",
+      "published": "3 days ago",
+      "views": "8.2K views",
       "summary": "മറക്കില്ല  റോണോ |  Cristiano ronaldo retires | Cr7 | Portugal |"
     },
     {
@@ -2271,8 +2291,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "2 days ago",
-      "views": "3.0K views",
+      "published": "3 days ago",
+      "views": "3.5K views",
       "summary": "റയല്‍.... റെമോന്‍ടാഡ... റിപ്പീറ്റ് ! Real Madrid"
     },
     {
@@ -2281,8 +2301,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "2 days ago",
-      "views": "3.1K views",
+      "published": "3 days ago",
+      "views": "3.4K views",
       "summary": "CR 7 ഫുട്ബോള്‍ ലോകത്തെ കാല്‍ക്കീഴിലാക്കിയ കാലം | Cristiano ronaldo | cr7"
     },
     {
@@ -2291,8 +2311,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "3 days ago",
-      "views": "24K views",
+      "published": "4 days ago",
+      "views": "25K views",
       "summary": "നന്ദി റോണോ"
     },
   {
