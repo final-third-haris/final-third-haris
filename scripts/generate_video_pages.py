@@ -23,20 +23,6 @@ if os.path.exists(_pipeline_file):
 else:
     VIDEOS = []
 
-try:
-    from build_editorial_deep_dives import generate_custom_deep_dive
-except ImportError:
-    import sys
-    sys.path.append(os.path.dirname(__file__))
-    from build_editorial_deep_dives import generate_custom_deep_dive
-
-_deep_dives_file = os.path.join(os.path.dirname(__file__), "../data/editorial_deep_dives.json")
-if os.path.exists(_deep_dives_file):
-    with open(_deep_dives_file, "r", encoding="utf-8") as _ddf:
-        EDITORIAL_DEEP_DIVES = json.load(_ddf)
-else:
-    EDITORIAL_DEEP_DIVES = {}
-
 # Generate common navigation header
 def render_navbar(active_page=""):
     football_active = ' active' if active_page == 'football' else ''
@@ -114,9 +100,31 @@ def render_page(video):
     vid = video["id"]
     slug = video["slug"]
     sport = video["sport"]
-    deep_dive = EDITORIAL_DEEP_DIVES.get(vid)
-    if not deep_dive:
-        deep_dive = generate_custom_deep_dive(video)
+    base_dir_val = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    transcript_file = os.path.join(base_dir_val, f"transcripts/{vid}.srt")
+    transcript_html = ""
+    if os.path.exists(transcript_file):
+        try:
+            with open(transcript_file, "r", encoding="utf-8") as tf:
+                srt_raw = tf.read()
+            cues = []
+            for block in srt_raw.strip().split("\n\n"):
+                lines = [l.strip() for l in block.strip().split("\n") if l.strip()]
+                # SRT cues are usually index, timestamp, then text lines
+                if len(lines) >= 3:
+                    cues.append(" ".join(lines[2:]))
+                elif len(lines) == 2 and "-->" not in lines[1]:
+                    cues.append(lines[1])
+            if cues:
+                clean_spoken = " ".join(cues)
+                transcript_html = f'''
+        <!-- Spoken Broadcast Captions -->
+        <div class="transcript-box" style="margin: 1.5rem 0; padding: 1.25rem; background: rgba(158, 226, 11, 0.05); border-left: 3px solid var(--neon-lime); border-radius: 0 8px 8px 0;">
+          <h3 style="font-size: 0.9375rem; font-weight: 800; color: var(--neon-lime); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Broadcast Audio Captions | സംപ്രേഷണ വാക്യങ്ങൾ</h3>
+          <p lang="ml" style="color: #e5e5e5; font-size: 0.9375rem; line-height: 1.8;">{clean_spoken}</p>
+        </div>'''
+        except Exception:
+            transcript_html = "" 
     sport_name = "Football" if sport == "football" else "Cricket"
     sport_hub_url = f"/{sport}/"
     url = f"{DOMAIN}/{sport}/{slug}/"
@@ -597,58 +605,20 @@ def render_page(video):
       background: var(--charcoal);
       border: 1px solid var(--charcoal-border);
       border-radius: 12px;
-      padding: 2.25rem;
+      padding: 2rem;
       margin-bottom: 2rem;
     }}
-    .article-badge-row {{
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1.25rem;
-      flex-wrap: wrap;
-    }}
-    .editorial-flag {{
-      background: rgba(158, 226, 11, 0.12);
-      color: var(--neon-lime);
-      border: 1px solid rgba(158, 226, 11, 0.35);
-      font-size: 0.6875rem;
-      font-weight: 800;
-      padding: 3px 8px;
-      border-radius: 4px;
-      letter-spacing: 0.05em;
-    }}
-    .read-badge {{
-      background: var(--charcoal-light);
-      border: 1px solid var(--charcoal-border);
-      color: var(--muted-grey);
-      font-size: 0.6875rem;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 4px;
-    }}
-    .editorial-main-h2 {{
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--off-white);
-      margin-bottom: 1.5rem;
-      border-bottom: 1px solid var(--charcoal-border);
-      padding-bottom: 0.75rem;
-    }}
-    .editorial-sub-block {{
-      margin-bottom: 2.25rem;
-    }}
-    .editorial-sub-block h3 {{
-      font-size: 1.1875rem;
+    .editorial-content h2 {{
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--neon-lime);
-      margin-bottom: 0.875rem;
-      display: flex;
-      align-items: baseline;
-      gap: 0.5rem;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
     }}
-    .editorial-sub-block p {{
+    .editorial-content p {{
       color: #d8d8d8;
       font-size: 1.0625rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
       line-height: 1.8;
     }}
     .takeaways-box {{
@@ -919,51 +889,22 @@ def render_page(video):
         </div>
       </section>
 
-      <!-- Tactical Editorial Breakdown Feature (E-E-A-T High Value Content) -->
+      <!-- Video Captions & Match Overview -->
       <section class="editorial-content">
-        <div class="article-badge-row">
-          <span class="editorial-flag">IN-DEPTH TACTICAL ESSAY</span>
-          <span class="read-badge">{video.get('read_time', '4 min read')} · FINAL THIRD DEBRIEF</span>
-        </div>
+        <h2>Video Captions &amp; Match Overview | വീഡിയോ വിവരണം</h2>
+        <p lang="ml">{p1_clean}</p>
+        <p>{p2_clean}</p>
 
-        <h2 class="editorial-main-h2">സമഗ്രമായ മാച്ച് അനാലിസിസും തന്ത്രപരമായ അവലോകനവും | Tactical Debrief</h2>
+        {transcript_html}
 
-        <!-- Section 1: Match Context & Strategic Stakes -->
-        <div class="editorial-sub-block">
-          <h3>01. Match Context &amp; Strategic Stakes | പശ്ചാത്തലവും തന്ത്രപരമായ പ്രാധാന്യവും</h3>
-          <p lang="ml">{deep_dive.get('context_ml', p1_clean)}</p>
-          <p>{deep_dive.get('context_en', p2_clean)}</p>
-        </div>
-
-        <!-- Section 2: Tactical Formations & Structural Dynamics -->
-        <div class="editorial-sub-block">
-          <h3>02. Tactical Formations &amp; Structural Breakdown | തന്ത്രപരമായ വിന്യാസവും ശൈലിയും</h3>
-          <p lang="ml">{deep_dive.get('tactics_ml', '')}</p>
-          <p>{deep_dive.get('tactics_en', '')}</p>
-        </div>
-
-        <!-- Section 3: Key Player Performance & Tactical Roles -->
-        <div class="editorial-sub-block">
-          <h3>03. Key Player Performance &amp; Tactical Roles | നിർണായക താരങ്ങളുടെ പ്രകടനം</h3>
-          <p lang="ml">{deep_dive.get('players_ml', '')}</p>
-          <p>{deep_dive.get('players_en', '')}</p>
-        </div>
-
-        <!-- Section 4: Statistical Highlights & Metric Analysis -->
-        <div class="editorial-sub-block">
-          <h3>04. Statistical Highlights &amp; Metric Analysis | വിശകലനവും സ്ഥിതിവിവരക്കണക്കുകളും</h3>
-          <p lang="ml">{deep_dive.get('metrics_ml', '')}</p>
-          <p>{deep_dive.get('metrics_en', '')}</p>
-
-          <!-- Key Discussion Takeaways Box -->
-          <div class="takeaways-box">
-            <h3 style="font-size: 1rem; font-weight: 800; color: var(--off-white); margin-bottom: 0.75rem; text-transform: uppercase;">{takeaways_title}</h3>
-            <ul>{takeaways_html}</ul>
-          </div>
+        <!-- Key Takeaways Box -->
+        <div class="takeaways-box">
+          <h3>Key Discussion Points &amp; Video Takeaways</h3>
+          <ul>{takeaways_html}</ul>
         </div>
 
         <!-- In-Article Google AdSense Responsive Unit -->
-        <div class="in-article-ad-box" style="margin: 2.25rem 0; padding: 1.25rem; background: var(--charcoal-light); border: 1px dashed var(--charcoal-border); border-radius: 8px; text-align: center;">
+        <div class="in-article-ad-box" style="margin: 2rem 0; padding: 1.25rem; background: var(--charcoal-light); border: 1px dashed var(--charcoal-border); border-radius: 8px; text-align: center;">
           <span style="display: block; font-size: 0.6875rem; text-transform: uppercase; color: var(--dark-grey); letter-spacing: 0.08em; margin-bottom: 0.75rem;">Advertisement · Google AdSense</span>
           <ins class="adsbygoogle"
                style="display:block; text-align:center;"
@@ -976,28 +917,18 @@ def render_page(video):
           </script>
         </div>
 
-        <!-- Section 5: Final Third Tactical Verdict -->
-        <div class="editorial-sub-block">
-          <h3>05. Final Third Tactical Verdict &amp; Strategic Takeaways | ഫൈനൽ തേർഡ് അവലോകന നിഗമനം</h3>
-          <p lang="ml">{deep_dive.get('verdict_ml', '')}</p>
-          <p>{deep_dive.get('verdict_en', '')}</p>
-        </div>
-
         <div class="tags-row">
           {tags_html}
         </div>
 
-        <div style="margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--charcoal-border); display: flex; gap: 1rem; flex-wrap: wrap;">
+        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--charcoal-border);">
           <a href="{sport_hub_url}" class="btn btn-outline">
             &larr; Back to All {sport_name} Videos
-          </a>
-          <a href="/about.html" class="btn btn-outline">
-            About Analyst Haris Nenmara ↗
           </a>
         </div>
       </section>
 
-      <!-- Author Attribution Card (E-E-A-T Verified Journalist) -->
+      <!-- Author Attribution Card -->
       <section class="author-card">
         <picture>
           <source srcset="/assets/images/haris-opt.webp" type="image/webp">
@@ -1006,7 +937,7 @@ def render_page(video):
         <div class="author-info">
           <h4>Analyzed by Haris Nenmara (ഹാരിസ് നെന്മാറ)</h4>
           <p class="author-role">Sports Journalist &amp; Tactical Analyst · Final Third</p>
-          <p class="author-bio">Covering European football tactical systems, Kerala Blasters matchday dynamics in the ISL, and international cricket analysis in Malayalam. <a href="/about.html" style="color: var(--neon-lime); font-weight: 700;">Read Full Editorial Bio &amp; Credentials →</a></p>
+          <p class="author-bio">Covering European football tactical systems, Kerala Blasters matchday dynamics in the ISL, and international cricket analysis in Malayalam. <a href="/about.html" style="color: var(--neon-lime); font-weight: 700;">About Haris →</a></p>
         </div>
       </section>
     </article>
