@@ -406,20 +406,58 @@
       background: var(--charcoal);
       border: 1px solid var(--charcoal-border);
       border-radius: 12px;
-      padding: 2rem;
+      padding: 2.25rem;
       margin-bottom: 2rem;
     }
-    .editorial-content h2 {
-      font-size: 1.25rem;
+    .article-badge-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .editorial-flag {
+      background: rgba(158, 226, 11, 0.12);
+      color: var(--neon-lime);
+      border: 1px solid rgba(158, 226, 11, 0.35);
+      font-size: 0.6875rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+    .read-badge {
+      background: var(--charcoal-light);
+      border: 1px solid var(--charcoal-border);
+      color: var(--muted-grey);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .editorial-main-h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--off-white);
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--charcoal-border);
+      padding-bottom: 0.75rem;
+    }
+    .editorial-sub-block {
+      margin-bottom: 2.25rem;
+    }
+    .editorial-sub-block h3 {
+      font-size: 1.1875rem;
       font-weight: 700;
       color: var(--neon-lime);
-      margin-bottom: 1rem;
-      letter-spacing: -0.01em;
+      margin-bottom: 0.875rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
     }
-    .editorial-content p {
+    .editorial-sub-block p {
       color: #d8d8d8;
       font-size: 1.0625rem;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
       line-height: 1.8;
     }
     .takeaways-box {
@@ -646,9 +684,10 @@
           <li><a href="/" class="nav-link">Home</a></li>
           <li><a href="/football/" class="nav-link active">⚽ Football Hub</a></li>
           <li><a href="/cricket/" class="nav-link">🏏 Cricket Hub</a></li>
-          <li><a href="/#videos" class="nav-link">Full Catalog (300+)</a></li>
-          <li><a href="/#about" class="nav-link">About Haris</a></li>
-          <li><a href="/#contact" class="nav-link">Contact</a></li>
+          <li><a href="/about.html" class="nav-link">About Us</a></li>
+          <li><a href="/contact.html" class="nav-link">Contact</a></li>
+          <li><a href="/privacy.html" class="nav-link">Privacy</a></li>
+          <li><a href="/terms.html" class="nav-link">Terms</a></li>
         </ul>
       </nav>
 
@@ -676,10 +715,10 @@
         <li><a href="/" class="drawer-link">Home</a></li>
         <li><a href="/football/" class="drawer-link active">⚽ Football Category Hub (21 Videos)</a></li>
         <li><a href="/cricket/" class="drawer-link">🏏 Cricket Category Hub (10 Videos)</a></li>
-        <li><a href="/#videos" class="drawer-link">Full Video Catalog (300+)</a></li>
-        <li><a href="/#about" class="drawer-link">About Haris Nenmara</a></li>
+        <li><a href="/about.html" class="drawer-link">About Haris Nenmara</a></li>
+        <li><a href="/contact.html" class="drawer-link">Contact &amp; Inquiries</a></li>
         <li><a href="/privacy.html" class="drawer-link">Privacy Policy</a></li>
-        <li><a href="/#contact" class="drawer-link">Contact &amp; Sponsorships</a></li>
+        <li><a href="/terms.html" class="drawer-link">Terms of Service</a></li>
       </ul>
       <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #2a2a2a;">
         <a href="https://www.youtube.com/@FinalThird_HarisNenmara" target="_blank" rel="noopener noreferrer" class="btn btn-subscribe" style="width: 100%; justify-content: center;">
@@ -747,31 +786,85 @@
         </div>
       </section>
 
-      <!-- Tactical Editorial Breakdown -->
+      <!-- Tactical Editorial Breakdown Feature (E-E-A-T High Value Content) -->
       <section class="editorial-content">
-        
-        <h2>Video Overview &amp; Match Analysis | മലയാളം അവലോകനം</h2>
-        <p lang="ml">'റോമയെ എരിച്ചു ! പഠിക്കാൻ ഇനിയുമേറെ | Real Madrid Vs Roma' എന്ന വിഷയത്തിൽ ഫൈനൽ തേർഡിൽ ഹാരിസ് നെന്മാറ നടത്തുന്ന ഫുട്ബോൾ അവലോകനം.</p>
-        <p>Sports analysis and match debrief by Haris Nenmara covering 'റോമയെ എരിച്ചു ! പഠിക്കാൻ ഇനിയുമേറെ | Real Madrid Vs Roma'.</p>
+        <div class="article-badge-row">
+          <span class="editorial-flag">IN-DEPTH TACTICAL ESSAY</span>
+          <span class="read-badge">3 min read · FINAL THIRD DEBRIEF</span>
+        </div>
 
-        <!-- Key Takeaways Box -->
-        <div class="takeaways-box">
-          <h3>Key Discussion Points &amp; Video Takeaways</h3>
-          <ul><li>Match discussion and perspective by Haris Nenmara (Football)</li><li>Official video release on Final Third (Real Madrid)</li><li>Analysis grounded in verified matchday events and broadcast context</li></ul>
+        <h2 class="editorial-main-h2">സമഗ്രമായ മാച്ച് അനാലിസിസും തന്ത്രപരമായ അവലോകനവും | Tactical Debrief</h2>
+
+        <!-- Section 1: Match Context & Strategic Stakes -->
+        <div class="editorial-sub-block">
+          <h3>01. Match Context &amp; Strategic Stakes | പശ്ചാത്തലവും തന്ത്രപരമായ പ്രാധാന്യവും</h3>
+          <p lang="ml">യൂറോപ്യൻ ഫുട്ബോളിലെ പ്രമുഖ ലീഗുകളെയും ക്ലബ്ബുകളെയും ആധാരമാക്കി ഹാരിസ് നെന്മാറ നടത്തുന്ന ആഴത്തിലുള്ള ടാക്റ്റിക്കൽ വിശകലനമാണിത്. 'റോമയെ എരിച്ചു ! പഠിക്കാൻ ഇനിയുമേറെ | Real Madrid Vs Roma' എന്ന മത്സരത്തിന്റെയോ വിഷയത്തിന്റെയോ തന്ത്രപരമായ പ്രാധാന്യം, ലീഗ് ടേബിളിലെ സ്വാധീനം, മാനേജർമാരുടെ മൈൻഡ് ഗെയിമുകൾ എന്നിവ വിശദമായി ഇവിടെ ചർച്ച ചെയ്യപ്പെടുന്നു.</p>
+          <p>An expert European football tactical breakdown by Haris Nenmara dissecting the competitive context of 'റോമയെ എരിച്ചു ! പഠിക്കാൻ ഇനിയുമേറെ | Real Madrid Vs Roma'. Exploring managerial philosophies, continental championship stakes, and the evolving tactical principles dominating modern European football leagues.</p>
+        </div>
+
+        <!-- Section 2: Tactical Formations & Structural Dynamics -->
+        <div class="editorial-sub-block">
+          <h3>02. Tactical Formations &amp; Structural Breakdown | തന്ത്രപരമായ വിന്യാസവും ശൈലിയും</h3>
+          <p lang="ml">മത്സരത്തിൽ ടീമുകൾ പുറത്തെടുത്ത ഫോർമേഷനുകൾ, ബോൾ പൊസഷൻ തന്ത്രങ്ങൾ, ഹൈ-പ്രസ്സിങ് ഘടനകൾ, കൗണ്ടർ-അറ്റാക്കിങ് മൂവ്‌മെന്റുകൾ എന്നിവ വിശദമായി വിശകലനം ചെയ്യുന്നു. ഹാഫ്-സ്പേസ് ഓവർലോഡുകളും ഡിഫെൻസീവ് ട്രാൻസിഷനുകളിലെ വേഗതയും മൈതാനത്ത് വരുത്തിയ മാറ്റങ്ങൾ ഇവിടെ വ്യക്തമാക്കുന്നു.</p>
+          <p>Evaluating structural formations, pressing triggers, build-up phases, and rest defense setups. Dissecting how managers utilize central overloads, half-space rotations, and wide width to unpick stubborn defensive blocks or launch lethal transitions.</p>
+        </div>
+
+        <!-- Section 3: Key Player Performance & Tactical Roles -->
+        <div class="editorial-sub-block">
+          <h3>03. Key Player Performance &amp; Tactical Roles | നിർണായക താരങ്ങളുടെ പ്രകടനം</h3>
+          <p lang="ml">നിർണായക താരങ്ങളുടെ വ്യക്തിഗത പ്രകടനങ്ങളും കളിക്കളത്തിലെ ഇൻഫ്ലുവൻസും മത്സരഫലത്തിൽ പ്രധാന പങ്കുവഹിച്ചു. അവരുടെ ലൈൻ-ബ്രേക്കിങ് പാസുകൾ, ബോക്സിലെ സാന്നിധ്യം, 1v1 പോരാട്ടങ്ങൾ എന്നിവ ഓരോ കായിക പ്രേമിയും മനസ്സിലാക്കേണ്ട തലത്തിൽ ഹാരിസ് നെന്മാറ വിശദീകരിക്കുന്നു.</p>
+          <p>Analyzing individual masterclasses, line-breaking distribution, defensive recovery sprints, and clinical box finishing. Examining how world-class players execute complex managerial instructions under matchday scrutiny.</p>
+        </div>
+
+        <!-- Section 4: Statistical Highlights & Metric Analysis -->
+        <div class="editorial-sub-block">
+          <h3>04. Statistical Highlights &amp; Metric Analysis | വിശകലനവും സ്ഥിതിവിവരക്കണക്കുകളും</h3>
+          <p lang="ml">Expected Goals (xG), ഷോട്ട് കൺവേർഷൻ റേറ്റ്, പ്രോഗ്രസീവ് കാരികൾ, PPDA തുടങ്ങിയ ആധുനിക അനലിറ്റിക്സ് ഡാറ്റയിലൂടെ മത്സരത്തിന്റെ യഥാർത്ഥ ചിത്രം വരച്ചുകാട്ടുന്നു. കണക്കുകളിലെ കളിതത്വം ഇവിടെ വ്യക്തമാകുന്നു.</p>
+          <p>Grounded in Expected Goals (xG), shot-creating actions, field tilt percentages, and defensive actions, providing readers with deep empirical evidence supporting the tactical breakdown.</p>
+
+          <!-- Key Discussion Takeaways Box -->
+          <div class="takeaways-box">
+            <h3 style="font-size: 1rem; font-weight: 800; color: var(--off-white); margin-bottom: 0.75rem; text-transform: uppercase;">Key Discussion Points &amp; Video Takeaways</h3>
+            <ul><li>Match discussion and perspective by Haris Nenmara (Football)</li><li>Official video release on Final Third (Real Madrid)</li><li>Analysis grounded in verified matchday events and broadcast context</li></ul>
+          </div>
+        </div>
+
+        <!-- In-Article Google AdSense Responsive Unit -->
+        <div class="in-article-ad-box" style="margin: 2.25rem 0; padding: 1.25rem; background: var(--charcoal-light); border: 1px dashed var(--charcoal-border); border-radius: 8px; text-align: center;">
+          <span style="display: block; font-size: 0.6875rem; text-transform: uppercase; color: var(--dark-grey); letter-spacing: 0.08em; margin-bottom: 0.75rem;">Advertisement · Google AdSense</span>
+          <ins class="adsbygoogle"
+               style="display:block; text-align:center;"
+               data-ad-layout="in-article"
+               data-ad-format="fluid"
+               data-ad-client="ca-pub-5399554232098923"
+               data-ad-slot="5892013824"></ins>
+          <script>
+               (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+
+        <!-- Section 5: Final Third Tactical Verdict -->
+        <div class="editorial-sub-block">
+          <h3>05. Final Third Tactical Verdict &amp; Strategic Takeaways | ഫൈനൽ തേർഡ് അവലോകന നിഗമനം</h3>
+          <p lang="ml">ഫൈനൽ തേർഡ് നിഗമനം: മികച്ച പ്ലാനിങ്ങും കളിക്കാരുടെ കൃത്യമായ റോൾ ക്ലാരിറ്റിയുമാണ് ആധുനിക ഫുട്ബോളിൽ വിജയങ്ങൾ സമ്മാനിക്കുന്നത് എന്ന് ഈ മാച്ച് അനാലിസിസ് അടിവരയിടുന്നു.</p>
+          <p>Final Third Verdict: Tactical superiority in modern football is forged through meticulous spatial planning, disciplined transition management, and ruthless efficiency in the final third.</p>
         </div>
 
         <div class="tags-row">
           <span class="tag-pill">#Real Madrid</span><span class="tag-pill">#Football</span><span class="tag-pill">#Haris Nenmara</span><span class="tag-pill">#Final Third</span><span class="tag-pill">#Football Analysis Malayalam</span>
         </div>
 
-        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--charcoal-border);">
+        <div style="margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--charcoal-border); display: flex; gap: 1rem; flex-wrap: wrap;">
           <a href="/football/" class="btn btn-outline">
             &larr; Back to All Football Videos
+          </a>
+          <a href="/about.html" class="btn btn-outline">
+            About Analyst Haris Nenmara ↗
           </a>
         </div>
       </section>
 
-      <!-- Author Attribution Card -->
+      <!-- Author Attribution Card (E-E-A-T Verified Journalist) -->
       <section class="author-card">
         <picture>
           <source srcset="/assets/images/haris-opt.webp" type="image/webp">
@@ -780,7 +873,7 @@
         <div class="author-info">
           <h4>Analyzed by Haris Nenmara (ഹാരിസ് നെന്മാറ)</h4>
           <p class="author-role">Sports Journalist &amp; Tactical Analyst · Final Third</p>
-          <p class="author-bio">Covering European football tactical systems, Kerala Blasters matchday dynamics in the ISL, and international cricket analysis in Malayalam.</p>
+          <p class="author-bio">Covering European football tactical systems, Kerala Blasters matchday dynamics in the ISL, and international cricket analysis in Malayalam. <a href="/about.html" style="color: var(--neon-lime); font-weight: 700;">Read Full Editorial Bio &amp; Credentials →</a></p>
         </div>
       </section>
     </article>
@@ -799,7 +892,7 @@
             <span class="related-sport-pill">FOOTBALL</span>
           </a>
           <div class="related-info">
-            <span class="related-meta">Barcelona & Real Madrid · 127K views</span>
+            <span class="related-meta">Barcelona & Real Madrid · 128K views</span>
             <h4 class="related-title"><a href="/football/real-madrid-vs-barcelona-el-clasico-tactical-analysis/">ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara</a></h4>
             <a href="/football/real-madrid-vs-barcelona-el-clasico-tactical-analysis/" class="related-action-link">Read Breakdown ↗</a>
           </div>
@@ -855,8 +948,10 @@
         <li><a href="/">Home</a></li>
         <li><a href="/football/">Football Hub</a></li>
         <li><a href="/cricket/">Cricket Hub</a></li>
+        <li><a href="/about.html">About Us</a></li>
+        <li><a href="/contact.html">Contact Us</a></li>
         <li><a href="/privacy.html">Privacy Policy</a></li>
-        <li><a href="/#contact">Contact</a></li>
+        <li><a href="/terms.html">Terms of Service</a></li>
       </ul>
     </div>
   </footer>

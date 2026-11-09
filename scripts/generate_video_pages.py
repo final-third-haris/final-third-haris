@@ -23,11 +23,29 @@ if os.path.exists(_pipeline_file):
 else:
     VIDEOS = []
 
+try:
+    from build_editorial_deep_dives import generate_custom_deep_dive
+except ImportError:
+    import sys
+    sys.path.append(os.path.dirname(__file__))
+    from build_editorial_deep_dives import generate_custom_deep_dive
+
+_deep_dives_file = os.path.join(os.path.dirname(__file__), "../data/editorial_deep_dives.json")
+if os.path.exists(_deep_dives_file):
+    with open(_deep_dives_file, "r", encoding="utf-8") as _ddf:
+        EDITORIAL_DEEP_DIVES = json.load(_ddf)
+else:
+    EDITORIAL_DEEP_DIVES = {}
+
 # Generate common navigation header
 def render_navbar(active_page=""):
     football_active = ' active' if active_page == 'football' else ''
     cricket_active = ' active' if active_page == 'cricket' else ''
     home_active = ' active' if active_page == 'home' else ''
+    about_active = ' active' if active_page == 'about' else ''
+    contact_active = ' active' if active_page == 'contact' else ''
+    privacy_active = ' active' if active_page == 'privacy' else ''
+    terms_active = ' active' if active_page == 'terms' else ''
     fb_count = len([v for v in VIDEOS if v.get("sport") == "football"])
     cr_count = len([v for v in VIDEOS if v.get("sport") == "cricket"])
     
@@ -47,9 +65,10 @@ def render_navbar(active_page=""):
           <li><a href="/" class="nav-link{home_active}">Home</a></li>
           <li><a href="/football/" class="nav-link{football_active}">⚽ Football Hub</a></li>
           <li><a href="/cricket/" class="nav-link{cricket_active}">🏏 Cricket Hub</a></li>
-          <li><a href="/#videos" class="nav-link">Full Catalog (300+)</a></li>
-          <li><a href="/#about" class="nav-link">About Haris</a></li>
-          <li><a href="/#contact" class="nav-link">Contact</a></li>
+          <li><a href="/about.html" class="nav-link{about_active}">About Us</a></li>
+          <li><a href="/contact.html" class="nav-link{contact_active}">Contact</a></li>
+          <li><a href="/privacy.html" class="nav-link{privacy_active}">Privacy</a></li>
+          <li><a href="/terms.html" class="nav-link{terms_active}">Terms</a></li>
         </ul>
       </nav>
 
@@ -77,10 +96,10 @@ def render_navbar(active_page=""):
         <li><a href="/" class="drawer-link{home_active}">Home</a></li>
         <li><a href="/football/" class="drawer-link{football_active}">⚽ Football Category Hub ({fb_count} Videos)</a></li>
         <li><a href="/cricket/" class="drawer-link{cricket_active}">🏏 Cricket Category Hub ({cr_count} Videos)</a></li>
-        <li><a href="/#videos" class="drawer-link">Full Video Catalog (300+)</a></li>
-        <li><a href="/#about" class="drawer-link">About Haris Nenmara</a></li>
-        <li><a href="/privacy.html" class="drawer-link">Privacy Policy</a></li>
-        <li><a href="/#contact" class="drawer-link">Contact &amp; Sponsorships</a></li>
+        <li><a href="/about.html" class="drawer-link{about_active}">About Haris Nenmara</a></li>
+        <li><a href="/contact.html" class="drawer-link{contact_active}">Contact &amp; Inquiries</a></li>
+        <li><a href="/privacy.html" class="drawer-link{privacy_active}">Privacy Policy</a></li>
+        <li><a href="/terms.html" class="drawer-link{terms_active}">Terms of Service</a></li>
       </ul>
       <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #2a2a2a;">
         <a href="https://www.youtube.com/@FinalThird_HarisNenmara" target="_blank" rel="noopener noreferrer" class="btn btn-subscribe" style="width: 100%; justify-content: center;">
@@ -95,6 +114,9 @@ def render_page(video):
     vid = video["id"]
     slug = video["slug"]
     sport = video["sport"]
+    deep_dive = EDITORIAL_DEEP_DIVES.get(vid)
+    if not deep_dive:
+        deep_dive = generate_custom_deep_dive(video)
     sport_name = "Football" if sport == "football" else "Cricket"
     sport_hub_url = f"/{sport}/"
     url = f"{DOMAIN}/{sport}/{slug}/"
@@ -575,20 +597,58 @@ def render_page(video):
       background: var(--charcoal);
       border: 1px solid var(--charcoal-border);
       border-radius: 12px;
-      padding: 2rem;
+      padding: 2.25rem;
       margin-bottom: 2rem;
     }}
-    .editorial-content h2 {{
-      font-size: 1.25rem;
+    .article-badge-row {{
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }}
+    .editorial-flag {{
+      background: rgba(158, 226, 11, 0.12);
+      color: var(--neon-lime);
+      border: 1px solid rgba(158, 226, 11, 0.35);
+      font-size: 0.6875rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }}
+    .read-badge {{
+      background: var(--charcoal-light);
+      border: 1px solid var(--charcoal-border);
+      color: var(--muted-grey);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }}
+    .editorial-main-h2 {{
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--off-white);
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--charcoal-border);
+      padding-bottom: 0.75rem;
+    }}
+    .editorial-sub-block {{
+      margin-bottom: 2.25rem;
+    }}
+    .editorial-sub-block h3 {{
+      font-size: 1.1875rem;
       font-weight: 700;
       color: var(--neon-lime);
-      margin-bottom: 1rem;
-      letter-spacing: -0.01em;
+      margin-bottom: 0.875rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
     }}
-    .editorial-content p {{
+    .editorial-sub-block p {{
       color: #d8d8d8;
       font-size: 1.0625rem;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
       line-height: 1.8;
     }}
     .takeaways-box {{
@@ -859,31 +919,85 @@ def render_page(video):
         </div>
       </section>
 
-      <!-- Tactical Editorial Breakdown -->
+      <!-- Tactical Editorial Breakdown Feature (E-E-A-T High Value Content) -->
       <section class="editorial-content">
-        {badge_html}
-        <h2>{section_h2}</h2>
-        <p lang="ml">{p1_clean}</p>
-        <p>{p2_clean}</p>
+        <div class="article-badge-row">
+          <span class="editorial-flag">IN-DEPTH TACTICAL ESSAY</span>
+          <span class="read-badge">{video.get('read_time', '4 min read')} · FINAL THIRD DEBRIEF</span>
+        </div>
 
-        <!-- Key Takeaways Box -->
-        <div class="takeaways-box">
-          <h3>{takeaways_title}</h3>
-          <ul>{takeaways_html}</ul>
+        <h2 class="editorial-main-h2">സമഗ്രമായ മാച്ച് അനാലിസിസും തന്ത്രപരമായ അവലോകനവും | Tactical Debrief</h2>
+
+        <!-- Section 1: Match Context & Strategic Stakes -->
+        <div class="editorial-sub-block">
+          <h3>01. Match Context &amp; Strategic Stakes | പശ്ചാത്തലവും തന്ത്രപരമായ പ്രാധാന്യവും</h3>
+          <p lang="ml">{deep_dive.get('context_ml', p1_clean)}</p>
+          <p>{deep_dive.get('context_en', p2_clean)}</p>
+        </div>
+
+        <!-- Section 2: Tactical Formations & Structural Dynamics -->
+        <div class="editorial-sub-block">
+          <h3>02. Tactical Formations &amp; Structural Breakdown | തന്ത്രപരമായ വിന്യാസവും ശൈലിയും</h3>
+          <p lang="ml">{deep_dive.get('tactics_ml', '')}</p>
+          <p>{deep_dive.get('tactics_en', '')}</p>
+        </div>
+
+        <!-- Section 3: Key Player Performance & Tactical Roles -->
+        <div class="editorial-sub-block">
+          <h3>03. Key Player Performance &amp; Tactical Roles | നിർണായക താരങ്ങളുടെ പ്രകടനം</h3>
+          <p lang="ml">{deep_dive.get('players_ml', '')}</p>
+          <p>{deep_dive.get('players_en', '')}</p>
+        </div>
+
+        <!-- Section 4: Statistical Highlights & Metric Analysis -->
+        <div class="editorial-sub-block">
+          <h3>04. Statistical Highlights &amp; Metric Analysis | വിശകലനവും സ്ഥിതിവിവരക്കണക്കുകളും</h3>
+          <p lang="ml">{deep_dive.get('metrics_ml', '')}</p>
+          <p>{deep_dive.get('metrics_en', '')}</p>
+
+          <!-- Key Discussion Takeaways Box -->
+          <div class="takeaways-box">
+            <h3 style="font-size: 1rem; font-weight: 800; color: var(--off-white); margin-bottom: 0.75rem; text-transform: uppercase;">{takeaways_title}</h3>
+            <ul>{takeaways_html}</ul>
+          </div>
+        </div>
+
+        <!-- In-Article Google AdSense Responsive Unit -->
+        <div class="in-article-ad-box" style="margin: 2.25rem 0; padding: 1.25rem; background: var(--charcoal-light); border: 1px dashed var(--charcoal-border); border-radius: 8px; text-align: center;">
+          <span style="display: block; font-size: 0.6875rem; text-transform: uppercase; color: var(--dark-grey); letter-spacing: 0.08em; margin-bottom: 0.75rem;">Advertisement · Google AdSense</span>
+          <ins class="adsbygoogle"
+               style="display:block; text-align:center;"
+               data-ad-layout="in-article"
+               data-ad-format="fluid"
+               data-ad-client="ca-pub-5399554232098923"
+               data-ad-slot="5892013824"></ins>
+          <script>
+               (adsbygoogle = window.adsbygoogle || []).push({{}});
+          </script>
+        </div>
+
+        <!-- Section 5: Final Third Tactical Verdict -->
+        <div class="editorial-sub-block">
+          <h3>05. Final Third Tactical Verdict &amp; Strategic Takeaways | ഫൈനൽ തേർഡ് അവലോകന നിഗമനം</h3>
+          <p lang="ml">{deep_dive.get('verdict_ml', '')}</p>
+          <p>{deep_dive.get('verdict_en', '')}</p>
         </div>
 
         <div class="tags-row">
           {tags_html}
         </div>
 
-        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--charcoal-border);">
+        <div style="margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--charcoal-border); display: flex; gap: 1rem; flex-wrap: wrap;">
           <a href="{sport_hub_url}" class="btn btn-outline">
             &larr; Back to All {sport_name} Videos
+          </a>
+          <a href="/about.html" class="btn btn-outline">
+            About Analyst Haris Nenmara ↗
           </a>
         </div>
       </section>
 
-      <!-- Author Attribution Card -->
+      <!-- Author Attribution Card (E-E-A-T Verified Journalist) -->
       <section class="author-card">
         <picture>
           <source srcset="/assets/images/haris-opt.webp" type="image/webp">
@@ -892,7 +1006,7 @@ def render_page(video):
         <div class="author-info">
           <h4>Analyzed by Haris Nenmara (ഹാരിസ് നെന്മാറ)</h4>
           <p class="author-role">Sports Journalist &amp; Tactical Analyst · Final Third</p>
-          <p class="author-bio">Covering European football tactical systems, Kerala Blasters matchday dynamics in the ISL, and international cricket analysis in Malayalam.</p>
+          <p class="author-bio">Covering European football tactical systems, Kerala Blasters matchday dynamics in the ISL, and international cricket analysis in Malayalam. <a href="/about.html" style="color: var(--neon-lime); font-weight: 700;">Read Full Editorial Bio &amp; Credentials →</a></p>
         </div>
       </section>
     </article>
@@ -923,8 +1037,10 @@ def render_page(video):
         <li><a href="/">Home</a></li>
         <li><a href="/football/">Football Hub</a></li>
         <li><a href="/cricket/">Cricket Hub</a></li>
+        <li><a href="/about.html">About Us</a></li>
+        <li><a href="/contact.html">Contact Us</a></li>
         <li><a href="/privacy.html">Privacy Policy</a></li>
-        <li><a href="/#contact">Contact</a></li>
+        <li><a href="/terms.html">Terms of Service</a></li>
       </ul>
     </div>
   </footer>
@@ -992,6 +1108,53 @@ def render_category_hub(sport):
         </article>"""
 
     hub_url = f"{DOMAIN}/{sport}/"
+
+    if sport == "football":
+        hub_guide_html = '''  <section class="hub-editorial-guide">
+    <div class="guide-header">
+      <h2>ഫുട്ബോൾ വിശകലന തത്വം &amp; കവറേജ് | Final Third Football Editorial Guide</h2>
+      <p class="guide-lead">
+        ഫൈനൽ തേർഡിൽ ഫുട്ബോൾ മത്സരങ്ങളെ വെറും സ്കോർബോർഡിൻ്റെയോ ഗോളുകളുടെയോ അടിസ്ഥാനത്തിലല്ല ഞങ്ങൾ വിലയിരുത്തുന്നത്. ഓരോ മത്സരത്തിലും ടീമുകൾ സ്വീകരിക്കുന്ന തന്ത്രപരമായ വിന്യാസം (Tactical Formations), ഹൈ-പ്രസ്സിങ് ഘടന (High-Pressing Structures), ബോൾ ട്രാൻസിഷൻ സ്പീഡ് (Transition Speed), സ്പേസ് കണ്ടെത്താനുള്ള നീക്കങ്ങൾ (Half-Space Overloads) എന്നിവ ആഴത്തിൽ പരിശോധിക്കുന്നതാണ് ഹാരിസ് നെന്മാറയുടെ വിശകലന രീതി.
+      </p>
+    </div>
+    <div class="guide-grid">
+      <div class="guide-card">
+        <h3>⚽ European Football &amp; UEFA Champions League</h3>
+        <p>ലാ ലിഗയിലെ എൽ ക്ലാസിക്കോ (Real Madrid vs Barcelona), യുവേഫ ചാമ്പ്യൻസ് ലീഗ് നോക്കൗട്ട് മത്സരങ്ങൾ, പ്രീമിയർ ലീഗ് ടാക്റ്റിക്കൽ ബാറ്റിലുകൾ എന്നിവയിലെ മൈതാന തന്ത്രങ്ങൾ. ഹാൻസി ഫ്ലിക്കിന്റെ ഹൈ ഓഫ്‌സൈഡ് ട്രാപ്പും പെപ് ഗ്വാർഡിയോളയുടെ പൊസിഷനൽ പ്ലേയും മുതൽ കാർലോ ആഞ്ചലോട്ടിയുടെ കൗണ്ടർ അറ്റാക്കിങ് വൈഭവവും ഇതിഹാസ താരങ്ങളുടെ പ്രകടനങ്ങളും ഇവിടെ വിശകലനം ചെയ്യുന്നു.</p>
+      </div>
+      <div class="guide-card">
+        <h3>🐘 Kerala Blasters &amp; Indian Super League (ISL)</h3>
+        <p>കേരള ബ്ലാസ്റ്റേഴ്സിന്റെ ഓരോ ഐ.എസ്.എൽ മത്സരങ്ങളുടെയും തന്ത്രപരമായ പോസ്റ്റ്-മാച്ച് റിവ്യൂകൾ. മധ്യനിര നിയന്ത്രണം (Midfield Dominance), പ്രതിരോധ പിഴവുകൾ, ഫോറിൻ സൈനിങ്ങുകളുടെ സ്വാധീനം, മലയാളി യുവതാരങ്ങളുടെ വളർച്ച എന്നിവയെക്കുറിച്ചുള്ള നിഷ്പക്ഷവും വസ്തുതാപരവുമായ റിപ്പോർട്ടിങ്.</p>
+      </div>
+      <div class="guide-card">
+        <h3>📊 Data-Driven Modern Tactics &amp; Video Journalism</h3>
+        <p>Expected Goals (xG), പാസിങ് നെറ്റ്‌വർക്കുകൾ, ഡിഫെൻസീവ് ബ്ലോക്കുകൾ (Low Block vs Mid Block) തുടങ്ങിയ ആധുനിക ഫുട്ബോൾ അനലിറ്റിക്സ് ഡാറ്റ സാധാരണ ഫുട്ബോൾ പ്രേമികൾക്ക് ലളിതമായി മനസ്സിലാകുന്ന മലയാളം വീഡിയോ അവലോകനങ്ങളിലൂടെ ലഭ്യമാക്കുന്നു.</p>
+      </div>
+    </div>
+  </section>'''
+    else:
+        hub_guide_html = '''  <section class="hub-editorial-guide">
+    <div class="guide-header">
+      <h2>ക്രിക്കറ്റ് വിശകലന തത്വം &amp; കവറേജ് | Final Third Cricket Editorial Guide</h2>
+      <p class="guide-lead">
+        ആധുനിക ക്രിക്കറ്റ് മത്സരങ്ങളുടെ സങ്കീർണ്ണമായ ഡാറ്റയും മൈതാന തന്ത്രങ്ങളും മലയാളത്തിൽ വിശദമായി വിശകലനം ചെയ്യുന്ന പ്ലാറ്റ്‌ഫോമാണ് ഫൈനൽ തേർഡ്. ടി20 ക്രിക്കറ്റിന്റെ ആക്രമണാത്മക മാറ്റങ്ങൾ, ഡെത്ത് ഓവർ ബൗളിങ് പ്ലാനുകൾ, മാച്ച്-അപ്പ് സിദ്ധാന്തങ്ങൾ (Matchup Theory), ക്യാപ്റ്റൻസി തീരുമാനങ്ങൾ എന്നിവയാണ് ഞങ്ങളുടെ പ്രധാന ശ്രദ്ധാകേന്ദ്രം.
+      </p>
+    </div>
+    <div class="guide-grid">
+      <div class="guide-card">
+        <h3>🏏 Team India Campaigns &amp; ICC Tournaments</h3>
+        <p>ഇന്ത്യൻ ദേശീയ ടീമിന്റെ ഐസിസി ടൂർണമെന്റ് പോരാട്ടങ്ങൾ, ദ്വിരാഷ്ട്ര പരമ്പരകൾ, ടി20 ലോകകപ്പ് പ്ലാനുകൾ എന്നിവയുടെ സൂക്ഷ്മ വിശകലനം. രോഹിത് ശർമ്മയുടെ പവർപ്ലേ അഗ്രഷൻ, വിരാട് കോഹ്‌ലിയുടെ ചേസിങ് മാസ്റ്റർക്ലാസ്, യുവതാരങ്ങളുടെ വരവ് എന്നിവ സമഗ്രമായി വിലയിരുത്തുന്നു.</p>
+      </div>
+      <div class="guide-card">
+        <h3>⚡ Sanju Samson &amp; Matchup Evolution</h3>
+        <p>കേരളത്തിന്റെ അഭിമാനമായ സഞ്ജു സാംസന്റെ ബാറ്റിങ് ടെക്നിക്കൽ മാറ്റങ്ങൾ, പേസിനും സ്പിന്നിനുമെതിരായ സ്ട്രൈക്ക്-റേറ്റ് അപ്രോച്ച്, ടീം സെലക്ഷൻ സമ്മർദ്ദങ്ങളെ അതിജീവിക്കുന്ന ക്ലാസ് ഇന്നിങ്സുകൾ എന്നിവയുടെ പ്രത്യേക അവലോകനം.</p>
+      </div>
+      <div class="guide-card">
+        <h3>🎯 Elite Bowling Mastery (Bumrah &amp; Bhuvi)</h3>
+        <p>ജസ്പ്രീത് ബുംറയുടെ അൺപ്ലേയെബിൾ യോർക്കറുകൾ, ഭുവനേശ്വർ കുമാറിന്റെ സ്വിങ് ബോളിങ്, ഡെത്ത് ഓവർ എക്കണോമി കൺട്രോൾ എന്നിവ മൈക്രോ ലെവലിൽ പരിശോധിക്കുന്ന ബൗളിങ് സ്പെഷ്യൽ അനാലിസിസുകൾ.</p>
+      </div>
+    </div>
+  </section>'''
 
     html = f"""<!DOCTYPE html>
 <html lang="en" xml:lang="ml" dir="ltr">
@@ -1182,6 +1345,55 @@ def render_category_hub(sport):
     }}
 
     /* Sport Switcher Chips */
+    /* Editorial Guide in Category Hub */
+    .hub-editorial-guide {{
+      max-width: 1140px;
+      margin: 2rem auto 0;
+      padding: 0 1.5rem;
+    }}
+    .guide-header {{
+      background: var(--charcoal);
+      border: 1px solid var(--charcoal-border);
+      border-radius: 12px 12px 0 0;
+      padding: 2rem;
+      border-bottom: none;
+    }}
+    .guide-header h2 {{
+      font-size: 1.375rem;
+      font-weight: 800;
+      color: var(--neon-lime);
+      margin-bottom: 0.75rem;
+    }}
+    .guide-lead {{
+      font-size: 0.9375rem;
+      color: var(--off-white);
+      line-height: 1.8;
+    }}
+    .guide-grid {{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--charcoal-border);
+      border: 1px solid var(--charcoal-border);
+      border-radius: 0 0 12px 12px;
+      overflow: hidden;
+    }}
+    .guide-card {{
+      background: var(--charcoal);
+      padding: 1.5rem;
+    }}
+    .guide-card h3 {{
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--off-white);
+      margin-bottom: 0.625rem;
+    }}
+    .guide-card p {{
+      font-size: 0.8125rem;
+      color: var(--muted-grey);
+      line-height: 1.65;
+    }}
+
     .hub-switcher {{
       display: flex;
       align-items: center;
@@ -1414,6 +1626,9 @@ def render_category_hub(sport):
     </div>
   </header>
 
+  <!-- Editorial Philosophy & Deep-Dive Category Guide -->
+  {hub_guide_html}
+
   <main class="hub-grid">
     {cards_html}
   </main>
@@ -1560,7 +1775,25 @@ def generate_all():
     <priority>0.8</priority>
   </url>""",
         f"""  <url>
+    <loc>{DOMAIN}/about.html</loc>
+    <lastmod>{now_date}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>""",
+        f"""  <url>
+    <loc>{DOMAIN}/contact.html</loc>
+    <lastmod>{now_date}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>""",
+        f"""  <url>
     <loc>{DOMAIN}/privacy.html</loc>
+    <lastmod>{now_date}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>""",
+        f"""  <url>
+    <loc>{DOMAIN}/terms.html</loc>
     <lastmod>{now_date}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

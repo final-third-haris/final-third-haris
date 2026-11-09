@@ -14,6 +14,9 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicon-192x192.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
 
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5399554232098923" crossorigin="anonymous"></script>
+
   <!-- Typography: Anek Malayalam & System Fallbacks -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,11 +74,12 @@
     }
 
     .header-container {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 1rem;
     }
 
     .logo-wrap {
@@ -97,22 +101,22 @@
       color: var(--off-white);
     }
 
-    .back-home-btn {
-      display: inline-flex;
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      background-color: var(--charcoal-light);
-      border: 1px solid var(--charcoal-border);
-      color: var(--off-white);
-      font-size: 0.875rem;
-      font-weight: 600;
-      transition: all 0.2s ease;
     }
 
-    .back-home-btn:hover {
-      background-color: var(--charcoal-border);
+    .nav-links a {
+      color: var(--muted-grey);
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
       color: var(--neon-lime);
       text-decoration: none;
     }
@@ -243,25 +247,48 @@
       font-size: 0.9375rem;
     }
 
-    .footer-bar {
+    /* Site Footer */
+    .site-footer {
       border-top: 1px solid var(--charcoal-border);
-      background-color: var(--pitch-black);
-      padding: 2rem 1.5rem;
-      text-align: center;
+      background: var(--pitch-black);
+      padding: 3rem 1.5rem;
       color: var(--dark-grey);
       font-size: 0.875rem;
     }
 
-    @media (max-width: 640px) {
-      .policy-title {
-        font-size: 1.75rem;
-      }
-      .policy-section {
-        padding: 1.25rem;
-      }
-      .content-container {
-        margin-top: 2rem;
-      }
+    .footer-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--muted-grey);
+      font-size: 0.875rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--neon-lime);
+    }
+
+    @media (max-width: 768px) {
+      .header-container { flex-direction: column; align-items: flex-start; }
+      .nav-links { flex-wrap: wrap; gap: 0.75rem 1.25rem; }
+      .footer-container { flex-direction: column; align-items: flex-start; }
+      .policy-title { font-size: 1.75rem; }
+      .policy-section { padding: 1.25rem; }
+      .content-container { margin-top: 2rem; }
     }
   </style>
 </head>
@@ -271,15 +298,23 @@
   <header class="header-bar">
     <div class="header-container">
       <a href="/" class="logo-wrap" aria-label="Final Third Home">
-        <img src="assets/images/final-third-logo.png" alt="Final Third Logo" class="logo-img" width="160" height="38">
+        <picture>
+          <source srcset="/assets/images/final-third-logo.webp" type="image/webp">
+          <img src="/assets/images/final-third-logo.png" alt="Final Third Logo" class="logo-img" width="160" height="38">
+        </picture>
         <span class="brand-title">FINAL THIRD</span>
       </a>
-      <a href="/" class="back-home-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-          <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-        </svg>
-        Back to Home
-      </a>
+      <nav aria-label="Secondary Navigation">
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/football/">Football</a></li>
+          <li><a href="/cricket/">Cricket</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/privacy.html" class="active">Privacy</a></li>
+          <li><a href="/terms.html">Terms</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
@@ -451,8 +486,20 @@
     </section>
   </main>
 
-  <footer class="footer-bar">
-    <p>&copy; 2026 FINAL THIRD with Haris Nenmara. All rights reserved. · <a href="/">Return to Home</a></p>
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <p>&copy; 2026 FINAL THIRD with Haris Nenmara. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/football/">Football Hub</a></li>
+        <li><a href="/cricket/">Cricket Hub</a></li>
+        <li><a href="/about.html">About Us</a></li>
+        <li><a href="/contact.html">Contact Us</a></li>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="/terms.html">Terms of Service</a></li>
+      </ul>
+    </div>
   </footer>
 
 </body>

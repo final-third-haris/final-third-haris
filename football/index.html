@@ -187,6 +187,55 @@
     }
 
     /* Sport Switcher Chips */
+    /* Editorial Guide in Category Hub */
+    .hub-editorial-guide {
+      max-width: 1140px;
+      margin: 2rem auto 0;
+      padding: 0 1.5rem;
+    }
+    .guide-header {
+      background: var(--charcoal);
+      border: 1px solid var(--charcoal-border);
+      border-radius: 12px 12px 0 0;
+      padding: 2rem;
+      border-bottom: none;
+    }
+    .guide-header h2 {
+      font-size: 1.375rem;
+      font-weight: 800;
+      color: var(--neon-lime);
+      margin-bottom: 0.75rem;
+    }
+    .guide-lead {
+      font-size: 0.9375rem;
+      color: var(--off-white);
+      line-height: 1.8;
+    }
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--charcoal-border);
+      border: 1px solid var(--charcoal-border);
+      border-radius: 0 0 12px 12px;
+      overflow: hidden;
+    }
+    .guide-card {
+      background: var(--charcoal);
+      padding: 1.5rem;
+    }
+    .guide-card h3 {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--off-white);
+      margin-bottom: 0.625rem;
+    }
+    .guide-card p {
+      font-size: 0.8125rem;
+      color: var(--muted-grey);
+      line-height: 1.65;
+    }
+
     .hub-switcher {
       display: flex;
       align-items: center;
@@ -415,9 +464,10 @@
           <li><a href="/" class="nav-link">Home</a></li>
           <li><a href="/football/" class="nav-link active">⚽ Football Hub</a></li>
           <li><a href="/cricket/" class="nav-link">🏏 Cricket Hub</a></li>
-          <li><a href="/#videos" class="nav-link">Full Catalog (300+)</a></li>
-          <li><a href="/#about" class="nav-link">About Haris</a></li>
-          <li><a href="/#contact" class="nav-link">Contact</a></li>
+          <li><a href="/about.html" class="nav-link">About Us</a></li>
+          <li><a href="/contact.html" class="nav-link">Contact</a></li>
+          <li><a href="/privacy.html" class="nav-link">Privacy</a></li>
+          <li><a href="/terms.html" class="nav-link">Terms</a></li>
         </ul>
       </nav>
 
@@ -445,10 +495,10 @@
         <li><a href="/" class="drawer-link">Home</a></li>
         <li><a href="/football/" class="drawer-link active">⚽ Football Category Hub (21 Videos)</a></li>
         <li><a href="/cricket/" class="drawer-link">🏏 Cricket Category Hub (10 Videos)</a></li>
-        <li><a href="/#videos" class="drawer-link">Full Video Catalog (300+)</a></li>
-        <li><a href="/#about" class="drawer-link">About Haris Nenmara</a></li>
+        <li><a href="/about.html" class="drawer-link">About Haris Nenmara</a></li>
+        <li><a href="/contact.html" class="drawer-link">Contact &amp; Inquiries</a></li>
         <li><a href="/privacy.html" class="drawer-link">Privacy Policy</a></li>
-        <li><a href="/#contact" class="drawer-link">Contact &amp; Sponsorships</a></li>
+        <li><a href="/terms.html" class="drawer-link">Terms of Service</a></li>
       </ul>
       <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #2a2a2a;">
         <a href="https://www.youtube.com/@FinalThird_HarisNenmara" target="_blank" rel="noopener noreferrer" class="btn btn-subscribe" style="width: 100%; justify-content: center;">
@@ -476,13 +526,37 @@
     </div>
   </header>
 
+  <!-- Editorial Philosophy & Deep-Dive Category Guide -->
+    <section class="hub-editorial-guide">
+    <div class="guide-header">
+      <h2>ഫുട്ബോൾ വിശകലന തത്വം &amp; കവറേജ് | Final Third Football Editorial Guide</h2>
+      <p class="guide-lead">
+        ഫൈനൽ തേർഡിൽ ഫുട്ബോൾ മത്സരങ്ങളെ വെറും സ്കോർബോർഡിൻ്റെയോ ഗോളുകളുടെയോ അടിസ്ഥാനത്തിലല്ല ഞങ്ങൾ വിലയിരുത്തുന്നത്. ഓരോ മത്സരത്തിലും ടീമുകൾ സ്വീകരിക്കുന്ന തന്ത്രപരമായ വിന്യാസം (Tactical Formations), ഹൈ-പ്രസ്സിങ് ഘടന (High-Pressing Structures), ബോൾ ട്രാൻസിഷൻ സ്പീഡ് (Transition Speed), സ്പേസ് കണ്ടെത്താനുള്ള നീക്കങ്ങൾ (Half-Space Overloads) എന്നിവ ആഴത്തിൽ പരിശോധിക്കുന്നതാണ് ഹാരിസ് നെന്മാറയുടെ വിശകലന രീതി.
+      </p>
+    </div>
+    <div class="guide-grid">
+      <div class="guide-card">
+        <h3>⚽ European Football &amp; UEFA Champions League</h3>
+        <p>ലാ ലിഗയിലെ എൽ ക്ലാസിക്കോ (Real Madrid vs Barcelona), യുവേഫ ചാമ്പ്യൻസ് ലീഗ് നോക്കൗട്ട് മത്സരങ്ങൾ, പ്രീമിയർ ലീഗ് ടാക്റ്റിക്കൽ ബാറ്റിലുകൾ എന്നിവയിലെ മൈതാന തന്ത്രങ്ങൾ. ഹാൻസി ഫ്ലിക്കിന്റെ ഹൈ ഓഫ്‌സൈഡ് ട്രാപ്പും പെപ് ഗ്വാർഡിയോളയുടെ പൊസിഷനൽ പ്ലേയും മുതൽ കാർലോ ആഞ്ചലോട്ടിയുടെ കൗണ്ടർ അറ്റാക്കിങ് വൈഭവവും ഇതിഹാസ താരങ്ങളുടെ പ്രകടനങ്ങളും ഇവിടെ വിശകലനം ചെയ്യുന്നു.</p>
+      </div>
+      <div class="guide-card">
+        <h3>🐘 Kerala Blasters &amp; Indian Super League (ISL)</h3>
+        <p>കേരള ബ്ലാസ്റ്റേഴ്സിന്റെ ഓരോ ഐ.എസ്.എൽ മത്സരങ്ങളുടെയും തന്ത്രപരമായ പോസ്റ്റ്-മാച്ച് റിവ്യൂകൾ. മധ്യനിര നിയന്ത്രണം (Midfield Dominance), പ്രതിരോധ പിഴവുകൾ, ഫോറിൻ സൈനിങ്ങുകളുടെ സ്വാധീനം, മലയാളി യുവതാരങ്ങളുടെ വളർച്ച എന്നിവയെക്കുറിച്ചുള്ള നിഷ്പക്ഷവും വസ്തുതാപരവുമായ റിപ്പോർട്ടിങ്.</p>
+      </div>
+      <div class="guide-card">
+        <h3>📊 Data-Driven Modern Tactics &amp; Video Journalism</h3>
+        <p>Expected Goals (xG), പാസിങ് നെറ്റ്‌വർക്കുകൾ, ഡിഫെൻസീവ് ബ്ലോക്കുകൾ (Low Block vs Mid Block) തുടങ്ങിയ ആധുനിക ഫുട്ബോൾ അനലിറ്റിക്സ് ഡാറ്റ സാധാരണ ഫുട്ബോൾ പ്രേമികൾക്ക് ലളിതമായി മനസ്സിലാകുന്ന മലയാളം വീഡിയോ അവലോകനങ്ങളിലൂടെ ലഭ്യമാക്കുന്നു.</p>
+      </div>
+    </div>
+  </section>
+
   <main class="hub-grid">
     
         <article class="hub-card" onclick="window.location.href='/football/real-madrid-vs-barcelona-el-clasico-tactical-analysis/'" style="cursor: pointer;">
           <a href="/football/real-madrid-vs-barcelona-el-clasico-tactical-analysis/" class="hub-card-thumb-link" aria-label="ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara">
             <img src="https://i.ytimg.com/vi/MT7IaTzzwY4/hqdefault.jpg" alt="ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara" width="480" height="270" loading="lazy" decoding="async">
             <span class="hub-card-badge">Barcelona & Real Madrid</span>
-            <span class="hub-card-views">127K views</span>
+            <span class="hub-card-views">128K views</span>
             <div class="hub-play-overlay" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -638,7 +712,7 @@
           <a href="/football/barcelona-vs-galatasaray-lamine-yamal-analysis/" class="hub-card-thumb-link" aria-label="ആളറിഞ്ഞു കളിക്കടാ ! barcelona vs galatasaray | lamine yamal | Haris Nenmara">
             <img src="https://i.ytimg.com/vi/RtpY-aKasEg/hqdefault.jpg" alt="ആളറിഞ്ഞു കളിക്കടാ ! barcelona vs galatasaray | lamine yamal | Haris Nenmara" width="480" height="270" loading="lazy" decoding="async">
             <span class="hub-card-badge">Barcelona</span>
-            <span class="hub-card-views">72K views</span>
+            <span class="hub-card-views">73K views</span>
             <div class="hub-play-overlay" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -898,7 +972,7 @@
           <a href="/football/arsenal-vs-liverpool-mikel-arteta-cjgogc/" class="hub-card-thumb-link" aria-label="സീറോ ഷോട്ട് ഓൺ ടാർഗറ്റ് ! അർട്ടേറ്റ 14 വർഷത്തിന് ശേഷം പൊളിച്ചെഴുതിയത് എന്ത് ?| Arsenal vs Liverpool">
             <img src="https://i.ytimg.com/vi/CjgogCPPqzo/hqdefault.jpg" alt="സീറോ ഷോട്ട് ഓൺ ടാർഗറ്റ് ! അർട്ടേറ്റ 14 വർഷത്തിന് ശേഷം പൊളിച്ചെഴുതിയത് എന്ത് ?| Arsenal vs Liverpool" width="480" height="270" loading="lazy" decoding="async">
             <span class="hub-card-badge">European & World Football</span>
-            <span class="hub-card-views">22K views</span>
+            <span class="hub-card-views">23K views</span>
             <div class="hub-play-overlay" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -924,7 +998,7 @@
           <a href="/football/barcelona-vs-aston-villa-lamine-yamal-raphinha-8-ve7f/" class="hub-card-thumb-link" aria-label="ഫ്ലിക്കിന്‍റെ പിള്ളേര്‍ ഇവിടെയൊക്കെ തന്നെ കാണും ! Barcelona vs aston villa | Lamine yamal | Raphinha">
             <img src="https://i.ytimg.com/vi/8-Ve7FQQFLY/hqdefault.jpg" alt="ഫ്ലിക്കിന്‍റെ പിള്ളേര്‍ ഇവിടെയൊക്കെ തന്നെ കാണും ! Barcelona vs aston villa | Lamine yamal | Raphinha" width="480" height="270" loading="lazy" decoding="async">
             <span class="hub-card-badge">Barcelona</span>
-            <span class="hub-card-views">27K views</span>
+            <span class="hub-card-views">30K views</span>
             <div class="hub-play-overlay" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -950,7 +1024,7 @@
           <a href="/football/real-madrid-federico-valverde-zxou4r/" class="hub-card-thumb-link" aria-label="മാറ്റമൊന്നുമില്ലാതെ വിനി ! ഫെഡെയുടെ റോക്കറ്റുകള്‍, ജൂഡ് മാജിക് | Real Madrid | Federico Valverde">
             <img src="https://i.ytimg.com/vi/zxoU4rDUdOo/hqdefault.jpg" alt="മാറ്റമൊന്നുമില്ലാതെ വിനി ! ഫെഡെയുടെ റോക്കറ്റുകള്‍, ജൂഡ് മാജിക് | Real Madrid | Federico Valverde" width="480" height="270" loading="lazy" decoding="async">
             <span class="hub-card-badge">Real Madrid</span>
-            <span class="hub-card-views">31K views</span>
+            <span class="hub-card-views">40K views</span>
             <div class="hub-play-overlay" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -976,7 +1050,7 @@
           <a href="/football/cr7-cristiano-ronaldo-retirement-cr7-o4ba8x/" class="hub-card-thumb-link" aria-label="CR7... അതൊരു വികാരമായിരുന്നു ! | Cristiano Ronaldo Retirement | Cr7">
             <img src="https://i.ytimg.com/vi/O4ba8xFoy_M/hqdefault.jpg" alt="CR7... അതൊരു വികാരമായിരുന്നു ! | Cristiano Ronaldo Retirement | Cr7" width="480" height="270" loading="lazy" decoding="async">
             <span class="hub-card-badge">European & World Football</span>
-            <span class="hub-card-views">47K views</span>
+            <span class="hub-card-views">71K views</span>
             <div class="hub-play-overlay" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -1002,7 +1076,7 @@
           <a href="/football/cristiano-ronaldo-haris-nenmara-kv8iqz/" class="hub-card-thumb-link" aria-label="അയാളെ പ്രൊവോക്ക് ചെയ്യാൻ പോകരുതായിരുന്നു ! Cristiano Ronaldo | Haris Nenmara">
             <img src="https://i.ytimg.com/vi/Kv8iQzoqvlg/hqdefault.jpg" alt="അയാളെ പ്രൊവോക്ക് ചെയ്യാൻ പോകരുതായിരുന്നു ! Cristiano Ronaldo | Haris Nenmara" width="480" height="270" loading="lazy" decoding="async">
             <span class="hub-card-badge">European & World Football</span>
-            <span class="hub-card-views">4.1K views</span>
+            <span class="hub-card-views">38K views</span>
             <div class="hub-play-overlay" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>

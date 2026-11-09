@@ -187,6 +187,55 @@
     }
 
     /* Sport Switcher Chips */
+    /* Editorial Guide in Category Hub */
+    .hub-editorial-guide {
+      max-width: 1140px;
+      margin: 2rem auto 0;
+      padding: 0 1.5rem;
+    }
+    .guide-header {
+      background: var(--charcoal);
+      border: 1px solid var(--charcoal-border);
+      border-radius: 12px 12px 0 0;
+      padding: 2rem;
+      border-bottom: none;
+    }
+    .guide-header h2 {
+      font-size: 1.375rem;
+      font-weight: 800;
+      color: var(--neon-lime);
+      margin-bottom: 0.75rem;
+    }
+    .guide-lead {
+      font-size: 0.9375rem;
+      color: var(--off-white);
+      line-height: 1.8;
+    }
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--charcoal-border);
+      border: 1px solid var(--charcoal-border);
+      border-radius: 0 0 12px 12px;
+      overflow: hidden;
+    }
+    .guide-card {
+      background: var(--charcoal);
+      padding: 1.5rem;
+    }
+    .guide-card h3 {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--off-white);
+      margin-bottom: 0.625rem;
+    }
+    .guide-card p {
+      font-size: 0.8125rem;
+      color: var(--muted-grey);
+      line-height: 1.65;
+    }
+
     .hub-switcher {
       display: flex;
       align-items: center;
@@ -415,9 +464,10 @@
           <li><a href="/" class="nav-link">Home</a></li>
           <li><a href="/football/" class="nav-link">⚽ Football Hub</a></li>
           <li><a href="/cricket/" class="nav-link active">🏏 Cricket Hub</a></li>
-          <li><a href="/#videos" class="nav-link">Full Catalog (300+)</a></li>
-          <li><a href="/#about" class="nav-link">About Haris</a></li>
-          <li><a href="/#contact" class="nav-link">Contact</a></li>
+          <li><a href="/about.html" class="nav-link">About Us</a></li>
+          <li><a href="/contact.html" class="nav-link">Contact</a></li>
+          <li><a href="/privacy.html" class="nav-link">Privacy</a></li>
+          <li><a href="/terms.html" class="nav-link">Terms</a></li>
         </ul>
       </nav>
 
@@ -445,10 +495,10 @@
         <li><a href="/" class="drawer-link">Home</a></li>
         <li><a href="/football/" class="drawer-link">⚽ Football Category Hub (21 Videos)</a></li>
         <li><a href="/cricket/" class="drawer-link active">🏏 Cricket Category Hub (10 Videos)</a></li>
-        <li><a href="/#videos" class="drawer-link">Full Video Catalog (300+)</a></li>
-        <li><a href="/#about" class="drawer-link">About Haris Nenmara</a></li>
+        <li><a href="/about.html" class="drawer-link">About Haris Nenmara</a></li>
+        <li><a href="/contact.html" class="drawer-link">Contact &amp; Inquiries</a></li>
         <li><a href="/privacy.html" class="drawer-link">Privacy Policy</a></li>
-        <li><a href="/#contact" class="drawer-link">Contact &amp; Sponsorships</a></li>
+        <li><a href="/terms.html" class="drawer-link">Terms of Service</a></li>
       </ul>
       <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid #2a2a2a;">
         <a href="https://www.youtube.com/@FinalThird_HarisNenmara" target="_blank" rel="noopener noreferrer" class="btn btn-subscribe" style="width: 100%; justify-content: center;">
@@ -475,6 +525,30 @@
       </a>
     </div>
   </header>
+
+  <!-- Editorial Philosophy & Deep-Dive Category Guide -->
+    <section class="hub-editorial-guide">
+    <div class="guide-header">
+      <h2>ക്രിക്കറ്റ് വിശകലന തത്വം &amp; കവറേജ് | Final Third Cricket Editorial Guide</h2>
+      <p class="guide-lead">
+        ആധുനിക ക്രിക്കറ്റ് മത്സരങ്ങളുടെ സങ്കീർണ്ണമായ ഡാറ്റയും മൈതാന തന്ത്രങ്ങളും മലയാളത്തിൽ വിശദമായി വിശകലനം ചെയ്യുന്ന പ്ലാറ്റ്‌ഫോമാണ് ഫൈനൽ തേർഡ്. ടി20 ക്രിക്കറ്റിന്റെ ആക്രമണാത്മക മാറ്റങ്ങൾ, ഡെത്ത് ഓവർ ബൗളിങ് പ്ലാനുകൾ, മാച്ച്-അപ്പ് സിദ്ധാന്തങ്ങൾ (Matchup Theory), ക്യാപ്റ്റൻസി തീരുമാനങ്ങൾ എന്നിവയാണ് ഞങ്ങളുടെ പ്രധാന ശ്രദ്ധാകേന്ദ്രം.
+      </p>
+    </div>
+    <div class="guide-grid">
+      <div class="guide-card">
+        <h3>🏏 Team India Campaigns &amp; ICC Tournaments</h3>
+        <p>ഇന്ത്യൻ ദേശീയ ടീമിന്റെ ഐസിസി ടൂർണമെന്റ് പോരാട്ടങ്ങൾ, ദ്വിരാഷ്ട്ര പരമ്പരകൾ, ടി20 ലോകകപ്പ് പ്ലാനുകൾ എന്നിവയുടെ സൂക്ഷ്മ വിശകലനം. രോഹിത് ശർമ്മയുടെ പവർപ്ലേ അഗ്രഷൻ, വിരാട് കോഹ്‌ലിയുടെ ചേസിങ് മാസ്റ്റർക്ലാസ്, യുവതാരങ്ങളുടെ വരവ് എന്നിവ സമഗ്രമായി വിലയിരുത്തുന്നു.</p>
+      </div>
+      <div class="guide-card">
+        <h3>⚡ Sanju Samson &amp; Matchup Evolution</h3>
+        <p>കേരളത്തിന്റെ അഭിമാനമായ സഞ്ജു സാംസന്റെ ബാറ്റിങ് ടെക്നിക്കൽ മാറ്റങ്ങൾ, പേസിനും സ്പിന്നിനുമെതിരായ സ്ട്രൈക്ക്-റേറ്റ് അപ്രോച്ച്, ടീം സെലക്ഷൻ സമ്മർദ്ദങ്ങളെ അതിജീവിക്കുന്ന ക്ലാസ് ഇന്നിങ്സുകൾ എന്നിവയുടെ പ്രത്യേക അവലോകനം.</p>
+      </div>
+      <div class="guide-card">
+        <h3>🎯 Elite Bowling Mastery (Bumrah &amp; Bhuvi)</h3>
+        <p>ജസ്പ്രീത് ബുംറയുടെ അൺപ്ലേയെബിൾ യോർക്കറുകൾ, ഭുവനേശ്വർ കുമാറിന്റെ സ്വിങ് ബോളിങ്, ഡെത്ത് ഓവർ എക്കണോമി കൺട്രോൾ എന്നിവ മൈക്രോ ലെവലിൽ പരിശോധിക്കുന്ന ബൗളിങ് സ്പെഷ്യൽ അനാലിസിസുകൾ.</p>
+      </div>
+    </div>
+  </section>
 
   <main class="hub-grid">
     
@@ -690,7 +764,7 @@
           <a href="/cricket/india-vs-new-zealand-virat-kohli-yr2rpr/" class="hub-card-thumb-link" aria-label="ആ പറക്കും ക്യാച്ച് ! പിന്നെ വെടിക്കെട്ട്, കോഹ്‌ലി ഷോ തുടരുന്നു! | India vs New Zealand | Virat Kohli">
             <img src="https://i.ytimg.com/vi/Yr2rpr2YPrA/hqdefault.jpg" alt="ആ പറക്കും ക്യാച്ച് ! പിന്നെ വെടിക്കെട്ട്, കോഹ്‌ലി ഷോ തുടരുന്നു! | India vs New Zealand | Virat Kohli" width="480" height="270" loading="lazy" decoding="async">
             <span class="hub-card-badge">Indian Cricket Team</span>
-            <span class="hub-card-views">42K views</span>
+            <span class="hub-card-views">44K views</span>
             <div class="hub-play-overlay" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -716,7 +790,7 @@
           <a href="/cricket/or-hardik-pandya-mumbai-indians-dmen-h/" class="hub-card-thumb-link" aria-label="ഹർദിക് പോകും... അർഷ്ദീപ് or ജയ്സ്വാൾ, ആര് വരും ? Hardik Pandya | Mumbai Indians">
             <img src="https://i.ytimg.com/vi/dMeN-hNlpXw/hqdefault.jpg" alt="ഹർദിക് പോകും... അർഷ്ദീപ് or ജയ്സ്വാൾ, ആര് വരും ? Hardik Pandya | Mumbai Indians" width="480" height="270" loading="lazy" decoding="async">
             <span class="hub-card-badge">Indian Cricket Team</span>
-            <span class="hub-card-views">29K views</span>
+            <span class="hub-card-views">45K views</span>
             <div class="hub-play-overlay" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
