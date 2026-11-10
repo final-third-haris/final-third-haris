@@ -98,8 +98,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "3 hours ago",
-      "views": "8.5K views",
+      "published": "17 hours ago",
+      "views": "56K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ചെന്നൈയ്ക്കും മുംബൈക്കും വലിയ പ്ലാനുകൾ | IPL | IPL trade window | Hardik Pandya | IPL mini auction'. Watch the full breakdown on Final Third."
     },
     {
@@ -108,8 +108,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "PLGWXiMbN17ik",
       "playlistTitle": "Barcelona",
-      "published": "6 hours ago",
-      "views": "17K views",
+      "published": "20 hours ago",
+      "views": "35K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ഡിയോങ്ങിൻ്റെ വരവിൽ മാറിയ കളി; പെഡ്രി എന്ന എഞ്ചിന്‍! Barcelona vs Atletico madrid'. Watch the full breakdown on Final Third."
     },
     {
@@ -119,7 +119,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "european-football",
       "playlistTitle": "European & World Football",
       "published": "3 days ago",
-      "views": "41K views",
+      "views": "42K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'അയാളെ പ്രൊവോക്ക് ചെയ്യാൻ പോകരുതായിരുന്നു ! Cristiano Ronaldo | Haris Nenmara'. Watch the full breakdown on Final Third."
     },
     {
@@ -128,8 +128,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "european-football",
       "playlistTitle": "European & World Football",
-      "published": "3 days ago",
-      "views": "72K views",
+      "published": "4 days ago",
+      "views": "73K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'CR7... അതൊരു വികാരമായിരുന്നു ! | Cristiano Ronaldo Retirement | Cr7'. Watch the full breakdown on Final Third."
     },
     {
@@ -188,7 +188,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "european-football",
       "playlistTitle": "European & World Football",
-      "published": "6 days ago",
+      "published": "7 days ago",
       "views": "23K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'സീറോ ഷോട്ട് ഓൺ ടാർഗറ്റ് ! ആർട്ടേറ്റ ലിവർപൂളിനെ തീർത്തത് എങ്ങനെ ?| Arsenal vs Liverpool'. Watch the full breakdown on Final Third."
     },
@@ -198,7 +198,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
       "playlistTitle": "Real Madrid",
-      "published": "6 days ago",
+      "published": "7 days ago",
       "views": "63K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ഡിയോമന്‍റെയുടെ റോക്കറ്റുകള്‍ ! വിനി മടങ്ങി വന്നാല്‍ ഹോസേ എന്ത് ചെയ്യും ? Real Madrid | Yan Diomandé'. Watch the full breakdown on Final Third."
     },
@@ -208,8 +208,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "7 days ago",
-      "views": "28K views",
+      "published": "8 days ago",
+      "views": "29K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'രോഹിത് വീണ്ടും മുംബൈ നായകനാവും ! Rohit Sharma | Mumbai Indians'. Watch the full breakdown on Final Third."
     },
     {
@@ -218,7 +218,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "european-football",
       "playlistTitle": "European & World Football",
-      "published": "8 days ago",
+      "published": "9 days ago",
       "views": "65K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ഡിക്റ്റേറ്റര്‍ എംബാപ്പെ; ഒടുക്കം കളി കാര്യമായി ! എന്താണ് ചൈനയുമായുള്ള പ്രശ്നം? kylian mbappé | China'. Watch the full breakdown on Final Third."
     },
@@ -228,7 +228,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "cricket",
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
-    "published": "10 days ago",
+    "published": "11 days ago",
     "views": "40K views",
     "summary": "ഇഷാൻ കൂടെ വന്നാൽ സഞ്ജു എന്ത് ചെയ്യും ?  | Sanju Samson | Abhishek Sharma | Vaibhav Suryavanshi"
   },
@@ -238,8 +238,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "european-football",
     "playlistTitle": "European & World Football",
-    "published": "10 days ago",
-    "views": "59K views",
+    "published": "11 days ago",
+    "views": "60K views",
     "summary": "ക്രിസ്റ്റ്യാനോ ലോക ഫുട്ബോളില്‍ അത്ഭുതങ്ങള്‍ കാണിച്ച വര്‍ഷം | Cristiano Ronaldo 2008 | ballon d or"
   },
   {
@@ -248,8 +248,8 @@ const FINAL_THIRD_CONFIG = {
     "sport": "cricket",
     "playlistId": "cricket-insights",
     "playlistTitle": "Cricket Stories & Analysis",
-    "published": "12 days ago",
-    "views": "300K views",
+    "published": "13 days ago",
+    "views": "301K views",
     "summary": "ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek Sharma | Vaibhav Suryavanshi"
   },
   {
@@ -258,7 +258,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "european-football",
     "playlistTitle": "European & World Football",
-    "published": "12 days ago",
+    "published": "13 days ago",
     "views": "42K views",
     "summary": "യമാലിനിയും കാത്തിരിക്കണം... ഹാരികെയിന്‍ അര്‍ഹിച്ച പുരസ്കാരം | ballon d'or 2026 | harry kane"
   },
@@ -268,7 +268,7 @@ const FINAL_THIRD_CONFIG = {
     "sport": "football",
     "playlistId": "PLGWXiMbN17ik",
     "playlistTitle": "Barcelona",
-    "published": "13 days ago",
+    "published": "2 weeks ago",
     "views": "128K views",
     "summary": "ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara"
   },
