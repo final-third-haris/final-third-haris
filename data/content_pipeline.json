@@ -36,7 +36,9 @@
     "coverage": "partial",
     "last_checked": "2026-11-06T14:21:49.492140+00:00",
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
-    "retry_count": 2
+    "retry_count": 2,
+    "duration_seconds": 519,
+    "has_maxres": true
   },
   "RDpM-6xLCao": {
     "id": "RDpM-6xLCao",
@@ -75,7 +77,9 @@
     "coverage": "missing",
     "last_checked": "2026-11-06T14:21:49.492140+00:00",
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
-    "retry_count": 2
+    "retry_count": 2,
+    "duration_seconds": 486,
+    "has_maxres": true
   },
   "4LGjduzWzFg": {
     "id": "4LGjduzWzFg",
@@ -113,7 +117,9 @@
     "coverage": "missing",
     "last_checked": "2026-11-06T14:21:49.492140+00:00",
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
-    "retry_count": 2
+    "retry_count": 2,
+    "duration_seconds": 511,
+    "has_maxres": true
   },
   "ZoU-SU80SLM": {
     "id": "ZoU-SU80SLM",
@@ -151,7 +157,9 @@
     "coverage": "missing",
     "last_checked": "2026-11-06T14:21:49.492140+00:00",
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
-    "retry_count": 2
+    "retry_count": 2,
+    "duration_seconds": 424,
+    "has_maxres": true
   },
   "XMR4quSxjHw": {
     "id": "XMR4quSxjHw",
@@ -190,7 +198,9 @@
     "coverage": "missing",
     "last_checked": "2026-11-06T14:21:49.492140+00:00",
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
-    "retry_count": 2
+    "retry_count": 2,
+    "duration_seconds": 430,
+    "has_maxres": true
   },
   "9q0iwA1bpkI": {
     "id": "9q0iwA1bpkI",
@@ -228,7 +238,9 @@
     "coverage": "missing",
     "last_checked": "2026-11-06T14:21:49.492140+00:00",
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
-    "retry_count": 2
+    "retry_count": 2,
+    "duration_seconds": 413,
+    "has_maxres": true
   },
   "RtpY-aKasEg": {
     "id": "RtpY-aKasEg",
@@ -266,7 +278,9 @@
     "coverage": "missing",
     "last_checked": "2026-11-06T14:21:49.492140+00:00",
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
-    "retry_count": 2
+    "retry_count": 2,
+    "duration_seconds": 497,
+    "has_maxres": true
   },
   "l1q1MQZSe_0": {
     "id": "l1q1MQZSe_0",
@@ -304,7 +318,9 @@
     "coverage": "missing",
     "last_checked": "2026-11-06T14:21:49.492140+00:00",
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
-    "retry_count": 2
+    "retry_count": 2,
+    "duration_seconds": 384,
+    "has_maxres": true
   },
   "ySpbZe77Jgs": {
     "id": "ySpbZe77Jgs",
@@ -342,7 +358,9 @@
     "coverage": "missing",
     "last_checked": "2026-11-06T14:21:49.492140+00:00",
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
-    "retry_count": 2
+    "retry_count": 2,
+    "duration_seconds": 303,
+    "has_maxres": true
   },
   "cOYjZ39qHAU": {
     "id": "cOYjZ39qHAU",
@@ -380,7 +398,9 @@
     "coverage": "missing",
     "last_checked": "2026-11-06T14:21:49.492140+00:00",
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
-    "retry_count": 2
+    "retry_count": 2,
+    "duration_seconds": 421,
+    "has_maxres": true
   },
   "Ustsj3NHM4Y": {
     "id": "Ustsj3NHM4Y",
@@ -418,7 +438,9 @@
     "coverage": "missing",
     "last_checked": "2026-11-06T14:21:49.492140+00:00",
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
-    "retry_count": 2
+    "retry_count": 2,
+    "duration_seconds": 432,
+    "has_maxres": true
   },
   "ZuU9k-lVTzE": {
     "id": "ZuU9k-lVTzE",
@@ -456,7 +478,9 @@
     "coverage": "missing",
     "last_checked": "2026-11-06T14:21:49.492140+00:00",
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
-    "retry_count": 2
+    "retry_count": 2,
+    "duration_seconds": 485,
+    "has_maxres": true
   },
   "rNiXi4pW9nM": {
     "id": "rNiXi4pW9nM",
@@ -494,7 +518,9 @@
     "coverage": "missing",
     "last_checked": "2026-11-06T14:21:49.492140+00:00",
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
-    "retry_count": 2
+    "retry_count": 2,
+    "duration_seconds": 374,
+    "has_maxres": true
   },
   "mVR_mRYU2YE": {
     "id": "mVR_mRYU2YE",
@@ -532,7 +558,9 @@
     "coverage": "missing",
     "last_checked": "2026-11-06T14:21:49.492140+00:00",
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
-    "retry_count": 2
+    "retry_count": 2,
+    "duration_seconds": 340,
+    "has_maxres": true
   },
   "qDn--g-xzQY": {
     "id": "qDn--g-xzQY",
@@ -569,7 +597,9 @@
     "coverage": "missing",
     "last_checked": "2026-11-06T14:21:49.492140+00:00",
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
-    "retry_count": 2
+    "retry_count": 2,
+    "duration_seconds": 382,
+    "has_maxres": true
   },
   "Xq1PtXOrVRc": {
     "id": "Xq1PtXOrVRc",
@@ -607,7 +637,9 @@
     "coverage": "partial",
     "last_checked": "2026-11-06T14:21:49.492140+00:00",
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
-    "retry_count": 2
+    "retry_count": 2,
+    "duration_seconds": 417,
+    "has_maxres": true
   },
   "I-40yws8G-E": {
     "id": "I-40yws8G-E",
@@ -645,7 +677,9 @@
     "coverage": "missing",
     "last_checked": "2026-11-06T14:21:49.492140+00:00",
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
-    "retry_count": 2
+    "retry_count": 2,
+    "duration_seconds": 430,
+    "has_maxres": false
   },
   "F1X3eE_CBKU": {
     "id": "F1X3eE_CBKU",
@@ -682,7 +716,9 @@
     "coverage": "missing",
     "last_checked": "2026-11-06T14:21:49.492140+00:00",
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
-    "retry_count": 2
+    "retry_count": 2,
+    "duration_seconds": 409,
+    "has_maxres": true
   },
   "3-k7z6FqTX0": {
     "id": "3-k7z6FqTX0",
@@ -721,7 +757,9 @@
     "coverage": "missing",
     "last_checked": "2026-11-06T14:21:49.492140+00:00",
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
-    "retry_count": 2
+    "retry_count": 2,
+    "duration_seconds": 491,
+    "has_maxres": true
   },
   "znjseVIMsE0": {
     "id": "znjseVIMsE0",
@@ -759,7 +797,9 @@
     "coverage": "missing",
     "last_checked": "2026-11-06T14:21:49.492140+00:00",
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
-    "retry_count": 2
+    "retry_count": 2,
+    "duration_seconds": 484,
+    "has_maxres": true
   },
   "In9vwjZ6sVQ": {
     "id": "In9vwjZ6sVQ",
@@ -803,7 +843,9 @@
     "next_retry": "2026-11-16T07:51:47.795419+00:00",
     "retry_count": 1,
     "retry_status": "queued",
-    "notes": "Awaiting captions in weekly retry queue."
+    "notes": "Awaiting captions in weekly retry queue.",
+    "duration_seconds": 349,
+    "has_maxres": true
   },
   "2SZTXVLPFow": {
     "id": "2SZTXVLPFow",
@@ -847,7 +889,9 @@
     "next_retry": "2026-11-16T07:51:47.795419+00:00",
     "retry_count": 1,
     "retry_status": "queued",
-    "notes": "Awaiting captions in weekly retry queue."
+    "notes": "Awaiting captions in weekly retry queue.",
+    "duration_seconds": 481,
+    "has_maxres": true
   },
   "bv_PCaAJy-8": {
     "id": "bv_PCaAJy-8",
@@ -891,7 +935,9 @@
     "next_retry": "2026-11-16T14:23:45.024104+00:00",
     "retry_count": 1,
     "retry_status": "queued",
-    "notes": "Awaiting captions in weekly retry queue."
+    "notes": "Awaiting captions in weekly retry queue.",
+    "duration_seconds": 443,
+    "has_maxres": true
   },
   "CjgogCPPqzo": {
     "id": "CjgogCPPqzo",
@@ -935,7 +981,9 @@
     "next_retry": "2026-11-16T17:14:03.610984+00:00",
     "retry_count": 1,
     "retry_status": "queued",
-    "notes": "Awaiting captions in weekly retry queue."
+    "notes": "Awaiting captions in weekly retry queue.",
+    "duration_seconds": 379,
+    "has_maxres": true
   },
   "yvK_AZ7oYs4": {
     "id": "yvK_AZ7oYs4",
@@ -975,7 +1023,9 @@
     "next_retry": "2026-11-10T14:20:04.197410+00:00",
     "retry_count": 0,
     "retry_status": "queued",
-    "notes": "Auto-synced as grounded debrief; full transcript queued for weekly verification."
+    "notes": "Auto-synced as grounded debrief; full transcript queued for weekly verification.",
+    "duration_seconds": 433,
+    "has_maxres": true
   },
   "8-Ve7FQQFLY": {
     "id": "8-Ve7FQQFLY",
@@ -1018,7 +1068,9 @@
     "next_retry": "2026-11-11T14:22:21.678984+00:00",
     "retry_count": 0,
     "retry_status": "queued",
-    "notes": "Auto-synced as grounded debrief; full transcript queued for weekly verification."
+    "notes": "Auto-synced as grounded debrief; full transcript queued for weekly verification.",
+    "duration_seconds": 402,
+    "has_maxres": true
   },
   "Yr2rpr2YPrA": {
     "id": "Yr2rpr2YPrA",
@@ -1061,7 +1113,9 @@
     "next_retry": "2026-11-11T16:58:58.513160+00:00",
     "retry_count": 0,
     "retry_status": "queued",
-    "notes": "Auto-synced as grounded debrief; full transcript queued for weekly verification."
+    "notes": "Auto-synced as grounded debrief; full transcript queued for weekly verification.",
+    "duration_seconds": 439,
+    "has_maxres": true
   },
   "dMeN-hNlpXw": {
     "id": "dMeN-hNlpXw",
@@ -1103,7 +1157,9 @@
     "next_retry": "2026-11-11T16:58:58.513160+00:00",
     "retry_count": 0,
     "retry_status": "queued",
-    "notes": "Auto-synced as grounded debrief; full transcript queued for weekly verification."
+    "notes": "Auto-synced as grounded debrief; full transcript queued for weekly verification.",
+    "duration_seconds": 395,
+    "has_maxres": true
   },
   "zxoU4rDUdOo": {
     "id": "zxoU4rDUdOo",
@@ -1144,7 +1200,9 @@
     "next_retry": "2026-11-12T14:25:46.052166+00:00",
     "retry_count": 0,
     "retry_status": "queued",
-    "notes": "Auto-synced as grounded debrief; full transcript queued for weekly verification."
+    "notes": "Auto-synced as grounded debrief; full transcript queued for weekly verification.",
+    "duration_seconds": 482,
+    "has_maxres": true
   },
   "O4ba8xFoy_M": {
     "id": "O4ba8xFoy_M",
@@ -1154,7 +1212,7 @@
     "playlist": "European & World Football",
     "playlistId": "european-football",
     "slug": "cr7-cristiano-ronaldo-retirement-cr7-o4ba8x",
-    "published_iso": "13 hours ago",
+    "published_iso": "2026-11-05T18:07:56+00:00",
     "published": "13 hours ago",
     "views": "73K views",
     "read_time": "3 min read",
@@ -1185,7 +1243,9 @@
     "next_retry": "2026-11-13T07:44:03.472238+00:00",
     "retry_count": 0,
     "retry_status": "queued",
-    "notes": "Auto-synced as grounded debrief; full transcript queued for weekly verification."
+    "notes": "Auto-synced as grounded debrief; full transcript queued for weekly verification.",
+    "duration_seconds": 542,
+    "has_maxres": true
   },
   "Kv8iQzoqvlg": {
     "id": "Kv8iQzoqvlg",
@@ -1226,7 +1286,9 @@
     "next_retry": "2026-11-13T14:21:49.492140+00:00",
     "retry_count": 0,
     "retry_status": "queued",
-    "notes": "Auto-synced as grounded debrief; full transcript queued for weekly verification."
+    "notes": "Auto-synced as grounded debrief; full transcript queued for weekly verification.",
+    "duration_seconds": 374,
+    "has_maxres": true
   },
   "Yb8KSc7RVDE": {
     "id": "Yb8KSc7RVDE",
@@ -1268,7 +1330,9 @@
     "next_retry": "2026-11-16T14:23:45.024104+00:00",
     "retry_count": 0,
     "retry_status": "queued",
-    "notes": "Auto-synced as grounded debrief; full transcript queued for weekly verification."
+    "notes": "Auto-synced as grounded debrief; full transcript queued for weekly verification.",
+    "duration_seconds": 419,
+    "has_maxres": true
   },
   "lNCeUwY0gC8": {
     "id": "lNCeUwY0gC8",
@@ -1309,6 +1373,8 @@
     "next_retry": "2026-11-16T14:23:45.024104+00:00",
     "retry_count": 0,
     "retry_status": "queued",
-    "notes": "Auto-synced as grounded debrief; full transcript queued for weekly verification."
+    "notes": "Auto-synced as grounded debrief; full transcript queued for weekly verification.",
+    "duration_seconds": 486,
+    "has_maxres": true
   }
 }

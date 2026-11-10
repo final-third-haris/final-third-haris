@@ -129,7 +129,19 @@ def render_page(video):
     sport_hub_url = f"/{sport}/"
     url = f"{DOMAIN}/{sport}/{slug}/"
     thumb_hq = f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"
-    thumb_max = f"https://i.ytimg.com/vi/{vid}/maxresdefault.jpg"
+    has_maxres = video.get("has_maxres", True)
+    thumb_max = f"https://i.ytimg.com/vi/{vid}/maxresdefault.jpg" if has_maxres else thumb_hq
+    thumb_list_json = json.dumps([thumb_max, thumb_hq] if has_maxres else [thumb_hq])
+    pub_iso_raw = str(video.get("published_iso", "")).strip()
+    pub_iso_val = pub_iso_raw if re.match(r"^\d{4}-\d{2}-\d{2}", pub_iso_raw) else datetime.now(timezone.utc).isoformat()
+    dur_sec = int(video.get("duration_seconds") or 0)
+    if dur_sec > 0:
+        d_m, d_s = divmod(dur_sec, 60)
+        d_h, d_m = divmod(d_m, 60)
+        iso_dur = f"PT{d_h}H{d_m}M{d_s}S" if d_h > 0 else f"PT{d_m}M{d_s}S"
+        duration_json_line = f'"duration": "{iso_dur}",\n        '
+    else:
+        duration_json_line = ""
     
     # Verification Badge & Headings
     # Editorial presentation: Clean, direct sports analysis without public disclaimer badges
@@ -223,12 +235,7 @@ def render_page(video):
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicon-48x48.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicon-192x192.png">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicon-48x48.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicon-192x192.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
 
   <!-- Open Graph -->
@@ -273,12 +280,9 @@ def render_page(video):
         "@id": "{url}#video",
         "name": {json.dumps(video['title'], ensure_ascii=False)},
         "description": {json.dumps(video['meta_desc'], ensure_ascii=False)},
-        "thumbnailUrl": [
-          "{thumb_max}",
-          "{thumb_hq}"
-        ],
-        "uploadDate": "{video['published_iso']}",
-        "embedUrl": "https://www.youtube.com/embed/{vid}",
+        "thumbnailUrl": {thumb_list_json},
+        "uploadDate": "{pub_iso_val}",
+        {duration_json_line}"embedUrl": "https://www.youtube.com/embed/{vid}",
         "contentUrl": "https://www.youtube.com/watch?v={vid}",
         "inLanguage": "ml",
         "creator": {{
@@ -1814,11 +1818,16 @@ def generate_all():
 
     for v in VIDEOS:
         vid_url = f"{DOMAIN}/{v['sport']}/{v['slug']}/"
-        thumb_url = f"https://i.ytimg.com/vi/{v['id']}/maxresdefault.jpg"
+        thumb_variant = "maxresdefault.jpg" if v.get("has_maxres", True) else "hqdefault.jpg"
+        thumb_url = f"https://i.ytimg.com/vi/{v['id']}/{thumb_variant}"
         clean_title = v["title"].replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
         clean_desc = v["meta_desc"].replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
-        v_lastmod = (v.get("published_iso") or now_date)[:10]
-        
+        raw_pub = str(v.get("published_iso") or "").strip()
+        v_pub_iso = raw_pub if re.match(r"^\d{4}-\d{2}-\d{2}", raw_pub) else f"{now_date}T00:00:00+00:00"
+        v_lastmod = v_pub_iso[:10]
+        dur_sec = int(v.get("duration_seconds") or 0)
+        duration_tag = f"\n      <video:duration>{dur_sec}</video:duration>" if dur_sec > 0 else ""
+
         sitemap_entries.append(f"""  <url>
     <loc>{vid_url}</loc>
     <lastmod>{v_lastmod}</lastmod>
@@ -1828,8 +1837,8 @@ def generate_all():
       <video:thumbnail_loc>{thumb_url}</video:thumbnail_loc>
       <video:title>{clean_title}</video:title>
       <video:description>{clean_desc}</video:description>
-      <video:player_loc>https://www.youtube.com/embed/{v['id']}</video:player_loc>
-      <video:publication_date>{v['published_iso']}</video:publication_date>
+      <video:player_loc>https://www.youtube.com/embed/{v['id']}</video:player_loc>{duration_tag}
+      <video:publication_date>{v_pub_iso}</video:publication_date>
       <video:family_friendly>yes</video:family_friendly>
     </video:video>
   </url>""")

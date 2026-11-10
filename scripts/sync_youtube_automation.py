@@ -876,7 +876,7 @@ def fetch_channel_videos():
                                 res.append({
                                     "id": vid,
                                     "title": title,
-                                    "published": pub_time or "Recent",
+                                    "published": "",
                                     "published_relative": pub_time or "Recent",
                                     "views": views or "10K views",
                                     "summary": title
@@ -900,6 +900,46 @@ def fetch_channel_videos():
             print(f"[Error] Failed to fetch channel page fallback: {e}")
         
     return items
+
+def fetch_watch_seo_metadata(video_id, cur_published_iso="", fallback_iso=""):
+    """Fetch accurate ISO-8601 uploadDate, duration_seconds, and maxresdefault status from YouTube."""
+    pub_iso = cur_published_iso if re.match(r"^\d{4}-\d{2}-\d{2}", str(cur_published_iso or "")) else ""
+    dur_sec = 0
+    has_maxres = False
+
+    try:
+        req = urllib.request.Request(
+            f"https://www.youtube.com/watch?v={video_id}",
+            headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+        )
+        with safe_urlopen(req, timeout=10) as resp:
+            html = resp.read().decode("utf-8", "ignore")
+        if not pub_iso:
+            up = re.search(r'"uploadDate":"([^"]+)"', html)
+            if up:
+                dt = datetime.fromisoformat(up.group(1)).astimezone(timezone.utc)
+                pub_iso = dt.isoformat()
+        ls = re.search(r'"lengthSeconds":"(\d+)"', html)
+        if ls:
+            dur_sec = int(ls.group(1))
+    except Exception:
+        pass
+
+    try:
+        t_req = urllib.request.Request(
+            f"https://i.ytimg.com/vi/{video_id}/maxresdefault.jpg",
+            method="HEAD",
+            headers={"User-Agent": "Mozilla/5.0"}
+        )
+        with safe_urlopen(t_req, timeout=5) as t_resp:
+            has_maxres = (t_resp.getcode() == 200)
+    except Exception:
+        has_maxres = False
+
+    if not pub_iso:
+        pub_iso = fallback_iso or datetime.now(timezone.utc).isoformat()
+
+    return {"published_iso": pub_iso, "duration_seconds": dur_sec, "has_maxres": has_maxres}
 
 def update_catalog_array(filepath, new_items, target_key="videos"):
     if not new_items or not os.path.exists(filepath):
@@ -1095,10 +1135,11 @@ def run_sync(dry_run=False):
             if is_short:
                 if not is_already_known:
                     print(f"⚡ [NEW SHORT DETECTED] {vid}: {title}")
+                    safe_pub_iso = published if re.match(r"^\d{4}-\d{2}-\d{2}", str(published or "")) else now_iso
                     short_record = {
                         "id": vid,
                         "title": title,
-                        "published_iso": published,
+                        "published_iso": safe_pub_iso,
                         "published": item.get("published_relative", "Recent"),
                         "views": item.get("views", "10K views")
                     }
@@ -1126,6 +1167,7 @@ def run_sync(dry_run=False):
             print(f"  Sport: {sport.upper()} ({playlist})")
             print(f"  Slug: /{sport}/{slug}/")
 
+            seo_meta = fetch_watch_seo_metadata(vid, published, now_iso)
             video_record = {
                 "id": vid,
                 "title": title,
@@ -1134,8 +1176,10 @@ def run_sync(dry_run=False):
                 "playlist": playlist,
                 "playlistId": playlist_id,
                 "slug": slug,
-                "published_iso": published,
+                "published_iso": seo_meta["published_iso"],
                 "published": item.get("published_relative", "Recent"),
+                "duration_seconds": seo_meta["duration_seconds"],
+                "has_maxres": seo_meta["has_maxres"],
                 "views": item.get("views", "10K views"),
                 "read_time": "3 min read",
                 "seo_title": f"{title} | Final Third {sport_title}",
