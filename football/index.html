@@ -197,66 +197,94 @@
     }
 
     /* Sport Switcher Chips */
-    /* List of Contents (Table of Contents) in Category Hub */
+    /* Compact List of Contents in Category Hub */
     .hub-contents-section {
       max-width: 1140px;
-      margin: 2rem auto 0;
+      margin: 1.25rem auto 0;
       padding: 0 1.5rem;
     }
     .contents-card {
       background: var(--charcoal);
       border: 1px solid var(--charcoal-border);
-      border-radius: 12px;
-      padding: 1.75rem 2rem;
+      border-radius: 10px;
+      padding: 0.875rem 1.125rem;
     }
     .contents-header {
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.625rem;
       border-bottom: 1px solid var(--charcoal-border);
+    }
+    .contents-header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      flex-wrap: wrap;
     }
     .contents-badge {
       display: inline-block;
-      font-size: 0.6875rem;
+      font-size: 0.625rem;
       font-weight: 800;
       color: var(--neon-lime);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       background: rgba(158, 226, 11, 0.1);
       border: 1px solid rgba(158, 226, 11, 0.25);
-      padding: 3px 8px;
+      padding: 2px 7px;
       border-radius: 4px;
-      margin-bottom: 0.5rem;
     }
     .contents-header h2 {
-      font-size: 1.375rem;
-      font-weight: 800;
+      font-size: 0.9375rem;
+      font-weight: 700;
       color: var(--off-white);
-      margin-bottom: 0.375rem;
+      margin: 0;
     }
-    .contents-lead {
-      font-size: 0.875rem;
+    .contents-count-pill {
+      font-size: 0.6875rem;
+      font-weight: 700;
       color: var(--muted-grey);
+      background: var(--charcoal-light);
+      border: 1px solid var(--charcoal-border);
+      padding: 2px 8px;
+      border-radius: 999px;
     }
     .contents-grid {
       list-style: none;
-      padding: 0;
+      padding: 0 0.25rem 0 0;
       margin: 0;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 0.625rem 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.375rem 0.5rem;
+      max-height: 175px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--charcoal-border) transparent;
+    }
+    .contents-grid::-webkit-scrollbar {
+      width: 5px;
+    }
+    .contents-grid::-webkit-scrollbar-thumb {
+      background: var(--charcoal-border);
+      border-radius: 999px;
     }
     .contents-item {
       display: flex;
+      min-width: 0;
     }
     .contents-link {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.5rem;
       width: 100%;
-      padding: 0.625rem 0.875rem;
+      min-width: 0;
+      padding: 0.35rem 0.6rem;
       background: var(--charcoal-light);
       border: 1px solid var(--charcoal-border);
-      border-radius: 8px;
+      border-radius: 6px;
       color: var(--off-white);
       text-decoration: none;
       transition: all 0.2s ease;
@@ -270,55 +298,45 @@
     .contents-num {
       flex-shrink: 0;
       font-family: monospace;
-      font-size: 0.75rem;
+      font-size: 0.6875rem;
       font-weight: 800;
       color: var(--neon-lime);
       background: rgba(158, 226, 11, 0.12);
       border-radius: 4px;
-      padding: 2px 6px;
-    }
-    .contents-info {
-      flex: 1;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
+      padding: 1px 5px;
     }
     .contents-title {
-      font-size: 0.875rem;
+      flex: 1;
+      min-width: 0;
+      font-size: 0.78125rem;
       font-weight: 600;
       color: #f0f0f0;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      line-height: 1.4;
+      line-height: 1.35;
     }
     .contents-link:hover .contents-title {
       color: var(--neon-lime);
     }
-    .contents-sub {
-      font-size: 0.6875rem;
-      color: var(--dark-grey);
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-    }
     .contents-arrow {
       flex-shrink: 0;
       color: var(--dark-grey);
-      font-size: 0.875rem;
+      font-size: 0.75rem;
       font-weight: 700;
       transition: transform 0.2s, color 0.2s;
     }
     .contents-link:hover .contents-arrow {
       color: var(--neon-lime);
-      transform: translateX(3px);
+      transform: translateX(2px);
     }
     @media (max-width: 768px) {
       .contents-card {
-        padding: 1.25rem 1rem;
+        padding: 0.75rem 0.875rem;
       }
       .contents-grid {
         grid-template-columns: 1fr;
+        max-height: 165px;
       }
     }
 
@@ -612,235 +630,169 @@
     </div>
   </header>
 
-    <!-- List of Contents (Table of Contents) -->
+    <!-- Compact List of Contents (Latest to Oldest) -->
   <section class="hub-contents-section">
     <div class="contents-card">
       <div class="contents-header">
-        <div class="contents-header-text">
-          <span class="contents-badge">TABLE OF CONTENTS · ഉള്ളടക്ക സൂചിക</span>
-          <h2>List of Contents | Football Match Analysis Archive (22 Videos)</h2>
-          <p class="contents-lead">Quick index of all in-depth football video breakdowns, tactical match debriefs, and stories by Haris Nenmara.</p>
+        <div class="contents-header-left">
+          <span class="contents-badge">CONTENTS · ഉള്ളടക്കം</span>
+          <h2>Football Videos Index</h2>
         </div>
+        <span class="contents-count-pill">22 Videos · Latest First</span>
       </div>
       <ol class="contents-grid">
         
         <li class="contents-item">
-          <a href="/football/real-madrid-vs-barcelona-el-clasico-tactical-analysis/" class="contents-link" title="ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara">
+          <a href="/football/barcelona-vs-atletico-madrid-lnceuw/" class="contents-link" title="ഡിയോങ്ങിൻ്റെ വരവിൽ മാറിയ കളി; പെഡ്രി എന്ന എഞ്ചിന്‍! Barcelona vs Atletico madrid (2026-11-09 · 35K views)">
             <span class="contents-num">01</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara</span>
-              <span class="contents-sub">Barcelona & Real Madrid · 128K views</span>
-            </span>
+            <span class="contents-title" lang="ml">ഡിയോങ്ങിൻ്റെ വരവിൽ മാറിയ കളി; പെഡ്രി എന്ന എഞ്ചിന്‍! Barcelona vs Atletico madrid</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/barcelona-vs-real-madrid-hansi-flick-tactics/" class="contents-link" title="ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico">
+          <a href="/football/cristiano-ronaldo-haris-nenmara-kv8iqz/" class="contents-link" title="അയാളെ പ്രൊവോക്ക് ചെയ്യാൻ പോകരുതായിരുന്നു ! Cristiano Ronaldo | Haris Nenmara (2026-11-06 · 42K views)">
             <span class="contents-num">02</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico</span>
-              <span class="contents-sub">Barcelona · 56K views</span>
-            </span>
+            <span class="contents-title" lang="ml">അയാളെ പ്രൊവോക്ക് ചെയ്യാൻ പോകരുതായിരുന്നു ! Cristiano Ronaldo | Haris Nenmara</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/barcelona-vs-psg-lamine-yamal-ucl-tactics/" class="contents-link" title="PSG യെ വീഴ്ത്താൻ ആരുണ്ട് ഇവിടെ ? | Barcelona vs Psg | Lamine Yamal">
+          <a href="/football/cr7-cristiano-ronaldo-retirement-cr7-o4ba8x/" class="contents-link" title="CR7... അതൊരു വികാരമായിരുന്നു ! | Cristiano Ronaldo Retirement | Cr7 (2026-11-05 · 73K views)">
             <span class="contents-num">03</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">PSG യെ വീഴ്ത്താൻ ആരുണ്ട് ഇവിടെ ? | Barcelona vs Psg | Lamine Yamal</span>
-              <span class="contents-sub">Barcelona & Champions League · 55K views</span>
-            </span>
+            <span class="contents-title" lang="ml">CR7... അതൊരു വികാരമായിരുന്നു ! | Cristiano Ronaldo Retirement | Cr7</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/barcelona-lamine-yamal-rodri-hansi-flick-system/" class="contents-link" title="ബാഴ്സയെ ആര് പിടിച്ച് കെട്ടും ? Barcelona | Lamine Yamal | Rodri | Hansi Flick">
+          <a href="/football/real-madrid-federico-valverde-zxou4r/" class="contents-link" title="മാറ്റമൊന്നുമില്ലാതെ വിനി ! ഫെഡെയുടെ റോക്കറ്റുകള്‍, ജൂഡ് മാജിക് | Real Madrid | Federico Valverde (2026-11-05 · 41K views)">
             <span class="contents-num">04</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">ബാഴ്സയെ ആര് പിടിച്ച് കെട്ടും ? Barcelona | Lamine Yamal | Rodri | Hansi Flick</span>
-              <span class="contents-sub">Barcelona · 42K views</span>
-            </span>
+            <span class="contents-title" lang="ml">മാറ്റമൊന്നുമില്ലാതെ വിനി ! ഫെഡെയുടെ റോക്കറ്റുകള്‍, ജൂഡ് മാജിക് | Real Madrid | Federico Valverde</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/real-madrid-vs-rb-leipzig-tactical-preview/" class="contents-link" title="ബാഴ്സക്ക് അത്ര എളുപ്പമാകില്ല കാര്യങ്ങള്‍ ! Real Madrid vs RB Leipzig">
+          <a href="/football/barcelona-vs-aston-villa-lamine-yamal-raphinha-8-ve7f/" class="contents-link" title="ഫ്ലിക്കിന്‍റെ പിള്ളേര്‍ ഇവിടെയൊക്കെ തന്നെ കാണും ! Barcelona vs aston villa | Lamine yamal | Raphinha (2026-11-04 · 31K views)">
             <span class="contents-num">05</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">ബാഴ്സക്ക് അത്ര എളുപ്പമാകില്ല കാര്യങ്ങള്‍ ! Real Madrid vs RB Leipzig</span>
-              <span class="contents-sub">Real Madrid · 42K views</span>
-            </span>
+            <span class="contents-title" lang="ml">ഫ്ലിക്കിന്‍റെ പിള്ളേര്‍ ഇവിടെയൊക്കെ തന്നെ കാണും ! Barcelona vs aston villa | Lamine yamal | Raphinha</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/real-madrid-vs-roma-tactical-breakdown/" class="contents-link" title="റോമയെ എരിച്ചു ! പഠിക്കാൻ ഇനിയുമേറെ | Real Madrid Vs Roma">
+          <a href="/football/arsenal-vs-liverpool-mikel-arteta-cjgogc/" class="contents-link" title="സീറോ ഷോട്ട് ഓൺ ടാർഗറ്റ് ! അർട്ടേറ്റ 14 വർഷത്തിന് ശേഷം പൊളിച്ചെഴുതിയത് എന്ത് ?| Arsenal vs Liverpool (2026-11-02 · 23K views)">
             <span class="contents-num">06</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">റോമയെ എരിച്ചു ! പഠിക്കാൻ ഇനിയുമേറെ | Real Madrid Vs Roma</span>
-              <span class="contents-sub">Real Madrid · 58K views</span>
-            </span>
+            <span class="contents-title" lang="ml">സീറോ ഷോട്ട് ഓൺ ടാർഗറ്റ് ! അർട്ടേറ്റ 14 വർഷത്തിന് ശേഷം പൊളിച്ചെഴുതിയത് എന്ത് ?| Arsenal vs Liverpool</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/barcelona-vs-galatasaray-lamine-yamal-analysis/" class="contents-link" title="ആളറിഞ്ഞു കളിക്കടാ ! barcelona vs galatasaray | lamine yamal | Haris Nenmara">
+          <a href="/football/ousmane-diomande-real-madrid-bv_pca/" class="contents-link" title="ഡിയോമന്‍റെയുടെ റോക്കറ്റുകള്‍ ! വിനി മടങ്ങി വന്നാല്‍ ഹോസേ എന്ത് ചെയ്യും ? | Ousmane Diomande | Real Madrid (2026-11-02 · 63K views)">
             <span class="contents-num">07</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">ആളറിഞ്ഞു കളിക്കടാ ! barcelona vs galatasaray | lamine yamal | Haris Nenmara</span>
-              <span class="contents-sub">Barcelona · 73K views</span>
-            </span>
+            <span class="contents-title" lang="ml">ഡിയോമന്‍റെയുടെ റോക്കറ്റുകള്‍ ! വിനി മടങ്ങി വന്നാല്‍ ഹോസേ എന്ത് ചെയ്യും ? | Ousmane Diomande | Real Madrid</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/kerala-blasters-sanan-momo-fitness-tactics/" class="contents-link" title="'സനാന് ഫിറ്റ്നസില്ല... മോമോയുടെ മെന്‍റാലിറ്റി'; ആഷ്‍ലിയുടെ തുറന്ന് പറച്ചിലുകള്‍ | Kerala blasters">
+          <a href="/football/kylian-mbapp-china-2sztxv/" class="contents-link" title="ഡിക്റ്റേറ്റര്‍ എംബാപ്പെ; ഒടുക്കം കളി കാര്യമായി ! എന്താണ് ചൈനയുമായുള്ള പ്രശ്നം? kylian mbappé | China (2026-10-31 · 65K views)">
             <span class="contents-num">08</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">'സനാന് ഫിറ്റ്നസില്ല... മോമോയുടെ മെന്‍റാലിറ്റി'; ആഷ്‍ലിയുടെ തുറന്ന് പറച്ചിലുകള്‍ | Kerala blasters</span>
-              <span class="contents-sub">Kerala Blasters & Indian Football · 55K views</span>
-            </span>
+            <span class="contents-title" lang="ml">ഡിക്റ്റേറ്റര്‍ എംബാപ്പെ; ഒടുക്കം കളി കാര്യമായി ! എന്താണ് ചൈനയുമായുള്ള പ്രശ്നം? kylian mbappé | China</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/kerala-blasters-fallou-ndiaye-defensive-wall/" class="contents-link" title="ഫാലു ബാക്ക് ; ബ്ലാസ്റ്റേഴ്സ് ബാക്ക് ലൈൻ സുശക്തം | Fallou ndiaye| Kerala Blasters">
+          <a href="/football/real-madrid-vs-barcelona-el-clasico-tactical-analysis/" class="contents-link" title="ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara (2026-10-26 · 128K views)">
             <span class="contents-num">09</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">ഫാലു ബാക്ക് ; ബ്ലാസ്റ്റേഴ്സ് ബാക്ക് ലൈൻ സുശക്തം | Fallou ndiaye| Kerala Blasters</span>
-              <span class="contents-sub">Kerala Blasters & Indian Football · 35K views</span>
-            </span>
+            <span class="contents-title" lang="ml">ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/kerala-blasters-momo-yanson-attack-bolton-defense/" class="contents-link" title="അറ്റാക്കിൽ യാൻസൺ ; കോട്ട കാക്കാൻ ബോൾട്ടൻ | Kerala Blasters | Momo yansane | James Bolton">
+          <a href="/football/barcelona-vs-real-madrid-hansi-flick-tactics/" class="contents-link" title="ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico (2026-10-24 · 56K views)">
             <span class="contents-num">10</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">അറ്റാക്കിൽ യാൻസൺ ; കോട്ട കാക്കാൻ ബോൾട്ടൻ | Kerala Blasters | Momo yansane | James Bolton</span>
-              <span class="contents-sub">Kerala Blasters & Indian Football · 60K views</span>
-            </span>
+            <span class="contents-title" lang="ml">ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/kerala-blasters-midfield-nebojsa-kosovic-tactics/" class="contents-link" title="ബ്ലാസ്റ്റേഴ്സ് മധ്യനിര ഇനി കൊസോവിച്ച് ഭരിക്കും | Kerala Blasters | Nebojša Kosović">
+          <a href="/football/real-madrid-vs-rb-leipzig-tactical-preview/" class="contents-link" title="ബാഴ്സക്ക് അത്ര എളുപ്പമാകില്ല കാര്യങ്ങള്‍ ! Real Madrid vs RB Leipzig (2026-10-22 · 42K views)">
             <span class="contents-num">11</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">ബ്ലാസ്റ്റേഴ്സ് മധ്യനിര ഇനി കൊസോവിച്ച് ഭരിക്കും | Kerala Blasters | Nebojša Kosović</span>
-              <span class="contents-sub">Kerala Blasters & Indian Football · 87K views</span>
-            </span>
+            <span class="contents-title" lang="ml">ബാഴ്സക്ക് അത്ര എളുപ്പമാകില്ല കാര്യങ്ങള്‍ ! Real Madrid vs RB Leipzig</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/kerala-blasters-aston-villa-green-new-signings/" class="contents-link" title="ആസ്റ്റൺ വില്ലയിൽ നിന്ന് കളി പഠിച്ച ഗ്രീൻ;കൊമ്പന്മാരുടെ പുതിയ വിദേശതാരം | Kerala Blasters">
+          <a href="/football/barcelona-vs-psg-lamine-yamal-ucl-tactics/" class="contents-link" title="PSG യെ വീഴ്ത്താൻ ആരുണ്ട് ഇവിടെ ? | Barcelona vs Psg | Lamine Yamal (2026-10-21 · 55K views)">
             <span class="contents-num">12</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">ആസ്റ്റൺ വില്ലയിൽ നിന്ന് കളി പഠിച്ച ഗ്രീൻ;കൊമ്പന്മാരുടെ പുതിയ വിദേശതാരം | Kerala Blasters</span>
-              <span class="contents-sub">Kerala Blasters & Indian Football · 44K views</span>
-            </span>
+            <span class="contents-title" lang="ml">PSG യെ വീഴ്ത്താൻ ആരുണ്ട് ഇവിടെ ? | Barcelona vs Psg | Lamine Yamal</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/lionel-messi-football-legacy-tactics/" class="contents-link" title="ഇങ്ങനെ ഒരിതിഹാസം ഇനി പിറക്കുമോ ? Lionel Messi | Haris Nenmara">
+          <a href="/football/real-madrid-vs-roma-tactical-breakdown/" class="contents-link" title="റോമയെ എരിച്ചു ! പഠിക്കാൻ ഇനിയുമേറെ | Real Madrid Vs Roma (2026-10-20 · 58K views)">
             <span class="contents-num">13</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">ഇങ്ങനെ ഒരിതിഹാസം ഇനി പിറക്കുമോ ? Lionel Messi | Haris Nenmara</span>
-              <span class="contents-sub">European & World Football · 66K views</span>
-            </span>
+            <span class="contents-title" lang="ml">റോമയെ എരിച്ചു ! പഠിക്കാൻ ഇനിയുമേറെ | Real Madrid Vs Roma</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/cristiano-ronaldo-cr7-tactical-philosophy/" class="contents-link" title="കോച്ചോ റോണോയോ; ആരാണ് ശരി? | Cristiano Ronaldo | Ronaldo Walkout | Haris Nenmara">
+          <a href="/football/barcelona-vs-galatasaray-lamine-yamal-analysis/" class="contents-link" title="ആളറിഞ്ഞു കളിക്കടാ ! barcelona vs galatasaray | lamine yamal | Haris Nenmara (2026-10-19 · 73K views)">
             <span class="contents-num">14</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">കോച്ചോ റോണോയോ; ആരാണ് ശരി? | Cristiano Ronaldo | Ronaldo Walkout | Haris Nenmara</span>
-              <span class="contents-sub">European & World Football · 68K views</span>
-            </span>
+            <span class="contents-title" lang="ml">ആളറിഞ്ഞു കളിക്കടാ ! barcelona vs galatasaray | lamine yamal | Haris Nenmara</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/kylian-mbapp-china-2sztxv/" class="contents-link" title="ഡിക്റ്റേറ്റര്‍ എംബാപ്പെ; ഒടുക്കം കളി കാര്യമായി ! എന്താണ് ചൈനയുമായുള്ള പ്രശ്നം? kylian mbappé | China">
+          <a href="/football/kerala-blasters-sanan-momo-fitness-tactics/" class="contents-link" title="'സനാന് ഫിറ്റ്നസില്ല... മോമോയുടെ മെന്‍റാലിറ്റി'; ആഷ്‍ലിയുടെ തുറന്ന് പറച്ചിലുകള്‍ | Kerala blasters (2026-10-18 · 55K views)">
             <span class="contents-num">15</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">ഡിക്റ്റേറ്റര്‍ എംബാപ്പെ; ഒടുക്കം കളി കാര്യമായി ! എന്താണ് ചൈനയുമായുള്ള പ്രശ്നം? kylian mbappé | China</span>
-              <span class="contents-sub">European & World Football · 65K views</span>
-            </span>
+            <span class="contents-title" lang="ml">'സനാന് ഫിറ്റ്നസില്ല... മോമോയുടെ മെന്‍റാലിറ്റി'; ആഷ്‍ലിയുടെ തുറന്ന് പറച്ചിലുകള്‍ | Kerala blasters</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/ousmane-diomande-real-madrid-bv_pca/" class="contents-link" title="ഡിയോമന്‍റെയുടെ റോക്കറ്റുകള്‍ ! വിനി മടങ്ങി വന്നാല്‍ ഹോസേ എന്ത് ചെയ്യും ? | Ousmane Diomande | Real Madrid">
+          <a href="/football/barcelona-lamine-yamal-rodri-hansi-flick-system/" class="contents-link" title="ബാഴ്സയെ ആര് പിടിച്ച് കെട്ടും ? Barcelona | Lamine Yamal | Rodri | Hansi Flick (2026-10-18 · 42K views)">
             <span class="contents-num">16</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">ഡിയോമന്‍റെയുടെ റോക്കറ്റുകള്‍ ! വിനി മടങ്ങി വന്നാല്‍ ഹോസേ എന്ത് ചെയ്യും ? | Ousmane Diomande | Real Madrid</span>
-              <span class="contents-sub">Real Madrid · 63K views</span>
-            </span>
+            <span class="contents-title" lang="ml">ബാഴ്സയെ ആര് പിടിച്ച് കെട്ടും ? Barcelona | Lamine Yamal | Rodri | Hansi Flick</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/arsenal-vs-liverpool-mikel-arteta-cjgogc/" class="contents-link" title="സീറോ ഷോട്ട് ഓൺ ടാർഗറ്റ് ! അർട്ടേറ്റ 14 വർഷത്തിന് ശേഷം പൊളിച്ചെഴുതിയത് എന്ത് ?| Arsenal vs Liverpool">
+          <a href="/football/kerala-blasters-fallou-ndiaye-defensive-wall/" class="contents-link" title="ഫാലു ബാക്ക് ; ബ്ലാസ്റ്റേഴ്സ് ബാക്ക് ലൈൻ സുശക്തം | Fallou ndiaye| Kerala Blasters (2026-10-15 · 35K views)">
             <span class="contents-num">17</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">സീറോ ഷോട്ട് ഓൺ ടാർഗറ്റ് ! അർട്ടേറ്റ 14 വർഷത്തിന് ശേഷം പൊളിച്ചെഴുതിയത് എന്ത് ?| Arsenal vs Liverpool</span>
-              <span class="contents-sub">European & World Football · 23K views</span>
-            </span>
+            <span class="contents-title" lang="ml">ഫാലു ബാക്ക് ; ബ്ലാസ്റ്റേഴ്സ് ബാക്ക് ലൈൻ സുശക്തം | Fallou ndiaye| Kerala Blasters</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/barcelona-vs-aston-villa-lamine-yamal-raphinha-8-ve7f/" class="contents-link" title="ഫ്ലിക്കിന്‍റെ പിള്ളേര്‍ ഇവിടെയൊക്കെ തന്നെ കാണും ! Barcelona vs aston villa | Lamine yamal | Raphinha">
+          <a href="/football/kerala-blasters-momo-yanson-attack-bolton-defense/" class="contents-link" title="അറ്റാക്കിൽ യാൻസൺ ; കോട്ട കാക്കാൻ ബോൾട്ടൻ | Kerala Blasters | Momo yansane | James Bolton (2026-10-14 · 60K views)">
             <span class="contents-num">18</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">ഫ്ലിക്കിന്‍റെ പിള്ളേര്‍ ഇവിടെയൊക്കെ തന്നെ കാണും ! Barcelona vs aston villa | Lamine yamal | Raphinha</span>
-              <span class="contents-sub">Barcelona · 31K views</span>
-            </span>
+            <span class="contents-title" lang="ml">അറ്റാക്കിൽ യാൻസൺ ; കോട്ട കാക്കാൻ ബോൾട്ടൻ | Kerala Blasters | Momo yansane | James Bolton</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/real-madrid-federico-valverde-zxou4r/" class="contents-link" title="മാറ്റമൊന്നുമില്ലാതെ വിനി ! ഫെഡെയുടെ റോക്കറ്റുകള്‍, ജൂഡ് മാജിക് | Real Madrid | Federico Valverde">
+          <a href="/football/kerala-blasters-midfield-nebojsa-kosovic-tactics/" class="contents-link" title="ബ്ലാസ്റ്റേഴ്സ് മധ്യനിര ഇനി കൊസോവിച്ച് ഭരിക്കും | Kerala Blasters | Nebojša Kosović (2026-10-12 · 87K views)">
             <span class="contents-num">19</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">മാറ്റമൊന്നുമില്ലാതെ വിനി ! ഫെഡെയുടെ റോക്കറ്റുകള്‍, ജൂഡ് മാജിക് | Real Madrid | Federico Valverde</span>
-              <span class="contents-sub">Real Madrid · 41K views</span>
-            </span>
+            <span class="contents-title" lang="ml">ബ്ലാസ്റ്റേഴ്സ് മധ്യനിര ഇനി കൊസോവിച്ച് ഭരിക്കും | Kerala Blasters | Nebojša Kosović</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/cr7-cristiano-ronaldo-retirement-cr7-o4ba8x/" class="contents-link" title="CR7... അതൊരു വികാരമായിരുന്നു ! | Cristiano Ronaldo Retirement | Cr7">
+          <a href="/football/kerala-blasters-aston-villa-green-new-signings/" class="contents-link" title="ആസ്റ്റൺ വില്ലയിൽ നിന്ന് കളി പഠിച്ച ഗ്രീൻ;കൊമ്പന്മാരുടെ പുതിയ വിദേശതാരം | Kerala Blasters (2026-10-10 · 44K views)">
             <span class="contents-num">20</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">CR7... അതൊരു വികാരമായിരുന്നു ! | Cristiano Ronaldo Retirement | Cr7</span>
-              <span class="contents-sub">European & World Football · 73K views</span>
-            </span>
+            <span class="contents-title" lang="ml">ആസ്റ്റൺ വില്ലയിൽ നിന്ന് കളി പഠിച്ച ഗ്രീൻ;കൊമ്പന്മാരുടെ പുതിയ വിദേശതാരം | Kerala Blasters</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/cristiano-ronaldo-haris-nenmara-kv8iqz/" class="contents-link" title="അയാളെ പ്രൊവോക്ക് ചെയ്യാൻ പോകരുതായിരുന്നു ! Cristiano Ronaldo | Haris Nenmara">
+          <a href="/football/lionel-messi-football-legacy-tactics/" class="contents-link" title="ഇങ്ങനെ ഒരിതിഹാസം ഇനി പിറക്കുമോ ? Lionel Messi | Haris Nenmara (2026-10-08 · 66K views)">
             <span class="contents-num">21</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">അയാളെ പ്രൊവോക്ക് ചെയ്യാൻ പോകരുതായിരുന്നു ! Cristiano Ronaldo | Haris Nenmara</span>
-              <span class="contents-sub">European & World Football · 42K views</span>
-            </span>
+            <span class="contents-title" lang="ml">ഇങ്ങനെ ഒരിതിഹാസം ഇനി പിറക്കുമോ ? Lionel Messi | Haris Nenmara</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/football/barcelona-vs-atletico-madrid-lnceuw/" class="contents-link" title="ഡിയോങ്ങിൻ്റെ വരവിൽ മാറിയ കളി; പെഡ്രി എന്ന എഞ്ചിന്‍! Barcelona vs Atletico madrid">
+          <a href="/football/cristiano-ronaldo-cr7-tactical-philosophy/" class="contents-link" title="കോച്ചോ റോണോയോ; ആരാണ് ശരി? | Cristiano Ronaldo | Ronaldo Walkout | Haris Nenmara (2026-10-06 · 68K views)">
             <span class="contents-num">22</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">ഡിയോങ്ങിൻ്റെ വരവിൽ മാറിയ കളി; പെഡ്രി എന്ന എഞ്ചിന്‍! Barcelona vs Atletico madrid</span>
-              <span class="contents-sub">Barcelona · 35K views</span>
-            </span>
+            <span class="contents-title" lang="ml">കോച്ചോ റോണോയോ; ആരാണ് ശരി? | Cristiano Ronaldo | Ronaldo Walkout | Haris Nenmara</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
@@ -850,218 +802,10 @@
 
   <main class="hub-grid">
     
-        <article class="hub-card" onclick="window.location.href='/football/real-madrid-vs-barcelona-el-clasico-tactical-analysis/'" style="cursor: pointer;">
-          <a href="/football/real-madrid-vs-barcelona-el-clasico-tactical-analysis/" class="hub-card-thumb-link" aria-label="ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara">
-            <img src="https://i.ytimg.com/vi/MT7IaTzzwY4/hqdefault.jpg" alt="ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Barcelona & Real Madrid</span>
-            <span class="hub-card-views">128K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-26</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/football/real-madrid-vs-barcelona-el-clasico-tactical-analysis/">ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara</a></h2>
-            <p class="hub-card-snippet">In-depth tactical analysis of El Clasico between Real Madrid and Barcelona in Malayalam by Haris Nenmara. Dissecting match moments, tactical setups, and key plays.</p>
-            <div class="hub-card-footer">
-              <a href="/football/real-madrid-vs-barcelona-el-clasico-tactical-analysis/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/football/barcelona-vs-real-madrid-hansi-flick-tactics/'" style="cursor: pointer;">
-          <a href="/football/barcelona-vs-real-madrid-hansi-flick-tactics/" class="hub-card-thumb-link" aria-label="ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico">
-            <img src="https://i.ytimg.com/vi/RDpM-6xLCao/hqdefault.jpg" alt="ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico" width="480" height="270" loading="lazy" decoding="async">
+        <article class="hub-card" id="barcelona-vs-atletico-madrid-lnceuw" onclick="window.location.href='/football/barcelona-vs-atletico-madrid-lnceuw/'" style="cursor: pointer;">
+          <a href="/football/barcelona-vs-atletico-madrid-lnceuw/" class="hub-card-thumb-link" aria-label="ഡിയോങ്ങിൻ്റെ വരവിൽ മാറിയ കളി; പെഡ്രി എന്ന എഞ്ചിന്‍! Barcelona vs Atletico madrid">
+            <img src="https://i.ytimg.com/vi/lNCeUwY0gC8/hqdefault.jpg" alt="ഡിയോങ്ങിൻ്റെ വരവിൽ മാറിയ കളി; പെഡ്രി എന്ന എഞ്ചിന്‍! Barcelona vs Atletico madrid" width="480" height="270" loading="lazy" decoding="async">
             <span class="hub-card-badge">Barcelona</span>
-            <span class="hub-card-views">56K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-24</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/football/barcelona-vs-real-madrid-hansi-flick-tactics/">ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico</a></h2>
-            <p class="hub-card-snippet">Can Real Madrid stop this in-form Barcelona squad? Comprehensive El Clasico tactical preview and match debrief in Malayalam by Haris Nenmara.</p>
-            <div class="hub-card-footer">
-              <a href="/football/barcelona-vs-real-madrid-hansi-flick-tactics/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/football/barcelona-vs-psg-lamine-yamal-ucl-tactics/'" style="cursor: pointer;">
-          <a href="/football/barcelona-vs-psg-lamine-yamal-ucl-tactics/" class="hub-card-thumb-link" aria-label="PSG യെ വീഴ്ത്താൻ ആരുണ്ട് ഇവിടെ ? | Barcelona vs Psg | Lamine Yamal">
-            <img src="https://i.ytimg.com/vi/4LGjduzWzFg/hqdefault.jpg" alt="PSG യെ വീഴ്ത്താൻ ആരുണ്ട് ഇവിടെ ? | Barcelona vs Psg | Lamine Yamal" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Barcelona & Champions League</span>
-            <span class="hub-card-views">55K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-21</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/football/barcelona-vs-psg-lamine-yamal-ucl-tactics/">PSG യെ വീഴ്ത്താൻ ആരുണ്ട് ഇവിടെ ? | Barcelona vs Psg | Lamine Yamal</a></h2>
-            <p class="hub-card-snippet">UEFA Champions League tactical masterclass: Barcelona vs PSG. Detailed analysis of Lamine Yamal's wing play and tactical dynamics by Haris Nenmara.</p>
-            <div class="hub-card-footer">
-              <a href="/football/barcelona-vs-psg-lamine-yamal-ucl-tactics/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/football/barcelona-lamine-yamal-rodri-hansi-flick-system/'" style="cursor: pointer;">
-          <a href="/football/barcelona-lamine-yamal-rodri-hansi-flick-system/" class="hub-card-thumb-link" aria-label="ബാഴ്സയെ ആര് പിടിച്ച് കെട്ടും ? Barcelona | Lamine Yamal | Rodri | Hansi Flick">
-            <img src="https://i.ytimg.com/vi/ZoU-SU80SLM/hqdefault.jpg" alt="ബാഴ്സയെ ആര് പിടിച്ച് കെട്ടും ? Barcelona | Lamine Yamal | Rodri | Hansi Flick" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Barcelona</span>
-            <span class="hub-card-views">42K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-18</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/football/barcelona-lamine-yamal-rodri-hansi-flick-system/">ബാഴ്സയെ ആര് പിടിച്ച് കെട്ടും ? Barcelona | Lamine Yamal | Rodri | Hansi Flick</a></h2>
-            <p class="hub-card-snippet">Can anyone stop this Barcelona team? Tactical investigation into Hansi Flick's blueprint, Rodri comparisons, and Lamine Yamal's influence.</p>
-            <div class="hub-card-footer">
-              <a href="/football/barcelona-lamine-yamal-rodri-hansi-flick-system/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/football/real-madrid-vs-rb-leipzig-tactical-preview/'" style="cursor: pointer;">
-          <a href="/football/real-madrid-vs-rb-leipzig-tactical-preview/" class="hub-card-thumb-link" aria-label="ബാഴ്സക്ക് അത്ര എളുപ്പമാകില്ല കാര്യങ്ങള്‍ ! Real Madrid vs RB Leipzig">
-            <img src="https://i.ytimg.com/vi/XMR4quSxjHw/hqdefault.jpg" alt="ബാഴ്സക്ക് അത്ര എളുപ്പമാകില്ല കാര്യങ്ങള്‍ ! Real Madrid vs RB Leipzig" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Real Madrid</span>
-            <span class="hub-card-views">42K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-22</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/football/real-madrid-vs-rb-leipzig-tactical-preview/">ബാഴ്സക്ക് അത്ര എളുപ്പമാകില്ല കാര്യങ്ങള്‍ ! Real Madrid vs RB Leipzig</a></h2>
-            <p class="hub-card-snippet">Real Madrid vs RB Leipzig tactical match breakdown. Evaluating defensive solidity, pressing traps, and tactical adjustments in European football.</p>
-            <div class="hub-card-footer">
-              <a href="/football/real-madrid-vs-rb-leipzig-tactical-preview/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/football/real-madrid-vs-roma-tactical-breakdown/'" style="cursor: pointer;">
-          <a href="/football/real-madrid-vs-roma-tactical-breakdown/" class="hub-card-thumb-link" aria-label="റോമയെ എരിച്ചു ! പഠിക്കാൻ ഇനിയുമേറെ | Real Madrid Vs Roma">
-            <img src="https://i.ytimg.com/vi/9q0iwA1bpkI/hqdefault.jpg" alt="റോമയെ എരിച്ചു ! പഠിക്കാൻ ഇനിയുമേറെ | Real Madrid Vs Roma" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Real Madrid</span>
-            <span class="hub-card-views">58K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-20</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/football/real-madrid-vs-roma-tactical-breakdown/">റോമയെ എരിച്ചു ! പഠിക്കാൻ ഇനിയുമേറെ | Real Madrid Vs Roma</a></h2>
-            <p class="hub-card-snippet">Real Madrid vs AS Roma match debrief with Haris Nenmara. Comprehensive evaluation of attacking combinations, finishing efficiency, and tactical discipline.</p>
-            <div class="hub-card-footer">
-              <a href="/football/real-madrid-vs-roma-tactical-breakdown/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/football/barcelona-vs-galatasaray-lamine-yamal-analysis/'" style="cursor: pointer;">
-          <a href="/football/barcelona-vs-galatasaray-lamine-yamal-analysis/" class="hub-card-thumb-link" aria-label="ആളറിഞ്ഞു കളിക്കടാ ! barcelona vs galatasaray | lamine yamal | Haris Nenmara">
-            <img src="https://i.ytimg.com/vi/RtpY-aKasEg/hqdefault.jpg" alt="ആളറിഞ്ഞു കളിക്കടാ ! barcelona vs galatasaray | lamine yamal | Haris Nenmara" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Barcelona</span>
-            <span class="hub-card-views">73K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-19</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/football/barcelona-vs-galatasaray-lamine-yamal-analysis/">ആളറിഞ്ഞു കളിക്കടാ ! barcelona vs galatasaray | lamine yamal | Haris Nenmara</a></h2>
-            <p class="hub-card-snippet">Barcelona vs Galatasaray tactical match review in Malayalam. How Lamine Yamal and Barcelona broke down aggressive defensive setups with tactical flair.</p>
-            <div class="hub-card-footer">
-              <a href="/football/barcelona-vs-galatasaray-lamine-yamal-analysis/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/football/kerala-blasters-sanan-momo-fitness-tactics/'" style="cursor: pointer;">
-          <a href="/football/kerala-blasters-sanan-momo-fitness-tactics/" class="hub-card-thumb-link" aria-label="'സനാന് ഫിറ്റ്നസില്ല... മോമോയുടെ മെന്‍റാലിറ്റി'; ആഷ്‍ലിയുടെ തുറന്ന് പറച്ചിലുകള്‍ | Kerala blasters">
-            <img src="https://i.ytimg.com/vi/l1q1MQZSe_0/hqdefault.jpg" alt="'സനാന് ഫിറ്റ്നസില്ല... മോമോയുടെ മെന്‍റാലിറ്റി'; ആഷ്‍ലിയുടെ തുറന്ന് പറച്ചിലുകള്‍ | Kerala blasters" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Kerala Blasters & Indian Football</span>
-            <span class="hub-card-views">55K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-18</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/football/kerala-blasters-sanan-momo-fitness-tactics/">'സനാന് ഫിറ്റ്നസില്ല... മോമോയുടെ മെന്‍റാലിറ്റി'; ആഷ്‍ലിയുടെ തുറന്ന് പറച്ചിലുകള്‍ | Kerala blasters</a></h2>
-            <p class="hub-card-snippet">Kerala Blasters player fitness, tactical discipline, and mentality analyzed by Haris Nenmara. In-depth review of Sanan, Momo, and ISL campaign requirements.</p>
-            <div class="hub-card-footer">
-              <a href="/football/kerala-blasters-sanan-momo-fitness-tactics/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/football/kerala-blasters-fallou-ndiaye-defensive-wall/'" style="cursor: pointer;">
-          <a href="/football/kerala-blasters-fallou-ndiaye-defensive-wall/" class="hub-card-thumb-link" aria-label="ഫാലു ബാക്ക് ; ബ്ലാസ്റ്റേഴ്സ് ബാക്ക് ലൈൻ സുശക്തം | Fallou ndiaye| Kerala Blasters">
-            <img src="https://i.ytimg.com/vi/ySpbZe77Jgs/hqdefault.jpg" alt="ഫാലു ബാക്ക് ; ബ്ലാസ്റ്റേഴ്സ് ബാക്ക് ലൈൻ സുശക്തം | Fallou ndiaye| Kerala Blasters" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Kerala Blasters & Indian Football</span>
             <span class="hub-card-views">35K views</span>
             <div class="hub-play-overlay" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
@@ -1071,306 +815,20 @@
           </a>
           <div class="hub-card-body">
             <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-15</span>
+              <span class="hub-card-time">2026-11-09</span>
               <span class="hub-card-dot">·</span>
               <span class="hub-card-read">3 min read</span>
             </div>
-            <h2 class="hub-card-title"><a href="/football/kerala-blasters-fallou-ndiaye-defensive-wall/">ഫാലു ബാക്ക് ; ബ്ലാസ്റ്റേഴ്സ് ബാക്ക് ലൈൻ സുശക്തം | Fallou ndiaye| Kerala Blasters</a></h2>
-            <p class="hub-card-snippet">Can Fallou N'Diaye solidify Kerala Blasters' backline? Tactical analysis of his defensive positioning, aerial dominance, and ISL impact by Haris Nenmara.</p>
+            <h2 class="hub-card-title"><a href="/football/barcelona-vs-atletico-madrid-lnceuw/">ഡിയോങ്ങിൻ്റെ വരവിൽ മാറിയ കളി; പെഡ്രി എന്ന എഞ്ചിന്‍! Barcelona vs Atletico madrid</a></h2>
+            <p class="hub-card-snippet">Analysis and match debrief by Haris Nenmara on 'ഡിയോങ്ങിൻ്റെ വരവിൽ മാറിയ കളി; പെഡ്രി എന്ന എഞ്ചിന്‍! Barcelona vs Atletico madrid'. Watch the full breakdown on Final Third.</p>
             <div class="hub-card-footer">
-              <a href="/football/kerala-blasters-fallou-ndiaye-defensive-wall/" class="hub-card-btn">
+              <a href="/football/barcelona-vs-atletico-madrid-lnceuw/" class="hub-card-btn">
                 Read Tactical Breakdown &amp; Watch Video ↗
               </a>
             </div>
           </div>
         </article>
-        <article class="hub-card" onclick="window.location.href='/football/kerala-blasters-momo-yanson-attack-bolton-defense/'" style="cursor: pointer;">
-          <a href="/football/kerala-blasters-momo-yanson-attack-bolton-defense/" class="hub-card-thumb-link" aria-label="അറ്റാക്കിൽ യാൻസൺ ; കോട്ട കാക്കാൻ ബോൾട്ടൻ | Kerala Blasters | Momo yansane | James Bolton">
-            <img src="https://i.ytimg.com/vi/cOYjZ39qHAU/hqdefault.jpg" alt="അറ്റാക്കിൽ യാൻസൺ ; കോട്ട കാക്കാൻ ബോൾട്ടൻ | Kerala Blasters | Momo yansane | James Bolton" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Kerala Blasters & Indian Football</span>
-            <span class="hub-card-views">60K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-14</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/football/kerala-blasters-momo-yanson-attack-bolton-defense/">അറ്റാക്കിൽ യാൻസൺ ; കോട്ട കാക്കാൻ ബോൾട്ടൻ | Kerala Blasters | Momo yansane | James Bolton</a></h2>
-            <p class="hub-card-snippet">Kerala Blasters tactical balance: Momo Yansane leading the attack while James Bolton secures the defense. ISL squad analysis by Haris Nenmara.</p>
-            <div class="hub-card-footer">
-              <a href="/football/kerala-blasters-momo-yanson-attack-bolton-defense/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/football/kerala-blasters-midfield-nebojsa-kosovic-tactics/'" style="cursor: pointer;">
-          <a href="/football/kerala-blasters-midfield-nebojsa-kosovic-tactics/" class="hub-card-thumb-link" aria-label="ബ്ലാസ്റ്റേഴ്സ് മധ്യനിര ഇനി കൊസോവിച്ച് ഭരിക്കും | Kerala Blasters | Nebojša Kosović">
-            <img src="https://i.ytimg.com/vi/Ustsj3NHM4Y/hqdefault.jpg" alt="ബ്ലാസ്റ്റേഴ്സ് മധ്യനിര ഇനി കൊസോവിച്ച് ഭരിക്കും | Kerala Blasters | Nebojša Kosović" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Kerala Blasters & Indian Football</span>
-            <span class="hub-card-views">87K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-12</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/football/kerala-blasters-midfield-nebojsa-kosovic-tactics/">ബ്ലാസ്റ്റേഴ്സ് മധ്യനിര ഇനി കൊസോവിച്ച് ഭരിക്കും | Kerala Blasters | Nebojša Kosović</a></h2>
-            <p class="hub-card-snippet">Can Nebojša Kosović control the midfield for Kerala Blasters? Tactical analysis of his passing range, vision, and midfield dictation by Haris Nenmara.</p>
-            <div class="hub-card-footer">
-              <a href="/football/kerala-blasters-midfield-nebojsa-kosovic-tactics/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/football/kerala-blasters-aston-villa-green-new-signings/'" style="cursor: pointer;">
-          <a href="/football/kerala-blasters-aston-villa-green-new-signings/" class="hub-card-thumb-link" aria-label="ആസ്റ്റൺ വില്ലയിൽ നിന്ന് കളി പഠിച്ച ഗ്രീൻ;കൊമ്പന്മാരുടെ പുതിയ വിദേശതാരം | Kerala Blasters">
-            <img src="https://i.ytimg.com/vi/ZuU9k-lVTzE/hqdefault.jpg" alt="ആസ്റ്റൺ വില്ലയിൽ നിന്ന് കളി പഠിച്ച ഗ്രീൻ;കൊമ്പന്മാരുടെ പുതിയ വിദേശതാരം | Kerala Blasters" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Kerala Blasters & Indian Football</span>
-            <span class="hub-card-views">44K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-10</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/football/kerala-blasters-aston-villa-green-new-signings/">ആസ്റ്റൺ വില്ലയിൽ നിന്ന് കളി പഠിച്ച ഗ്രീൻ;കൊമ്പന്മാരുടെ പുതിയ വിദേശതാരം | Kerala Blasters</a></h2>
-            <p class="hub-card-snippet">Kerala Blasters sign former Aston Villa talent Green. Tactical breakdown of his positioning, European experience, and role in KBFC's setup by Haris Nenmara.</p>
-            <div class="hub-card-footer">
-              <a href="/football/kerala-blasters-aston-villa-green-new-signings/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/football/lionel-messi-football-legacy-tactics/'" style="cursor: pointer;">
-          <a href="/football/lionel-messi-football-legacy-tactics/" class="hub-card-thumb-link" aria-label="ഇങ്ങനെ ഒരിതിഹാസം ഇനി പിറക്കുമോ ? Lionel Messi | Haris Nenmara">
-            <img src="https://i.ytimg.com/vi/rNiXi4pW9nM/hqdefault.jpg" alt="ഇങ്ങനെ ഒരിതിഹാസം ഇനി പിറക്കുമോ ? Lionel Messi | Haris Nenmara" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">European & World Football</span>
-            <span class="hub-card-views">66K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-08</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/football/lionel-messi-football-legacy-tactics/">ഇങ്ങനെ ഒരിതിഹാസം ഇനി പിറക്കുമോ ? Lionel Messi | Haris Nenmara</a></h2>
-            <p class="hub-card-snippet">Will football ever witness another icon like Lionel Messi? Haris Nenmara breaks down Messi's generational legacy, tactical intelligence, and records.</p>
-            <div class="hub-card-footer">
-              <a href="/football/lionel-messi-football-legacy-tactics/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/football/cristiano-ronaldo-cr7-tactical-philosophy/'" style="cursor: pointer;">
-          <a href="/football/cristiano-ronaldo-cr7-tactical-philosophy/" class="hub-card-thumb-link" aria-label="കോച്ചോ റോണോയോ; ആരാണ് ശരി? | Cristiano Ronaldo | Ronaldo Walkout | Haris Nenmara">
-            <img src="https://i.ytimg.com/vi/mVR_mRYU2YE/hqdefault.jpg" alt="കോച്ചോ റോണോയോ; ആരാണ് ശരി? | Cristiano Ronaldo | Ronaldo Walkout | Haris Nenmara" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">European & World Football</span>
-            <span class="hub-card-views">68K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-06</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/football/cristiano-ronaldo-cr7-tactical-philosophy/">കോച്ചോ റോണോയോ; ആരാണ് ശരി? | Cristiano Ronaldo | Ronaldo Walkout | Haris Nenmara</a></h2>
-            <p class="hub-card-snippet">Coach vs Cristiano Ronaldo debate analyzed by Haris Nenmara. Dissecting player mentality, tactical roles, and football management dynamics.</p>
-            <div class="hub-card-footer">
-              <a href="/football/cristiano-ronaldo-cr7-tactical-philosophy/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/football/kylian-mbapp-china-2sztxv/'" style="cursor: pointer;">
-          <a href="/football/kylian-mbapp-china-2sztxv/" class="hub-card-thumb-link" aria-label="ഡിക്റ്റേറ്റര്‍ എംബാപ്പെ; ഒടുക്കം കളി കാര്യമായി ! എന്താണ് ചൈനയുമായുള്ള പ്രശ്നം? kylian mbappé | China">
-            <img src="https://i.ytimg.com/vi/2SZTXVLPFow/hqdefault.jpg" alt="ഡിക്റ്റേറ്റര്‍ എംബാപ്പെ; ഒടുക്കം കളി കാര്യമായി ! എന്താണ് ചൈനയുമായുള്ള പ്രശ്നം? kylian mbappé | China" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">European & World Football</span>
-            <span class="hub-card-views">65K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-31</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/football/kylian-mbapp-china-2sztxv/">ഡിക്റ്റേറ്റര്‍ എംബാപ്പെ; ഒടുക്കം കളി കാര്യമായി ! എന്താണ് ചൈനയുമായുള്ള പ്രശ്നം? kylian mbappé | China</a></h2>
-            <p class="hub-card-snippet">Analysis and match debrief by Haris Nenmara on 'ഡിക്റ്റേറ്റര്‍ എംബാപ്പെ; ഒടുക്കം കളി കാര്യമായി ! എന്താണ് ചൈനയുമായുള്ള പ്രശ്നം? kylian mbappé | China'. Watch the full breakdown on Final Third.</p>
-            <div class="hub-card-footer">
-              <a href="/football/kylian-mbapp-china-2sztxv/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/football/ousmane-diomande-real-madrid-bv_pca/'" style="cursor: pointer;">
-          <a href="/football/ousmane-diomande-real-madrid-bv_pca/" class="hub-card-thumb-link" aria-label="ഡിയോമന്‍റെയുടെ റോക്കറ്റുകള്‍ ! വിനി മടങ്ങി വന്നാല്‍ ഹോസേ എന്ത് ചെയ്യും ? | Ousmane Diomande | Real Madrid">
-            <img src="https://i.ytimg.com/vi/bv_PCaAJy-8/hqdefault.jpg" alt="ഡിയോമന്‍റെയുടെ റോക്കറ്റുകള്‍ ! വിനി മടങ്ങി വന്നാല്‍ ഹോസേ എന്ത് ചെയ്യും ? | Ousmane Diomande | Real Madrid" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Real Madrid</span>
-            <span class="hub-card-views">63K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-11-02</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/football/ousmane-diomande-real-madrid-bv_pca/">ഡിയോമന്‍റെയുടെ റോക്കറ്റുകള്‍ ! വിനി മടങ്ങി വന്നാല്‍ ഹോസേ എന്ത് ചെയ്യും ? | Ousmane Diomande | Real Madrid</a></h2>
-            <p class="hub-card-snippet">Analysis and match debrief by Haris Nenmara on 'ഡിയോമന്‍റെയുടെ റോക്കറ്റുകള്‍ ! വിനി മടങ്ങി വന്നാല്‍ ഹോസേ എന്ത് ചെയ്യും ? Real Madrid | Yan Diomandé'. Watch the full breakdown on Final Third.</p>
-            <div class="hub-card-footer">
-              <a href="/football/ousmane-diomande-real-madrid-bv_pca/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/football/arsenal-vs-liverpool-mikel-arteta-cjgogc/'" style="cursor: pointer;">
-          <a href="/football/arsenal-vs-liverpool-mikel-arteta-cjgogc/" class="hub-card-thumb-link" aria-label="സീറോ ഷോട്ട് ഓൺ ടാർഗറ്റ് ! അർട്ടേറ്റ 14 വർഷത്തിന് ശേഷം പൊളിച്ചെഴുതിയത് എന്ത് ?| Arsenal vs Liverpool">
-            <img src="https://i.ytimg.com/vi/CjgogCPPqzo/hqdefault.jpg" alt="സീറോ ഷോട്ട് ഓൺ ടാർഗറ്റ് ! അർട്ടേറ്റ 14 വർഷത്തിന് ശേഷം പൊളിച്ചെഴുതിയത് എന്ത് ?| Arsenal vs Liverpool" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">European & World Football</span>
-            <span class="hub-card-views">23K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-11-02</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/football/arsenal-vs-liverpool-mikel-arteta-cjgogc/">സീറോ ഷോട്ട് ഓൺ ടാർഗറ്റ് ! അർട്ടേറ്റ 14 വർഷത്തിന് ശേഷം പൊളിച്ചെഴുതിയത് എന്ത് ?| Arsenal vs Liverpool</a></h2>
-            <p class="hub-card-snippet">Premier League tactical breakdown by Haris Nenmara on Arsenal vs Liverpool. Analyzing Mikel Arteta's defensive masterclass that restricted Liverpool to zero shots on target.</p>
-            <div class="hub-card-footer">
-              <a href="/football/arsenal-vs-liverpool-mikel-arteta-cjgogc/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/football/barcelona-vs-aston-villa-lamine-yamal-raphinha-8-ve7f/'" style="cursor: pointer;">
-          <a href="/football/barcelona-vs-aston-villa-lamine-yamal-raphinha-8-ve7f/" class="hub-card-thumb-link" aria-label="ഫ്ലിക്കിന്‍റെ പിള്ളേര്‍ ഇവിടെയൊക്കെ തന്നെ കാണും ! Barcelona vs aston villa | Lamine yamal | Raphinha">
-            <img src="https://i.ytimg.com/vi/8-Ve7FQQFLY/hqdefault.jpg" alt="ഫ്ലിക്കിന്‍റെ പിള്ളേര്‍ ഇവിടെയൊക്കെ തന്നെ കാണും ! Barcelona vs aston villa | Lamine yamal | Raphinha" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Barcelona</span>
-            <span class="hub-card-views">31K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-11-04</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/football/barcelona-vs-aston-villa-lamine-yamal-raphinha-8-ve7f/">ഫ്ലിക്കിന്‍റെ പിള്ളേര്‍ ഇവിടെയൊക്കെ തന്നെ കാണും ! Barcelona vs aston villa | Lamine yamal | Raphinha</a></h2>
-            <p class="hub-card-snippet">Analysis and match debrief by Haris Nenmara on 'ഫ്ലിക്കിന്‍റെ പിള്ളേര്‍ ഇവിടെയൊക്കെ തന്നെ കാണും ! Barcelona vs aston villa | Lamine yamal | Raphinha'. Watch the full breakdown on Final Third.</p>
-            <div class="hub-card-footer">
-              <a href="/football/barcelona-vs-aston-villa-lamine-yamal-raphinha-8-ve7f/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/football/real-madrid-federico-valverde-zxou4r/'" style="cursor: pointer;">
-          <a href="/football/real-madrid-federico-valverde-zxou4r/" class="hub-card-thumb-link" aria-label="മാറ്റമൊന്നുമില്ലാതെ വിനി ! ഫെഡെയുടെ റോക്കറ്റുകള്‍, ജൂഡ് മാജിക് | Real Madrid | Federico Valverde">
-            <img src="https://i.ytimg.com/vi/zxoU4rDUdOo/hqdefault.jpg" alt="മാറ്റമൊന്നുമില്ലാതെ വിനി ! ഫെഡെയുടെ റോക്കറ്റുകള്‍, ജൂഡ് മാജിക് | Real Madrid | Federico Valverde" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Real Madrid</span>
-            <span class="hub-card-views">41K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-11-05</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/football/real-madrid-federico-valverde-zxou4r/">മാറ്റമൊന്നുമില്ലാതെ വിനി ! ഫെഡെയുടെ റോക്കറ്റുകള്‍, ജൂഡ് മാജിക് | Real Madrid | Federico Valverde</a></h2>
-            <p class="hub-card-snippet">Analysis and match debrief by Haris Nenmara on 'മാറ്റമൊന്നുമില്ലാതെ വിനി ! ഫെഡെയുടെ റോക്കറ്റുകള്‍, ജൂഡ് മാജിക് | Real Madrid | Federico Valverde'. Watch the full breakdown on Final Third.</p>
-            <div class="hub-card-footer">
-              <a href="/football/real-madrid-federico-valverde-zxou4r/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/football/cr7-cristiano-ronaldo-retirement-cr7-o4ba8x/'" style="cursor: pointer;">
-          <a href="/football/cr7-cristiano-ronaldo-retirement-cr7-o4ba8x/" class="hub-card-thumb-link" aria-label="CR7... അതൊരു വികാരമായിരുന്നു ! | Cristiano Ronaldo Retirement | Cr7">
-            <img src="https://i.ytimg.com/vi/O4ba8xFoy_M/hqdefault.jpg" alt="CR7... അതൊരു വികാരമായിരുന്നു ! | Cristiano Ronaldo Retirement | Cr7" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">European & World Football</span>
-            <span class="hub-card-views">73K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-11-05</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/football/cr7-cristiano-ronaldo-retirement-cr7-o4ba8x/">CR7... അതൊരു വികാരമായിരുന്നു ! | Cristiano Ronaldo Retirement | Cr7</a></h2>
-            <p class="hub-card-snippet">Analysis and match debrief by Haris Nenmara on 'CR7... അതൊരു വികാരമായിരുന്നു ! | Cristiano Ronaldo Retirement | Cr7'. Watch the full breakdown on Final Third.</p>
-            <div class="hub-card-footer">
-              <a href="/football/cr7-cristiano-ronaldo-retirement-cr7-o4ba8x/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/football/cristiano-ronaldo-haris-nenmara-kv8iqz/'" style="cursor: pointer;">
+        <article class="hub-card" id="cristiano-ronaldo-haris-nenmara-kv8iqz" onclick="window.location.href='/football/cristiano-ronaldo-haris-nenmara-kv8iqz/'" style="cursor: pointer;">
           <a href="/football/cristiano-ronaldo-haris-nenmara-kv8iqz/" class="hub-card-thumb-link" aria-label="അയാളെ പ്രൊവോക്ക് ചെയ്യാൻ പോകരുതായിരുന്നു ! Cristiano Ronaldo | Haris Nenmara">
             <img src="https://i.ytimg.com/vi/Kv8iQzoqvlg/hqdefault.jpg" alt="അയാളെ പ്രൊവോക്ക് ചെയ്യാൻ പോകരുതായിരുന്നു ! Cristiano Ronaldo | Haris Nenmara" width="480" height="270" loading="lazy" decoding="async">
             <span class="hub-card-badge">European & World Football</span>
@@ -1396,10 +854,374 @@
             </div>
           </div>
         </article>
-        <article class="hub-card" onclick="window.location.href='/football/barcelona-vs-atletico-madrid-lnceuw/'" style="cursor: pointer;">
-          <a href="/football/barcelona-vs-atletico-madrid-lnceuw/" class="hub-card-thumb-link" aria-label="ഡിയോങ്ങിൻ്റെ വരവിൽ മാറിയ കളി; പെഡ്രി എന്ന എഞ്ചിന്‍! Barcelona vs Atletico madrid">
-            <img src="https://i.ytimg.com/vi/lNCeUwY0gC8/hqdefault.jpg" alt="ഡിയോങ്ങിൻ്റെ വരവിൽ മാറിയ കളി; പെഡ്രി എന്ന എഞ്ചിന്‍! Barcelona vs Atletico madrid" width="480" height="270" loading="lazy" decoding="async">
+        <article class="hub-card" id="cr7-cristiano-ronaldo-retirement-cr7-o4ba8x" onclick="window.location.href='/football/cr7-cristiano-ronaldo-retirement-cr7-o4ba8x/'" style="cursor: pointer;">
+          <a href="/football/cr7-cristiano-ronaldo-retirement-cr7-o4ba8x/" class="hub-card-thumb-link" aria-label="CR7... അതൊരു വികാരമായിരുന്നു ! | Cristiano Ronaldo Retirement | Cr7">
+            <img src="https://i.ytimg.com/vi/O4ba8xFoy_M/hqdefault.jpg" alt="CR7... അതൊരു വികാരമായിരുന്നു ! | Cristiano Ronaldo Retirement | Cr7" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">European & World Football</span>
+            <span class="hub-card-views">73K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-11-05</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/football/cr7-cristiano-ronaldo-retirement-cr7-o4ba8x/">CR7... അതൊരു വികാരമായിരുന്നു ! | Cristiano Ronaldo Retirement | Cr7</a></h2>
+            <p class="hub-card-snippet">Analysis and match debrief by Haris Nenmara on 'CR7... അതൊരു വികാരമായിരുന്നു ! | Cristiano Ronaldo Retirement | Cr7'. Watch the full breakdown on Final Third.</p>
+            <div class="hub-card-footer">
+              <a href="/football/cr7-cristiano-ronaldo-retirement-cr7-o4ba8x/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="real-madrid-federico-valverde-zxou4r" onclick="window.location.href='/football/real-madrid-federico-valverde-zxou4r/'" style="cursor: pointer;">
+          <a href="/football/real-madrid-federico-valverde-zxou4r/" class="hub-card-thumb-link" aria-label="മാറ്റമൊന്നുമില്ലാതെ വിനി ! ഫെഡെയുടെ റോക്കറ്റുകള്‍, ജൂഡ് മാജിക് | Real Madrid | Federico Valverde">
+            <img src="https://i.ytimg.com/vi/zxoU4rDUdOo/hqdefault.jpg" alt="മാറ്റമൊന്നുമില്ലാതെ വിനി ! ഫെഡെയുടെ റോക്കറ്റുകള്‍, ജൂഡ് മാജിക് | Real Madrid | Federico Valverde" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Real Madrid</span>
+            <span class="hub-card-views">41K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-11-05</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/football/real-madrid-federico-valverde-zxou4r/">മാറ്റമൊന്നുമില്ലാതെ വിനി ! ഫെഡെയുടെ റോക്കറ്റുകള്‍, ജൂഡ് മാജിക് | Real Madrid | Federico Valverde</a></h2>
+            <p class="hub-card-snippet">Analysis and match debrief by Haris Nenmara on 'മാറ്റമൊന്നുമില്ലാതെ വിനി ! ഫെഡെയുടെ റോക്കറ്റുകള്‍, ജൂഡ് മാജിക് | Real Madrid | Federico Valverde'. Watch the full breakdown on Final Third.</p>
+            <div class="hub-card-footer">
+              <a href="/football/real-madrid-federico-valverde-zxou4r/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="barcelona-vs-aston-villa-lamine-yamal-raphinha-8-ve7f" onclick="window.location.href='/football/barcelona-vs-aston-villa-lamine-yamal-raphinha-8-ve7f/'" style="cursor: pointer;">
+          <a href="/football/barcelona-vs-aston-villa-lamine-yamal-raphinha-8-ve7f/" class="hub-card-thumb-link" aria-label="ഫ്ലിക്കിന്‍റെ പിള്ളേര്‍ ഇവിടെയൊക്കെ തന്നെ കാണും ! Barcelona vs aston villa | Lamine yamal | Raphinha">
+            <img src="https://i.ytimg.com/vi/8-Ve7FQQFLY/hqdefault.jpg" alt="ഫ്ലിക്കിന്‍റെ പിള്ളേര്‍ ഇവിടെയൊക്കെ തന്നെ കാണും ! Barcelona vs aston villa | Lamine yamal | Raphinha" width="480" height="270" loading="lazy" decoding="async">
             <span class="hub-card-badge">Barcelona</span>
+            <span class="hub-card-views">31K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-11-04</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/football/barcelona-vs-aston-villa-lamine-yamal-raphinha-8-ve7f/">ഫ്ലിക്കിന്‍റെ പിള്ളേര്‍ ഇവിടെയൊക്കെ തന്നെ കാണും ! Barcelona vs aston villa | Lamine yamal | Raphinha</a></h2>
+            <p class="hub-card-snippet">Analysis and match debrief by Haris Nenmara on 'ഫ്ലിക്കിന്‍റെ പിള്ളേര്‍ ഇവിടെയൊക്കെ തന്നെ കാണും ! Barcelona vs aston villa | Lamine yamal | Raphinha'. Watch the full breakdown on Final Third.</p>
+            <div class="hub-card-footer">
+              <a href="/football/barcelona-vs-aston-villa-lamine-yamal-raphinha-8-ve7f/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="arsenal-vs-liverpool-mikel-arteta-cjgogc" onclick="window.location.href='/football/arsenal-vs-liverpool-mikel-arteta-cjgogc/'" style="cursor: pointer;">
+          <a href="/football/arsenal-vs-liverpool-mikel-arteta-cjgogc/" class="hub-card-thumb-link" aria-label="സീറോ ഷോട്ട് ഓൺ ടാർഗറ്റ് ! അർട്ടേറ്റ 14 വർഷത്തിന് ശേഷം പൊളിച്ചെഴുതിയത് എന്ത് ?| Arsenal vs Liverpool">
+            <img src="https://i.ytimg.com/vi/CjgogCPPqzo/hqdefault.jpg" alt="സീറോ ഷോട്ട് ഓൺ ടാർഗറ്റ് ! അർട്ടേറ്റ 14 വർഷത്തിന് ശേഷം പൊളിച്ചെഴുതിയത് എന്ത് ?| Arsenal vs Liverpool" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">European & World Football</span>
+            <span class="hub-card-views">23K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-11-02</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/football/arsenal-vs-liverpool-mikel-arteta-cjgogc/">സീറോ ഷോട്ട് ഓൺ ടാർഗറ്റ് ! അർട്ടേറ്റ 14 വർഷത്തിന് ശേഷം പൊളിച്ചെഴുതിയത് എന്ത് ?| Arsenal vs Liverpool</a></h2>
+            <p class="hub-card-snippet">Premier League tactical breakdown by Haris Nenmara on Arsenal vs Liverpool. Analyzing Mikel Arteta's defensive masterclass that restricted Liverpool to zero shots on target.</p>
+            <div class="hub-card-footer">
+              <a href="/football/arsenal-vs-liverpool-mikel-arteta-cjgogc/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="ousmane-diomande-real-madrid-bv_pca" onclick="window.location.href='/football/ousmane-diomande-real-madrid-bv_pca/'" style="cursor: pointer;">
+          <a href="/football/ousmane-diomande-real-madrid-bv_pca/" class="hub-card-thumb-link" aria-label="ഡിയോമന്‍റെയുടെ റോക്കറ്റുകള്‍ ! വിനി മടങ്ങി വന്നാല്‍ ഹോസേ എന്ത് ചെയ്യും ? | Ousmane Diomande | Real Madrid">
+            <img src="https://i.ytimg.com/vi/bv_PCaAJy-8/hqdefault.jpg" alt="ഡിയോമന്‍റെയുടെ റോക്കറ്റുകള്‍ ! വിനി മടങ്ങി വന്നാല്‍ ഹോസേ എന്ത് ചെയ്യും ? | Ousmane Diomande | Real Madrid" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Real Madrid</span>
+            <span class="hub-card-views">63K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-11-02</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/football/ousmane-diomande-real-madrid-bv_pca/">ഡിയോമന്‍റെയുടെ റോക്കറ്റുകള്‍ ! വിനി മടങ്ങി വന്നാല്‍ ഹോസേ എന്ത് ചെയ്യും ? | Ousmane Diomande | Real Madrid</a></h2>
+            <p class="hub-card-snippet">Analysis and match debrief by Haris Nenmara on 'ഡിയോമന്‍റെയുടെ റോക്കറ്റുകള്‍ ! വിനി മടങ്ങി വന്നാല്‍ ഹോസേ എന്ത് ചെയ്യും ? Real Madrid | Yan Diomandé'. Watch the full breakdown on Final Third.</p>
+            <div class="hub-card-footer">
+              <a href="/football/ousmane-diomande-real-madrid-bv_pca/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="kylian-mbapp-china-2sztxv" onclick="window.location.href='/football/kylian-mbapp-china-2sztxv/'" style="cursor: pointer;">
+          <a href="/football/kylian-mbapp-china-2sztxv/" class="hub-card-thumb-link" aria-label="ഡിക്റ്റേറ്റര്‍ എംബാപ്പെ; ഒടുക്കം കളി കാര്യമായി ! എന്താണ് ചൈനയുമായുള്ള പ്രശ്നം? kylian mbappé | China">
+            <img src="https://i.ytimg.com/vi/2SZTXVLPFow/hqdefault.jpg" alt="ഡിക്റ്റേറ്റര്‍ എംബാപ്പെ; ഒടുക്കം കളി കാര്യമായി ! എന്താണ് ചൈനയുമായുള്ള പ്രശ്നം? kylian mbappé | China" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">European & World Football</span>
+            <span class="hub-card-views">65K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-10-31</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/football/kylian-mbapp-china-2sztxv/">ഡിക്റ്റേറ്റര്‍ എംബാപ്പെ; ഒടുക്കം കളി കാര്യമായി ! എന്താണ് ചൈനയുമായുള്ള പ്രശ്നം? kylian mbappé | China</a></h2>
+            <p class="hub-card-snippet">Analysis and match debrief by Haris Nenmara on 'ഡിക്റ്റേറ്റര്‍ എംബാപ്പെ; ഒടുക്കം കളി കാര്യമായി ! എന്താണ് ചൈനയുമായുള്ള പ്രശ്നം? kylian mbappé | China'. Watch the full breakdown on Final Third.</p>
+            <div class="hub-card-footer">
+              <a href="/football/kylian-mbapp-china-2sztxv/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="real-madrid-vs-barcelona-el-clasico-tactical-analysis" onclick="window.location.href='/football/real-madrid-vs-barcelona-el-clasico-tactical-analysis/'" style="cursor: pointer;">
+          <a href="/football/real-madrid-vs-barcelona-el-clasico-tactical-analysis/" class="hub-card-thumb-link" aria-label="ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara">
+            <img src="https://i.ytimg.com/vi/MT7IaTzzwY4/hqdefault.jpg" alt="ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Barcelona & Real Madrid</span>
+            <span class="hub-card-views">128K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-10-26</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/football/real-madrid-vs-barcelona-el-clasico-tactical-analysis/">ക്യാമ്പ് നൗവിന് തീയിട്ട് ഹോസേ... ദാ ഈ റയലിനെ ഇനി പേടിച്ചോ ! Real Madrid vs Barcelona | Haris Nenmara</a></h2>
+            <p class="hub-card-snippet">In-depth tactical analysis of El Clasico between Real Madrid and Barcelona in Malayalam by Haris Nenmara. Dissecting match moments, tactical setups, and key plays.</p>
+            <div class="hub-card-footer">
+              <a href="/football/real-madrid-vs-barcelona-el-clasico-tactical-analysis/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="barcelona-vs-real-madrid-hansi-flick-tactics" onclick="window.location.href='/football/barcelona-vs-real-madrid-hansi-flick-tactics/'" style="cursor: pointer;">
+          <a href="/football/barcelona-vs-real-madrid-hansi-flick-tactics/" class="hub-card-thumb-link" aria-label="ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico">
+            <img src="https://i.ytimg.com/vi/RDpM-6xLCao/hqdefault.jpg" alt="ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Barcelona</span>
+            <span class="hub-card-views">56K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-10-24</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/football/barcelona-vs-real-madrid-hansi-flick-tactics/">ബാഴ്സയെ വീഴ്ത്താന്‍ കെല്‍പ്പുണ്ടോ റയലിന് ? Real madrid vs Barcelona | El clasico</a></h2>
+            <p class="hub-card-snippet">Can Real Madrid stop this in-form Barcelona squad? Comprehensive El Clasico tactical preview and match debrief in Malayalam by Haris Nenmara.</p>
+            <div class="hub-card-footer">
+              <a href="/football/barcelona-vs-real-madrid-hansi-flick-tactics/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="real-madrid-vs-rb-leipzig-tactical-preview" onclick="window.location.href='/football/real-madrid-vs-rb-leipzig-tactical-preview/'" style="cursor: pointer;">
+          <a href="/football/real-madrid-vs-rb-leipzig-tactical-preview/" class="hub-card-thumb-link" aria-label="ബാഴ്സക്ക് അത്ര എളുപ്പമാകില്ല കാര്യങ്ങള്‍ ! Real Madrid vs RB Leipzig">
+            <img src="https://i.ytimg.com/vi/XMR4quSxjHw/hqdefault.jpg" alt="ബാഴ്സക്ക് അത്ര എളുപ്പമാകില്ല കാര്യങ്ങള്‍ ! Real Madrid vs RB Leipzig" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Real Madrid</span>
+            <span class="hub-card-views">42K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-10-22</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/football/real-madrid-vs-rb-leipzig-tactical-preview/">ബാഴ്സക്ക് അത്ര എളുപ്പമാകില്ല കാര്യങ്ങള്‍ ! Real Madrid vs RB Leipzig</a></h2>
+            <p class="hub-card-snippet">Real Madrid vs RB Leipzig tactical match breakdown. Evaluating defensive solidity, pressing traps, and tactical adjustments in European football.</p>
+            <div class="hub-card-footer">
+              <a href="/football/real-madrid-vs-rb-leipzig-tactical-preview/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="barcelona-vs-psg-lamine-yamal-ucl-tactics" onclick="window.location.href='/football/barcelona-vs-psg-lamine-yamal-ucl-tactics/'" style="cursor: pointer;">
+          <a href="/football/barcelona-vs-psg-lamine-yamal-ucl-tactics/" class="hub-card-thumb-link" aria-label="PSG യെ വീഴ്ത്താൻ ആരുണ്ട് ഇവിടെ ? | Barcelona vs Psg | Lamine Yamal">
+            <img src="https://i.ytimg.com/vi/4LGjduzWzFg/hqdefault.jpg" alt="PSG യെ വീഴ്ത്താൻ ആരുണ്ട് ഇവിടെ ? | Barcelona vs Psg | Lamine Yamal" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Barcelona & Champions League</span>
+            <span class="hub-card-views">55K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-10-21</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/football/barcelona-vs-psg-lamine-yamal-ucl-tactics/">PSG യെ വീഴ്ത്താൻ ആരുണ്ട് ഇവിടെ ? | Barcelona vs Psg | Lamine Yamal</a></h2>
+            <p class="hub-card-snippet">UEFA Champions League tactical masterclass: Barcelona vs PSG. Detailed analysis of Lamine Yamal's wing play and tactical dynamics by Haris Nenmara.</p>
+            <div class="hub-card-footer">
+              <a href="/football/barcelona-vs-psg-lamine-yamal-ucl-tactics/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="real-madrid-vs-roma-tactical-breakdown" onclick="window.location.href='/football/real-madrid-vs-roma-tactical-breakdown/'" style="cursor: pointer;">
+          <a href="/football/real-madrid-vs-roma-tactical-breakdown/" class="hub-card-thumb-link" aria-label="റോമയെ എരിച്ചു ! പഠിക്കാൻ ഇനിയുമേറെ | Real Madrid Vs Roma">
+            <img src="https://i.ytimg.com/vi/9q0iwA1bpkI/hqdefault.jpg" alt="റോമയെ എരിച്ചു ! പഠിക്കാൻ ഇനിയുമേറെ | Real Madrid Vs Roma" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Real Madrid</span>
+            <span class="hub-card-views">58K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-10-20</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/football/real-madrid-vs-roma-tactical-breakdown/">റോമയെ എരിച്ചു ! പഠിക്കാൻ ഇനിയുമേറെ | Real Madrid Vs Roma</a></h2>
+            <p class="hub-card-snippet">Real Madrid vs AS Roma match debrief with Haris Nenmara. Comprehensive evaluation of attacking combinations, finishing efficiency, and tactical discipline.</p>
+            <div class="hub-card-footer">
+              <a href="/football/real-madrid-vs-roma-tactical-breakdown/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="barcelona-vs-galatasaray-lamine-yamal-analysis" onclick="window.location.href='/football/barcelona-vs-galatasaray-lamine-yamal-analysis/'" style="cursor: pointer;">
+          <a href="/football/barcelona-vs-galatasaray-lamine-yamal-analysis/" class="hub-card-thumb-link" aria-label="ആളറിഞ്ഞു കളിക്കടാ ! barcelona vs galatasaray | lamine yamal | Haris Nenmara">
+            <img src="https://i.ytimg.com/vi/RtpY-aKasEg/hqdefault.jpg" alt="ആളറിഞ്ഞു കളിക്കടാ ! barcelona vs galatasaray | lamine yamal | Haris Nenmara" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Barcelona</span>
+            <span class="hub-card-views">73K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-10-19</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/football/barcelona-vs-galatasaray-lamine-yamal-analysis/">ആളറിഞ്ഞു കളിക്കടാ ! barcelona vs galatasaray | lamine yamal | Haris Nenmara</a></h2>
+            <p class="hub-card-snippet">Barcelona vs Galatasaray tactical match review in Malayalam. How Lamine Yamal and Barcelona broke down aggressive defensive setups with tactical flair.</p>
+            <div class="hub-card-footer">
+              <a href="/football/barcelona-vs-galatasaray-lamine-yamal-analysis/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="kerala-blasters-sanan-momo-fitness-tactics" onclick="window.location.href='/football/kerala-blasters-sanan-momo-fitness-tactics/'" style="cursor: pointer;">
+          <a href="/football/kerala-blasters-sanan-momo-fitness-tactics/" class="hub-card-thumb-link" aria-label="'സനാന് ഫിറ്റ്നസില്ല... മോമോയുടെ മെന്‍റാലിറ്റി'; ആഷ്‍ലിയുടെ തുറന്ന് പറച്ചിലുകള്‍ | Kerala blasters">
+            <img src="https://i.ytimg.com/vi/l1q1MQZSe_0/hqdefault.jpg" alt="'സനാന് ഫിറ്റ്നസില്ല... മോമോയുടെ മെന്‍റാലിറ്റി'; ആഷ്‍ലിയുടെ തുറന്ന് പറച്ചിലുകള്‍ | Kerala blasters" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Kerala Blasters & Indian Football</span>
+            <span class="hub-card-views">55K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-10-18</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/football/kerala-blasters-sanan-momo-fitness-tactics/">'സനാന് ഫിറ്റ്നസില്ല... മോമോയുടെ മെന്‍റാലിറ്റി'; ആഷ്‍ലിയുടെ തുറന്ന് പറച്ചിലുകള്‍ | Kerala blasters</a></h2>
+            <p class="hub-card-snippet">Kerala Blasters player fitness, tactical discipline, and mentality analyzed by Haris Nenmara. In-depth review of Sanan, Momo, and ISL campaign requirements.</p>
+            <div class="hub-card-footer">
+              <a href="/football/kerala-blasters-sanan-momo-fitness-tactics/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="barcelona-lamine-yamal-rodri-hansi-flick-system" onclick="window.location.href='/football/barcelona-lamine-yamal-rodri-hansi-flick-system/'" style="cursor: pointer;">
+          <a href="/football/barcelona-lamine-yamal-rodri-hansi-flick-system/" class="hub-card-thumb-link" aria-label="ബാഴ്സയെ ആര് പിടിച്ച് കെട്ടും ? Barcelona | Lamine Yamal | Rodri | Hansi Flick">
+            <img src="https://i.ytimg.com/vi/ZoU-SU80SLM/hqdefault.jpg" alt="ബാഴ്സയെ ആര് പിടിച്ച് കെട്ടും ? Barcelona | Lamine Yamal | Rodri | Hansi Flick" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Barcelona</span>
+            <span class="hub-card-views">42K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-10-18</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/football/barcelona-lamine-yamal-rodri-hansi-flick-system/">ബാഴ്സയെ ആര് പിടിച്ച് കെട്ടും ? Barcelona | Lamine Yamal | Rodri | Hansi Flick</a></h2>
+            <p class="hub-card-snippet">Can anyone stop this Barcelona team? Tactical investigation into Hansi Flick's blueprint, Rodri comparisons, and Lamine Yamal's influence.</p>
+            <div class="hub-card-footer">
+              <a href="/football/barcelona-lamine-yamal-rodri-hansi-flick-system/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="kerala-blasters-fallou-ndiaye-defensive-wall" onclick="window.location.href='/football/kerala-blasters-fallou-ndiaye-defensive-wall/'" style="cursor: pointer;">
+          <a href="/football/kerala-blasters-fallou-ndiaye-defensive-wall/" class="hub-card-thumb-link" aria-label="ഫാലു ബാക്ക് ; ബ്ലാസ്റ്റേഴ്സ് ബാക്ക് ലൈൻ സുശക്തം | Fallou ndiaye| Kerala Blasters">
+            <img src="https://i.ytimg.com/vi/ySpbZe77Jgs/hqdefault.jpg" alt="ഫാലു ബാക്ക് ; ബ്ലാസ്റ്റേഴ്സ് ബാക്ക് ലൈൻ സുശക്തം | Fallou ndiaye| Kerala Blasters" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Kerala Blasters & Indian Football</span>
             <span class="hub-card-views">35K views</span>
             <div class="hub-play-overlay" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
@@ -1409,14 +1231,144 @@
           </a>
           <div class="hub-card-body">
             <div class="hub-card-meta">
-              <span class="hub-card-time">2026-11-09</span>
+              <span class="hub-card-time">2026-10-15</span>
               <span class="hub-card-dot">·</span>
               <span class="hub-card-read">3 min read</span>
             </div>
-            <h2 class="hub-card-title"><a href="/football/barcelona-vs-atletico-madrid-lnceuw/">ഡിയോങ്ങിൻ്റെ വരവിൽ മാറിയ കളി; പെഡ്രി എന്ന എഞ്ചിന്‍! Barcelona vs Atletico madrid</a></h2>
-            <p class="hub-card-snippet">Analysis and match debrief by Haris Nenmara on 'ഡിയോങ്ങിൻ്റെ വരവിൽ മാറിയ കളി; പെഡ്രി എന്ന എഞ്ചിന്‍! Barcelona vs Atletico madrid'. Watch the full breakdown on Final Third.</p>
+            <h2 class="hub-card-title"><a href="/football/kerala-blasters-fallou-ndiaye-defensive-wall/">ഫാലു ബാക്ക് ; ബ്ലാസ്റ്റേഴ്സ് ബാക്ക് ലൈൻ സുശക്തം | Fallou ndiaye| Kerala Blasters</a></h2>
+            <p class="hub-card-snippet">Can Fallou N'Diaye solidify Kerala Blasters' backline? Tactical analysis of his defensive positioning, aerial dominance, and ISL impact by Haris Nenmara.</p>
             <div class="hub-card-footer">
-              <a href="/football/barcelona-vs-atletico-madrid-lnceuw/" class="hub-card-btn">
+              <a href="/football/kerala-blasters-fallou-ndiaye-defensive-wall/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="kerala-blasters-momo-yanson-attack-bolton-defense" onclick="window.location.href='/football/kerala-blasters-momo-yanson-attack-bolton-defense/'" style="cursor: pointer;">
+          <a href="/football/kerala-blasters-momo-yanson-attack-bolton-defense/" class="hub-card-thumb-link" aria-label="അറ്റാക്കിൽ യാൻസൺ ; കോട്ട കാക്കാൻ ബോൾട്ടൻ | Kerala Blasters | Momo yansane | James Bolton">
+            <img src="https://i.ytimg.com/vi/cOYjZ39qHAU/hqdefault.jpg" alt="അറ്റാക്കിൽ യാൻസൺ ; കോട്ട കാക്കാൻ ബോൾട്ടൻ | Kerala Blasters | Momo yansane | James Bolton" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Kerala Blasters & Indian Football</span>
+            <span class="hub-card-views">60K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-10-14</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/football/kerala-blasters-momo-yanson-attack-bolton-defense/">അറ്റാക്കിൽ യാൻസൺ ; കോട്ട കാക്കാൻ ബോൾട്ടൻ | Kerala Blasters | Momo yansane | James Bolton</a></h2>
+            <p class="hub-card-snippet">Kerala Blasters tactical balance: Momo Yansane leading the attack while James Bolton secures the defense. ISL squad analysis by Haris Nenmara.</p>
+            <div class="hub-card-footer">
+              <a href="/football/kerala-blasters-momo-yanson-attack-bolton-defense/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="kerala-blasters-midfield-nebojsa-kosovic-tactics" onclick="window.location.href='/football/kerala-blasters-midfield-nebojsa-kosovic-tactics/'" style="cursor: pointer;">
+          <a href="/football/kerala-blasters-midfield-nebojsa-kosovic-tactics/" class="hub-card-thumb-link" aria-label="ബ്ലാസ്റ്റേഴ്സ് മധ്യനിര ഇനി കൊസോവിച്ച് ഭരിക്കും | Kerala Blasters | Nebojša Kosović">
+            <img src="https://i.ytimg.com/vi/Ustsj3NHM4Y/hqdefault.jpg" alt="ബ്ലാസ്റ്റേഴ്സ് മധ്യനിര ഇനി കൊസോവിച്ച് ഭരിക്കും | Kerala Blasters | Nebojša Kosović" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Kerala Blasters & Indian Football</span>
+            <span class="hub-card-views">87K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-10-12</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/football/kerala-blasters-midfield-nebojsa-kosovic-tactics/">ബ്ലാസ്റ്റേഴ്സ് മധ്യനിര ഇനി കൊസോവിച്ച് ഭരിക്കും | Kerala Blasters | Nebojša Kosović</a></h2>
+            <p class="hub-card-snippet">Can Nebojša Kosović control the midfield for Kerala Blasters? Tactical analysis of his passing range, vision, and midfield dictation by Haris Nenmara.</p>
+            <div class="hub-card-footer">
+              <a href="/football/kerala-blasters-midfield-nebojsa-kosovic-tactics/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="kerala-blasters-aston-villa-green-new-signings" onclick="window.location.href='/football/kerala-blasters-aston-villa-green-new-signings/'" style="cursor: pointer;">
+          <a href="/football/kerala-blasters-aston-villa-green-new-signings/" class="hub-card-thumb-link" aria-label="ആസ്റ്റൺ വില്ലയിൽ നിന്ന് കളി പഠിച്ച ഗ്രീൻ;കൊമ്പന്മാരുടെ പുതിയ വിദേശതാരം | Kerala Blasters">
+            <img src="https://i.ytimg.com/vi/ZuU9k-lVTzE/hqdefault.jpg" alt="ആസ്റ്റൺ വില്ലയിൽ നിന്ന് കളി പഠിച്ച ഗ്രീൻ;കൊമ്പന്മാരുടെ പുതിയ വിദേശതാരം | Kerala Blasters" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Kerala Blasters & Indian Football</span>
+            <span class="hub-card-views">44K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-10-10</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/football/kerala-blasters-aston-villa-green-new-signings/">ആസ്റ്റൺ വില്ലയിൽ നിന്ന് കളി പഠിച്ച ഗ്രീൻ;കൊമ്പന്മാരുടെ പുതിയ വിദേശതാരം | Kerala Blasters</a></h2>
+            <p class="hub-card-snippet">Kerala Blasters sign former Aston Villa talent Green. Tactical breakdown of his positioning, European experience, and role in KBFC's setup by Haris Nenmara.</p>
+            <div class="hub-card-footer">
+              <a href="/football/kerala-blasters-aston-villa-green-new-signings/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="lionel-messi-football-legacy-tactics" onclick="window.location.href='/football/lionel-messi-football-legacy-tactics/'" style="cursor: pointer;">
+          <a href="/football/lionel-messi-football-legacy-tactics/" class="hub-card-thumb-link" aria-label="ഇങ്ങനെ ഒരിതിഹാസം ഇനി പിറക്കുമോ ? Lionel Messi | Haris Nenmara">
+            <img src="https://i.ytimg.com/vi/rNiXi4pW9nM/hqdefault.jpg" alt="ഇങ്ങനെ ഒരിതിഹാസം ഇനി പിറക്കുമോ ? Lionel Messi | Haris Nenmara" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">European & World Football</span>
+            <span class="hub-card-views">66K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-10-08</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/football/lionel-messi-football-legacy-tactics/">ഇങ്ങനെ ഒരിതിഹാസം ഇനി പിറക്കുമോ ? Lionel Messi | Haris Nenmara</a></h2>
+            <p class="hub-card-snippet">Will football ever witness another icon like Lionel Messi? Haris Nenmara breaks down Messi's generational legacy, tactical intelligence, and records.</p>
+            <div class="hub-card-footer">
+              <a href="/football/lionel-messi-football-legacy-tactics/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="cristiano-ronaldo-cr7-tactical-philosophy" onclick="window.location.href='/football/cristiano-ronaldo-cr7-tactical-philosophy/'" style="cursor: pointer;">
+          <a href="/football/cristiano-ronaldo-cr7-tactical-philosophy/" class="hub-card-thumb-link" aria-label="കോച്ചോ റോണോയോ; ആരാണ് ശരി? | Cristiano Ronaldo | Ronaldo Walkout | Haris Nenmara">
+            <img src="https://i.ytimg.com/vi/mVR_mRYU2YE/hqdefault.jpg" alt="കോച്ചോ റോണോയോ; ആരാണ് ശരി? | Cristiano Ronaldo | Ronaldo Walkout | Haris Nenmara" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">European & World Football</span>
+            <span class="hub-card-views">68K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-10-06</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/football/cristiano-ronaldo-cr7-tactical-philosophy/">കോച്ചോ റോണോയോ; ആരാണ് ശരി? | Cristiano Ronaldo | Ronaldo Walkout | Haris Nenmara</a></h2>
+            <p class="hub-card-snippet">Coach vs Cristiano Ronaldo debate analyzed by Haris Nenmara. Dissecting player mentality, tactical roles, and football management dynamics.</p>
+            <div class="hub-card-footer">
+              <a href="/football/cristiano-ronaldo-cr7-tactical-philosophy/" class="hub-card-btn">
                 Read Tactical Breakdown &amp; Watch Video ↗
               </a>
             </div>

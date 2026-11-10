@@ -197,66 +197,94 @@
     }
 
     /* Sport Switcher Chips */
-    /* List of Contents (Table of Contents) in Category Hub */
+    /* Compact List of Contents in Category Hub */
     .hub-contents-section {
       max-width: 1140px;
-      margin: 2rem auto 0;
+      margin: 1.25rem auto 0;
       padding: 0 1.5rem;
     }
     .contents-card {
       background: var(--charcoal);
       border: 1px solid var(--charcoal-border);
-      border-radius: 12px;
-      padding: 1.75rem 2rem;
+      border-radius: 10px;
+      padding: 0.875rem 1.125rem;
     }
     .contents-header {
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.625rem;
       border-bottom: 1px solid var(--charcoal-border);
+    }
+    .contents-header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      flex-wrap: wrap;
     }
     .contents-badge {
       display: inline-block;
-      font-size: 0.6875rem;
+      font-size: 0.625rem;
       font-weight: 800;
       color: var(--neon-lime);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       background: rgba(158, 226, 11, 0.1);
       border: 1px solid rgba(158, 226, 11, 0.25);
-      padding: 3px 8px;
+      padding: 2px 7px;
       border-radius: 4px;
-      margin-bottom: 0.5rem;
     }
     .contents-header h2 {
-      font-size: 1.375rem;
-      font-weight: 800;
+      font-size: 0.9375rem;
+      font-weight: 700;
       color: var(--off-white);
-      margin-bottom: 0.375rem;
+      margin: 0;
     }
-    .contents-lead {
-      font-size: 0.875rem;
+    .contents-count-pill {
+      font-size: 0.6875rem;
+      font-weight: 700;
       color: var(--muted-grey);
+      background: var(--charcoal-light);
+      border: 1px solid var(--charcoal-border);
+      padding: 2px 8px;
+      border-radius: 999px;
     }
     .contents-grid {
       list-style: none;
-      padding: 0;
+      padding: 0 0.25rem 0 0;
       margin: 0;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 0.625rem 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.375rem 0.5rem;
+      max-height: 175px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--charcoal-border) transparent;
+    }
+    .contents-grid::-webkit-scrollbar {
+      width: 5px;
+    }
+    .contents-grid::-webkit-scrollbar-thumb {
+      background: var(--charcoal-border);
+      border-radius: 999px;
     }
     .contents-item {
       display: flex;
+      min-width: 0;
     }
     .contents-link {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.5rem;
       width: 100%;
-      padding: 0.625rem 0.875rem;
+      min-width: 0;
+      padding: 0.35rem 0.6rem;
       background: var(--charcoal-light);
       border: 1px solid var(--charcoal-border);
-      border-radius: 8px;
+      border-radius: 6px;
       color: var(--off-white);
       text-decoration: none;
       transition: all 0.2s ease;
@@ -270,55 +298,45 @@
     .contents-num {
       flex-shrink: 0;
       font-family: monospace;
-      font-size: 0.75rem;
+      font-size: 0.6875rem;
       font-weight: 800;
       color: var(--neon-lime);
       background: rgba(158, 226, 11, 0.12);
       border-radius: 4px;
-      padding: 2px 6px;
-    }
-    .contents-info {
-      flex: 1;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
+      padding: 1px 5px;
     }
     .contents-title {
-      font-size: 0.875rem;
+      flex: 1;
+      min-width: 0;
+      font-size: 0.78125rem;
       font-weight: 600;
       color: #f0f0f0;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      line-height: 1.4;
+      line-height: 1.35;
     }
     .contents-link:hover .contents-title {
       color: var(--neon-lime);
     }
-    .contents-sub {
-      font-size: 0.6875rem;
-      color: var(--dark-grey);
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-    }
     .contents-arrow {
       flex-shrink: 0;
       color: var(--dark-grey);
-      font-size: 0.875rem;
+      font-size: 0.75rem;
       font-weight: 700;
       transition: transform 0.2s, color 0.2s;
     }
     .contents-link:hover .contents-arrow {
       color: var(--neon-lime);
-      transform: translateX(3px);
+      transform: translateX(2px);
     }
     @media (max-width: 768px) {
       .contents-card {
-        padding: 1.25rem 1rem;
+        padding: 0.75rem 0.875rem;
       }
       .contents-grid {
         grid-template-columns: 1fr;
+        max-height: 165px;
       }
     }
 
@@ -612,125 +630,92 @@
     </div>
   </header>
 
-    <!-- List of Contents (Table of Contents) -->
+    <!-- Compact List of Contents (Latest to Oldest) -->
   <section class="hub-contents-section">
     <div class="contents-card">
       <div class="contents-header">
-        <div class="contents-header-text">
-          <span class="contents-badge">TABLE OF CONTENTS · ഉള്ളടക്ക സൂചിക</span>
-          <h2>List of Contents | Cricket Match Analysis Archive (11 Videos)</h2>
-          <p class="contents-lead">Quick index of all in-depth cricket video breakdowns, tactical match debriefs, and stories by Haris Nenmara.</p>
+        <div class="contents-header-left">
+          <span class="contents-badge">CONTENTS · ഉള്ളടക്കം</span>
+          <h2>Cricket Videos Index</h2>
         </div>
+        <span class="contents-count-pill">11 Videos · Latest First</span>
       </div>
       <ol class="contents-grid">
         
         <li class="contents-item">
-          <a href="/cricket/abhishek-sharma-vaibhav-suryavanshi-ind-vs-nz/" class="contents-link" title="ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek sharma | Vaibhav Suryavanshi">
+          <a href="/cricket/ipl-ipl-trade-window-hardik-pandya-ipl-mini-auction-yb8ksc/" class="contents-link" title="ചെന്നൈയ്ക്കും മുംബൈക്കും വലിയ പ്ലാനുകൾ | IPL | IPL trade window | Hardik Pandya | IPL mini auction (2026-11-09 · 56K views)">
             <span class="contents-num">01</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek sharma | Vaibhav Suryavanshi</span>
-              <span class="contents-sub">Indian Cricket Team · 301K views</span>
-            </span>
+            <span class="contents-title" lang="ml">ചെന്നൈയ്ക്കും മുംബൈക്കും വലിയ പ്ലാനുകൾ | IPL | IPL trade window | Hardik Pandya | IPL mini auction</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/cricket/sanju-samson-redemption-story-india-vs-nz/" class="contents-link" title="സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson | India vs New Zealand | Haris Nenmara">
+          <a href="/cricket/india-vs-new-zealand-virat-kohli-yr2rpr/" class="contents-link" title="ആ പറക്കും ക്യാച്ച് ! പിന്നെ വെടിക്കെട്ട്, കോഹ്‌ലി ഷോ തുടരുന്നു! | India vs New Zealand | Virat Kohli (2026-11-04 · 44K views)">
             <span class="contents-num">02</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson | India vs New Zealand | Haris Nenmara</span>
-              <span class="contents-sub">Sanju Samson & Indian Cricket · 175K views</span>
-            </span>
+            <span class="contents-title" lang="ml">ആ പറക്കും ക്യാച്ച് ! പിന്നെ വെടിക്കെട്ട്, കോഹ്‌ലി ഷോ തുടരുന്നു! | India vs New Zealand | Virat Kohli</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/cricket/sanju-samson-ind-vs-nz-match-answers/" class="contents-link" title="സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | India vs New Zealand | Haris Nenmara">
+          <a href="/cricket/or-hardik-pandya-mumbai-indians-dmen-h/" class="contents-link" title="ഹർദിക് പോകും... അർഷ്ദീപ് or ജയ്സ്വാൾ, ആര് വരും ? Hardik Pandya | Mumbai Indians (2026-11-04 · 48K views)">
             <span class="contents-num">03</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | India vs New Zealand | Haris Nenmara</span>
-              <span class="contents-sub">Sanju Samson & Indian Cricket · 85K views</span>
-            </span>
+            <span class="contents-title" lang="ml">ഹർദിക് പോകും... അർഷ്ദീപ് or ജയ്സ്വാൾ, ആര് വരും ? Hardik Pandya | Mumbai Indians</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/cricket/tilak-varma-naman-dhir-comeback-analysis/" class="contents-link" title="ഇതൊക്കെയാണ് കംബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | Naman Dhir | Haris Nenmara">
+          <a href="/cricket/91-7-glenn-maxwell-201-vs-afghanistan-yvk_az/" class="contents-link" title="91 ന്  7 ;  ആ കുഴിമാടത്തിൽ നിന്ന് മാക്സ് വെൽ നടത്തിയ കംബാക്ക് ! |  Glenn Maxwell 201 vs Afghanistan (2026-11-03 · 23K views)">
             <span class="contents-num">04</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">ഇതൊക്കെയാണ് കംബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | Naman Dhir | Haris Nenmara</span>
-              <span class="contents-sub">Indian Cricket Team · 57K views</span>
-            </span>
+            <span class="contents-title" lang="ml">91 ന്  7 ;  ആ കുഴിമാടത്തിൽ നിന്ന് മാക്സ് വെൽ നടത്തിയ കംബാക്ക് ! |  Glenn Maxwell 201 vs Afghanistan</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/cricket/jasprit-bumrah-sanju-samson-ind-vs-wi/" class="contents-link" title="ഭുവി വരുന്നു ! ബുംറ ഇല്ലെങ്കിൽ ഇന്ത്യ ഇല്ലേ ? Sanju Samson | Jasprit Bumrah | Bhuvneshwar Kumar">
+          <a href="/cricket/rohit-sharma-mumbai-indians-in9vwj/" class="contents-link" title="രോഹിത് വീണ്ടും മുംബൈ നായകനാവും ! Rohit Sharma | Mumbai Indians (2026-11-01 · 29K views)">
             <span class="contents-num">05</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">ഭുവി വരുന്നു ! ബുംറ ഇല്ലെങ്കിൽ ഇന്ത്യ ഇല്ലേ ? Sanju Samson | Jasprit Bumrah | Bhuvneshwar Kumar</span>
-              <span class="contents-sub">Indian Cricket Team · 111K views</span>
-            </span>
+            <span class="contents-title" lang="ml">രോഹിത് വീണ്ടും മുംബൈ നായകനാവും ! Rohit Sharma | Mumbai Indians</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/cricket/bhuvneshwar-kumar-jasprit-bumrah-bowling-tactics/" class="contents-link" title="ഭുവിയും ബുംറയും ചേർന്നാൽ ! Bhuvneshwar Kumar | Jasprit Bumrah | Haris Nenmara">
+          <a href="/cricket/abhishek-sharma-vaibhav-suryavanshi-ind-vs-nz/" class="contents-link" title="ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek sharma | Vaibhav Suryavanshi (2026-10-25 · 301K views)">
             <span class="contents-num">06</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">ഭുവിയും ബുംറയും ചേർന്നാൽ ! Bhuvneshwar Kumar | Jasprit Bumrah | Haris Nenmara</span>
-              <span class="contents-sub">Indian Cricket Team · 21K views</span>
-            </span>
+            <span class="contents-title" lang="ml">ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek sharma | Vaibhav Suryavanshi</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/cricket/rohit-sharma-mumbai-indians-in9vwj/" class="contents-link" title="രോഹിത് വീണ്ടും മുംബൈ നായകനാവും ! Rohit Sharma | Mumbai Indians">
+          <a href="/cricket/sanju-samson-redemption-story-india-vs-nz/" class="contents-link" title="സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson | India vs New Zealand | Haris Nenmara (2026-10-23 · 175K views)">
             <span class="contents-num">07</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">രോഹിത് വീണ്ടും മുംബൈ നായകനാവും ! Rohit Sharma | Mumbai Indians</span>
-              <span class="contents-sub">Indian Cricket Team · 29K views</span>
-            </span>
+            <span class="contents-title" lang="ml">സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson | India vs New Zealand | Haris Nenmara</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/cricket/91-7-glenn-maxwell-201-vs-afghanistan-yvk_az/" class="contents-link" title="91 ന്  7 ;  ആ കുഴിമാടത്തിൽ നിന്ന് മാക്സ് വെൽ നടത്തിയ കംബാക്ക് ! |  Glenn Maxwell 201 vs Afghanistan">
+          <a href="/cricket/sanju-samson-ind-vs-nz-match-answers/" class="contents-link" title="സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | India vs New Zealand | Haris Nenmara (2026-10-20 · 85K views)">
             <span class="contents-num">08</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">91 ന്  7 ;  ആ കുഴിമാടത്തിൽ നിന്ന് മാക്സ് വെൽ നടത്തിയ കംബാക്ക് ! |  Glenn Maxwell 201 vs Afghanistan</span>
-              <span class="contents-sub">Indian Cricket Team · 23K views</span>
-            </span>
+            <span class="contents-title" lang="ml">സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | India vs New Zealand | Haris Nenmara</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/cricket/india-vs-new-zealand-virat-kohli-yr2rpr/" class="contents-link" title="ആ പറക്കും ക്യാച്ച് ! പിന്നെ വെടിക്കെട്ട്, കോഹ്‌ലി ഷോ തുടരുന്നു! | India vs New Zealand | Virat Kohli">
+          <a href="/cricket/tilak-varma-naman-dhir-comeback-analysis/" class="contents-link" title="ഇതൊക്കെയാണ് കംബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | Naman Dhir | Haris Nenmara (2026-10-17 · 57K views)">
             <span class="contents-num">09</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">ആ പറക്കും ക്യാച്ച് ! പിന്നെ വെടിക്കെട്ട്, കോഹ്‌ലി ഷോ തുടരുന്നു! | India vs New Zealand | Virat Kohli</span>
-              <span class="contents-sub">Indian Cricket Team · 44K views</span>
-            </span>
+            <span class="contents-title" lang="ml">ഇതൊക്കെയാണ് കംബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | Naman Dhir | Haris Nenmara</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/cricket/or-hardik-pandya-mumbai-indians-dmen-h/" class="contents-link" title="ഹർദിക് പോകും... അർഷ്ദീപ് or ജയ്സ്വാൾ, ആര് വരും ? Hardik Pandya | Mumbai Indians">
+          <a href="/cricket/jasprit-bumrah-sanju-samson-ind-vs-wi/" class="contents-link" title="ഭുവി വരുന്നു ! ബുംറ ഇല്ലെങ്കിൽ ഇന്ത്യ ഇല്ലേ ? Sanju Samson | Jasprit Bumrah | Bhuvneshwar Kumar (2026-10-13 · 111K views)">
             <span class="contents-num">10</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">ഹർദിക് പോകും... അർഷ്ദീപ് or ജയ്സ്വാൾ, ആര് വരും ? Hardik Pandya | Mumbai Indians</span>
-              <span class="contents-sub">Indian Cricket Team · 48K views</span>
-            </span>
+            <span class="contents-title" lang="ml">ഭുവി വരുന്നു ! ബുംറ ഇല്ലെങ്കിൽ ഇന്ത്യ ഇല്ലേ ? Sanju Samson | Jasprit Bumrah | Bhuvneshwar Kumar</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
         <li class="contents-item">
-          <a href="/cricket/ipl-ipl-trade-window-hardik-pandya-ipl-mini-auction-yb8ksc/" class="contents-link" title="ചെന്നൈയ്ക്കും മുംബൈക്കും വലിയ പ്ലാനുകൾ | IPL | IPL trade window | Hardik Pandya | IPL mini auction">
+          <a href="/cricket/bhuvneshwar-kumar-jasprit-bumrah-bowling-tactics/" class="contents-link" title="ഭുവിയും ബുംറയും ചേർന്നാൽ ! Bhuvneshwar Kumar | Jasprit Bumrah | Haris Nenmara (2026-10-11 · 21K views)">
             <span class="contents-num">11</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">ചെന്നൈയ്ക്കും മുംബൈക്കും വലിയ പ്ലാനുകൾ | IPL | IPL trade window | Hardik Pandya | IPL mini auction</span>
-              <span class="contents-sub">Indian Cricket Team · 56K views</span>
-            </span>
+            <span class="contents-title" lang="ml">ഭുവിയും ബുംറയും ചേർന്നാൽ ! Bhuvneshwar Kumar | Jasprit Bumrah | Haris Nenmara</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>
@@ -740,11 +725,11 @@
 
   <main class="hub-grid">
     
-        <article class="hub-card" onclick="window.location.href='/cricket/abhishek-sharma-vaibhav-suryavanshi-ind-vs-nz/'" style="cursor: pointer;">
-          <a href="/cricket/abhishek-sharma-vaibhav-suryavanshi-ind-vs-nz/" class="hub-card-thumb-link" aria-label="ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek sharma | Vaibhav Suryavanshi">
-            <img src="https://i.ytimg.com/vi/qDn--g-xzQY/hqdefault.jpg" alt="ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek sharma | Vaibhav Suryavanshi" width="480" height="270" loading="lazy" decoding="async">
+        <article class="hub-card" id="ipl-ipl-trade-window-hardik-pandya-ipl-mini-auction-yb8ksc" onclick="window.location.href='/cricket/ipl-ipl-trade-window-hardik-pandya-ipl-mini-auction-yb8ksc/'" style="cursor: pointer;">
+          <a href="/cricket/ipl-ipl-trade-window-hardik-pandya-ipl-mini-auction-yb8ksc/" class="hub-card-thumb-link" aria-label="ചെന്നൈയ്ക്കും മുംബൈക്കും വലിയ പ്ലാനുകൾ | IPL | IPL trade window | Hardik Pandya | IPL mini auction">
+            <img src="https://i.ytimg.com/vi/Yb8KSc7RVDE/hqdefault.jpg" alt="ചെന്നൈയ്ക്കും മുംബൈക്കും വലിയ പ്ലാനുകൾ | IPL | IPL trade window | Hardik Pandya | IPL mini auction" width="480" height="270" loading="lazy" decoding="async">
             <span class="hub-card-badge">Indian Cricket Team</span>
-            <span class="hub-card-views">301K views</span>
+            <span class="hub-card-views">56K views</span>
             <div class="hub-play-overlay" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -753,202 +738,20 @@
           </a>
           <div class="hub-card-body">
             <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-25</span>
+              <span class="hub-card-time">2026-11-09</span>
               <span class="hub-card-dot">·</span>
               <span class="hub-card-read">3 min read</span>
             </div>
-            <h2 class="hub-card-title"><a href="/cricket/abhishek-sharma-vaibhav-suryavanshi-ind-vs-nz/">ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek sharma | Vaibhav Suryavanshi</a></h2>
-            <p class="hub-card-snippet">Brutal batting masterclass: Abhishek Sharma and Vaibhav Suryavanshi dismantle New Zealand. Detailed cricket analysis in Malayalam by Haris Nenmara.</p>
+            <h2 class="hub-card-title"><a href="/cricket/ipl-ipl-trade-window-hardik-pandya-ipl-mini-auction-yb8ksc/">ചെന്നൈയ്ക്കും മുംബൈക്കും വലിയ പ്ലാനുകൾ | IPL | IPL trade window | Hardik Pandya | IPL mini auction</a></h2>
+            <p class="hub-card-snippet">Analysis and match debrief by Haris Nenmara on 'ചെന്നൈയ്ക്കും മുംബൈക്കും വലിയ പ്ലാനുകൾ | IPL | IPL trade window | Hardik Pandya | IPL mini auction'. Watch the full breakdown on Final Third.</p>
             <div class="hub-card-footer">
-              <a href="/cricket/abhishek-sharma-vaibhav-suryavanshi-ind-vs-nz/" class="hub-card-btn">
+              <a href="/cricket/ipl-ipl-trade-window-hardik-pandya-ipl-mini-auction-yb8ksc/" class="hub-card-btn">
                 Read Tactical Breakdown &amp; Watch Video ↗
               </a>
             </div>
           </div>
         </article>
-        <article class="hub-card" onclick="window.location.href='/cricket/sanju-samson-redemption-story-india-vs-nz/'" style="cursor: pointer;">
-          <a href="/cricket/sanju-samson-redemption-story-india-vs-nz/" class="hub-card-thumb-link" aria-label="സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson | India vs New Zealand | Haris Nenmara">
-            <img src="https://i.ytimg.com/vi/Xq1PtXOrVRc/hqdefault.jpg" alt="സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson | India vs New Zealand | Haris Nenmara" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Sanju Samson & Indian Cricket</span>
-            <span class="hub-card-views">175K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-23</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/cricket/sanju-samson-redemption-story-india-vs-nz/">സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson | India vs New Zealand | Haris Nenmara</a></h2>
-            <p class="hub-card-snippet">Sanju Samson's redemption story continues against New Zealand. Complete technical breakdown of his batting approach and tactical maturity by Haris Nenmara.</p>
-            <div class="hub-card-footer">
-              <a href="/cricket/sanju-samson-redemption-story-india-vs-nz/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/cricket/sanju-samson-ind-vs-nz-match-answers/'" style="cursor: pointer;">
-          <a href="/cricket/sanju-samson-ind-vs-nz-match-answers/" class="hub-card-thumb-link" aria-label="സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | India vs New Zealand | Haris Nenmara">
-            <img src="https://i.ytimg.com/vi/I-40yws8G-E/hqdefault.jpg" alt="സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | India vs New Zealand | Haris Nenmara" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Sanju Samson & Indian Cricket</span>
-            <span class="hub-card-views">85K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-20</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/cricket/sanju-samson-ind-vs-nz-match-answers/">സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | India vs New Zealand | Haris Nenmara</a></h2>
-            <p class="hub-card-snippet">Who are Sanju Samson's batting statements aimed at? Haris Nenmara examines Samson's role in India vs New Zealand and team selection dynamics.</p>
-            <div class="hub-card-footer">
-              <a href="/cricket/sanju-samson-ind-vs-nz-match-answers/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/cricket/tilak-varma-naman-dhir-comeback-analysis/'" style="cursor: pointer;">
-          <a href="/cricket/tilak-varma-naman-dhir-comeback-analysis/" class="hub-card-thumb-link" aria-label="ഇതൊക്കെയാണ് കംബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | Naman Dhir | Haris Nenmara">
-            <img src="https://i.ytimg.com/vi/F1X3eE_CBKU/hqdefault.jpg" alt="ഇതൊക്കെയാണ് കംബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | Naman Dhir | Haris Nenmara" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Indian Cricket Team</span>
-            <span class="hub-card-views">57K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-17</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/cricket/tilak-varma-naman-dhir-comeback-analysis/">ഇതൊക്കെയാണ് കംബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | Naman Dhir | Haris Nenmara</a></h2>
-            <p class="hub-card-snippet">Sensational comeback analysis: Tilak Varma and Naman Dhir deliver when it counts. Tactical cricket breakdown in Malayalam by Haris Nenmara.</p>
-            <div class="hub-card-footer">
-              <a href="/cricket/tilak-varma-naman-dhir-comeback-analysis/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/cricket/jasprit-bumrah-sanju-samson-ind-vs-wi/'" style="cursor: pointer;">
-          <a href="/cricket/jasprit-bumrah-sanju-samson-ind-vs-wi/" class="hub-card-thumb-link" aria-label="ഭുവി വരുന്നു ! ബുംറ ഇല്ലെങ്കിൽ ഇന്ത്യ ഇല്ലേ ? Sanju Samson | Jasprit Bumrah | Bhuvneshwar Kumar">
-            <img src="https://i.ytimg.com/vi/3-k7z6FqTX0/hqdefault.jpg" alt="ഭുവി വരുന്നു ! ബുംറ ഇല്ലെങ്കിൽ ഇന്ത്യ ഇല്ലേ ? Sanju Samson | Jasprit Bumrah | Bhuvneshwar Kumar" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Indian Cricket Team</span>
-            <span class="hub-card-views">111K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-13</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/cricket/jasprit-bumrah-sanju-samson-ind-vs-wi/">ഭുവി വരുന്നു ! ബുംറ ഇല്ലെങ്കിൽ ഇന്ത്യ ഇല്ലേ ? Sanju Samson | Jasprit Bumrah | Bhuvneshwar Kumar</a></h2>
-            <p class="hub-card-snippet">Is India dependent on Jasprit Bumrah? Haris Nenmara explores Bhuvneshwar Kumar's return, bowling depth, and Sanju Samson's contribution.</p>
-            <div class="hub-card-footer">
-              <a href="/cricket/jasprit-bumrah-sanju-samson-ind-vs-wi/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/cricket/bhuvneshwar-kumar-jasprit-bumrah-bowling-tactics/'" style="cursor: pointer;">
-          <a href="/cricket/bhuvneshwar-kumar-jasprit-bumrah-bowling-tactics/" class="hub-card-thumb-link" aria-label="ഭുവിയും ബുംറയും ചേർന്നാൽ ! Bhuvneshwar Kumar | Jasprit Bumrah | Haris Nenmara">
-            <img src="https://i.ytimg.com/vi/znjseVIMsE0/hqdefault.jpg" alt="ഭുവിയും ബുംറയും ചേർന്നാൽ ! Bhuvneshwar Kumar | Jasprit Bumrah | Haris Nenmara" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Indian Cricket Team</span>
-            <span class="hub-card-views">21K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-10-11</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/cricket/bhuvneshwar-kumar-jasprit-bumrah-bowling-tactics/">ഭുവിയും ബുംറയും ചേർന്നാൽ ! Bhuvneshwar Kumar | Jasprit Bumrah | Haris Nenmara</a></h2>
-            <p class="hub-card-snippet">What happens when Bhuvneshwar Kumar and Jasprit Bumrah bowl together? Haris Nenmara breaks down seam, swing, yorkers, and death-overs mastery.</p>
-            <div class="hub-card-footer">
-              <a href="/cricket/bhuvneshwar-kumar-jasprit-bumrah-bowling-tactics/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/cricket/rohit-sharma-mumbai-indians-in9vwj/'" style="cursor: pointer;">
-          <a href="/cricket/rohit-sharma-mumbai-indians-in9vwj/" class="hub-card-thumb-link" aria-label="രോഹിത് വീണ്ടും മുംബൈ നായകനാവും ! Rohit Sharma | Mumbai Indians">
-            <img src="https://i.ytimg.com/vi/In9vwjZ6sVQ/hqdefault.jpg" alt="രോഹിത് വീണ്ടും മുംബൈ നായകനാവും ! Rohit Sharma | Mumbai Indians" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Indian Cricket Team</span>
-            <span class="hub-card-views">29K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-11-01</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/cricket/rohit-sharma-mumbai-indians-in9vwj/">രോഹിത് വീണ്ടും മുംബൈ നായകനാവും ! Rohit Sharma | Mumbai Indians</a></h2>
-            <p class="hub-card-snippet">Analysis and match debrief by Haris Nenmara on 'രോഹിത് വീണ്ടും മുംബൈ നായകനാവും ! Rohit Sharma | Mumbai Indians'. Watch the full breakdown on Final Third.</p>
-            <div class="hub-card-footer">
-              <a href="/cricket/rohit-sharma-mumbai-indians-in9vwj/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/cricket/91-7-glenn-maxwell-201-vs-afghanistan-yvk_az/'" style="cursor: pointer;">
-          <a href="/cricket/91-7-glenn-maxwell-201-vs-afghanistan-yvk_az/" class="hub-card-thumb-link" aria-label="91 ന്  7 ;  ആ കുഴിമാടത്തിൽ നിന്ന് മാക്സ് വെൽ നടത്തിയ കംബാക്ക് ! |  Glenn Maxwell 201 vs Afghanistan">
-            <img src="https://i.ytimg.com/vi/yvK_AZ7oYs4/hqdefault.jpg" alt="91 ന്  7 ;  ആ കുഴിമാടത്തിൽ നിന്ന് മാക്സ് വെൽ നടത്തിയ കംബാക്ക് ! |  Glenn Maxwell 201 vs Afghanistan" width="480" height="270" loading="lazy" decoding="async">
-            <span class="hub-card-badge">Indian Cricket Team</span>
-            <span class="hub-card-views">23K views</span>
-            <div class="hub-play-overlay" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </div>
-          </a>
-          <div class="hub-card-body">
-            <div class="hub-card-meta">
-              <span class="hub-card-time">2026-11-03</span>
-              <span class="hub-card-dot">·</span>
-              <span class="hub-card-read">3 min read</span>
-            </div>
-            <h2 class="hub-card-title"><a href="/cricket/91-7-glenn-maxwell-201-vs-afghanistan-yvk_az/">91 ന്  7 ;  ആ കുഴിമാടത്തിൽ നിന്ന് മാക്സ് വെൽ നടത്തിയ കംബാക്ക് ! |  Glenn Maxwell 201 vs Afghanistan</a></h2>
-            <p class="hub-card-snippet">Analysis and match debrief by Haris Nenmara on '91 ന്  7 ;  ആ കുഴിമാടത്തിൽ നിന്ന് മാക്സ് വെൽ നടത്തിയ കംബാക്ക് ! |  Glenn Maxwell 201 vs Afghanistan'. Watch the full breakdown on Final Third.</p>
-            <div class="hub-card-footer">
-              <a href="/cricket/91-7-glenn-maxwell-201-vs-afghanistan-yvk_az/" class="hub-card-btn">
-                Read Tactical Breakdown &amp; Watch Video ↗
-              </a>
-            </div>
-          </div>
-        </article>
-        <article class="hub-card" onclick="window.location.href='/cricket/india-vs-new-zealand-virat-kohli-yr2rpr/'" style="cursor: pointer;">
+        <article class="hub-card" id="india-vs-new-zealand-virat-kohli-yr2rpr" onclick="window.location.href='/cricket/india-vs-new-zealand-virat-kohli-yr2rpr/'" style="cursor: pointer;">
           <a href="/cricket/india-vs-new-zealand-virat-kohli-yr2rpr/" class="hub-card-thumb-link" aria-label="ആ പറക്കും ക്യാച്ച് ! പിന്നെ വെടിക്കെട്ട്, കോഹ്‌ലി ഷോ തുടരുന്നു! | India vs New Zealand | Virat Kohli">
             <img src="https://i.ytimg.com/vi/Yr2rpr2YPrA/hqdefault.jpg" alt="ആ പറക്കും ക്യാച്ച് ! പിന്നെ വെടിക്കെട്ട്, കോഹ്‌ലി ഷോ തുടരുന്നു! | India vs New Zealand | Virat Kohli" width="480" height="270" loading="lazy" decoding="async">
             <span class="hub-card-badge">Indian Cricket Team</span>
@@ -974,7 +777,7 @@
             </div>
           </div>
         </article>
-        <article class="hub-card" onclick="window.location.href='/cricket/or-hardik-pandya-mumbai-indians-dmen-h/'" style="cursor: pointer;">
+        <article class="hub-card" id="or-hardik-pandya-mumbai-indians-dmen-h" onclick="window.location.href='/cricket/or-hardik-pandya-mumbai-indians-dmen-h/'" style="cursor: pointer;">
           <a href="/cricket/or-hardik-pandya-mumbai-indians-dmen-h/" class="hub-card-thumb-link" aria-label="ഹർദിക് പോകും... അർഷ്ദീപ് or ജയ്സ്വാൾ, ആര് വരും ? Hardik Pandya | Mumbai Indians">
             <img src="https://i.ytimg.com/vi/dMeN-hNlpXw/hqdefault.jpg" alt="ഹർദിക് പോകും... അർഷ്ദീപ് or ജയ്സ്വാൾ, ആര് വരും ? Hardik Pandya | Mumbai Indians" width="480" height="270" loading="lazy" decoding="async">
             <span class="hub-card-badge">Indian Cricket Team</span>
@@ -1000,11 +803,11 @@
             </div>
           </div>
         </article>
-        <article class="hub-card" onclick="window.location.href='/cricket/ipl-ipl-trade-window-hardik-pandya-ipl-mini-auction-yb8ksc/'" style="cursor: pointer;">
-          <a href="/cricket/ipl-ipl-trade-window-hardik-pandya-ipl-mini-auction-yb8ksc/" class="hub-card-thumb-link" aria-label="ചെന്നൈയ്ക്കും മുംബൈക്കും വലിയ പ്ലാനുകൾ | IPL | IPL trade window | Hardik Pandya | IPL mini auction">
-            <img src="https://i.ytimg.com/vi/Yb8KSc7RVDE/hqdefault.jpg" alt="ചെന്നൈയ്ക്കും മുംബൈക്കും വലിയ പ്ലാനുകൾ | IPL | IPL trade window | Hardik Pandya | IPL mini auction" width="480" height="270" loading="lazy" decoding="async">
+        <article class="hub-card" id="91-7-glenn-maxwell-201-vs-afghanistan-yvk_az" onclick="window.location.href='/cricket/91-7-glenn-maxwell-201-vs-afghanistan-yvk_az/'" style="cursor: pointer;">
+          <a href="/cricket/91-7-glenn-maxwell-201-vs-afghanistan-yvk_az/" class="hub-card-thumb-link" aria-label="91 ന്  7 ;  ആ കുഴിമാടത്തിൽ നിന്ന് മാക്സ് വെൽ നടത്തിയ കംബാക്ക് ! |  Glenn Maxwell 201 vs Afghanistan">
+            <img src="https://i.ytimg.com/vi/yvK_AZ7oYs4/hqdefault.jpg" alt="91 ന്  7 ;  ആ കുഴിമാടത്തിൽ നിന്ന് മാക്സ് വെൽ നടത്തിയ കംബാക്ക് ! |  Glenn Maxwell 201 vs Afghanistan" width="480" height="270" loading="lazy" decoding="async">
             <span class="hub-card-badge">Indian Cricket Team</span>
-            <span class="hub-card-views">56K views</span>
+            <span class="hub-card-views">23K views</span>
             <div class="hub-play-overlay" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -1013,14 +816,196 @@
           </a>
           <div class="hub-card-body">
             <div class="hub-card-meta">
-              <span class="hub-card-time">2026-11-09</span>
+              <span class="hub-card-time">2026-11-03</span>
               <span class="hub-card-dot">·</span>
               <span class="hub-card-read">3 min read</span>
             </div>
-            <h2 class="hub-card-title"><a href="/cricket/ipl-ipl-trade-window-hardik-pandya-ipl-mini-auction-yb8ksc/">ചെന്നൈയ്ക്കും മുംബൈക്കും വലിയ പ്ലാനുകൾ | IPL | IPL trade window | Hardik Pandya | IPL mini auction</a></h2>
-            <p class="hub-card-snippet">Analysis and match debrief by Haris Nenmara on 'ചെന്നൈയ്ക്കും മുംബൈക്കും വലിയ പ്ലാനുകൾ | IPL | IPL trade window | Hardik Pandya | IPL mini auction'. Watch the full breakdown on Final Third.</p>
+            <h2 class="hub-card-title"><a href="/cricket/91-7-glenn-maxwell-201-vs-afghanistan-yvk_az/">91 ന്  7 ;  ആ കുഴിമാടത്തിൽ നിന്ന് മാക്സ് വെൽ നടത്തിയ കംബാക്ക് ! |  Glenn Maxwell 201 vs Afghanistan</a></h2>
+            <p class="hub-card-snippet">Analysis and match debrief by Haris Nenmara on '91 ന്  7 ;  ആ കുഴിമാടത്തിൽ നിന്ന് മാക്സ് വെൽ നടത്തിയ കംബാക്ക് ! |  Glenn Maxwell 201 vs Afghanistan'. Watch the full breakdown on Final Third.</p>
             <div class="hub-card-footer">
-              <a href="/cricket/ipl-ipl-trade-window-hardik-pandya-ipl-mini-auction-yb8ksc/" class="hub-card-btn">
+              <a href="/cricket/91-7-glenn-maxwell-201-vs-afghanistan-yvk_az/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="rohit-sharma-mumbai-indians-in9vwj" onclick="window.location.href='/cricket/rohit-sharma-mumbai-indians-in9vwj/'" style="cursor: pointer;">
+          <a href="/cricket/rohit-sharma-mumbai-indians-in9vwj/" class="hub-card-thumb-link" aria-label="രോഹിത് വീണ്ടും മുംബൈ നായകനാവും ! Rohit Sharma | Mumbai Indians">
+            <img src="https://i.ytimg.com/vi/In9vwjZ6sVQ/hqdefault.jpg" alt="രോഹിത് വീണ്ടും മുംബൈ നായകനാവും ! Rohit Sharma | Mumbai Indians" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Indian Cricket Team</span>
+            <span class="hub-card-views">29K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-11-01</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/cricket/rohit-sharma-mumbai-indians-in9vwj/">രോഹിത് വീണ്ടും മുംബൈ നായകനാവും ! Rohit Sharma | Mumbai Indians</a></h2>
+            <p class="hub-card-snippet">Analysis and match debrief by Haris Nenmara on 'രോഹിത് വീണ്ടും മുംബൈ നായകനാവും ! Rohit Sharma | Mumbai Indians'. Watch the full breakdown on Final Third.</p>
+            <div class="hub-card-footer">
+              <a href="/cricket/rohit-sharma-mumbai-indians-in9vwj/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="abhishek-sharma-vaibhav-suryavanshi-ind-vs-nz" onclick="window.location.href='/cricket/abhishek-sharma-vaibhav-suryavanshi-ind-vs-nz/'" style="cursor: pointer;">
+          <a href="/cricket/abhishek-sharma-vaibhav-suryavanshi-ind-vs-nz/" class="hub-card-thumb-link" aria-label="ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek sharma | Vaibhav Suryavanshi">
+            <img src="https://i.ytimg.com/vi/qDn--g-xzQY/hqdefault.jpg" alt="ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek sharma | Vaibhav Suryavanshi" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Indian Cricket Team</span>
+            <span class="hub-card-views">301K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-10-25</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/cricket/abhishek-sharma-vaibhav-suryavanshi-ind-vs-nz/">ബ്രൂട്ടൽ; അഭിഷേകും വൈഭവും ചേർന്ന് കിവികളെ കുഴിച്ച് മൂടി | Abhishek sharma | Vaibhav Suryavanshi</a></h2>
+            <p class="hub-card-snippet">Brutal batting masterclass: Abhishek Sharma and Vaibhav Suryavanshi dismantle New Zealand. Detailed cricket analysis in Malayalam by Haris Nenmara.</p>
+            <div class="hub-card-footer">
+              <a href="/cricket/abhishek-sharma-vaibhav-suryavanshi-ind-vs-nz/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="sanju-samson-redemption-story-india-vs-nz" onclick="window.location.href='/cricket/sanju-samson-redemption-story-india-vs-nz/'" style="cursor: pointer;">
+          <a href="/cricket/sanju-samson-redemption-story-india-vs-nz/" class="hub-card-thumb-link" aria-label="സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson | India vs New Zealand | Haris Nenmara">
+            <img src="https://i.ytimg.com/vi/Xq1PtXOrVRc/hqdefault.jpg" alt="സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson | India vs New Zealand | Haris Nenmara" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Sanju Samson & Indian Cricket</span>
+            <span class="hub-card-views">175K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-10-23</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/cricket/sanju-samson-redemption-story-india-vs-nz/">സഞ്ജുവിൻ്റെ പ്രതികാര കഥ തുടരുന്നു ! Sanju Samson | India vs New Zealand | Haris Nenmara</a></h2>
+            <p class="hub-card-snippet">Sanju Samson's redemption story continues against New Zealand. Complete technical breakdown of his batting approach and tactical maturity by Haris Nenmara.</p>
+            <div class="hub-card-footer">
+              <a href="/cricket/sanju-samson-redemption-story-india-vs-nz/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="sanju-samson-ind-vs-nz-match-answers" onclick="window.location.href='/cricket/sanju-samson-ind-vs-nz-match-answers/'" style="cursor: pointer;">
+          <a href="/cricket/sanju-samson-ind-vs-nz-match-answers/" class="hub-card-thumb-link" aria-label="സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | India vs New Zealand | Haris Nenmara">
+            <img src="https://i.ytimg.com/vi/I-40yws8G-E/hqdefault.jpg" alt="സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | India vs New Zealand | Haris Nenmara" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Sanju Samson & Indian Cricket</span>
+            <span class="hub-card-views">85K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-10-20</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/cricket/sanju-samson-ind-vs-nz-match-answers/">സഞ്ജുവിൻ്റെ മറുപടികൾ കൊള്ളുന്നത് ആർക്കാണ് ? Sanju Samson | India vs New Zealand | Haris Nenmara</a></h2>
+            <p class="hub-card-snippet">Who are Sanju Samson's batting statements aimed at? Haris Nenmara examines Samson's role in India vs New Zealand and team selection dynamics.</p>
+            <div class="hub-card-footer">
+              <a href="/cricket/sanju-samson-ind-vs-nz-match-answers/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="tilak-varma-naman-dhir-comeback-analysis" onclick="window.location.href='/cricket/tilak-varma-naman-dhir-comeback-analysis/'" style="cursor: pointer;">
+          <a href="/cricket/tilak-varma-naman-dhir-comeback-analysis/" class="hub-card-thumb-link" aria-label="ഇതൊക്കെയാണ് കംബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | Naman Dhir | Haris Nenmara">
+            <img src="https://i.ytimg.com/vi/F1X3eE_CBKU/hqdefault.jpg" alt="ഇതൊക്കെയാണ് കംബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | Naman Dhir | Haris Nenmara" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Indian Cricket Team</span>
+            <span class="hub-card-views">57K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-10-17</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/cricket/tilak-varma-naman-dhir-comeback-analysis/">ഇതൊക്കെയാണ് കംബാക്ക് ! നമൻ ധീർ പ്രതീക്ഷയാണ് | Tilak Varma | Naman Dhir | Haris Nenmara</a></h2>
+            <p class="hub-card-snippet">Sensational comeback analysis: Tilak Varma and Naman Dhir deliver when it counts. Tactical cricket breakdown in Malayalam by Haris Nenmara.</p>
+            <div class="hub-card-footer">
+              <a href="/cricket/tilak-varma-naman-dhir-comeback-analysis/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="jasprit-bumrah-sanju-samson-ind-vs-wi" onclick="window.location.href='/cricket/jasprit-bumrah-sanju-samson-ind-vs-wi/'" style="cursor: pointer;">
+          <a href="/cricket/jasprit-bumrah-sanju-samson-ind-vs-wi/" class="hub-card-thumb-link" aria-label="ഭുവി വരുന്നു ! ബുംറ ഇല്ലെങ്കിൽ ഇന്ത്യ ഇല്ലേ ? Sanju Samson | Jasprit Bumrah | Bhuvneshwar Kumar">
+            <img src="https://i.ytimg.com/vi/3-k7z6FqTX0/hqdefault.jpg" alt="ഭുവി വരുന്നു ! ബുംറ ഇല്ലെങ്കിൽ ഇന്ത്യ ഇല്ലേ ? Sanju Samson | Jasprit Bumrah | Bhuvneshwar Kumar" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Indian Cricket Team</span>
+            <span class="hub-card-views">111K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-10-13</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/cricket/jasprit-bumrah-sanju-samson-ind-vs-wi/">ഭുവി വരുന്നു ! ബുംറ ഇല്ലെങ്കിൽ ഇന്ത്യ ഇല്ലേ ? Sanju Samson | Jasprit Bumrah | Bhuvneshwar Kumar</a></h2>
+            <p class="hub-card-snippet">Is India dependent on Jasprit Bumrah? Haris Nenmara explores Bhuvneshwar Kumar's return, bowling depth, and Sanju Samson's contribution.</p>
+            <div class="hub-card-footer">
+              <a href="/cricket/jasprit-bumrah-sanju-samson-ind-vs-wi/" class="hub-card-btn">
+                Read Tactical Breakdown &amp; Watch Video ↗
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="hub-card" id="bhuvneshwar-kumar-jasprit-bumrah-bowling-tactics" onclick="window.location.href='/cricket/bhuvneshwar-kumar-jasprit-bumrah-bowling-tactics/'" style="cursor: pointer;">
+          <a href="/cricket/bhuvneshwar-kumar-jasprit-bumrah-bowling-tactics/" class="hub-card-thumb-link" aria-label="ഭുവിയും ബുംറയും ചേർന്നാൽ ! Bhuvneshwar Kumar | Jasprit Bumrah | Haris Nenmara">
+            <img src="https://i.ytimg.com/vi/znjseVIMsE0/hqdefault.jpg" alt="ഭുവിയും ബുംറയും ചേർന്നാൽ ! Bhuvneshwar Kumar | Jasprit Bumrah | Haris Nenmara" width="480" height="270" loading="lazy" decoding="async">
+            <span class="hub-card-badge">Indian Cricket Team</span>
+            <span class="hub-card-views">21K views</span>
+            <div class="hub-play-overlay" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </div>
+          </a>
+          <div class="hub-card-body">
+            <div class="hub-card-meta">
+              <span class="hub-card-time">2026-10-11</span>
+              <span class="hub-card-dot">·</span>
+              <span class="hub-card-read">3 min read</span>
+            </div>
+            <h2 class="hub-card-title"><a href="/cricket/bhuvneshwar-kumar-jasprit-bumrah-bowling-tactics/">ഭുവിയും ബുംറയും ചേർന്നാൽ ! Bhuvneshwar Kumar | Jasprit Bumrah | Haris Nenmara</a></h2>
+            <p class="hub-card-snippet">What happens when Bhuvneshwar Kumar and Jasprit Bumrah bowl together? Haris Nenmara breaks down seam, swing, yorkers, and death-overs mastery.</p>
+            <div class="hub-card-footer">
+              <a href="/cricket/bhuvneshwar-kumar-jasprit-bumrah-bowling-tactics/" class="hub-card-btn">
                 Read Tactical Breakdown &amp; Watch Video ↗
               </a>
             </div>

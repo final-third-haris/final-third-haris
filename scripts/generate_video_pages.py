@@ -182,8 +182,12 @@ def render_page(video):
     if len(clean_takeaways) < 3:
         clean_takeaways = video.get("takeaways", [])
 
-    # 4 Related videos from the same sport
-    same_sport_videos = [v for v in VIDEOS if v["sport"] == sport and v["id"] != vid]
+    # 4 Latest Related videos from the same sport
+    same_sport_videos = sorted(
+        [v for v in VIDEOS if v["sport"] == sport and v["id"] != vid],
+        key=lambda x: str(x.get("published_iso", "")),
+        reverse=True
+    )
     related = same_sport_videos[:4]
     if len(related) < 4:
         other_videos = [v for v in VIDEOS if v["id"] != vid and v not in related]
@@ -1019,13 +1023,18 @@ def render_category_hub(sport):
         "Malayalam cricket match analysis, tactical breakdowns, and player stories by Haris Nenmara. In-depth coverage of Sanju Samson, Jasprit Bumrah, Team India T20s, and World Cup moments."
     )
 
-    vids = [v for v in VIDEOS if v["sport"] == sport]
+    # Sort videos strictly latest to oldest (newest at top)
+    vids = sorted(
+        [v for v in VIDEOS if v["sport"] == sport],
+        key=lambda x: str(x.get("published_iso", "")),
+        reverse=True
+    )
     
     cards_html = ""
     for v in vids:
         page_url = f"/{sport}/{v['slug']}/"
         cards_html += f"""
-        <article class="hub-card" onclick="window.location.href='{page_url}'" style="cursor: pointer;">
+        <article class="hub-card" id="{v['slug']}" onclick="window.location.href='{page_url}'" style="cursor: pointer;">
           <a href="{page_url}" class="hub-card-thumb-link" aria-label="{v['title']}">
             <img src="https://i.ytimg.com/vi/{v['id']}/hqdefault.jpg" alt="{v['title']}" width="480" height="270" loading="lazy" decoding="async">
             <span class="hub-card-badge">{v['playlist']}</span>
@@ -1057,29 +1066,27 @@ def render_category_hub(sport):
     toc_items_html = ""
     for idx, v in enumerate(vids, 1):
         page_url = f"/{sport}/{v['slug']}/"
+        safe_attr_title = f"{v['title']} ({v['published_iso'][:10]} · {v['views']})".replace('"', "&quot;")
         toc_items_html += f'''
         <li class="contents-item">
-          <a href="{page_url}" class="contents-link" title="{v['title']}">
+          <a href="{page_url}" class="contents-link" title="{safe_attr_title}">
             <span class="contents-num">{idx:02d}</span>
-            <span class="contents-info">
-              <span class="contents-title" lang="ml">{v['title']}</span>
-              <span class="contents-sub">{v['playlist']} · {v['views']}</span>
-            </span>
+            <span class="contents-title" lang="ml">{v['title']}</span>
             <span class="contents-arrow" aria-hidden="true">&rarr;</span>
           </a>
         </li>'''
 
     sport_label = "Football" if sport == "football" else "Cricket"
 
-    hub_contents_html = f'''  <!-- List of Contents (Table of Contents) -->
+    hub_contents_html = f'''  <!-- Compact List of Contents (Latest to Oldest) -->
   <section class="hub-contents-section">
     <div class="contents-card">
       <div class="contents-header">
-        <div class="contents-header-text">
-          <span class="contents-badge">TABLE OF CONTENTS · ഉള്ളടക്ക സൂചിക</span>
-          <h2>List of Contents | {sport_label} Match Analysis Archive ({len(vids)} Videos)</h2>
-          <p class="contents-lead">Quick index of all in-depth {sport_label.lower()} video breakdowns, tactical match debriefs, and stories by Haris Nenmara.</p>
+        <div class="contents-header-left">
+          <span class="contents-badge">CONTENTS · ഉള്ളടക്കം</span>
+          <h2>{sport_label} Videos Index</h2>
         </div>
+        <span class="contents-count-pill">{len(vids)} Videos · Latest First</span>
       </div>
       <ol class="contents-grid">
         {toc_items_html}
@@ -1286,66 +1293,94 @@ def render_category_hub(sport):
     }}
 
     /* Sport Switcher Chips */
-    /* List of Contents (Table of Contents) in Category Hub */
+    /* Compact List of Contents in Category Hub */
     .hub-contents-section {{
       max-width: 1140px;
-      margin: 2rem auto 0;
+      margin: 1.25rem auto 0;
       padding: 0 1.5rem;
     }}
     .contents-card {{
       background: var(--charcoal);
       border: 1px solid var(--charcoal-border);
-      border-radius: 12px;
-      padding: 1.75rem 2rem;
+      border-radius: 10px;
+      padding: 0.875rem 1.125rem;
     }}
     .contents-header {{
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.625rem;
       border-bottom: 1px solid var(--charcoal-border);
+    }}
+    .contents-header-left {{
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      flex-wrap: wrap;
     }}
     .contents-badge {{
       display: inline-block;
-      font-size: 0.6875rem;
+      font-size: 0.625rem;
       font-weight: 800;
       color: var(--neon-lime);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       background: rgba(158, 226, 11, 0.1);
       border: 1px solid rgba(158, 226, 11, 0.25);
-      padding: 3px 8px;
+      padding: 2px 7px;
       border-radius: 4px;
-      margin-bottom: 0.5rem;
     }}
     .contents-header h2 {{
-      font-size: 1.375rem;
-      font-weight: 800;
+      font-size: 0.9375rem;
+      font-weight: 700;
       color: var(--off-white);
-      margin-bottom: 0.375rem;
+      margin: 0;
     }}
-    .contents-lead {{
-      font-size: 0.875rem;
+    .contents-count-pill {{
+      font-size: 0.6875rem;
+      font-weight: 700;
       color: var(--muted-grey);
+      background: var(--charcoal-light);
+      border: 1px solid var(--charcoal-border);
+      padding: 2px 8px;
+      border-radius: 999px;
     }}
     .contents-grid {{
       list-style: none;
-      padding: 0;
+      padding: 0 0.25rem 0 0;
       margin: 0;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 0.625rem 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.375rem 0.5rem;
+      max-height: 175px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--charcoal-border) transparent;
+    }}
+    .contents-grid::-webkit-scrollbar {{
+      width: 5px;
+    }}
+    .contents-grid::-webkit-scrollbar-thumb {{
+      background: var(--charcoal-border);
+      border-radius: 999px;
     }}
     .contents-item {{
       display: flex;
+      min-width: 0;
     }}
     .contents-link {{
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.5rem;
       width: 100%;
-      padding: 0.625rem 0.875rem;
+      min-width: 0;
+      padding: 0.35rem 0.6rem;
       background: var(--charcoal-light);
       border: 1px solid var(--charcoal-border);
-      border-radius: 8px;
+      border-radius: 6px;
       color: var(--off-white);
       text-decoration: none;
       transition: all 0.2s ease;
@@ -1359,55 +1394,45 @@ def render_category_hub(sport):
     .contents-num {{
       flex-shrink: 0;
       font-family: monospace;
-      font-size: 0.75rem;
+      font-size: 0.6875rem;
       font-weight: 800;
       color: var(--neon-lime);
       background: rgba(158, 226, 11, 0.12);
       border-radius: 4px;
-      padding: 2px 6px;
-    }}
-    .contents-info {{
-      flex: 1;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
+      padding: 1px 5px;
     }}
     .contents-title {{
-      font-size: 0.875rem;
+      flex: 1;
+      min-width: 0;
+      font-size: 0.78125rem;
       font-weight: 600;
       color: #f0f0f0;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      line-height: 1.4;
+      line-height: 1.35;
     }}
     .contents-link:hover .contents-title {{
       color: var(--neon-lime);
     }}
-    .contents-sub {{
-      font-size: 0.6875rem;
-      color: var(--dark-grey);
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-    }}
     .contents-arrow {{
       flex-shrink: 0;
       color: var(--dark-grey);
-      font-size: 0.875rem;
+      font-size: 0.75rem;
       font-weight: 700;
       transition: transform 0.2s, color 0.2s;
     }}
     .contents-link:hover .contents-arrow {{
       color: var(--neon-lime);
-      transform: translateX(3px);
+      transform: translateX(2px);
     }}
     @media (max-width: 768px) {{
       .contents-card {{
-        padding: 1.25rem 1rem;
+        padding: 0.75rem 0.875rem;
       }}
       .contents-grid {{
         grid-template-columns: 1fr;
+        max-height: 165px;
       }}
     }}
 
