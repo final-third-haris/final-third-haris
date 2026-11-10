@@ -88,18 +88,28 @@ const FINAL_THIRD_CONFIG = {
     ]
   },
 
-  featuredVideoId: "EF6mVc8-K08",
+  featuredVideoId: "gB1NKMyv5nc",
 
   // 300+ Authentic Videos from YouTube @FinalThird_HarisNenmara
   videos: [
+    {
+      "id": "gB1NKMyv5nc",
+      "title": "17 ഫോർ ,  7 സിക്സ് ! ക്രിക്കറ്റ് ലോകത്തെ ഞെട്ടിച്ച് വീരുവിന്റെ മകൻ | Aryavir Sehwag",
+      "sport": "cricket",
+      "playlistId": "indian-cricket",
+      "playlistTitle": "Indian Cricket Team",
+      "published": "2 hours ago",
+      "views": "2.1K views",
+      "summary": "Analysis and match debrief by Haris Nenmara on '17 ഫോർ ,  7 സിക്സ് ! ക്രിക്കറ്റ് ലോകത്തെ ഞെട്ടിച്ച് വീരുവിന്റെ മകൻ | Aryavir Sehwag'. Watch the full breakdown on Final Third."
+    },
     {
       "id": "EF6mVc8-K08",
       "title": "ഗണ്ണേഴ്സിനോട് കണക്ക് തീര്‍ക്കുമോ റയല്‍? Real madrid | Jose Morinho",
       "sport": "football",
       "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
       "playlistTitle": "Real Madrid",
-      "published": "3 hours ago",
-      "views": "8.8K views",
+      "published": "6 hours ago",
+      "views": "20K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ഗണ്ണേഴ്സിനോട് കണക്ക് തീര്‍ക്കുമോ റയല്‍? Real madrid | Jose Morinho'. Watch the full breakdown on Final Third."
     },
     {
@@ -109,7 +119,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "Yesterday",
-      "views": "71K views",
+      "views": "74K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ചെന്നൈയ്ക്കും മുംബൈക്കും വലിയ പ്ലാനുകൾ | IPL | IPL trade window | Hardik Pandya | IPL mini auction'. Watch the full breakdown on Final Third."
     },
     {
@@ -158,7 +168,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "5 days ago",
+      "published": "6 days ago",
       "views": "45K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ആ പറക്കും ക്യാച്ച് ! പിന്നെ വെടിക്കെട്ട്, കോഹ്‌ലി ഷോ തുടരുന്നു! | India vs New Zealand | Virat Kohli'. Watch the full breakdown on Final Third."
     },
@@ -2266,12 +2276,22 @@ const FINAL_THIRD_CONFIG = {
 
   shorts: [
     {
+      "id": "8HmSU9CUQM4",
+      "title": "ഞെട്ടിച് വീരുവിന്റെ മകൻ  ആര്യവീർ",
+      "sport": "football",
+      "playlistId": "latest",
+      "playlistTitle": "Latest Release",
+      "published": "Just now",
+      "views": "101 views",
+      "summary": "ഞെട്ടിച് വീരുവിന്റെ മകൻ  ആര്യവീർ"
+    },
+    {
       "id": "TtKNs-npJwg",
       "title": "സിമിയോണി ഒന്നും മറക്കില്ല | Cristiano Ronaldo",
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "2 days ago",
+      "published": "3 days ago",
       "views": "6.7K views",
       "summary": "സിമിയോണി ഒന്നും മറക്കില്ല | Cristiano Ronaldo"
     },
