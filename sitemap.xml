@@ -8,37 +8,37 @@
   </url>
   <url>
     <loc>https://www.finalthird-haris.com/football/</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.finalthird-haris.com/cricket/</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.finalthird-haris.com/about.html</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.finalthird-haris.com/contact.html</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.finalthird-haris.com/privacy.html</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.finalthird-haris.com/terms.html</loc>
-    <lastmod>2026-11-10</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -562,6 +562,20 @@
       <video:description>Analysis and match debrief by Haris Nenmara on '17 ഫോർ ,  7 സിക്സ് ! ക്രിക്കറ്റ് ലോകത്തെ ഞെട്ടിച്ച് വീരുവിന്റെ മകൻ | Aryavir Sehwag'. Watch the full breakdown on Final Third.</video:description>
       <video:player_loc>https://www.youtube.com/embed/gB1NKMyv5nc</video:player_loc>
       <video:publication_date>2026-11-10T14:32:17+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.finalthird-haris.com/cricket/hardik-pandya-arshdeep-singh-1ipbkk/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/1IpbKk1HX4w/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>ബുംറ- അര്‍ഷ്ദീപ് ഡെഡ്‍ലി കോംബോ ! ഹര്‍ദികിന്‍റെ സ്വന്തം പഞ്ചാബ് | Hardik pandya |arshdeep singh</video:title>
+      <video:description>Analysis and match debrief by Haris Nenmara on 'ബുംറ- അര്‍ഷ്ദീപ് ഡെഡ്‍ലി കോംബോ ! ഹര്‍ദികിന്‍റെ സ്വന്തം പഞ്ചാബ് | Hardik pandya |arshdeep singh'. Watch the full breakdown on Final Third.</video:description>
+      <video:player_loc>https://www.youtube.com/embed/1IpbKk1HX4w</video:player_loc>
+      <video:publication_date>2026-11-11T11:15:50+00:00</video:publication_date>
       <video:family_friendly>yes</video:family_friendly>
     </video:video>
   </url>
