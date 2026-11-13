@@ -98,8 +98,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "Just now",
-      "views": "52 views",
+      "published": "5 hours ago",
+      "views": "6.8K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'സിറാജിനെ പിന്നെ എന്തിനാണ് ടീമിൽ എടുത്തത് ? | mohammed sira | IND vs NZ ODI'. Watch the full breakdown on Final Third."
     },
     {
@@ -108,8 +108,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "european-football",
       "playlistTitle": "European & World Football",
-      "published": "3 hours ago",
-      "views": "5.8K views",
+      "published": "9 hours ago",
+      "views": "20K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'കോച്ചുമാരാണോ യുണൈറ്റഡിന്‍റെ പ്രശ്നം ?  Manchester United | Mauricio Pochettino | Michael Carrick'. Watch the full breakdown on Final Third."
     },
     {
@@ -119,7 +119,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "PLGWXiMbN17ik",
       "playlistTitle": "Barcelona",
       "published": "Yesterday",
-      "views": "34K views",
+      "views": "37K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ഒരു സെന്‍റര്‍ ബാക്കിനെ വേണം; ബാഴ്സയുടെ വലിയ പ്ലാനുകള്‍ | FC Barcelona | january transfer window'. Watch the full breakdown on Final Third."
     },
     {
@@ -129,7 +129,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
       "playlistTitle": "Real Madrid",
       "published": "2 days ago",
-      "views": "34K views",
+      "views": "35K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ജനുവരിയിൽ റയൽ വിടുമോ എൻട്രിക്ക് ? | Endrick | Real Madrid | Arsenal | Roma'. Watch the full breakdown on Final Third."
     },
     {
@@ -159,7 +159,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
       "playlistTitle": "Real Madrid",
       "published": "3 days ago",
-      "views": "68K views",
+      "views": "69K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ഗണ്ണേഴ്സിനോട് കണക്ക് തീര്‍ക്കുമോ റയല്‍? Real madrid | Jose Morinho'. Watch the full breakdown on Final Third."
     },
     {
@@ -169,7 +169,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "4 days ago",
-      "views": "109K views",
+      "views": "110K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ചെന്നൈയ്ക്കും മുംബൈക്കും വലിയ പ്ലാനുകൾ | IPL | IPL trade window | Hardik Pandya | IPL mini auction'. Watch the full breakdown on Final Third."
     },
     {
@@ -2342,7 +2342,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
       "published": "2 days ago",
-      "views": "2.7K views",
+      "views": "2.8K views",
       "summary": "ഗണ്ണേഴ്സിനോട് കണക്ക് തീര്‍ക്കുമോ റയല്‍?"
     },
     {
@@ -2351,7 +2351,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "2 days ago",
+      "published": "3 days ago",
       "views": "13K views",
       "summary": "ഞെട്ടിച് വീരുവിന്റെ മകൻ  ആര്യവീർ"
     },
@@ -2361,7 +2361,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "5 days ago",
+      "published": "6 days ago",
       "views": "7.3K views",
       "summary": "സിമിയോണി ഒന്നും മറക്കില്ല | Cristiano Ronaldo"
     },
