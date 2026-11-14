@@ -34,7 +34,10 @@ jobs:
           YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
           YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          GOOGLE_INDEXING_CREDENTIALS: ${{ secrets.GOOGLE_INDEXING_CREDENTIALS }}
+          INDEXING_SERVICE_ACCOUNT_JSON: ${{ secrets.INDEXING_SERVICE_ACCOUNT_JSON }}
         run: |
+          pip install --quiet google-auth requests || true
           python3 scripts/sync_youtube_automation.py
 
       - name: Commit & Push Changes
@@ -50,3 +53,10 @@ jobs:
           else
             echo "✓ Website is up-to-date. No changes to commit."
           fi
+
+      - name: Submit Daily Indexing to Search Engines (IndexNow & Google)
+        env:
+          GOOGLE_INDEXING_CREDENTIALS: ${{ secrets.GOOGLE_INDEXING_CREDENTIALS }}
+          INDEXING_SERVICE_ACCOUNT_JSON: ${{ secrets.INDEXING_SERVICE_ACCOUNT_JSON }}
+        run: |
+          python3 scripts/notify_search_engines.py

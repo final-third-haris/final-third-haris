@@ -223,6 +223,7 @@ def render_page(video):
   <meta name="author" content="Haris Nenmara (ഹാരിസ് നെന്മാറ)">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="{url}">
+  <link rel="alternate" type="application/rss+xml" title="Final Third Analysis Feed" href="{DOMAIN}/feed.xml">
 
   <!-- Mirror & GitHub Pages Deprecation Protection -->
   <script>
@@ -1104,6 +1105,7 @@ def render_category_hub(sport):
   <meta name="author" content="Haris Nenmara (ഹാരിസ് നെന്മാറ)">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{hub_url}">
+  <link rel="alternate" type="application/rss+xml" title="Final Third Analysis Feed" href="{DOMAIN}/feed.xml">
 
   <!-- Mirror & GitHub Pages Deprecation Protection -->
   <script>
@@ -1877,6 +1879,50 @@ def generate_all():
     with open(sitemap_path, "w", encoding="utf-8") as f:
         f.write(full_sitemap)
     print(f"✓ Successfully generated sitemap.xml with {len(sitemap_entries)} entries (including {len(VIDEOS)} video extensions)!")
+
+    # 5. Generate feed.xml (RSS 2.0 Feed for rapid Google/Bing index discovery)
+    feed_path = os.path.join(base_dir, "feed.xml")
+    build_rfc822 = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000")
+    rss_items = []
+    for v in VIDEOS:
+        vid_url = f"{DOMAIN}/{v['sport']}/{v['slug']}/"
+        clean_title = v["title"].replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+        clean_desc = v["meta_desc"].replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+        raw_pub = str(v.get("published_iso") or "").strip()
+        try:
+            if "T" in raw_pub:
+                pub_dt = datetime.fromisoformat(raw_pub)
+            else:
+                pub_dt = datetime.strptime(raw_pub[:10], "%Y-%m-%d").replace(tzinfo=timezone.utc)
+            item_pub = pub_dt.strftime("%a, %d %b %Y %H:%M:%S +0000")
+        except Exception:
+            item_pub = build_rfc822
+
+        rss_items.append(f"""    <item>
+      <title>{clean_title}</title>
+      <link>{vid_url}</link>
+      <guid isPermaLink="true">{vid_url}</guid>
+      <pubDate>{item_pub}</pubDate>
+      <description>{clean_desc}</description>
+      <category>{v['sport'].capitalize()}</category>
+    </item>""")
+
+    full_rss = f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Final Third — Football &amp; Cricket Analysis</title>
+    <link>{DOMAIN}</link>
+    <description>Authentic Malayalam football and cricket tactical match analysis, strategic breakdowns, and sports stories by Haris Nenmara.</description>
+    <language>ml</language>
+    <lastBuildDate>{build_rfc822}</lastBuildDate>
+    <atom:link href="{DOMAIN}/feed.xml" rel="self" type="application/rss+xml" />
+{chr(10).join(rss_items)}
+  </channel>
+</rss>
+"""
+    with open(feed_path, "w", encoding="utf-8") as f:
+        f.write(full_rss)
+    print(f"✓ Successfully generated feed.xml with {len(rss_items)} items!")
 
 if __name__ == "__main__":
     generate_all()

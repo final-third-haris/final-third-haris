@@ -1381,6 +1381,12 @@ def run_sync(dry_run=False):
 
         if changes_made:
             print("✓ Website successfully updated with new YouTube content!")
+            try:
+                import notify_search_engines
+                print("\nInitiating automated search engine indexing notifications...")
+                notify_search_engines.notify_all(dry_run=dry_run)
+            except Exception as e:
+                print(f"[Warning] notify_search_engines error: {e}")
         else:
             print("✓ Website is fully up-to-date with YouTube channel.")
     else:
