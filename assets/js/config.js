@@ -98,8 +98,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "5 hours ago",
-      "views": "15K views",
+      "published": "11 hours ago",
+      "views": "37K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'സിറാജും അര്‍ഷ്ദീപും ബാറ്റ് വീശി നേടിത്തന്ന പരമ്പര ! രോഹിതിന്‍റെ ഭാവിയെന്ത് ?| india vs new zealand'. Watch the full breakdown on Final Third."
     },
     {
@@ -109,7 +109,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "Yesterday",
-      "views": "23K views",
+      "views": "24K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ഇന്ത്യൻ ക്രിക്കറ്റിൽ പുതിയൊരു സെവാഗ് പിറവി കൊണ്ടിരിക്കുന്നു ! Aryavir sehwag'. Watch the full breakdown on Final Third."
     },
     {
@@ -119,7 +119,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "Yesterday",
-      "views": "79K views",
+      "views": "83K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'പാകിസ്താന്‍റെ ഹുങ്കരിഞ്ഞ ഇന്ത്യന്‍ വീരഗാഥ ! India vs Pakistan | under 19 asia cup final'. Watch the full breakdown on Final Third."
     },
     {
@@ -129,7 +129,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
       "playlistTitle": "Real Madrid",
       "published": "2 days ago",
-      "views": "36K views",
+      "views": "37K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'യുണൈറ്റഡിന് നിക്കോയെ വേണം ! റയൽ തിരികെ കൊണ്ട് വരുമോ ? | Nico Paz | Manchester United | Real Madrid'. Watch the full breakdown on Final Third."
     },
     {
@@ -139,7 +139,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "2 days ago",
-      "views": "54K views",
+      "views": "56K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ലേലത്തിന് മുമ്പേ ചില വമ്പന്‍ കരുനീക്കങ്ങള്‍ ! ധോണിയുടെ ഭാവിയെന്താണ് ? ipl 2027 | IPL TRADE WINDOW'. Watch the full breakdown on Final Third."
     },
     {
@@ -159,7 +159,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "european-football",
       "playlistTitle": "European & World Football",
       "published": "3 days ago",
-      "views": "43K views",
+      "views": "44K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'കോച്ചുമാരാണോ യുണൈറ്റഡിന്‍റെ പ്രശ്നം ?  Manchester United | Mauricio Pochettino | Michael Carrick'. Watch the full breakdown on Final Third."
     },
     {
@@ -179,7 +179,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
       "playlistTitle": "Real Madrid",
       "published": "5 days ago",
-      "views": "37K views",
+      "views": "38K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ജനുവരിയിൽ റയൽ വിടുമോ എൻട്രിക്ക് ? | Endrick | Real Madrid | Arsenal | Roma'. Watch the full breakdown on Final Third."
     },
     {
@@ -209,7 +209,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
       "playlistTitle": "Real Madrid",
       "published": "6 days ago",
-      "views": "76K views",
+      "views": "77K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ഗണ്ണേഴ്സിനോട് കണക്ക് തീര്‍ക്കുമോ റയല്‍? Real madrid | jose mourinho'. Watch the full breakdown on Final Third."
     },
     {
@@ -2382,7 +2382,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
       "published": "4 days ago",
-      "views": "1.6K views",
+      "views": "1.7K views",
       "summary": "ആഴ്സണലിന് എന്‍ട്രിക്കിനെ വേണം ?"
     },
     {
@@ -2392,7 +2392,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
       "published": "5 days ago",
-      "views": "3.6K views",
+      "views": "3.7K views",
       "summary": "ഗണ്ണേഴ്സിനോട് കണക്ക് തീര്‍ക്കുമോ റയല്‍?"
     },
     {
@@ -2401,8 +2401,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "5 days ago",
-      "views": "13K views",
+      "published": "6 days ago",
+      "views": "14K views",
       "summary": "ഞെട്ടിച് വീരുവിന്റെ മകൻ  ആര്യവീർ"
     },
     {
