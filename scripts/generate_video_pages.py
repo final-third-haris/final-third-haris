@@ -37,13 +37,15 @@ def render_navbar(active_page=""):
     
     return f"""  <header class="site-header">
     <div class="nav-container">
-      <a href="/" class="brand-link" aria-label="Final Third Home">
-        <picture>
-          <source srcset="/assets/images/final-third-logo.webp" type="image/webp">
-          <img src="/assets/images/final-third-logo.png" alt="Final Third Logo" class="brand-logo" width="160" height="36">
-        </picture>
-        <span class="brand-name">FINAL THIRD</span>
-      </a>
+      <div class="brand-link-slot" data-nosnippet style="display:flex;align-items:center;">
+        <a href="/" class="brand-link" aria-label="Final Third Home" data-nosnippet>
+          <picture data-nosnippet>
+            <source srcset="/assets/images/final-third-logo.webp" type="image/webp">
+            <img src="/assets/images/final-third-logo.png" alt="Final Third Logo" class="brand-logo" width="160" height="36" data-nosnippet>
+          </picture>
+          <span class="brand-name">FINAL THIRD</span>
+        </a>
+      </div>
 
       <!-- Desktop Navigation Links -->
       <nav class="main-nav" aria-label="Main Navigation">
@@ -1125,18 +1127,21 @@ def render_category_hub(sport):
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
 
   <!-- Open Graph -->
+  <meta name="thumbnail" content="{DOMAIN}/assets/images/haris-nenmara-search.jpg">
   <meta property="og:site_name" content="Final Third with Haris Nenmara">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{hub_url}">
   <meta property="og:title" content="{sport_name} Tactical Analysis | Final Third">
   <meta property="og:description" content="{meta_desc}">
-  <meta property="og:image" content="{DOMAIN}/assets/images/og-image.jpg">
+  <meta property="og:image" content="{DOMAIN}/assets/images/haris-nenmara-search.jpg">
+  <meta property="og:image:width" content="682">
+  <meta property="og:image:height" content="682">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{sport_name} Tactical Analysis | Final Third">
   <meta name="twitter:description" content="{meta_desc}">
-  <meta name="twitter:image" content="{DOMAIN}/assets/images/og-image.jpg">
+  <meta name="twitter:image" content="{DOMAIN}/assets/images/haris-nenmara-search.jpg">
 
   <!-- Tracking -->
   <script>(function(w,d,s,l,i){{w[l]=w[l]||[];w[l].push({{'gtm.start':
