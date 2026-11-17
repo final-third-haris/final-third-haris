@@ -88,18 +88,28 @@ const FINAL_THIRD_CONFIG = {
     ]
   },
 
-  featuredVideoId: "hsuFCooQcdw",
+  featuredVideoId: "vyg3GqCRiZk",
 
   // 300+ Authentic Videos from YouTube @FinalThird_HarisNenmara
   videos: [
+    {
+      "id": "vyg3GqCRiZk",
+      "title": "ധോണി ബാക്കിയാക്കുന്ന ഓർമകൾ  | MS Dhoni Retirement | Chennai Super Kings | Haris Nenmara",
+      "sport": "cricket",
+      "playlistId": "indian-cricket",
+      "playlistTitle": "Indian Cricket Team",
+      "published": "5 hours ago",
+      "views": "15K views",
+      "summary": "Analysis and match debrief by Haris Nenmara on 'ധോണി ബാക്കിയാക്കുന്ന ഓർമകൾ  | MS Dhoni Retirement | Chennai Super Kings | Haris Nenmara'. Watch the full breakdown on Final Third."
+    },
     {
       "id": "hsuFCooQcdw",
       "title": "കുറച്ച് ഓവറായിരുന്നോ ? ഇന്ത്യന്‍ താരങ്ങള്‍ക്ക്  വിമര്‍ശനം | Under 19 asia cup",
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "6 hours ago",
-      "views": "13K views",
+      "published": "12 hours ago",
+      "views": "21K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'കുറച്ച് ഓവറായിരുന്നോ ? ഇന്ത്യന്‍ താരങ്ങള്‍ക്ക്  വിമര്‍ശനം | Under 19 asia cup'. Watch the full breakdown on Final Third."
     },
     {
@@ -109,7 +119,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "Yesterday",
-      "views": "51K views",
+      "views": "54K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'സിറാജും അര്‍ഷ്ദീപും ബാറ്റ് വീശി നേടിത്തന്ന പരമ്പര ! രോഹിതിന്‍റെ ഭാവിയെന്ത് ?| india vs new zealand'. Watch the full breakdown on Final Third."
     },
     {
@@ -129,7 +139,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "2 days ago",
-      "views": "88K views",
+      "views": "90K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'പാകിസ്താന്‍റെ ഹുങ്കരിഞ്ഞ ഇന്ത്യന്‍ വീരഗാഥ ! India vs Pakistan | under 19 asia cup final'. Watch the full breakdown on Final Third."
     },
     {
@@ -139,7 +149,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
       "playlistTitle": "Real Madrid",
       "published": "3 days ago",
-      "views": "39K views",
+      "views": "40K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'യുണൈറ്റഡിന് നിക്കോയെ വേണം ! റയൽ തിരികെ കൊണ്ട് വരുമോ ? | Nico Paz | Manchester United | Real Madrid'. Watch the full breakdown on Final Third."
     },
     {
@@ -149,7 +159,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "3 days ago",
-      "views": "58K views",
+      "views": "59K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ലേലത്തിന് മുമ്പേ ചില വമ്പന്‍ കരുനീക്കങ്ങള്‍ ! ധോണിയുടെ ഭാവിയെന്താണ് ? ipl 2027 | IPL TRADE WINDOW'. Watch the full breakdown on Final Third."
     },
     {
@@ -159,7 +169,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "4 days ago",
-      "views": "13K views",
+      "views": "14K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'സിറാജിനെ പിന്നെ എന്തിനാണ് ടീമിൽ എടുത്തത് ? | mohammed sira | IND vs NZ ODI'. Watch the full breakdown on Final Third."
     },
     {
@@ -169,7 +179,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "european-football",
       "playlistTitle": "European & World Football",
       "published": "4 days ago",
-      "views": "46K views",
+      "views": "47K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'കോച്ചുമാരാണോ യുണൈറ്റഡിന്‍റെ പ്രശ്നം ?  Manchester United | Mauricio Pochettino | Michael Carrick'. Watch the full breakdown on Final Third."
     },
     {
@@ -2402,7 +2412,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
       "published": "6 days ago",
-      "views": "3.8K views",
+      "views": "3.9K views",
       "summary": "ഗണ്ണേഴ്സിനോട് കണക്ക് തീര്‍ക്കുമോ റയല്‍?"
     },
     {
