@@ -88,18 +88,28 @@ const FINAL_THIRD_CONFIG = {
     ]
   },
 
-  featuredVideoId: "XxYXQyeF1Wg",
+  featuredVideoId: "hsuFCooQcdw",
 
   // 300+ Authentic Videos from YouTube @FinalThird_HarisNenmara
   videos: [
+    {
+      "id": "hsuFCooQcdw",
+      "title": "കുറച്ച് ഓവറായിരുന്നോ ? ഇന്ത്യന്‍ താരങ്ങള്‍ക്ക്  വിമര്‍ശനം | Under 19 asia cup",
+      "sport": "cricket",
+      "playlistId": "indian-cricket",
+      "playlistTitle": "Indian Cricket Team",
+      "published": "6 hours ago",
+      "views": "13K views",
+      "summary": "Analysis and match debrief by Haris Nenmara on 'കുറച്ച് ഓവറായിരുന്നോ ? ഇന്ത്യന്‍ താരങ്ങള്‍ക്ക്  വിമര്‍ശനം | Under 19 asia cup'. Watch the full breakdown on Final Third."
+    },
     {
       "id": "XxYXQyeF1Wg",
       "title": "സിറാജും അര്‍ഷ്ദീപും ബാറ്റ് വീശി നേടിത്തന്ന പരമ്പര ! രോഹിതിന്‍റെ ഭാവിയെന്ത് ?| india vs new zealand",
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "11 hours ago",
-      "views": "37K views",
+      "published": "Yesterday",
+      "views": "51K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'സിറാജും അര്‍ഷ്ദീപും ബാറ്റ് വീശി നേടിത്തന്ന പരമ്പര ! രോഹിതിന്‍റെ ഭാവിയെന്ത് ?| india vs new zealand'. Watch the full breakdown on Final Third."
     },
     {
@@ -108,8 +118,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "Yesterday",
-      "views": "24K views",
+      "published": "2 days ago",
+      "views": "26K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ഇന്ത്യൻ ക്രിക്കറ്റിൽ പുതിയൊരു സെവാഗ് പിറവി കൊണ്ടിരിക്കുന്നു ! Aryavir sehwag'. Watch the full breakdown on Final Third."
     },
     {
@@ -118,8 +128,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "Yesterday",
-      "views": "83K views",
+      "published": "2 days ago",
+      "views": "88K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'പാകിസ്താന്‍റെ ഹുങ്കരിഞ്ഞ ഇന്ത്യന്‍ വീരഗാഥ ! India vs Pakistan | under 19 asia cup final'. Watch the full breakdown on Final Third."
     },
     {
@@ -128,8 +138,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
       "playlistTitle": "Real Madrid",
-      "published": "2 days ago",
-      "views": "37K views",
+      "published": "3 days ago",
+      "views": "39K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'യുണൈറ്റഡിന് നിക്കോയെ വേണം ! റയൽ തിരികെ കൊണ്ട് വരുമോ ? | Nico Paz | Manchester United | Real Madrid'. Watch the full breakdown on Final Third."
     },
     {
@@ -138,8 +148,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "2 days ago",
-      "views": "56K views",
+      "published": "3 days ago",
+      "views": "58K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ലേലത്തിന് മുമ്പേ ചില വമ്പന്‍ കരുനീക്കങ്ങള്‍ ! ധോണിയുടെ ഭാവിയെന്താണ് ? ipl 2027 | IPL TRADE WINDOW'. Watch the full breakdown on Final Third."
     },
     {
@@ -148,7 +158,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "3 days ago",
+      "published": "4 days ago",
       "views": "13K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'സിറാജിനെ പിന്നെ എന്തിനാണ് ടീമിൽ എടുത്തത് ? | mohammed sira | IND vs NZ ODI'. Watch the full breakdown on Final Third."
     },
@@ -158,8 +168,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "european-football",
       "playlistTitle": "European & World Football",
-      "published": "3 days ago",
-      "views": "44K views",
+      "published": "4 days ago",
+      "views": "46K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'കോച്ചുമാരാണോ യുണൈറ്റഡിന്‍റെ പ്രശ്നം ?  Manchester United | Mauricio Pochettino | Michael Carrick'. Watch the full breakdown on Final Third."
     },
     {
@@ -168,8 +178,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "PLGWXiMbN17ik",
       "playlistTitle": "Barcelona",
-      "published": "4 days ago",
-      "views": "53K views",
+      "published": "5 days ago",
+      "views": "55K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ഒരു സെന്‍റര്‍ ബാക്കിനെ വേണം; ബാഴ്സയുടെ വലിയ പ്ലാനുകള്‍ | FC Barcelona | january transfer window'. Watch the full breakdown on Final Third."
     },
     {
@@ -178,7 +188,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
       "playlistTitle": "Real Madrid",
-      "published": "5 days ago",
+      "published": "6 days ago",
       "views": "38K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ജനുവരിയിൽ റയൽ വിടുമോ എൻട്രിക്ക് ? | Endrick | Real Madrid | Arsenal | Roma'. Watch the full breakdown on Final Third."
     },
@@ -188,7 +198,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "5 days ago",
+      "published": "6 days ago",
       "views": "53K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ബുംറ- അര്‍ഷ്ദീപ് ഡെഡ്‍ലി കോംബോ ! ഹര്‍ദികിന്‍റെ സ്വന്തം പഞ്ചാബ് | Hardik pandya |arshdeep singh'. Watch the full breakdown on Final Third."
     },
@@ -198,7 +208,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "european-football",
       "playlistTitle": "European & World Football",
-      "published": "6 days ago",
+      "published": "1 week ago",
       "views": "75K views",
       "summary": "Analysis and match debrief by Haris Nenmara on '17 ഫോർ ,  7 സിക്സ് ! ആര്യവീര്‍ സെവാഗിന്‍റെ മാസ് എന്‍ട്രി ! | Aryavir Sehwag'. Watch the full breakdown on Final Third."
     },
@@ -2381,7 +2391,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "4 days ago",
+      "published": "5 days ago",
       "views": "1.7K views",
       "summary": "ആഴ്സണലിന് എന്‍ട്രിക്കിനെ വേണം ?"
     },
@@ -2391,8 +2401,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "5 days ago",
-      "views": "3.7K views",
+      "published": "6 days ago",
+      "views": "3.8K views",
       "summary": "ഗണ്ണേഴ്സിനോട് കണക്ക് തീര്‍ക്കുമോ റയല്‍?"
     },
     {
@@ -2401,7 +2411,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "6 days ago",
+      "published": "1 week ago",
       "views": "14K views",
       "summary": "ഞെട്ടിച് വീരുവിന്റെ മകൻ  ആര്യവീർ"
     },
