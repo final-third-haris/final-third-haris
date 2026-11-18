@@ -88,18 +88,28 @@ const FINAL_THIRD_CONFIG = {
     ]
   },
 
-  featuredVideoId: "vyg3GqCRiZk",
+  featuredVideoId: "mitqLhKSzTs",
 
   // 300+ Authentic Videos from YouTube @FinalThird_HarisNenmara
   videos: [
+    {
+      "id": "mitqLhKSzTs",
+      "title": "ലേലത്തിൽ ഇനി വൻ നീക്കങ്ങൾ കാണാം ! | IPL 2027 auction| IPL released players | IPL retention list 2027",
+      "sport": "cricket",
+      "playlistId": "indian-cricket",
+      "playlistTitle": "Indian Cricket Team",
+      "published": "Just now",
+      "views": "2.0K views",
+      "summary": "Analysis and match debrief by Haris Nenmara on 'ലേലത്തിൽ ഇനി വൻ നീക്കങ്ങൾ കാണാം ! | IPL 2027 auction| IPL released players | IPL retention list 2027'. Watch the full breakdown on Final Third."
+    },
     {
       "id": "vyg3GqCRiZk",
       "title": "ധോണി ബാക്കിയാക്കുന്ന ഓർമകൾ  | MS Dhoni Retirement | Chennai Super Kings | Haris Nenmara",
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "5 hours ago",
-      "views": "15K views",
+      "published": "23 hours ago",
+      "views": "47K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ധോണി ബാക്കിയാക്കുന്ന ഓർമകൾ  | MS Dhoni Retirement | Chennai Super Kings | Haris Nenmara'. Watch the full breakdown on Final Third."
     },
     {
@@ -108,8 +118,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "12 hours ago",
-      "views": "21K views",
+      "published": "Yesterday",
+      "views": "27K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'കുറച്ച് ഓവറായിരുന്നോ ? ഇന്ത്യന്‍ താരങ്ങള്‍ക്ക്  വിമര്‍ശനം | Under 19 asia cup'. Watch the full breakdown on Final Third."
     },
     {
@@ -118,8 +128,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "Yesterday",
-      "views": "54K views",
+      "published": "2 days ago",
+      "views": "57K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'സിറാജും അര്‍ഷ്ദീപും ബാറ്റ് വീശി നേടിത്തന്ന പരമ്പര ! രോഹിതിന്‍റെ ഭാവിയെന്ത് ?| india vs new zealand'. Watch the full breakdown on Final Third."
     },
     {
@@ -128,8 +138,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "2 days ago",
-      "views": "26K views",
+      "published": "3 days ago",
+      "views": "27K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ഇന്ത്യൻ ക്രിക്കറ്റിൽ പുതിയൊരു സെവാഗ് പിറവി കൊണ്ടിരിക്കുന്നു ! Aryavir sehwag'. Watch the full breakdown on Final Third."
     },
     {
@@ -138,8 +148,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "2 days ago",
-      "views": "90K views",
+      "published": "3 days ago",
+      "views": "91K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'പാകിസ്താന്‍റെ ഹുങ്കരിഞ്ഞ ഇന്ത്യന്‍ വീരഗാഥ ! India vs Pakistan | under 19 asia cup final'. Watch the full breakdown on Final Third."
     },
     {
@@ -148,8 +158,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
       "playlistTitle": "Real Madrid",
-      "published": "3 days ago",
-      "views": "40K views",
+      "published": "4 days ago",
+      "views": "41K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'യുണൈറ്റഡിന് നിക്കോയെ വേണം ! റയൽ തിരികെ കൊണ്ട് വരുമോ ? | Nico Paz | Manchester United | Real Madrid'. Watch the full breakdown on Final Third."
     },
     {
@@ -158,7 +168,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "3 days ago",
+      "published": "4 days ago",
       "views": "59K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ലേലത്തിന് മുമ്പേ ചില വമ്പന്‍ കരുനീക്കങ്ങള്‍ ! ധോണിയുടെ ഭാവിയെന്താണ് ? ipl 2027 | IPL TRADE WINDOW'. Watch the full breakdown on Final Third."
     },
@@ -168,7 +178,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "4 days ago",
+      "published": "5 days ago",
       "views": "14K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'സിറാജിനെ പിന്നെ എന്തിനാണ് ടീമിൽ എടുത്തത് ? | mohammed sira | IND vs NZ ODI'. Watch the full breakdown on Final Third."
     },
@@ -178,8 +188,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "european-football",
       "playlistTitle": "European & World Football",
-      "published": "4 days ago",
-      "views": "47K views",
+      "published": "5 days ago",
+      "views": "48K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'കോച്ചുമാരാണോ യുണൈറ്റഡിന്‍റെ പ്രശ്നം ?  Manchester United | Mauricio Pochettino | Michael Carrick'. Watch the full breakdown on Final Third."
     },
     {
@@ -188,8 +198,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "PLGWXiMbN17ik",
       "playlistTitle": "Barcelona",
-      "published": "5 days ago",
-      "views": "55K views",
+      "published": "6 days ago",
+      "views": "56K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ഒരു സെന്‍റര്‍ ബാക്കിനെ വേണം; ബാഴ്സയുടെ വലിയ പ്ലാനുകള്‍ | FC Barcelona | january transfer window'. Watch the full breakdown on Final Third."
     },
     {
@@ -198,7 +208,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
       "playlistTitle": "Real Madrid",
-      "published": "6 days ago",
+      "published": "1 week ago",
       "views": "38K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ജനുവരിയിൽ റയൽ വിടുമോ എൻട്രിക്ക് ? | Endrick | Real Madrid | Arsenal | Roma'. Watch the full breakdown on Final Third."
     },
@@ -2396,12 +2406,32 @@ const FINAL_THIRD_CONFIG = {
 
   shorts: [
     {
+      "id": "rJCJE0geA8c",
+      "title": "അത്ര പെട്ടന്ന് പറിച്ചെറിയാനാവുന്ന ബന്ധമല്ലല്ലോ അത് | MS Dhoni Retirement | Chennai Super Kings",
+      "sport": "football",
+      "playlistId": "latest",
+      "playlistTitle": "Latest Release",
+      "published": "Just now",
+      "views": "0 views",
+      "summary": "അത്ര പെട്ടന്ന് പറിച്ചെറിയാനാവുന്ന ബന്ധമല്ലല്ലോ അത് | MS Dhoni Retirement | Chennai Super Kings"
+    },
+    {
+      "id": "dm1OOkaThOA",
+      "title": "ധോണി ബാക്കിയാക്കുന്ന ഓർമകൾ | MS Dhoni Retirement | Chennai Super Kings | Haris Nenmara",
+      "sport": "football",
+      "playlistId": "latest",
+      "playlistTitle": "Latest Release",
+      "published": "2 hours ago",
+      "views": "455 views",
+      "summary": "ധോണി ബാക്കിയാക്കുന്ന ഓർമകൾ | MS Dhoni Retirement | Chennai Super Kings | Haris Nenmara"
+    },
+    {
       "id": "IiT1rwxikiM",
       "title": "ആഴ്സണലിന് എന്‍ട്രിക്കിനെ വേണം ?",
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "5 days ago",
+      "published": "6 days ago",
       "views": "1.7K views",
       "summary": "ആഴ്സണലിന് എന്‍ട്രിക്കിനെ വേണം ?"
     },
