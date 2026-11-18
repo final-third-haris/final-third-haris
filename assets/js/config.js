@@ -88,10 +88,20 @@ const FINAL_THIRD_CONFIG = {
     ]
   },
 
-  featuredVideoId: "mitqLhKSzTs",
+  featuredVideoId: "uyWCdG03wAQ",
 
   // 300+ Authentic Videos from YouTube @FinalThird_HarisNenmara
   videos: [
+    {
+      "id": "uyWCdG03wAQ",
+      "title": "ലേലത്തിൽ ഇനി വൻ നീക്കങ്ങൾ കാണാം ! | IPL 2027 auction| IPL released players | IPL retention list 2027",
+      "sport": "cricket",
+      "playlistId": "indian-cricket",
+      "playlistTitle": "Indian Cricket Team",
+      "published": "4 hours ago",
+      "views": "13K views",
+      "summary": "Analysis and match debrief by Haris Nenmara on 'ലേലത്തിൽ ഇനി വൻ നീക്കങ്ങൾ കാണാം ! | IPL 2027 auction| IPL released players | IPL retention list 2027'. Watch the full breakdown on Final Third."
+    },
     {
       "id": "mitqLhKSzTs",
       "title": "ലേലത്തിൽ ഇനി വൻ നീക്കങ്ങൾ കാണാം ! | IPL 2027 auction| IPL released players | IPL retention list 2027",
@@ -108,8 +118,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "23 hours ago",
-      "views": "47K views",
+      "published": "Yesterday",
+      "views": "52K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ധോണി ബാക്കിയാക്കുന്ന ഓർമകൾ  | MS Dhoni Retirement | Chennai Super Kings | Haris Nenmara'. Watch the full breakdown on Final Third."
     },
     {
@@ -119,7 +129,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "Yesterday",
-      "views": "27K views",
+      "views": "28K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'കുറച്ച് ഓവറായിരുന്നോ ? ഇന്ത്യന്‍ താരങ്ങള്‍ക്ക്  വിമര്‍ശനം | Under 19 asia cup'. Watch the full breakdown on Final Third."
     },
     {
@@ -129,7 +139,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "2 days ago",
-      "views": "57K views",
+      "views": "58K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'സിറാജും അര്‍ഷ്ദീപും ബാറ്റ് വീശി നേടിത്തന്ന പരമ്പര ! രോഹിതിന്‍റെ ഭാവിയെന്ത് ?| india vs new zealand'. Watch the full breakdown on Final Third."
     },
     {
@@ -149,7 +159,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "3 days ago",
-      "views": "91K views",
+      "views": "92K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'പാകിസ്താന്‍റെ ഹുങ്കരിഞ്ഞ ഇന്ത്യന്‍ വീരഗാഥ ! India vs Pakistan | under 19 asia cup final'. Watch the full breakdown on Final Third."
     },
     {
@@ -199,7 +209,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "PLGWXiMbN17ik",
       "playlistTitle": "Barcelona",
       "published": "6 days ago",
-      "views": "56K views",
+      "views": "57K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ഒരു സെന്‍റര്‍ ബാക്കിനെ വേണം; ബാഴ്സയുടെ വലിയ പ്ലാനുകള്‍ | FC Barcelona | january transfer window'. Watch the full breakdown on Final Third."
     },
     {
@@ -209,7 +219,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
       "playlistTitle": "Real Madrid",
       "published": "1 week ago",
-      "views": "38K views",
+      "views": "39K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ജനുവരിയിൽ റയൽ വിടുമോ എൻട്രിക്ക് ? | Endrick | Real Madrid | Arsenal | Roma'. Watch the full breakdown on Final Third."
     },
     {
@@ -2411,8 +2421,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "Just now",
-      "views": "0 views",
+      "published": "5 hours ago",
+      "views": "1.3K views",
       "summary": "അത്ര പെട്ടന്ന് പറിച്ചെറിയാനാവുന്ന ബന്ധമല്ലല്ലോ അത് | MS Dhoni Retirement | Chennai Super Kings"
     },
     {
@@ -2421,8 +2431,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "2 hours ago",
-      "views": "455 views",
+      "published": "8 hours ago",
+      "views": "982 views",
       "summary": "ധോണി ബാക്കിയാക്കുന്ന ഓർമകൾ | MS Dhoni Retirement | Chennai Super Kings | Haris Nenmara"
     },
     {
