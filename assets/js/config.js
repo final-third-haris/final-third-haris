@@ -98,8 +98,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "2 hours ago",
-      "views": "2.4K views",
+      "published": "8 hours ago",
+      "views": "14K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'കമ്മിൻസ് പ്രതി തന്നെ ! നാണം കെട്ട് ഓസ്ട്രേലിയൻ ക്രിക്കറ്റ് | sandpapergate | Pat Cummins'. Watch the full breakdown on Final Third."
     },
     {
@@ -108,8 +108,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "6 hours ago",
-      "views": "11K views",
+      "published": "12 hours ago",
+      "views": "18K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ടെസ്റ്റിലും സിറാജ് ഔട്ട് ! ഈ കണക്കുകള്‍ ഗംഭീറിനെ നോക്കി ചിരിക്കുന്നു | Mohammed Siraj | Gambhir'. Watch the full breakdown on Final Third."
     },
     {
@@ -118,8 +118,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "23 hours ago",
-      "views": "72K views",
+      "published": "Yesterday",
+      "views": "82K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ലേലത്തിൽ ഇനി വൻ നീക്കങ്ങൾ കാണാം ! | IPL 2027 auction| IPL released players | IPL retention list 2027'. Watch the full breakdown on Final Third."
     },
     {
@@ -138,8 +138,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "Yesterday",
-      "views": "57K views",
+      "published": "2 days ago",
+      "views": "59K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ധോണി ബാക്കിയാക്കുന്ന ഓർമകൾ  | MS Dhoni Retirement | Chennai Super Kings | Haris Nenmara'. Watch the full breakdown on Final Third."
     },
     {
@@ -229,7 +229,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "PLGWXiMbN17ik",
       "playlistTitle": "Barcelona",
       "published": "1 week ago",
-      "views": "57K views",
+      "views": "58K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ഒരു സെന്‍റര്‍ ബാക്കിനെ വേണം; ബാഴ്സയുടെ വലിയ പ്ലാനുകള്‍ | FC Barcelona | january transfer window'. Watch the full breakdown on Final Third."
     },
     {
@@ -2442,7 +2442,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
       "published": "Yesterday",
-      "views": "2.1K views",
+      "views": "2.3K views",
       "summary": "അത്ര പെട്ടന്ന് പറിച്ചെറിയാനാവുന്ന ബന്ധമല്ലല്ലോ അത് | MS Dhoni Retirement | Chennai Super Kings"
     },
     {
@@ -2452,7 +2452,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
       "published": "Yesterday",
-      "views": "1.5K views",
+      "views": "1.6K views",
       "summary": "ധോണി ബാക്കിയാക്കുന്ന ഓർമകൾ | MS Dhoni Retirement | Chennai Super Kings | Haris Nenmara"
     },
     {
