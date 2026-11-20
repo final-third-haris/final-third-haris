@@ -1,6 +1,7 @@
 {
   "rewrites": [
     { "source": "/about", "destination": "/about.html" },
+    { "source": "/editorial", "destination": "/editorial.html" },
     { "source": "/contact", "destination": "/contact.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/terms", "destination": "/terms.html" }
@@ -163,6 +164,24 @@
     },
     {
       "source": "/about",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/editorial.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/editorial",
       "headers": [
         {
           "key": "Cache-Control",

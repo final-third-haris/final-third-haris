@@ -29,6 +29,7 @@ def render_navbar(active_page=""):
     cricket_active = ' active' if active_page == 'cricket' else ''
     home_active = ' active' if active_page == 'home' else ''
     about_active = ' active' if active_page == 'about' else ''
+    editorial_active = ' active' if active_page == 'editorial' else ''
     contact_active = ' active' if active_page == 'contact' else ''
     privacy_active = ' active' if active_page == 'privacy' else ''
     terms_active = ' active' if active_page == 'terms' else ''
@@ -54,6 +55,7 @@ def render_navbar(active_page=""):
           <li><a href="/football/" class="nav-link{football_active}">⚽ Football Hub</a></li>
           <li><a href="/cricket/" class="nav-link{cricket_active}">🏏 Cricket Hub</a></li>
           <li><a href="/about.html" class="nav-link{about_active}">About Us</a></li>
+          <li><a href="/editorial.html" class="nav-link{editorial_active}">Editorial Policy</a></li>
           <li><a href="/contact.html" class="nav-link{contact_active}">Contact</a></li>
           <li><a href="/privacy.html" class="nav-link{privacy_active}">Privacy</a></li>
           <li><a href="/terms.html" class="nav-link{terms_active}">Terms</a></li>
@@ -85,6 +87,7 @@ def render_navbar(active_page=""):
         <li><a href="/football/" class="drawer-link{football_active}">⚽ Football Category Hub ({fb_count} Videos)</a></li>
         <li><a href="/cricket/" class="drawer-link{cricket_active}">🏏 Cricket Category Hub ({cr_count} Videos)</a></li>
         <li><a href="/about.html" class="drawer-link{about_active}">About Haris Nenmara</a></li>
+        <li><a href="/editorial.html" class="drawer-link{editorial_active}">Editorial Policy &amp; Standards</a></li>
         <li><a href="/contact.html" class="drawer-link{contact_active}">Contact &amp; Inquiries</a></li>
         <li><a href="/privacy.html" class="drawer-link{privacy_active}">Privacy Policy</a></li>
         <li><a href="/terms.html" class="drawer-link{terms_active}">Terms of Service</a></li>
@@ -214,6 +217,25 @@ def render_page(video):
     clean_takeaways = [t for t in video.get("takeaways", []) if "awaiting" not in t.lower()]
     takeaways_html = "".join([f"<li>{t}</li>" for t in clean_takeaways])
     tags_html = "".join([f'<span class="tag-pill">#{t}</span>' for t in video["tags"]])
+
+    match_facts = video.get("match_facts", {})
+    facts_html = ""
+    if match_facts:
+        comp_val = match_facts.get('competition', video.get('playlist', ''))
+        theme_val = match_facts.get('tactical_theme', 'Match Analysis & Tactical Debrief')
+        analyst_val = match_facts.get('analyst', 'Haris Nenmara (ഹാരിസ് നെന്മാറ)')
+        verdict_val = match_facts.get('core_verdict', '')
+        verdict_block = f'<div style="margin-top: 0.85rem; padding-top: 0.85rem; border-top: 1px dashed var(--charcoal-border); font-size: 0.875rem; color: #d0d0d0;"><strong style="color: var(--off-white);">Tactical Verdict:</strong> {verdict_val}</div>' if verdict_val else ''
+        facts_html = f"""
+        <div class="match-facts-card" style="background: var(--charcoal-light); border: 1px solid var(--charcoal-border); border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 1.75rem;">
+          <div style="color: var(--neon-lime); font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; font-weight: 700;">Match &amp; Tactical Brief · മാച്ച് വിവരണം</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; font-size: 0.875rem;">
+            <div><span style="color: var(--dark-grey);">Category:</span> <strong style="color: var(--off-white);">{comp_val}</strong></div>
+            <div><span style="color: var(--dark-grey);">Tactical Focus:</span> <strong style="color: var(--off-white);">{theme_val}</strong></div>
+            <div><span style="color: var(--dark-grey);">Lead Analyst:</span> <strong style="color: var(--neon-lime);">{analyst_val}</strong></div>
+          </div>
+          {verdict_block}
+        </div>"""
 
     html = f"""<!DOCTYPE html>
 <html lang="en" xml:lang="ml" dir="ltr">
@@ -910,17 +932,30 @@ def render_page(video):
         </div>
       </section>
 
-      <!-- Video Captions & Match Overview -->
+      <!-- Match Analysis & Tactical Debrief -->
       <section class="editorial-content">
-        <h2>Video Captions &amp; Match Overview | വീഡിയോ വിവരണം</h2>
-        <p lang="ml">{p1_clean}</p>
-        <p>{p2_clean}</p>
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--charcoal-border); padding-bottom: 0.75rem;">
+          <h2 style="margin-bottom: 0;">Match Analysis &amp; Tactical Debrief | സമഗ്ര മാച്ച് അവലോകനം</h2>
+          <span style="font-size: 0.75rem; color: var(--neon-lime); font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">Final Third Editorial · Fact-Checked</span>
+        </div>
+
+        {facts_html}
+
+        <div class="analysis-body-ml" style="margin-bottom: 1.5rem; font-size: 1.0625rem; line-height: 1.85; color: #e6e6e6;">
+          <h3 style="font-size: 1.0625rem; color: var(--neon-lime); margin-bottom: 0.75rem; font-weight: 700;">മലയാളം അവലോകനം (Malayalam Match Breakdown)</h3>
+          <p lang="ml">{p1_clean}</p>
+        </div>
+
+        <div class="analysis-body-en" style="margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.8; color: #cfcfcf;">
+          <h3 style="font-size: 1.0625rem; color: var(--neon-lime); margin-bottom: 0.75rem; font-weight: 700;">Tactical Breakdown &amp; Strategic Review (English)</h3>
+          <p>{p2_clean}</p>
+        </div>
 
         {transcript_html}
 
         <!-- Key Takeaways Box -->
         <div class="takeaways-box">
-          <h3>Key Discussion Points &amp; Video Takeaways</h3>
+          <h3>Key Discussion Points &amp; Tactical Takeaways</h3>
           <ul>{takeaways_html}</ul>
         </div>
 
@@ -990,6 +1025,7 @@ def render_page(video):
         <li><a href="/football/">Football Hub</a></li>
         <li><a href="/cricket/">Cricket Hub</a></li>
         <li><a href="/about.html">About Us</a></li>
+        <li><a href="/editorial.html">Editorial Policy</a></li>
         <li><a href="/contact.html">Contact Us</a></li>
         <li><a href="/privacy.html">Privacy Policy</a></li>
         <li><a href="/terms.html">Terms of Service</a></li>
@@ -1688,8 +1724,11 @@ def render_category_hub(sport):
         <li><a href="/">Home</a></li>
         <li><a href="/football/">Football Hub</a></li>
         <li><a href="/cricket/">Cricket Hub</a></li>
+        <li><a href="/about.html">About Us</a></li>
+        <li><a href="/editorial.html">Editorial Policy</a></li>
+        <li><a href="/contact.html">Contact Us</a></li>
         <li><a href="/privacy.html">Privacy Policy</a></li>
-        <li><a href="/#contact">Contact</a></li>
+        <li><a href="/terms.html">Terms of Service</a></li>
       </ul>
     </div>
   </footer>
@@ -1824,6 +1863,12 @@ def generate_all():
   </url>""",
         f"""  <url>
     <loc>{DOMAIN}/about.html</loc>
+    <lastmod>{now_date}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>""",
+        f"""  <url>
+    <loc>{DOMAIN}/editorial.html</loc>
     <lastmod>{now_date}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
