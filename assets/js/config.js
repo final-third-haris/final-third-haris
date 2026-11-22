@@ -109,7 +109,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "3 days ago",
-      "views": "94K views",
+      "views": "97K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'കമ്മിൻസ് പ്രതി തന്നെ ! നാണം കെട്ട് ഓസ്ട്രേലിയൻ ക്രിക്കറ്റ് | sandpapergate | Pat Cummins'. Watch the full breakdown on Final Third."
     },
     {
@@ -119,7 +119,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "3 days ago",
-      "views": "30K views",
+      "views": "31K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ടെസ്റ്റിലും സിറാജ് ഔട്ട് ! ഈ കണക്കുകള്‍ ഗംഭീറിനെ നോക്കി ചിരിക്കുന്നു | Mohammed Siraj | Gambhir'. Watch the full breakdown on Final Third."
     },
     {
@@ -128,8 +128,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "3 days ago",
-      "views": "122K views",
+      "published": "4 days ago",
+      "views": "124K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ലേലത്തിൽ ഇനി വൻ നീക്കങ്ങൾ കാണാം ! | IPL 2027 auction| IPL released players | IPL retention list 2027'. Watch the full breakdown on Final Third."
     },
     {
@@ -148,8 +148,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "4 days ago",
-      "views": "63K views",
+      "published": "5 days ago",
+      "views": "64K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ധോണി ബാക്കിയാക്കുന്ന ഓർമകൾ  | MS Dhoni Retirement | Chennai Super Kings | Haris Nenmara'. Watch the full breakdown on Final Third."
     },
     {
@@ -2451,7 +2451,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "3 days ago",
+      "published": "4 days ago",
       "views": "3.2K views",
       "summary": "അത്ര പെട്ടന്ന് പറിച്ചെറിയാനാവുന്ന ബന്ധമല്ലല്ലോ അത് | MS Dhoni Retirement | Chennai Super Kings"
     },
