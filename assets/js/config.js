@@ -88,10 +88,20 @@ const FINAL_THIRD_CONFIG = {
     ]
   },
 
-  featuredVideoId: "7Zst5OMHuV8",
+  featuredVideoId: "A0XlQrEnDfQ",
 
   // 300+ Authentic Videos from YouTube @FinalThird_HarisNenmara
   videos: [
+    {
+      "id": "A0XlQrEnDfQ",
+      "title": "എതിരാളികളോട് സഹതാപം മാത്രം! | Vaibhav Sooryavanshi | INDIA Vs UAE",
+      "sport": "cricket",
+      "playlistId": "indian-cricket",
+      "playlistTitle": "Indian Cricket Team",
+      "published": "11 hours ago",
+      "views": "55K views",
+      "summary": "Analysis and match debrief by Haris Nenmara on 'എതിരാളികളോട് സഹതാപം മാത്രം! | Vaibhav Sooryavanshi | INDIA Vs UAE'. Watch the full breakdown on Final Third."
+    },
     {
       "id": "7Zst5OMHuV8",
       "title": "ഓവലിലെ സിറാജിനെ മറന്നോ ​ഗില്ലേ ! Mohammed siraj | shubman gill | india vs newzeland",
@@ -118,8 +128,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "4 days ago",
-      "views": "28K views",
+      "published": "5 days ago",
+      "views": "29K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'വീണ്ടും സെഞ്ച്വറി ! IPL ൽ  ഹെറ്റിയെ ആര് റാഞ്ചും ? | Shimron Hetmyer | IPL 2027 Auction'. Watch the full breakdown on Final Third."
     },
     {
@@ -128,8 +138,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "5 days ago",
-      "views": "119K views",
+      "published": "6 days ago",
+      "views": "122K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'കമ്മിൻസ് പ്രതി തന്നെ ! നാണം കെട്ട് ഓസ്ട്രേലിയൻ ക്രിക്കറ്റ് | sandpapergate | Pat Cummins'. Watch the full breakdown on Final Third."
     },
     {
@@ -138,7 +148,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "5 days ago",
+      "published": "6 days ago",
       "views": "32K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ടെസ്റ്റിലും സിറാജ് ഔട്ട് ! ഈ കണക്കുകള്‍ ഗംഭീറിനെ നോക്കി ചിരിക്കുന്നു | Mohammed Siraj | Gambhir'. Watch the full breakdown on Final Third."
     },
@@ -148,8 +158,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "6 days ago",
-      "views": "139K views",
+      "published": "1 week ago",
+      "views": "143K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ലേലത്തിൽ ഇനി വൻ നീക്കങ്ങൾ കാണാം ! | IPL 2027 auction| IPL released players | IPL retention list 2027'. Watch the full breakdown on Final Third."
     },
     {
@@ -169,7 +179,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "1 week ago",
-      "views": "64K views",
+      "views": "65K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ധോണി ബാക്കിയാക്കുന്ന ഓർമകൾ  | MS Dhoni Retirement | Chennai Super Kings | Haris Nenmara'. Watch the full breakdown on Final Third."
     },
     {
@@ -2471,8 +2481,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "6 days ago",
-      "views": "3.2K views",
+      "published": "1 week ago",
+      "views": "3.3K views",
       "summary": "അത്ര പെട്ടന്ന് പറിച്ചെറിയാനാവുന്ന ബന്ധമല്ലല്ലോ അത് | MS Dhoni Retirement | Chennai Super Kings"
     },
     {
@@ -2481,7 +2491,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
-      "published": "6 days ago",
+      "published": "1 week ago",
       "views": "2.5K views",
       "summary": "ധോണി ബാക്കിയാക്കുന്ന ഓർമകൾ | MS Dhoni Retirement | Chennai Super Kings | Haris Nenmara"
     },
