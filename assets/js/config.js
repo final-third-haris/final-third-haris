@@ -98,8 +98,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "11 hours ago",
-      "views": "55K views",
+      "published": "16 hours ago",
+      "views": "66K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'എതിരാളികളോട് സഹതാപം മാത്രം! | Vaibhav Sooryavanshi | INDIA Vs UAE'. Watch the full breakdown on Final Third."
     },
     {
@@ -149,7 +149,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "6 days ago",
-      "views": "32K views",
+      "views": "33K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ടെസ്റ്റിലും സിറാജ് ഔട്ട് ! ഈ കണക്കുകള്‍ ഗംഭീറിനെ നോക്കി ചിരിക്കുന്നു | Mohammed Siraj | Gambhir'. Watch the full breakdown on Final Third."
     },
     {
@@ -159,7 +159,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "1 week ago",
-      "views": "143K views",
+      "views": "144K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ലേലത്തിൽ ഇനി വൻ നീക്കങ്ങൾ കാണാം ! | IPL 2027 auction| IPL released players | IPL retention list 2027'. Watch the full breakdown on Final Third."
     },
     {
