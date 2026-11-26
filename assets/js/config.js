@@ -98,8 +98,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
       "playlistTitle": "Real Madrid",
-      "published": "5 hours ago",
-      "views": "18K views",
+      "published": "10 hours ago",
+      "views": "34K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'മോറീന്യോ റയലിനെ ഒരു ടീമാക്കി മാറ്റി കഴിഞ്ഞിരിക്കുന്നു ! Real Madrid | Jude bellingham| Jose mourinho'. Watch the full breakdown on Final Third."
     },
     {
@@ -109,7 +109,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "Yesterday",
-      "views": "77K views",
+      "views": "78K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'എതിരാളികളോട് സഹതാപം മാത്രം! | Vaibhav Sooryavanshi | INDIA Vs UAE'. Watch the full breakdown on Final Third."
     },
     {
@@ -149,7 +149,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "1 week ago",
-      "views": "123K views",
+      "views": "124K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'കമ്മിൻസ് പ്രതി തന്നെ ! നാണം കെട്ട് ഓസ്ട്രേലിയൻ ക്രിക്കറ്റ് | sandpapergate | Pat Cummins'. Watch the full breakdown on Final Third."
     },
     {
@@ -169,7 +169,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "1 week ago",
-      "views": "147K views",
+      "views": "148K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ലേലത്തിൽ ഇനി വൻ നീക്കങ്ങൾ കാണാം ! | IPL 2027 auction| IPL released players | IPL retention list 2027'. Watch the full breakdown on Final Third."
     },
     {
