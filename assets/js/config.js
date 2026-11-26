@@ -88,18 +88,28 @@ const FINAL_THIRD_CONFIG = {
     ]
   },
 
-  featuredVideoId: "A0XlQrEnDfQ",
+  featuredVideoId: "o2lmgFSzjow",
 
   // 300+ Authentic Videos from YouTube @FinalThird_HarisNenmara
   videos: [
+    {
+      "id": "o2lmgFSzjow",
+      "title": "മോറീന്യോ റയലിനെ ഒരു ടീമാക്കി മാറ്റി കഴിഞ്ഞിരിക്കുന്നു ! Real Madrid | Jude bellingham| Jose mourinho",
+      "sport": "football",
+      "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
+      "playlistTitle": "Real Madrid",
+      "published": "5 hours ago",
+      "views": "18K views",
+      "summary": "Analysis and match debrief by Haris Nenmara on 'മോറീന്യോ റയലിനെ ഒരു ടീമാക്കി മാറ്റി കഴിഞ്ഞിരിക്കുന്നു ! Real Madrid | Jude bellingham| Jose mourinho'. Watch the full breakdown on Final Third."
+    },
     {
       "id": "A0XlQrEnDfQ",
       "title": "എതിരാളികളോട് സഹതാപം മാത്രം! | Vaibhav Sooryavanshi | INDIA Vs UAE",
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "16 hours ago",
-      "views": "66K views",
+      "published": "Yesterday",
+      "views": "77K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'എതിരാളികളോട് സഹതാപം മാത്രം! | Vaibhav Sooryavanshi | INDIA Vs UAE'. Watch the full breakdown on Final Third."
     },
     {
@@ -128,7 +138,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "5 days ago",
+      "published": "6 days ago",
       "views": "29K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'വീണ്ടും സെഞ്ച്വറി ! IPL ൽ  ഹെറ്റിയെ ആര് റാഞ്ചും ? | Shimron Hetmyer | IPL 2027 Auction'. Watch the full breakdown on Final Third."
     },
@@ -138,8 +148,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "6 days ago",
-      "views": "122K views",
+      "published": "1 week ago",
+      "views": "123K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'കമ്മിൻസ് പ്രതി തന്നെ ! നാണം കെട്ട് ഓസ്ട്രേലിയൻ ക്രിക്കറ്റ് | sandpapergate | Pat Cummins'. Watch the full breakdown on Final Third."
     },
     {
@@ -148,7 +158,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "6 days ago",
+      "published": "1 week ago",
       "views": "33K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ടെസ്റ്റിലും സിറാജ് ഔട്ട് ! ഈ കണക്കുകള്‍ ഗംഭീറിനെ നോക്കി ചിരിക്കുന്നു | Mohammed Siraj | Gambhir'. Watch the full breakdown on Final Third."
     },
@@ -159,7 +169,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "1 week ago",
-      "views": "144K views",
+      "views": "147K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ലേലത്തിൽ ഇനി വൻ നീക്കങ്ങൾ കാണാം ! | IPL 2027 auction| IPL released players | IPL retention list 2027'. Watch the full breakdown on Final Third."
     },
     {
