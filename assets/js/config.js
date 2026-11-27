@@ -98,8 +98,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "6 hours ago",
-      "views": "22K views",
+      "published": "11 hours ago",
+      "views": "40K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'സ്റ്റോക്സിനെ മുംബൈക്ക് വേണോ ? ഹോപ്പിൽ കണ്ണു വച്ച് വമ്പന്മാർ ? | IPL Mini Auction | Ben Stocks'. Watch the full breakdown on Final Third."
     },
     {
@@ -109,7 +109,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
       "playlistTitle": "Real Madrid",
       "published": "Yesterday",
-      "views": "53K views",
+      "views": "56K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'മോറീന്യോ റയലിനെ ഒരു ടീമാക്കി മാറ്റി കഴിഞ്ഞിരിക്കുന്നു ! Real Madrid | Jude bellingham| Jose mourinho'. Watch the full breakdown on Final Third."
     },
     {
@@ -179,7 +179,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "1 week ago",
-      "views": "150K views",
+      "views": "151K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ലേലത്തിൽ ഇനി വൻ നീക്കങ്ങൾ കാണാം ! | IPL 2027 auction| IPL released players | IPL retention list 2027'. Watch the full breakdown on Final Third."
     },
     {
