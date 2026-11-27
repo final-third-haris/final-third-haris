@@ -88,18 +88,28 @@ const FINAL_THIRD_CONFIG = {
     ]
   },
 
-  featuredVideoId: "o2lmgFSzjow",
+  featuredVideoId: "HFKwFhwE5Lw",
 
   // 300+ Authentic Videos from YouTube @FinalThird_HarisNenmara
   videos: [
+    {
+      "id": "HFKwFhwE5Lw",
+      "title": "സ്റ്റോക്സിനെ മുംബൈക്ക് വേണോ ? ഹോപ്പിൽ കണ്ണു വച്ച് വമ്പന്മാർ ? | IPL Mini Auction | Ben Stocks",
+      "sport": "cricket",
+      "playlistId": "indian-cricket",
+      "playlistTitle": "Indian Cricket Team",
+      "published": "6 hours ago",
+      "views": "22K views",
+      "summary": "Analysis and match debrief by Haris Nenmara on 'സ്റ്റോക്സിനെ മുംബൈക്ക് വേണോ ? ഹോപ്പിൽ കണ്ണു വച്ച് വമ്പന്മാർ ? | IPL Mini Auction | Ben Stocks'. Watch the full breakdown on Final Third."
+    },
     {
       "id": "o2lmgFSzjow",
       "title": "മോറീന്യോ റയലിനെ ഒരു ടീമാക്കി മാറ്റി കഴിഞ്ഞിരിക്കുന്നു ! Real Madrid | Jude bellingham| Jose mourinho",
       "sport": "football",
       "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
       "playlistTitle": "Real Madrid",
-      "published": "10 hours ago",
-      "views": "34K views",
+      "published": "Yesterday",
+      "views": "53K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'മോറീന്യോ റയലിനെ ഒരു ടീമാക്കി മാറ്റി കഴിഞ്ഞിരിക്കുന്നു ! Real Madrid | Jude bellingham| Jose mourinho'. Watch the full breakdown on Final Third."
     },
     {
@@ -108,8 +118,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "Yesterday",
-      "views": "78K views",
+      "published": "2 days ago",
+      "views": "80K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'എതിരാളികളോട് സഹതാപം മാത്രം! | Vaibhav Sooryavanshi | INDIA Vs UAE'. Watch the full breakdown on Final Third."
     },
     {
@@ -138,7 +148,7 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "6 days ago",
+      "published": "1 week ago",
       "views": "29K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'വീണ്ടും സെഞ്ച്വറി ! IPL ൽ  ഹെറ്റിയെ ആര് റാഞ്ചും ? | Shimron Hetmyer | IPL 2027 Auction'. Watch the full breakdown on Final Third."
     },
@@ -169,7 +179,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "1 week ago",
-      "views": "148K views",
+      "views": "150K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ലേലത്തിൽ ഇനി വൻ നീക്കങ്ങൾ കാണാം ! | IPL 2027 auction| IPL released players | IPL retention list 2027'. Watch the full breakdown on Final Third."
     },
     {
@@ -239,7 +249,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
       "playlistTitle": "Real Madrid",
       "published": "1 week ago",
-      "views": "47K views",
+      "views": "48K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'യുണൈറ്റഡിന് നിക്കോയെ വേണം ! റയൽ തിരികെ കൊണ്ട് വരുമോ ? | Nico Paz | Manchester United | Real Madrid'. Watch the full breakdown on Final Third."
     },
     {
