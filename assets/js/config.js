@@ -88,18 +88,28 @@ const FINAL_THIRD_CONFIG = {
     ]
   },
 
-  featuredVideoId: "HFKwFhwE5Lw",
+  featuredVideoId: "QphyjeVUglk",
 
   // 300+ Authentic Videos from YouTube @FinalThird_HarisNenmara
   videos: [
+    {
+      "id": "QphyjeVUglk",
+      "title": "സഞ്ജുവിനേ കഴിയൂ ! SMT യിൽ കേരളത്തിന്‍റെ പ്രതീക്ഷകള്‍ | Sanju Samson | Azharuddin",
+      "sport": "cricket",
+      "playlistId": "indian-cricket",
+      "playlistTitle": "Indian Cricket Team",
+      "published": "4 hours ago",
+      "views": "15K views",
+      "summary": "Analysis and match debrief by Haris Nenmara on 'സഞ്ജുവിനേ കഴിയൂ ! SMT യിൽ കേരളത്തിന്‍റെ പ്രതീക്ഷകള്‍ | Sanju Samson | Azharuddin'. Watch the full breakdown on Final Third."
+    },
     {
       "id": "HFKwFhwE5Lw",
       "title": "സ്റ്റോക്സിനെ മുംബൈക്ക് വേണോ ? ഹോപ്പിൽ കണ്ണു വച്ച് വമ്പന്മാർ ? | IPL Mini Auction | Ben Stocks",
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "11 hours ago",
-      "views": "40K views",
+      "published": "Yesterday",
+      "views": "63K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'സ്റ്റോക്സിനെ മുംബൈക്ക് വേണോ ? ഹോപ്പിൽ കണ്ണു വച്ച് വമ്പന്മാർ ? | IPL Mini Auction | Ben Stocks'. Watch the full breakdown on Final Third."
     },
     {
@@ -108,8 +118,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "football",
       "playlistId": "PLRqJyYpkYUnHsNkojNOoKGYrBITpb_ksS",
       "playlistTitle": "Real Madrid",
-      "published": "Yesterday",
-      "views": "56K views",
+      "published": "2 days ago",
+      "views": "63K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'മോറീന്യോ റയലിനെ ഒരു ടീമാക്കി മാറ്റി കഴിഞ്ഞിരിക്കുന്നു ! Real Madrid | Jude bellingham| Jose mourinho'. Watch the full breakdown on Final Third."
     },
     {
@@ -118,8 +128,8 @@ const FINAL_THIRD_CONFIG = {
       "sport": "cricket",
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
-      "published": "2 days ago",
-      "views": "80K views",
+      "published": "3 days ago",
+      "views": "81K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'എതിരാളികളോട് സഹതാപം മാത്രം! | Vaibhav Sooryavanshi | INDIA Vs UAE'. Watch the full breakdown on Final Third."
     },
     {
@@ -179,7 +189,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "indian-cricket",
       "playlistTitle": "Indian Cricket Team",
       "published": "1 week ago",
-      "views": "151K views",
+      "views": "152K views",
       "summary": "Analysis and match debrief by Haris Nenmara on 'ലേലത്തിൽ ഇനി വൻ നീക്കങ്ങൾ കാണാം ! | IPL 2027 auction| IPL released players | IPL retention list 2027'. Watch the full breakdown on Final Third."
     },
     {
@@ -2512,7 +2522,7 @@ const FINAL_THIRD_CONFIG = {
       "playlistId": "latest",
       "playlistTitle": "Latest Release",
       "published": "1 week ago",
-      "views": "2.5K views",
+      "views": "2.6K views",
       "summary": "ധോണി ബാക്കിയാക്കുന്ന ഓർമകൾ | MS Dhoni Retirement | Chennai Super Kings | Haris Nenmara"
     },
     {
